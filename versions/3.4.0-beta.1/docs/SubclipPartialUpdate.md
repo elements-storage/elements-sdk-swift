@@ -1,0 +1,17 @@
+# SubclipPartialUpdate
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**asset** | [**AssetMiniReference**](AssetMiniReference.md) |  | [optional] 
+**rendered** | [**AssetMiniReference**](AssetMiniReference.md) |  | [optional] 
+**shared** | **Bool** |  | [optional] 
+**name** | **String** |  | [optional] 
+**tIn** | **Double** |  | [optional] 
+**tOut** | **Double** |  | [optional] 
+**root** | [**MediaRootMiniReference**](MediaRootMiniReference.md) |  | 
+
+[[Back to Model list]](../#documentation-for-models) [[Back to API list]](../#documentation-for-api-endpoints) [[Back to README]](../)
+
+

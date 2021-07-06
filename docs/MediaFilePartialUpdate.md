@@ -1,0 +1,15 @@
+# MediaFilePartialUpdate
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**info** | **[String: String]** |  | [optional] 
+**customFields** | **[String: String]** |  | [optional] 
+**totalFiles** | **Int** |  | [optional] 
+**needsRescan** | **Bool** |  | [optional] 
+**bookmarkedBy** | **Set<Int>** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

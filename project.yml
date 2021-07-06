@@ -1,0 +1,16 @@
+name: ElementsSDK
+targets:
+  ElementsSDK:
+    type: framework
+    platform: iOS
+    deploymentTarget: "9.0"
+    sources: [ElementsSDK]
+    info:
+      path: ./Info.plist
+      version: 2
+    settings:
+      APPLICATION_EXTENSION_API_ONLY: true
+    scheme: {}
+    dependencies:
+    - carthage: PromiseKit
+    - carthage: AnyCodable
