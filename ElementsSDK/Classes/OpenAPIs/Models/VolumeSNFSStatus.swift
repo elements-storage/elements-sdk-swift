@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct VolumeSNFSStatus: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct VolumeSNFSStatus: Codable, Hashable {
     public init(stripeGroups: [SNFSStripeGroup]) {
         self.stripeGroups = stripeGroups
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case stripeGroups = "stripe_groups"
     }
@@ -25,7 +28,5 @@ public struct VolumeSNFSStatus: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(stripeGroups, forKey: .stripeGroups)
     }
-
-
-
 }
+

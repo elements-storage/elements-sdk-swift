@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct NetStat: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct NetStat: Codable, Hashable {
         self.cRxErr = cRxErr
         self.cTxErr = cTxErr
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case time
         case cRx = "c_rx"
@@ -41,7 +44,5 @@ public struct NetStat: Codable, Hashable {
         try container.encode(cRxErr, forKey: .cRxErr)
         try container.encode(cTxErr, forKey: .cTxErr)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ProxyCount: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct ProxyCount: Codable, Hashable {
     public init(count: Int) {
         self.count = count
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case count
     }
@@ -25,7 +28,5 @@ public struct ProxyCount: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(count, forKey: .count)
     }
-
-
-
 }
+

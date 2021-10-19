@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct CreateDownloadArchive: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct CreateDownloadArchive: Codable, Hashable {
         self.proxy = proxy
         self.forRoot = forRoot
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case paths
         case fileIds = "file_ids"
@@ -41,7 +44,5 @@ public struct CreateDownloadArchive: Codable, Hashable {
         try container.encodeIfPresent(proxy, forKey: .proxy)
         try container.encodeIfPresent(forRoot, forKey: .forRoot)
     }
-
-
-
 }
+

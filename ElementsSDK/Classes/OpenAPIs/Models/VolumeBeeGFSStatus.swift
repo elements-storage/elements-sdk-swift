@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct VolumeBeeGFSStatus: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct VolumeBeeGFSStatus: Codable, Hashable {
         self.nodes = nodes
         self.targets = targets
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case nodes
         case targets
@@ -29,7 +32,5 @@ public struct VolumeBeeGFSStatus: Codable, Hashable {
         try container.encode(nodes, forKey: .nodes)
         try container.encode(targets, forKey: .targets)
     }
-
-
-
 }
+

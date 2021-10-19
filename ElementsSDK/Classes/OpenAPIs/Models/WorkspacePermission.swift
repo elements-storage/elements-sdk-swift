@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct WorkspacePermission: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct WorkspacePermission: Codable, Hashable {
         self.readOnly = readOnly
         self.workspace = workspace
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case user
@@ -41,7 +44,5 @@ public struct WorkspacePermission: Codable, Hashable {
         try container.encodeIfPresent(readOnly, forKey: .readOnly)
         try container.encode(workspace, forKey: .workspace)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct AuthLoginEndpointRequest: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct AuthLoginEndpointRequest: Codable, Hashable {
         self.otp = otp
         self.newPassword = newPassword
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case username
         case password
@@ -37,7 +40,5 @@ public struct AuthLoginEndpointRequest: Codable, Hashable {
         try container.encodeIfPresent(otp, forKey: .otp)
         try container.encodeIfPresent(newPassword, forKey: .newPassword)
     }
-
-
-
 }
+

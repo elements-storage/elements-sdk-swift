@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct FileUnzipEndpointRequest: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct FileUnzipEndpointRequest: Codable, Hashable {
         self.input = input
         self.remove = remove
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case input
         case remove
@@ -29,7 +32,5 @@ public struct FileUnzipEndpointRequest: Codable, Hashable {
         try container.encode(input, forKey: .input)
         try container.encodeIfPresent(remove, forKey: .remove)
     }
-
-
-
 }
+

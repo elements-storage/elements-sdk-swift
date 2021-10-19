@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TapePartialUpdate: Codable, Hashable {
 
@@ -46,6 +48,7 @@ public struct TapePartialUpdate: Codable, Hashable {
         self.lto = lto
         self.group = group
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case uuid
@@ -82,7 +85,5 @@ public struct TapePartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(lto, forKey: .lto)
         try container.encodeIfPresent(group, forKey: .group)
     }
-
-
-
 }
+

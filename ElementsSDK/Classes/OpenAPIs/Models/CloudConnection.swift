@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct CloudConnection: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct CloudConnection: Codable, Hashable {
         self.url = url
         self.presignedLoginUrl = presignedLoginUrl
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -37,7 +40,5 @@ public struct CloudConnection: Codable, Hashable {
         try container.encode(url, forKey: .url)
         try container.encodeIfPresent(presignedLoginUrl, forKey: .presignedLoginUrl)
     }
-
-
-
 }
+

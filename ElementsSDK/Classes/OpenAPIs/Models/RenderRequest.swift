@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct RenderRequest: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct RenderRequest: Codable, Hashable {
     public init(destination: String) {
         self.destination = destination
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case destination
     }
@@ -25,7 +28,5 @@ public struct RenderRequest: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(destination, forKey: .destination)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ElementsGroup: Codable, Hashable {
 
@@ -37,6 +39,7 @@ public struct ElementsGroup: Codable, Hashable {
         self.ldap = ldap
         self.members = members
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case permissions
@@ -69,7 +72,5 @@ public struct ElementsGroup: Codable, Hashable {
         try container.encodeIfPresent(ldap, forKey: .ldap)
         try container.encode(members, forKey: .members)
     }
-
-
-
 }
+

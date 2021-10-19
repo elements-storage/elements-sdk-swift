@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Alert: Codable, Hashable {
 
@@ -31,6 +33,7 @@ public struct Alert: Codable, Hashable {
         self.closedAt = closedAt
         self.duration = duration
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -57,7 +60,5 @@ public struct Alert: Codable, Hashable {
         try container.encodeIfPresent(closedAt, forKey: .closedAt)
         try container.encodeIfPresent(duration, forKey: .duration)
     }
-
-
-
 }
+

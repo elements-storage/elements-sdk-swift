@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ElementsUserReference: Codable, Hashable {
 
@@ -93,6 +95,7 @@ public struct ElementsUserReference: Codable, Hashable {
         self.unixUsername = unixUsername
         self.username = username
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case allowChangingPassword = "allow_changing_password"
@@ -175,7 +178,5 @@ public struct ElementsUserReference: Codable, Hashable {
         try container.encodeIfPresent(unixUsername, forKey: .unixUsername)
         try container.encodeIfPresent(username, forKey: .username)
     }
-
-
-
 }
+

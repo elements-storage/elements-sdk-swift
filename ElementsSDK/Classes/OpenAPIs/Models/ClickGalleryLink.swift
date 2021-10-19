@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ClickGalleryLink: Codable, Hashable {
 
@@ -29,6 +31,7 @@ public struct ClickGalleryLink: Codable, Hashable {
         self.elementsUser = elementsUser
         self.secretKey = secretKey
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case email
@@ -53,7 +56,5 @@ public struct ClickGalleryLink: Codable, Hashable {
         try container.encodeIfPresent(elementsUser, forKey: .elementsUser)
         try container.encodeIfPresent(secretKey, forKey: .secretKey)
     }
-
-
-
 }
+

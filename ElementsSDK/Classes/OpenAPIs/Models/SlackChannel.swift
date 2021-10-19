@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SlackChannel: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct SlackChannel: Codable, Hashable {
         self.name = name
         self.isPrivate = isPrivate
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -33,7 +36,5 @@ public struct SlackChannel: Codable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encode(isPrivate, forKey: .isPrivate)
     }
-
-
-
 }
+

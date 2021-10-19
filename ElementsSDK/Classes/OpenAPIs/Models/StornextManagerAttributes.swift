@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct StornextManagerAttributes: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct StornextManagerAttributes: Codable, Hashable {
         self.existingCopies = existingCopies
         self.targetCopies = targetCopies
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case location
         case policyClass = "policy_class"
@@ -37,7 +40,5 @@ public struct StornextManagerAttributes: Codable, Hashable {
         try container.encode(existingCopies, forKey: .existingCopies)
         try container.encode(targetCopies, forKey: .targetCopies)
     }
-
-
-
 }
+

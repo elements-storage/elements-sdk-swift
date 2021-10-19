@@ -112,6 +112,8 @@ ElementsSDK/Classes/OpenAPIs/Models/GetMultipleFilesRequest.swift
 ElementsSDK/Classes/OpenAPIs/Models/GlobalAlert.swift
 ElementsSDK/Classes/OpenAPIs/Models/IOStat.swift
 ElementsSDK/Classes/OpenAPIs/Models/ImpersonationEndpointRequest.swift
+ElementsSDK/Classes/OpenAPIs/Models/ImportJobRequest.swift
+ElementsSDK/Classes/OpenAPIs/Models/ImportJobResponse.swift
 ElementsSDK/Classes/OpenAPIs/Models/InlineResponse200.swift
 ElementsSDK/Classes/OpenAPIs/Models/InlineResponse2001.swift
 ElementsSDK/Classes/OpenAPIs/Models/InlineResponse2002.swift
@@ -140,6 +142,7 @@ ElementsSDK/Classes/OpenAPIs/Models/Marker.swift
 ElementsSDK/Classes/OpenAPIs/Models/MarkerPartialUpdate.swift
 ElementsSDK/Classes/OpenAPIs/Models/MediaFile.swift
 ElementsSDK/Classes/OpenAPIs/Models/MediaFileBundle.swift
+ElementsSDK/Classes/OpenAPIs/Models/MediaFileBundleMini.swift
 ElementsSDK/Classes/OpenAPIs/Models/MediaFileBundleMiniReference.swift
 ElementsSDK/Classes/OpenAPIs/Models/MediaFileContents.swift
 ElementsSDK/Classes/OpenAPIs/Models/MediaFileMini.swift
@@ -172,6 +175,7 @@ ElementsSDK/Classes/OpenAPIs/Models/PasswordResetEndpointRequest.swift
 ElementsSDK/Classes/OpenAPIs/Models/Path.swift
 ElementsSDK/Classes/OpenAPIs/Models/PathInput.swift
 ElementsSDK/Classes/OpenAPIs/Models/Production.swift
+ElementsSDK/Classes/OpenAPIs/Models/ProductionMiniReference.swift
 ElementsSDK/Classes/OpenAPIs/Models/ProductionPartialUpdate.swift
 ElementsSDK/Classes/OpenAPIs/Models/ProductionReference.swift
 ElementsSDK/Classes/OpenAPIs/Models/Proxy.swift
@@ -245,9 +249,7 @@ ElementsSDK/Classes/OpenAPIs/Models/SubtaskReference.swift
 ElementsSDK/Classes/OpenAPIs/Models/SyncTOTP.swift
 ElementsSDK/Classes/OpenAPIs/Models/SyncTOTPRequest.swift
 ElementsSDK/Classes/OpenAPIs/Models/SystemInfoEndpointResponse.swift
-ElementsSDK/Classes/OpenAPIs/Models/Tag.swift
 ElementsSDK/Classes/OpenAPIs/Models/TagMediaDirectoryRequest.swift
-ElementsSDK/Classes/OpenAPIs/Models/TagPartialUpdate.swift
 ElementsSDK/Classes/OpenAPIs/Models/TagReference.swift
 ElementsSDK/Classes/OpenAPIs/Models/Tape.swift
 ElementsSDK/Classes/OpenAPIs/Models/TapeFile.swift
@@ -290,6 +292,8 @@ ElementsSDK/Classes/OpenAPIs/Models/Timezone.swift
 ElementsSDK/Classes/OpenAPIs/Models/TraceNode.swift
 ElementsSDK/Classes/OpenAPIs/Models/TranscoderProfile.swift
 ElementsSDK/Classes/OpenAPIs/Models/TypeDocumentation.swift
+ElementsSDK/Classes/OpenAPIs/Models/UnfilteredTag.swift
+ElementsSDK/Classes/OpenAPIs/Models/UnfilteredTagPartialUpdate.swift
 ElementsSDK/Classes/OpenAPIs/Models/UpdateQuotaRequest.swift
 ElementsSDK/Classes/OpenAPIs/Models/UploadChunkEndpointRequest.swift
 ElementsSDK/Classes/OpenAPIs/Models/UserPreviewRequest.swift
@@ -311,13 +315,15 @@ ElementsSDK/Classes/OpenAPIs/Models/WorkflowTransitionRequest.swift
 ElementsSDK/Classes/OpenAPIs/Models/WorkflowTransitionResponse.swift
 ElementsSDK/Classes/OpenAPIs/Models/Workspace.swift
 ElementsSDK/Classes/OpenAPIs/Models/WorkspaceCheckIn.swift
+ElementsSDK/Classes/OpenAPIs/Models/WorkspaceDetail.swift
+ElementsSDK/Classes/OpenAPIs/Models/WorkspaceDetailPartialUpdate.swift
 ElementsSDK/Classes/OpenAPIs/Models/WorkspaceEndpoint.swift
 ElementsSDK/Classes/OpenAPIs/Models/WorkspaceMoveToRequest.swift
-ElementsSDK/Classes/OpenAPIs/Models/WorkspacePartialUpdate.swift
 ElementsSDK/Classes/OpenAPIs/Models/WorkspacePermission.swift
 ElementsSDK/Classes/OpenAPIs/Models/WorkspacePermissionPartialUpdate.swift
 ElementsSDK/Classes/OpenAPIs/Models/WorkspaceResolvedPermission.swift
 ElementsSDK/Classes/OpenAPIs/Models/Workstation.swift
+ElementsSDK/Classes/OpenAPIs/Models/WorkstationMini.swift
 ElementsSDK/Classes/OpenAPIs/Models/WorkstationPartialUpdate.swift
 ElementsSDK/Classes/OpenAPIs/OpenISO8601DateFormatter.swift
 ElementsSDK/Classes/OpenAPIs/SynchronizedDictionary.swift
@@ -420,6 +426,8 @@ docs/GetMultipleFilesRequest.md
 docs/GlobalAlert.md
 docs/IOStat.md
 docs/ImpersonationEndpointRequest.md
+docs/ImportJobRequest.md
+docs/ImportJobResponse.md
 docs/InlineResponse200.md
 docs/InlineResponse2001.md
 docs/InlineResponse2002.md
@@ -450,6 +458,7 @@ docs/Marker.md
 docs/MarkerPartialUpdate.md
 docs/MediaFile.md
 docs/MediaFileBundle.md
+docs/MediaFileBundleMini.md
 docs/MediaFileBundleMiniReference.md
 docs/MediaFileContents.md
 docs/MediaFileMini.md
@@ -483,6 +492,7 @@ docs/PasswordResetEndpointRequest.md
 docs/Path.md
 docs/PathInput.md
 docs/Production.md
+docs/ProductionMiniReference.md
 docs/ProductionPartialUpdate.md
 docs/ProductionReference.md
 docs/Proxy.md
@@ -559,9 +569,7 @@ docs/SubtaskReference.md
 docs/SyncTOTP.md
 docs/SyncTOTPRequest.md
 docs/SystemInfoEndpointResponse.md
-docs/Tag.md
 docs/TagMediaDirectoryRequest.md
-docs/TagPartialUpdate.md
 docs/TagReference.md
 docs/Tape.md
 docs/TapeArchiveAPI.md
@@ -605,6 +613,8 @@ docs/Timezone.md
 docs/TraceNode.md
 docs/TranscoderProfile.md
 docs/TypeDocumentation.md
+docs/UnfilteredTag.md
+docs/UnfilteredTagPartialUpdate.md
 docs/UpdateQuotaRequest.md
 docs/UploadChunkEndpointRequest.md
 docs/UserPreviewRequest.md
@@ -626,13 +636,15 @@ docs/WorkflowTransitionRequest.md
 docs/WorkflowTransitionResponse.md
 docs/Workspace.md
 docs/WorkspaceCheckIn.md
+docs/WorkspaceDetail.md
+docs/WorkspaceDetailPartialUpdate.md
 docs/WorkspaceEndpoint.md
 docs/WorkspaceMoveToRequest.md
-docs/WorkspacePartialUpdate.md
 docs/WorkspacePermission.md
 docs/WorkspacePermissionPartialUpdate.md
 docs/WorkspaceResolvedPermission.md
 docs/Workstation.md
+docs/WorkstationMini.md
 docs/WorkstationPartialUpdate.md
 git_push.sh
 project.yml

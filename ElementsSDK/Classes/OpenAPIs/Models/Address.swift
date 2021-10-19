@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Address: Codable, Hashable {
 
@@ -25,6 +27,7 @@ public struct Address: Codable, Hashable {
         self.network = network
         self.interface = interface
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case address
@@ -45,7 +48,5 @@ public struct Address: Codable, Hashable {
         try container.encode(network, forKey: .network)
         try container.encodeIfPresent(interface, forKey: .interface)
     }
-
-
-
 }
+

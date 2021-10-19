@@ -7,15 +7,19 @@
 
 import Foundation
 import PromiseKit
+#if canImport(AnyCodable)
+import AnyCodable
+#endif
 
 open class AuthAPI {
+
     /**
 
      - parameter ticket: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ElementsUserDetail>
      */
-    open class func checkAuthTicket( ticket: Ticket, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ElementsUserDetail> {
+    open class func checkAuthTicket( ticket: Ticket, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ElementsUserDetail> {
         let deferred = Promise<ElementsUserDetail>.pending()
         checkAuthTicketWithRequestBuilder(ticket: ticket).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -38,21 +42,21 @@ open class AuthAPI {
      - returns: RequestBuilder<ElementsUserDetail> 
      */
     open class func checkAuthTicketWithRequestBuilder(ticket: Ticket) -> RequestBuilder<ElementsUserDetail> {
-        let path = "/api/2/auth/ticket/check"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: ticket)
+        let localVariablePath = "/api/2/auth/ticket/check"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: ticket)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<ElementsUserDetail>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ElementsUserDetail>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -60,7 +64,7 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Ticket>
      */
-    open class func createAuthTicket(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Ticket> {
+    open class func createAuthTicket(apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Ticket> {
         let deferred = Promise<Ticket>.pending()
         createAuthTicketWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -82,21 +86,21 @@ open class AuthAPI {
      - returns: RequestBuilder<Ticket> 
      */
     open class func createAuthTicketWithRequestBuilder() -> RequestBuilder<Ticket> {
-        let path = "/api/2/auth/ticket"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/auth/ticket"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Ticket>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Ticket>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -105,7 +109,7 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteAccessToken( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func deleteAccessToken( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         deleteAccessTokenWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -128,24 +132,24 @@ open class AuthAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func deleteAccessTokenWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
-        var path = "/api/2/auth/access-tokens/{id}"
+        var localVariablePath = "/api/2/auth/access-tokens/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "DELETE", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -153,7 +157,7 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<GeneratePasswordEndpointResponse>
      */
-    open class func generatePassword(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<GeneratePasswordEndpointResponse> {
+    open class func generatePassword(apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<GeneratePasswordEndpointResponse> {
         let deferred = Promise<GeneratePasswordEndpointResponse>.pending()
         generatePasswordWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -175,21 +179,21 @@ open class AuthAPI {
      - returns: RequestBuilder<GeneratePasswordEndpointResponse> 
      */
     open class func generatePasswordWithRequestBuilder() -> RequestBuilder<GeneratePasswordEndpointResponse> {
-        let path = "/api/2/auth/generate-password"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/auth/generate-password"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<GeneratePasswordEndpointResponse>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<GeneratePasswordEndpointResponse>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -198,7 +202,7 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<OneTimeAccessToken>
      */
-    open class func getAccessToken( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<OneTimeAccessToken> {
+    open class func getAccessToken( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<OneTimeAccessToken> {
         let deferred = Promise<OneTimeAccessToken>.pending()
         getAccessTokenWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -221,24 +225,24 @@ open class AuthAPI {
      - returns: RequestBuilder<OneTimeAccessToken> 
      */
     open class func getAccessTokenWithRequestBuilder(id: Int) -> RequestBuilder<OneTimeAccessToken> {
-        var path = "/api/2/auth/access-tokens/{id}"
+        var localVariablePath = "/api/2/auth/access-tokens/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<OneTimeAccessToken>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<OneTimeAccessToken>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -254,7 +258,7 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[OneTimeAccessToken]>
      */
-    open class func getAllAccessTokens( sharedBundles: String? = nil,  sharedDirectories: String? = nil,  sharedBundlesAsset: String? = nil,  user: String? = nil,  createdBy: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[OneTimeAccessToken]> {
+    open class func getAllAccessTokens( sharedBundles: String? = nil,  sharedDirectories: String? = nil,  sharedBundlesAsset: String? = nil,  user: String? = nil,  createdBy: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[OneTimeAccessToken]> {
         let deferred = Promise<[OneTimeAccessToken]>.pending()
         getAllAccessTokensWithRequestBuilder(sharedBundles: sharedBundles, sharedDirectories: sharedDirectories, sharedBundlesAsset: sharedBundlesAsset, user: user, createdBy: createdBy, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -284,12 +288,12 @@ open class AuthAPI {
      - returns: RequestBuilder<[OneTimeAccessToken]> 
      */
     open class func getAllAccessTokensWithRequestBuilder(sharedBundles: String? = nil, sharedDirectories: String? = nil, sharedBundlesAsset: String? = nil, user: String? = nil, createdBy: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[OneTimeAccessToken]> {
-        let path = "/api/2/auth/access-tokens"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/auth/access-tokens"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        var urlComponents = URLComponents(string: URLString)
-        urlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "shared_bundles": sharedBundles?.encodeToJSON(),
             "shared_directories": sharedDirectories?.encodeToJSON(),
             "shared_bundles__asset": sharedBundlesAsset?.encodeToJSON(),
@@ -300,15 +304,15 @@ open class AuthAPI {
             "offset": offset?.encodeToJSON(),
         ])
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<[OneTimeAccessToken]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[OneTimeAccessToken]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -317,7 +321,7 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<AuthLoginEndpointResponse>
      */
-    open class func login( authLoginEndpointRequest: AuthLoginEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<AuthLoginEndpointResponse> {
+    open class func login( authLoginEndpointRequest: AuthLoginEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<AuthLoginEndpointResponse> {
         let deferred = Promise<AuthLoginEndpointResponse>.pending()
         loginWithRequestBuilder(authLoginEndpointRequest: authLoginEndpointRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -340,21 +344,21 @@ open class AuthAPI {
      - returns: RequestBuilder<AuthLoginEndpointResponse> 
      */
     open class func loginWithRequestBuilder(authLoginEndpointRequest: AuthLoginEndpointRequest) -> RequestBuilder<AuthLoginEndpointResponse> {
-        let path = "/api/2/auth/login"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: authLoginEndpointRequest)
+        let localVariablePath = "/api/2/auth/login"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: authLoginEndpointRequest)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<AuthLoginEndpointResponse>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AuthLoginEndpointResponse>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -362,7 +366,7 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func logout(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func logout(apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         logoutWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -384,21 +388,21 @@ open class AuthAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func logoutWithRequestBuilder() -> RequestBuilder<Void> {
-        let path = "/api/2/auth/logout"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/auth/logout"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -407,7 +411,7 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func resetPassword( passwordResetEndpointRequest: PasswordResetEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func resetPassword( passwordResetEndpointRequest: PasswordResetEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         resetPasswordWithRequestBuilder(passwordResetEndpointRequest: passwordResetEndpointRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -430,21 +434,21 @@ open class AuthAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func resetPasswordWithRequestBuilder(passwordResetEndpointRequest: PasswordResetEndpointRequest) -> RequestBuilder<Void> {
-        let path = "/api/2/auth/reset-password"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: passwordResetEndpointRequest)
+        let localVariablePath = "/api/2/auth/reset-password"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: passwordResetEndpointRequest)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -454,7 +458,7 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func sendAccessTokenEmailNotification( id: Int,  sendLinkEmailRequest: SendLinkEmailRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func sendAccessTokenEmailNotification( id: Int,  sendLinkEmailRequest: SendLinkEmailRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         sendAccessTokenEmailNotificationWithRequestBuilder(id: id, sendLinkEmailRequest: sendLinkEmailRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -478,24 +482,24 @@ open class AuthAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func sendAccessTokenEmailNotificationWithRequestBuilder(id: Int, sendLinkEmailRequest: SendLinkEmailRequest) -> RequestBuilder<Void> {
-        var path = "/api/2/auth/access-tokens/{id}/email"
+        var localVariablePath = "/api/2/auth/access-tokens/{id}/email"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: sendLinkEmailRequest)
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: sendLinkEmailRequest)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -504,7 +508,7 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func startImpersonation( impersonationEndpointRequest: ImpersonationEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func startImpersonation( impersonationEndpointRequest: ImpersonationEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         startImpersonationWithRequestBuilder(impersonationEndpointRequest: impersonationEndpointRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -527,21 +531,21 @@ open class AuthAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func startImpersonationWithRequestBuilder(impersonationEndpointRequest: ImpersonationEndpointRequest) -> RequestBuilder<Void> {
-        let path = "/api/2/auth/impersonation"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: impersonationEndpointRequest)
+        let localVariablePath = "/api/2/auth/impersonation"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: impersonationEndpointRequest)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -549,7 +553,7 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func stopImpersonation(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func stopImpersonation(apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         stopImpersonationWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -571,21 +575,20 @@ open class AuthAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func stopImpersonationWithRequestBuilder() -> RequestBuilder<Void> {
-        let path = "/api/2/auth/impersonation/stop"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/auth/impersonation/stop"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
-
 }

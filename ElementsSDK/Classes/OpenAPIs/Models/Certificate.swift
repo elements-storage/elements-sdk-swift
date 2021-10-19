@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Certificate: Codable, Hashable {
 
@@ -35,6 +37,7 @@ public struct Certificate: Codable, Hashable {
         self.keyMatches = keyMatches
         self.domainMatches = domainMatches
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case certificate
         case key
@@ -65,7 +68,5 @@ public struct Certificate: Codable, Hashable {
         try container.encodeIfPresent(keyMatches, forKey: .keyMatches)
         try container.encodeIfPresent(domainMatches, forKey: .domainMatches)
     }
-
-
-
 }
+

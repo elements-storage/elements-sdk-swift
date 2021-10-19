@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **asset** | [**Asset**](Asset.md) |  | [optional] 
 **mainfile** | [**MediaFileMini**](MediaFileMini.md) |  | [optional] 
 **snmAttributes** | [**StornextManagerAttributes**](StornextManagerAttributes.md) |  | [optional] 
-**searchHighlight** | **String** |  | [optional] [readonly] 
 **isShared** | **Bool** |  | [optional] [readonly] 
 **name** | **String** |  | 
 **location** | **Int** |  | 

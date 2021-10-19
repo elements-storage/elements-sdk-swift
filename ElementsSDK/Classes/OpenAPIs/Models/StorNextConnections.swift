@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct StorNextConnections: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct StorNextConnections: Codable, Hashable {
         self.proxy = proxy
         self.gateway = gateway
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case list
         case normal
@@ -37,7 +40,5 @@ public struct StorNextConnections: Codable, Hashable {
         try container.encode(proxy, forKey: .proxy)
         try container.encode(gateway, forKey: .gateway)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ClientsEndpointResponse: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct ClientsEndpointResponse: Codable, Hashable {
         self.platform = platform
         self.file = file
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case version
         case fullVersion = "full_version"
@@ -37,7 +40,5 @@ public struct ClientsEndpointResponse: Codable, Hashable {
         try container.encode(platform, forKey: .platform)
         try container.encode(file, forKey: .file)
     }
-
-
-
 }
+

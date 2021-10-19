@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TestAWSCredentialsResponse: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct TestAWSCredentialsResponse: Codable, Hashable {
         self.account = account
         self.userId = userId
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case ok
         case arn
@@ -37,7 +40,5 @@ public struct TestAWSCredentialsResponse: Codable, Hashable {
         try container.encodeIfPresent(account, forKey: .account)
         try container.encodeIfPresent(userId, forKey: .userId)
     }
-
-
-
 }
+

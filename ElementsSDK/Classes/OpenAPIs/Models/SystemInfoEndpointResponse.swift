@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SystemInfoEndpointResponse: Codable, Hashable {
 
@@ -29,6 +31,7 @@ public struct SystemInfoEndpointResponse: Codable, Hashable {
         self.version = version
         self.globalAlerts = globalAlerts
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case license
         case clientApiVersion = "client_api_version"
@@ -53,7 +56,5 @@ public struct SystemInfoEndpointResponse: Codable, Hashable {
         try container.encode(version, forKey: .version)
         try container.encode(globalAlerts, forKey: .globalAlerts)
     }
-
-
-
 }
+

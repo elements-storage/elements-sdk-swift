@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct OneTimeAccessToken: Codable, Hashable {
 
@@ -47,6 +49,7 @@ public struct OneTimeAccessToken: Codable, Hashable {
         self.isEasySharingForBundle = isEasySharingForBundle
         self.isEasySharingForDirectory = isEasySharingForDirectory
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case activity
@@ -89,7 +92,5 @@ public struct OneTimeAccessToken: Codable, Hashable {
         try container.encodeIfPresent(isEasySharingForBundle, forKey: .isEasySharingForBundle)
         try container.encodeIfPresent(isEasySharingForDirectory, forKey: .isEasySharingForDirectory)
     }
-
-
-
 }
+

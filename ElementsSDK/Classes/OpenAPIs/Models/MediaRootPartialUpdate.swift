@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MediaRootPartialUpdate: Codable, Hashable {
 
@@ -29,6 +31,7 @@ public struct MediaRootPartialUpdate: Codable, Hashable {
     public var showRatings: Bool?
     public var showSubclips: Bool?
     public var showMarkers: Bool?
+    public var showHistory: Bool?
     public var showAiMetadata: Bool?
     public var prefetchThumbnailStrips: Bool?
     public var cover: String?
@@ -42,8 +45,9 @@ public struct MediaRootPartialUpdate: Codable, Hashable {
     public var aiConnection: Int?
     public var aiProxyProfile: Int?
     public var proxyProfiles: Set<Int>?
+    public var tags: Set<Int>?
 
-    public init(customFields: Set<CustomFieldReference>? = nil, workflow: [String: String]? = nil, aiConfig: [String: String]? = nil, veritoneConfig: [String: String]? = nil, volume: VolumeMiniReference? = nil, jobs: Set<JobReference>? = nil, name: String? = nil, path: String? = nil, needsRescan: Bool? = nil, viewMode: String? = nil, viewStyle: String? = nil, viewDefaultTab: String? = nil, showTags: Bool? = nil, showComments: Bool? = nil, showLocations: Bool? = nil, showCustomFields: Bool? = nil, showRatings: Bool? = nil, showSubclips: Bool? = nil, showMarkers: Bool? = nil, showAiMetadata: Bool? = nil, prefetchThumbnailStrips: Bool? = nil, cover: String? = nil, nameField: String? = nil, shareComments: Bool? = nil, shareLinkDuration: Int? = nil, defaultProxyProfile: Int? = nil, cloudProxyProfile: Int? = nil, veritoneConnection: Int? = nil, veritoneProxyProfile: Int? = nil, aiConnection: Int? = nil, aiProxyProfile: Int? = nil, proxyProfiles: Set<Int>? = nil) {
+    public init(customFields: Set<CustomFieldReference>? = nil, workflow: [String: String]? = nil, aiConfig: [String: String]? = nil, veritoneConfig: [String: String]? = nil, volume: VolumeMiniReference? = nil, jobs: Set<JobReference>? = nil, name: String? = nil, path: String? = nil, needsRescan: Bool? = nil, viewMode: String? = nil, viewStyle: String? = nil, viewDefaultTab: String? = nil, showTags: Bool? = nil, showComments: Bool? = nil, showLocations: Bool? = nil, showCustomFields: Bool? = nil, showRatings: Bool? = nil, showSubclips: Bool? = nil, showMarkers: Bool? = nil, showHistory: Bool? = nil, showAiMetadata: Bool? = nil, prefetchThumbnailStrips: Bool? = nil, cover: String? = nil, nameField: String? = nil, shareComments: Bool? = nil, shareLinkDuration: Int? = nil, defaultProxyProfile: Int? = nil, cloudProxyProfile: Int? = nil, veritoneConnection: Int? = nil, veritoneProxyProfile: Int? = nil, aiConnection: Int? = nil, aiProxyProfile: Int? = nil, proxyProfiles: Set<Int>? = nil, tags: Set<Int>? = nil) {
         self.customFields = customFields
         self.workflow = workflow
         self.aiConfig = aiConfig
@@ -63,6 +67,7 @@ public struct MediaRootPartialUpdate: Codable, Hashable {
         self.showRatings = showRatings
         self.showSubclips = showSubclips
         self.showMarkers = showMarkers
+        self.showHistory = showHistory
         self.showAiMetadata = showAiMetadata
         self.prefetchThumbnailStrips = prefetchThumbnailStrips
         self.cover = cover
@@ -76,7 +81,9 @@ public struct MediaRootPartialUpdate: Codable, Hashable {
         self.aiConnection = aiConnection
         self.aiProxyProfile = aiProxyProfile
         self.proxyProfiles = proxyProfiles
+        self.tags = tags
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case customFields = "custom_fields"
         case workflow
@@ -97,6 +104,7 @@ public struct MediaRootPartialUpdate: Codable, Hashable {
         case showRatings = "show_ratings"
         case showSubclips = "show_subclips"
         case showMarkers = "show_markers"
+        case showHistory = "show_history"
         case showAiMetadata = "show_ai_metadata"
         case prefetchThumbnailStrips = "prefetch_thumbnail_strips"
         case cover
@@ -110,6 +118,7 @@ public struct MediaRootPartialUpdate: Codable, Hashable {
         case aiConnection = "ai_connection"
         case aiProxyProfile = "ai_proxy_profile"
         case proxyProfiles = "proxy_profiles"
+        case tags
     }
 
     // Encodable protocol methods
@@ -135,6 +144,7 @@ public struct MediaRootPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(showRatings, forKey: .showRatings)
         try container.encodeIfPresent(showSubclips, forKey: .showSubclips)
         try container.encodeIfPresent(showMarkers, forKey: .showMarkers)
+        try container.encodeIfPresent(showHistory, forKey: .showHistory)
         try container.encodeIfPresent(showAiMetadata, forKey: .showAiMetadata)
         try container.encodeIfPresent(prefetchThumbnailStrips, forKey: .prefetchThumbnailStrips)
         try container.encodeIfPresent(cover, forKey: .cover)
@@ -148,8 +158,7 @@ public struct MediaRootPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(aiConnection, forKey: .aiConnection)
         try container.encodeIfPresent(aiProxyProfile, forKey: .aiProxyProfile)
         try container.encodeIfPresent(proxyProfiles, forKey: .proxyProfiles)
+        try container.encodeIfPresent(tags, forKey: .tags)
     }
-
-
-
 }
+

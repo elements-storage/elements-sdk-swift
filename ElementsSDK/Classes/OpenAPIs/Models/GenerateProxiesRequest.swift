@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct GenerateProxiesRequest: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct GenerateProxiesRequest: Codable, Hashable {
         self.enqueueAtFront = enqueueAtFront
         self.force = force
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case bundles
         case directories
@@ -41,7 +44,5 @@ public struct GenerateProxiesRequest: Codable, Hashable {
         try container.encodeIfPresent(enqueueAtFront, forKey: .enqueueAtFront)
         try container.encodeIfPresent(force, forKey: .force)
     }
-
-
-
 }
+

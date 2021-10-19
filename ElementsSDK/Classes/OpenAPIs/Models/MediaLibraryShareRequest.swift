@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MediaLibraryShareRequest: Codable, Hashable {
 
@@ -31,6 +33,7 @@ public struct MediaLibraryShareRequest: Codable, Hashable {
         self.linkType = linkType
         self.password = password
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case bundles
         case directories
@@ -57,7 +60,5 @@ public struct MediaLibraryShareRequest: Codable, Hashable {
         try container.encodeIfPresent(linkType, forKey: .linkType)
         try container.encodeIfPresent(password, forKey: .password)
     }
-
-
-
 }
+

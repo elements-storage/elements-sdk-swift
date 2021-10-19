@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct FileSizeDistributionItem: Codable, Hashable {
 
@@ -25,6 +27,7 @@ public struct FileSizeDistributionItem: Codable, Hashable {
         self.average = average
         self.total = total
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case min
         case max
@@ -45,7 +48,5 @@ public struct FileSizeDistributionItem: Codable, Hashable {
         try container.encode(average, forKey: .average)
         try container.encode(total, forKey: .total)
     }
-
-
-
 }
+

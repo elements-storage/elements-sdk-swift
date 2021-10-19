@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct OneTimeAccessTokenActivity: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct OneTimeAccessTokenActivity: Codable, Hashable {
         self.ip = ip
         self.token = token
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case date
@@ -37,7 +40,5 @@ public struct OneTimeAccessTokenActivity: Codable, Hashable {
         try container.encode(ip, forKey: .ip)
         try container.encode(token, forKey: .token)
     }
-
-
-
 }
+

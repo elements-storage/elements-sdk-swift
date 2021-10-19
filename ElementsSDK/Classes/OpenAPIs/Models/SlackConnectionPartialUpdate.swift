@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SlackConnectionPartialUpdate: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct SlackConnectionPartialUpdate: Codable, Hashable {
     public init(name: String? = nil) {
         self.name = name
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
     }
@@ -25,7 +28,5 @@ public struct SlackConnectionPartialUpdate: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(name, forKey: .name)
     }
-
-
-
 }
+

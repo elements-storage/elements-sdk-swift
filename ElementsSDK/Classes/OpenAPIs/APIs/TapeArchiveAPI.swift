@@ -7,15 +7,19 @@
 
 import Foundation
 import PromiseKit
+#if canImport(AnyCodable)
+import AnyCodable
+#endif
 
 open class TapeArchiveAPI {
+
     /**
 
      - parameter archiveEndpointRequest: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[TapeJob]>
      */
-    open class func archiveToTape( archiveEndpointRequest: ArchiveEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[TapeJob]> {
+    open class func archiveToTape( archiveEndpointRequest: ArchiveEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[TapeJob]> {
         let deferred = Promise<[TapeJob]>.pending()
         archiveToTapeWithRequestBuilder(archiveEndpointRequest: archiveEndpointRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -38,21 +42,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<[TapeJob]> 
      */
     open class func archiveToTapeWithRequestBuilder(archiveEndpointRequest: ArchiveEndpointRequest) -> RequestBuilder<[TapeJob]> {
-        let path = "/api/2/archive/tape/archive"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: archiveEndpointRequest)
+        let localVariablePath = "/api/2/archive/tape/archive"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: archiveEndpointRequest)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<[TapeJob]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TapeJob]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -60,7 +64,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func cancelAllTapeArchiveJobs(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func cancelAllTapeArchiveJobs(apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         cancelAllTapeArchiveJobsWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -82,21 +86,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func cancelAllTapeArchiveJobsWithRequestBuilder() -> RequestBuilder<Void> {
-        let path = "/api/2/archive/tape/jobs/cancel-all"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/archive/tape/jobs/cancel-all"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -105,7 +109,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func checkTape( tapeLibraryFsckEndpointRequest: TapeLibraryFsckEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func checkTape( tapeLibraryFsckEndpointRequest: TapeLibraryFsckEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         checkTapeWithRequestBuilder(tapeLibraryFsckEndpointRequest: tapeLibraryFsckEndpointRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -128,21 +132,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func checkTapeWithRequestBuilder(tapeLibraryFsckEndpointRequest: TapeLibraryFsckEndpointRequest) -> RequestBuilder<Void> {
-        let path = "/api/2/archive/tape/library/check"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeLibraryFsckEndpointRequest)
+        let localVariablePath = "/api/2/archive/tape/library/check"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeLibraryFsckEndpointRequest)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -151,7 +155,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Tape>
      */
-    open class func createTape( tape: Tape, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Tape> {
+    open class func createTape( tape: Tape, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Tape> {
         let deferred = Promise<Tape>.pending()
         createTapeWithRequestBuilder(tape: tape).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -174,21 +178,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Tape> 
      */
     open class func createTapeWithRequestBuilder(tape: Tape) -> RequestBuilder<Tape> {
-        let path = "/api/2/archive/tape/tapes"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tape)
+        let localVariablePath = "/api/2/archive/tape/tapes"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tape)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Tape>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Tape>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -197,7 +201,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TapeGroup>
      */
-    open class func createTapeGroup( tapeGroup: TapeGroup, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TapeGroup> {
+    open class func createTapeGroup( tapeGroup: TapeGroup, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TapeGroup> {
         let deferred = Promise<TapeGroup>.pending()
         createTapeGroupWithRequestBuilder(tapeGroup: tapeGroup).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -220,21 +224,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<TapeGroup> 
      */
     open class func createTapeGroupWithRequestBuilder(tapeGroup: TapeGroup) -> RequestBuilder<TapeGroup> {
-        let path = "/api/2/archive/tape/groups"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeGroup)
+        let localVariablePath = "/api/2/archive/tape/groups"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeGroup)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<TapeGroup>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TapeGroup>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -243,7 +247,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteTape( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func deleteTape( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         deleteTapeWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -266,24 +270,24 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func deleteTapeWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
-        var path = "/api/2/archive/tape/tapes/{id}"
+        var localVariablePath = "/api/2/archive/tape/tapes/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "DELETE", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -292,7 +296,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteTapeArchiveJob( id: String, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func deleteTapeArchiveJob( id: String, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         deleteTapeArchiveJobWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -315,24 +319,24 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func deleteTapeArchiveJobWithRequestBuilder(id: String) -> RequestBuilder<Void> {
-        var path = "/api/2/archive/tape/jobs/{id}"
+        var localVariablePath = "/api/2/archive/tape/jobs/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "DELETE", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -341,7 +345,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteTapeGroup( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func deleteTapeGroup( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         deleteTapeGroupWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -364,24 +368,24 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func deleteTapeGroupWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
-        var path = "/api/2/archive/tape/groups/{id}"
+        var localVariablePath = "/api/2/archive/tape/groups/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "DELETE", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -390,7 +394,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func formatTape( tapeLibraryFormatEndpointRequest: TapeLibraryFormatEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func formatTape( tapeLibraryFormatEndpointRequest: TapeLibraryFormatEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         formatTapeWithRequestBuilder(tapeLibraryFormatEndpointRequest: tapeLibraryFormatEndpointRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -413,21 +417,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func formatTapeWithRequestBuilder(tapeLibraryFormatEndpointRequest: TapeLibraryFormatEndpointRequest) -> RequestBuilder<Void> {
-        let path = "/api/2/archive/tape/library/format"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeLibraryFormatEndpointRequest)
+        let localVariablePath = "/api/2/archive/tape/library/format"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeLibraryFormatEndpointRequest)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -443,7 +447,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[TapeFile]>
      */
-    open class func getAllArchivedFileEntries( id: Double? = nil,  isDir: String? = nil,  name: String? = nil,  fullpath: String? = nil,  parent: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[TapeFile]> {
+    open class func getAllArchivedFileEntries( id: Double? = nil,  isDir: String? = nil,  name: String? = nil,  fullpath: String? = nil,  parent: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[TapeFile]> {
         let deferred = Promise<[TapeFile]>.pending()
         getAllArchivedFileEntriesWithRequestBuilder(id: id, isDir: isDir, name: name, fullpath: fullpath, parent: parent, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -473,12 +477,12 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<[TapeFile]> 
      */
     open class func getAllArchivedFileEntriesWithRequestBuilder(id: Double? = nil, isDir: String? = nil, name: String? = nil, fullpath: String? = nil, parent: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[TapeFile]> {
-        let path = "/api/2/archive/tape/files"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/archive/tape/files"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        var urlComponents = URLComponents(string: URLString)
-        urlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "id": id?.encodeToJSON(),
             "is_dir": isDir?.encodeToJSON(),
             "name": name?.encodeToJSON(),
@@ -489,15 +493,15 @@ open class TapeArchiveAPI {
             "offset": offset?.encodeToJSON(),
         ])
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<[TapeFile]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TapeFile]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -508,7 +512,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[TapeJob]>
      */
-    open class func getAllTapeArchiveJobs( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[TapeJob]> {
+    open class func getAllTapeArchiveJobs( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[TapeJob]> {
         let deferred = Promise<[TapeJob]>.pending()
         getAllTapeArchiveJobsWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -533,26 +537,26 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<[TapeJob]> 
      */
     open class func getAllTapeArchiveJobsWithRequestBuilder(ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[TapeJob]> {
-        let path = "/api/2/archive/tape/jobs"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/archive/tape/jobs"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        var urlComponents = URLComponents(string: URLString)
-        urlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "ordering": ordering?.encodeToJSON(),
             "limit": limit?.encodeToJSON(),
             "offset": offset?.encodeToJSON(),
         ])
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<[TapeJob]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TapeJob]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -565,7 +569,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[TapeGroup]>
      */
-    open class func getAllTapeGroups( id: Double? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[TapeGroup]> {
+    open class func getAllTapeGroups( id: Double? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[TapeGroup]> {
         let deferred = Promise<[TapeGroup]>.pending()
         getAllTapeGroupsWithRequestBuilder(id: id, name: name, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -592,12 +596,12 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<[TapeGroup]> 
      */
     open class func getAllTapeGroupsWithRequestBuilder(id: Double? = nil, name: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[TapeGroup]> {
-        let path = "/api/2/archive/tape/groups"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/archive/tape/groups"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        var urlComponents = URLComponents(string: URLString)
-        urlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "id": id?.encodeToJSON(),
             "name": name?.encodeToJSON(),
             "ordering": ordering?.encodeToJSON(),
@@ -605,15 +609,15 @@ open class TapeArchiveAPI {
             "offset": offset?.encodeToJSON(),
         ])
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<[TapeGroup]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TapeGroup]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -628,7 +632,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[Tape]>
      */
-    open class func getAllTapes( id: Double? = nil,  name: String? = nil,  group: String? = nil,  groupIsnull: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[Tape]> {
+    open class func getAllTapes( id: Double? = nil,  name: String? = nil,  group: String? = nil,  groupIsnull: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[Tape]> {
         let deferred = Promise<[Tape]>.pending()
         getAllTapesWithRequestBuilder(id: id, name: name, group: group, groupIsnull: groupIsnull, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -657,12 +661,12 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<[Tape]> 
      */
     open class func getAllTapesWithRequestBuilder(id: Double? = nil, name: String? = nil, group: String? = nil, groupIsnull: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[Tape]> {
-        let path = "/api/2/archive/tape/tapes"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/archive/tape/tapes"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        var urlComponents = URLComponents(string: URLString)
-        urlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "id": id?.encodeToJSON(),
             "name": name?.encodeToJSON(),
             "group": group?.encodeToJSON(),
@@ -672,15 +676,15 @@ open class TapeArchiveAPI {
             "offset": offset?.encodeToJSON(),
         ])
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<[Tape]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[Tape]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -689,7 +693,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TapeFile>
      */
-    open class func getArchivedFileEntry( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TapeFile> {
+    open class func getArchivedFileEntry( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TapeFile> {
         let deferred = Promise<TapeFile>.pending()
         getArchivedFileEntryWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -712,24 +716,24 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<TapeFile> 
      */
     open class func getArchivedFileEntryWithRequestBuilder(id: Int) -> RequestBuilder<TapeFile> {
-        var path = "/api/2/archive/tape/files/{id}"
+        var localVariablePath = "/api/2/archive/tape/files/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<TapeFile>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TapeFile>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -738,7 +742,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Tape>
      */
-    open class func getTape( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Tape> {
+    open class func getTape( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Tape> {
         let deferred = Promise<Tape>.pending()
         getTapeWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -761,24 +765,24 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Tape> 
      */
     open class func getTapeWithRequestBuilder(id: Int) -> RequestBuilder<Tape> {
-        var path = "/api/2/archive/tape/tapes/{id}"
+        var localVariablePath = "/api/2/archive/tape/tapes/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Tape>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Tape>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -787,7 +791,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TapeJob>
      */
-    open class func getTapeArchiveJob( id: String, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TapeJob> {
+    open class func getTapeArchiveJob( id: String, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TapeJob> {
         let deferred = Promise<TapeJob>.pending()
         getTapeArchiveJobWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -810,24 +814,24 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<TapeJob> 
      */
     open class func getTapeArchiveJobWithRequestBuilder(id: String) -> RequestBuilder<TapeJob> {
-        var path = "/api/2/archive/tape/jobs/{id}"
+        var localVariablePath = "/api/2/archive/tape/jobs/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<TapeJob>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TapeJob>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -836,7 +840,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[TapeJobSource]>
      */
-    open class func getTapeArchiveJobSources( id: String, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[TapeJobSource]> {
+    open class func getTapeArchiveJobSources( id: String, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[TapeJobSource]> {
         let deferred = Promise<[TapeJobSource]>.pending()
         getTapeArchiveJobSourcesWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -859,24 +863,24 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<[TapeJobSource]> 
      */
     open class func getTapeArchiveJobSourcesWithRequestBuilder(id: String) -> RequestBuilder<[TapeJobSource]> {
-        var path = "/api/2/archive/tape/jobs/{id}/sources"
+        var localVariablePath = "/api/2/archive/tape/jobs/{id}/sources"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<[TapeJobSource]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TapeJobSource]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -885,7 +889,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TapeGroup>
      */
-    open class func getTapeGroup( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TapeGroup> {
+    open class func getTapeGroup( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TapeGroup> {
         let deferred = Promise<TapeGroup>.pending()
         getTapeGroupWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -908,24 +912,24 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<TapeGroup> 
      */
     open class func getTapeGroupWithRequestBuilder(id: Int) -> RequestBuilder<TapeGroup> {
-        var path = "/api/2/archive/tape/groups/{id}"
+        var localVariablePath = "/api/2/archive/tape/groups/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<TapeGroup>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TapeGroup>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -933,7 +937,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TapeLibraryEndpointResponse>
      */
-    open class func getTapeLibraryState(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TapeLibraryEndpointResponse> {
+    open class func getTapeLibraryState(apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TapeLibraryEndpointResponse> {
         let deferred = Promise<TapeLibraryEndpointResponse>.pending()
         getTapeLibraryStateWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -955,21 +959,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<TapeLibraryEndpointResponse> 
      */
     open class func getTapeLibraryStateWithRequestBuilder() -> RequestBuilder<TapeLibraryEndpointResponse> {
-        let path = "/api/2/archive/tape/library"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/archive/tape/library"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<TapeLibraryEndpointResponse>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TapeLibraryEndpointResponse>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -978,7 +982,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func loadTape( tapeLibraryLoadEndpointRequest: TapeLibraryLoadEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func loadTape( tapeLibraryLoadEndpointRequest: TapeLibraryLoadEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         loadTapeWithRequestBuilder(tapeLibraryLoadEndpointRequest: tapeLibraryLoadEndpointRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1001,21 +1005,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func loadTapeWithRequestBuilder(tapeLibraryLoadEndpointRequest: TapeLibraryLoadEndpointRequest) -> RequestBuilder<Void> {
-        let path = "/api/2/archive/tape/library/load"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeLibraryLoadEndpointRequest)
+        let localVariablePath = "/api/2/archive/tape/library/load"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeLibraryLoadEndpointRequest)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -1024,7 +1028,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func moveTape( tapeLibraryMoveEndpointRequest: TapeLibraryMoveEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func moveTape( tapeLibraryMoveEndpointRequest: TapeLibraryMoveEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         moveTapeWithRequestBuilder(tapeLibraryMoveEndpointRequest: tapeLibraryMoveEndpointRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1047,21 +1051,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func moveTapeWithRequestBuilder(tapeLibraryMoveEndpointRequest: TapeLibraryMoveEndpointRequest) -> RequestBuilder<Void> {
-        let path = "/api/2/archive/tape/library/move"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeLibraryMoveEndpointRequest)
+        let localVariablePath = "/api/2/archive/tape/library/move"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeLibraryMoveEndpointRequest)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -1071,7 +1075,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Tape>
      */
-    open class func patchTape( id: Int,  tapePartialUpdate: TapePartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Tape> {
+    open class func patchTape( id: Int,  tapePartialUpdate: TapePartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Tape> {
         let deferred = Promise<Tape>.pending()
         patchTapeWithRequestBuilder(id: id, tapePartialUpdate: tapePartialUpdate).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1095,24 +1099,24 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Tape> 
      */
     open class func patchTapeWithRequestBuilder(id: Int, tapePartialUpdate: TapePartialUpdate) -> RequestBuilder<Tape> {
-        var path = "/api/2/archive/tape/tapes/{id}"
+        var localVariablePath = "/api/2/archive/tape/tapes/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapePartialUpdate)
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapePartialUpdate)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Tape>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Tape>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "PATCH", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -1122,7 +1126,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TapeGroup>
      */
-    open class func patchTapeGroup( id: Int,  tapeGroupPartialUpdate: TapeGroupPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TapeGroup> {
+    open class func patchTapeGroup( id: Int,  tapeGroupPartialUpdate: TapeGroupPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TapeGroup> {
         let deferred = Promise<TapeGroup>.pending()
         patchTapeGroupWithRequestBuilder(id: id, tapeGroupPartialUpdate: tapeGroupPartialUpdate).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1146,24 +1150,24 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<TapeGroup> 
      */
     open class func patchTapeGroupWithRequestBuilder(id: Int, tapeGroupPartialUpdate: TapeGroupPartialUpdate) -> RequestBuilder<TapeGroup> {
-        var path = "/api/2/archive/tape/groups/{id}"
+        var localVariablePath = "/api/2/archive/tape/groups/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeGroupPartialUpdate)
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeGroupPartialUpdate)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<TapeGroup>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TapeGroup>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "PATCH", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -1172,7 +1176,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func pauseTapeArchiveJob( id: String, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func pauseTapeArchiveJob( id: String, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         pauseTapeArchiveJobWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1195,24 +1199,24 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func pauseTapeArchiveJobWithRequestBuilder(id: String) -> RequestBuilder<Void> {
-        var path = "/api/2/archive/tape/jobs/{id}/pause"
+        var localVariablePath = "/api/2/archive/tape/jobs/{id}/pause"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -1220,7 +1224,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func refreshTapeLibraryState(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func refreshTapeLibraryState(apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         refreshTapeLibraryStateWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1242,21 +1246,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func refreshTapeLibraryStateWithRequestBuilder() -> RequestBuilder<Void> {
-        let path = "/api/2/archive/tape/library/refresh"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/archive/tape/library/refresh"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -1265,7 +1269,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func reindexTape( tapeLibraryReindexEndpointRequest: TapeLibraryReindexEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func reindexTape( tapeLibraryReindexEndpointRequest: TapeLibraryReindexEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         reindexTapeWithRequestBuilder(tapeLibraryReindexEndpointRequest: tapeLibraryReindexEndpointRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1288,21 +1292,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func reindexTapeWithRequestBuilder(tapeLibraryReindexEndpointRequest: TapeLibraryReindexEndpointRequest) -> RequestBuilder<Void> {
-        let path = "/api/2/archive/tape/library/reindex"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeLibraryReindexEndpointRequest)
+        let localVariablePath = "/api/2/archive/tape/library/reindex"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeLibraryReindexEndpointRequest)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -1310,7 +1314,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func removeFinishedTapeArchiveJobs(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func removeFinishedTapeArchiveJobs(apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         removeFinishedTapeArchiveJobsWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1332,21 +1336,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func removeFinishedTapeArchiveJobsWithRequestBuilder() -> RequestBuilder<Void> {
-        let path = "/api/2/archive/tape/jobs/remove-finished"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/archive/tape/jobs/remove-finished"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -1355,7 +1359,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func restartTapeArchiveJob( id: String, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func restartTapeArchiveJob( id: String, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         restartTapeArchiveJobWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1378,24 +1382,24 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func restartTapeArchiveJobWithRequestBuilder(id: String) -> RequestBuilder<Void> {
-        var path = "/api/2/archive/tape/jobs/{id}/restart"
+        var localVariablePath = "/api/2/archive/tape/jobs/{id}/restart"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -1404,7 +1408,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TapeJob>
      */
-    open class func restoreFromTape( restoreEndpointRequest: RestoreEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TapeJob> {
+    open class func restoreFromTape( restoreEndpointRequest: RestoreEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TapeJob> {
         let deferred = Promise<TapeJob>.pending()
         restoreFromTapeWithRequestBuilder(restoreEndpointRequest: restoreEndpointRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1427,21 +1431,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<TapeJob> 
      */
     open class func restoreFromTapeWithRequestBuilder(restoreEndpointRequest: RestoreEndpointRequest) -> RequestBuilder<TapeJob> {
-        let path = "/api/2/archive/tape/restore"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: restoreEndpointRequest)
+        let localVariablePath = "/api/2/archive/tape/restore"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: restoreEndpointRequest)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<TapeJob>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TapeJob>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -1450,7 +1454,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func resumeTapeArchiveJob( id: String, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func resumeTapeArchiveJob( id: String, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         resumeTapeArchiveJobWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1473,24 +1477,24 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func resumeTapeArchiveJobWithRequestBuilder(id: String) -> RequestBuilder<Void> {
-        var path = "/api/2/archive/tape/jobs/{id}/resume"
+        var localVariablePath = "/api/2/archive/tape/jobs/{id}/resume"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -1499,7 +1503,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<SearchEndpointResponse>
      */
-    open class func searchTapeArchive( searchEndpointRequest: SearchEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<SearchEndpointResponse> {
+    open class func searchTapeArchive( searchEndpointRequest: SearchEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<SearchEndpointResponse> {
         let deferred = Promise<SearchEndpointResponse>.pending()
         searchTapeArchiveWithRequestBuilder(searchEndpointRequest: searchEndpointRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1522,21 +1526,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<SearchEndpointResponse> 
      */
     open class func searchTapeArchiveWithRequestBuilder(searchEndpointRequest: SearchEndpointRequest) -> RequestBuilder<SearchEndpointResponse> {
-        let path = "/api/2/archive/tape/search"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: searchEndpointRequest)
+        let localVariablePath = "/api/2/archive/tape/search"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: searchEndpointRequest)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<SearchEndpointResponse>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SearchEndpointResponse>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -1545,7 +1549,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func unloadTape( tapeLibraryUnloadEndpointRequest: TapeLibraryUnloadEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func unloadTape( tapeLibraryUnloadEndpointRequest: TapeLibraryUnloadEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         unloadTapeWithRequestBuilder(tapeLibraryUnloadEndpointRequest: tapeLibraryUnloadEndpointRequest).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1568,21 +1572,21 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func unloadTapeWithRequestBuilder(tapeLibraryUnloadEndpointRequest: TapeLibraryUnloadEndpointRequest) -> RequestBuilder<Void> {
-        let path = "/api/2/archive/tape/library/unload"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeLibraryUnloadEndpointRequest)
+        let localVariablePath = "/api/2/archive/tape/library/unload"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeLibraryUnloadEndpointRequest)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -1592,7 +1596,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Tape>
      */
-    open class func updateTape( id: Int,  tape: Tape, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Tape> {
+    open class func updateTape( id: Int,  tape: Tape, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Tape> {
         let deferred = Promise<Tape>.pending()
         updateTapeWithRequestBuilder(id: id, tape: tape).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1616,24 +1620,24 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<Tape> 
      */
     open class func updateTapeWithRequestBuilder(id: Int, tape: Tape) -> RequestBuilder<Tape> {
-        var path = "/api/2/archive/tape/tapes/{id}"
+        var localVariablePath = "/api/2/archive/tape/tapes/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tape)
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tape)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Tape>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Tape>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "PUT", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -1643,7 +1647,7 @@ open class TapeArchiveAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TapeGroup>
      */
-    open class func updateTapeGroup( id: Int,  tapeGroup: TapeGroup, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TapeGroup> {
+    open class func updateTapeGroup( id: Int,  tapeGroup: TapeGroup, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TapeGroup> {
         let deferred = Promise<TapeGroup>.pending()
         updateTapeGroupWithRequestBuilder(id: id, tapeGroup: tapeGroup).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -1667,24 +1671,23 @@ open class TapeArchiveAPI {
      - returns: RequestBuilder<TapeGroup> 
      */
     open class func updateTapeGroupWithRequestBuilder(id: Int, tapeGroup: TapeGroup) -> RequestBuilder<TapeGroup> {
-        var path = "/api/2/archive/tape/groups/{id}"
+        var localVariablePath = "/api/2/archive/tape/groups/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeGroup)
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tapeGroup)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<TapeGroup>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TapeGroup>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "PUT", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
-
 }

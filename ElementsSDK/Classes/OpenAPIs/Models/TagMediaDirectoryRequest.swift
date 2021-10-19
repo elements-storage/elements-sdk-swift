@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TagMediaDirectoryRequest: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct TagMediaDirectoryRequest: Codable, Hashable {
         self.tag = tag
         self.add = add
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case tag
         case add
@@ -29,7 +32,5 @@ public struct TagMediaDirectoryRequest: Codable, Hashable {
         try container.encode(tag, forKey: .tag)
         try container.encode(add, forKey: .add)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ElementsUserDetailPartialUpdate: Codable, Hashable {
 
@@ -77,6 +79,7 @@ public struct ElementsUserDetailPartialUpdate: Codable, Hashable {
         self.username = username
         self.groups = groups
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case allowChangingPassword = "allow_changing_password"
         case allowWanLogin = "allow_wan_login"
@@ -143,7 +146,5 @@ public struct ElementsUserDetailPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(username, forKey: .username)
         try container.encodeIfPresent(groups, forKey: .groups)
     }
-
-
-
 }
+

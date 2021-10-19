@@ -6,23 +6,17 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SubtaskReference: Codable, Hashable {
 
-    public enum Trigger: String, Codable, CaseIterable {
-        case null = "null"
-        case finish = "finish"
-        case success = "success"
-        case warning = "warning"
-        case error = "error"
-        case noop = "noop"
-    }
     public var id: Int?
     public var kwargs: [String: String]?
     public var graphLayout: [String: String]?
     public var validationError: String?
-    public var trigger: Trigger?
+    public var trigger: String?
     public var name: String?
     public var noopDontSave: Bool?
     public var noConcurrency: Bool?
@@ -37,7 +31,7 @@ public struct SubtaskReference: Codable, Hashable {
     public var parent: Int?
     public var relativeTo: Int?
 
-    public init(id: Int? = nil, kwargs: [String: String]? = nil, graphLayout: [String: String]? = nil, validationError: String? = nil, trigger: Trigger? = nil, name: String? = nil, noopDontSave: Bool? = nil, noConcurrency: Bool? = nil, timeout: Int? = nil, logVariable: Bool? = nil, task: String? = nil, conditionVariable: String? = nil, conditionValue: String? = nil, sync: Bool? = nil, queue: String? = nil, enqueueAtFront: Bool? = nil, parent: Int? = nil, relativeTo: Int? = nil) {
+    public init(id: Int? = nil, kwargs: [String: String]? = nil, graphLayout: [String: String]? = nil, validationError: String? = nil, trigger: String? = nil, name: String? = nil, noopDontSave: Bool? = nil, noConcurrency: Bool? = nil, timeout: Int? = nil, logVariable: Bool? = nil, task: String? = nil, conditionVariable: String? = nil, conditionValue: String? = nil, sync: Bool? = nil, queue: String? = nil, enqueueAtFront: Bool? = nil, parent: Int? = nil, relativeTo: Int? = nil) {
         self.id = id
         self.kwargs = kwargs
         self.graphLayout = graphLayout
@@ -57,6 +51,7 @@ public struct SubtaskReference: Codable, Hashable {
         self.parent = parent
         self.relativeTo = relativeTo
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case kwargs
@@ -101,7 +96,5 @@ public struct SubtaskReference: Codable, Hashable {
         try container.encodeIfPresent(parent, forKey: .parent)
         try container.encodeIfPresent(relativeTo, forKey: .relativeTo)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Interface: Codable, Hashable {
 
@@ -29,6 +31,7 @@ public struct Interface: Codable, Hashable {
         self.priority = priority
         self.port = port
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case device
@@ -53,7 +56,5 @@ public struct Interface: Codable, Hashable {
         try container.encodeIfPresent(priority, forKey: .priority)
         try container.encodeIfPresent(port, forKey: .port)
     }
-
-
-
 }
+

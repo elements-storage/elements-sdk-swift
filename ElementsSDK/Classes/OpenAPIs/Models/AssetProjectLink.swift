@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct AssetProjectLink: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct AssetProjectLink: Codable, Hashable {
         self.sequenceName = sequenceName
         self.asset = asset
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case project
@@ -37,7 +40,5 @@ public struct AssetProjectLink: Codable, Hashable {
         try container.encode(sequenceName, forKey: .sequenceName)
         try container.encode(asset, forKey: .asset)
     }
-
-
-
 }
+

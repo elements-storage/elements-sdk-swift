@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TapeJob: Codable, Hashable {
 
@@ -59,6 +61,7 @@ public struct TapeJob: Codable, Hashable {
         self.logPath = logPath
         self.logExists = logExists
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case group
         case id
@@ -113,7 +116,5 @@ public struct TapeJob: Codable, Hashable {
         try container.encodeIfPresent(logPath, forKey: .logPath)
         try container.encodeIfPresent(logExists, forKey: .logExists)
     }
-
-
-
 }
+

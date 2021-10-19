@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct AssetRating: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct AssetRating: Codable, Hashable {
         self.date = date
         self.asset = asset
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case user
@@ -41,7 +44,5 @@ public struct AssetRating: Codable, Hashable {
         try container.encodeIfPresent(date, forKey: .date)
         try container.encode(asset, forKey: .asset)
     }
-
-
-
 }
+

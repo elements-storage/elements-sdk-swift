@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct StorNextLicenseCheckEndpointResponse: Codable, Hashable {
 
@@ -25,6 +27,7 @@ public struct StorNextLicenseCheckEndpointResponse: Codable, Hashable {
         self.comment = comment
         self.valid = valid
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case mac
@@ -45,7 +48,5 @@ public struct StorNextLicenseCheckEndpointResponse: Codable, Hashable {
         try container.encode(comment, forKey: .comment)
         try container.encode(valid, forKey: .valid)
     }
-
-
-
 }
+

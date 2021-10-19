@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TapeFile: Codable, Hashable {
 
@@ -37,6 +39,7 @@ public struct TapeFile: Codable, Hashable {
         self.fullpath = fullpath
         self.parent = parent
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case tape
@@ -69,7 +72,5 @@ public struct TapeFile: Codable, Hashable {
         try container.encodeIfPresent(fullpath, forKey: .fullpath)
         try container.encodeIfPresent(parent, forKey: .parent)
     }
-
-
-
 }
+

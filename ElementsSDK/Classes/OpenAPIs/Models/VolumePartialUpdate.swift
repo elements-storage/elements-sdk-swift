@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct VolumePartialUpdate: Codable, Hashable {
 
@@ -46,6 +48,7 @@ public struct VolumePartialUpdate: Codable, Hashable {
         self.snfsName = snfsName
         self.simulatedQuotas = simulatedQuotas
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case nodes
@@ -76,7 +79,5 @@ public struct VolumePartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(snfsName, forKey: .snfsName)
         try container.encodeIfPresent(simulatedQuotas, forKey: .simulatedQuotas)
     }
-
-
-
 }
+

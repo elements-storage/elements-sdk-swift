@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct LizardFSDisk: Codable, Hashable {
 
@@ -37,6 +39,7 @@ public struct LizardFSDisk: Codable, Hashable {
         self.sizeFree = sizeFree
         self.chunks = chunks
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case node
         case host
@@ -69,7 +72,5 @@ public struct LizardFSDisk: Codable, Hashable {
         try container.encode(sizeFree, forKey: .sizeFree)
         try container.encode(chunks, forKey: .chunks)
     }
-
-
-
 }
+

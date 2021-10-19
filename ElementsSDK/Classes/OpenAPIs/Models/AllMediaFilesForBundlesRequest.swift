@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct AllMediaFilesForBundlesRequest: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct AllMediaFilesForBundlesRequest: Codable, Hashable {
     public init(bundles: Set<Int>) {
         self.bundles = bundles
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case bundles
     }
@@ -25,7 +28,5 @@ public struct AllMediaFilesForBundlesRequest: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(bundles, forKey: .bundles)
     }
-
-
-
 }
+

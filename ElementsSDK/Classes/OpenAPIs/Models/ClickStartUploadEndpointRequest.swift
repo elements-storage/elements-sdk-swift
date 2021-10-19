@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ClickStartUploadEndpointRequest: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct ClickStartUploadEndpointRequest: Codable, Hashable {
         self.connection = connection
         self.assets = assets
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case connection
         case assets
@@ -29,7 +32,5 @@ public struct ClickStartUploadEndpointRequest: Codable, Hashable {
         try container.encode(connection, forKey: .connection)
         try container.encode(assets, forKey: .assets)
     }
-
-
-
 }
+

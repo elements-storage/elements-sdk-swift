@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MediaFileContents: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct MediaFileContents: Codable, Hashable {
         self.bundles = bundles
         self.total = total
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case directories
         case bundles
@@ -33,7 +36,5 @@ public struct MediaFileContents: Codable, Hashable {
         try container.encodeIfPresent(bundles, forKey: .bundles)
         try container.encode(total, forKey: .total)
     }
-
-
-
 }
+

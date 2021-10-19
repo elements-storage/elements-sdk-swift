@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MediaRootMini: Codable, Hashable {
 
@@ -27,6 +29,7 @@ public struct MediaRootMini: Codable, Hashable {
         self.path = path
         self.prefetchThumbnailStrips = prefetchThumbnailStrips
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -49,7 +52,5 @@ public struct MediaRootMini: Codable, Hashable {
         try container.encodeIfPresent(path, forKey: .path)
         try container.encodeIfPresent(prefetchThumbnailStrips, forKey: .prefetchThumbnailStrips)
     }
-
-
-
 }
+

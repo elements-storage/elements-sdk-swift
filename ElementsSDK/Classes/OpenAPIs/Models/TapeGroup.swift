@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TapeGroup: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct TapeGroup: Codable, Hashable {
         self.tapes = tapes
         self.name = name
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case tapes
@@ -33,7 +36,5 @@ public struct TapeGroup: Codable, Hashable {
         try container.encode(tapes, forKey: .tapes)
         try container.encode(name, forKey: .name)
     }
-
-
-
 }
+

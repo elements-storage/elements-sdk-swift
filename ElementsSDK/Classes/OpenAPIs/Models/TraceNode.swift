@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TraceNode: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct TraceNode: Codable, Hashable {
         self.w = w
         self.totalChildren = totalChildren
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case children
         case name
@@ -41,7 +44,5 @@ public struct TraceNode: Codable, Hashable {
         try container.encodeIfPresent(w, forKey: .w)
         try container.encodeIfPresent(totalChildren, forKey: .totalChildren)
     }
-
-
-
 }
+

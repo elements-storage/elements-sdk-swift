@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct GetMultipleBundlesRequest: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct GetMultipleBundlesRequest: Codable, Hashable {
         self.bundles = bundles
         self.files = files
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case bundles
         case files
@@ -29,7 +32,5 @@ public struct GetMultipleBundlesRequest: Codable, Hashable {
         try container.encodeIfPresent(bundles, forKey: .bundles)
         try container.encodeIfPresent(files, forKey: .files)
     }
-
-
-
 }
+

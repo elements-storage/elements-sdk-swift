@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Download: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct Download: Codable, Hashable {
         self.faIcon = faIcon
         self.path = path
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -41,7 +44,5 @@ public struct Download: Codable, Hashable {
         try container.encodeIfPresent(faIcon, forKey: .faIcon)
         try container.encode(path, forKey: .path)
     }
-
-
-
 }
+

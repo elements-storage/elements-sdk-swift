@@ -6,19 +6,22 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TimelineExportRequest: Codable, Hashable {
 
     public var project: AnyCodable
-    public var sequence: AnyCodable
+    public var sequence: String
     public var format: String
 
-    public init(project: AnyCodable, sequence: AnyCodable, format: String) {
+    public init(project: AnyCodable, sequence: String, format: String) {
         self.project = project
         self.sequence = sequence
         self.format = format
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case project
         case sequence
@@ -33,7 +36,5 @@ public struct TimelineExportRequest: Codable, Hashable {
         try container.encode(sequence, forKey: .sequence)
         try container.encode(format, forKey: .format)
     }
-
-
-
 }
+

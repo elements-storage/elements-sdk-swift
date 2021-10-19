@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct CommentPartialUpdate: Codable, Hashable {
 
@@ -37,6 +39,7 @@ public struct CommentPartialUpdate: Codable, Hashable {
         self.root = root
         self.parent = parent
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case assignee
         case user
@@ -69,7 +72,5 @@ public struct CommentPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(root, forKey: .root)
         try container.encodeIfPresent(parent, forKey: .parent)
     }
-
-
-
 }
+

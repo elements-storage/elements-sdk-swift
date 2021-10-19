@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **bitrate** | **Int** |  | [optional] 
 **audioBitrate** | **Int** |  | [optional] 
 **variantsLimit** | **Int** |  | [optional] 
-**enableRealtimeRead** | **Bool** |  | [optional] 
 **enableDenseFilmstrip** | **Bool** |  | [optional] 
 **enableWatermark** | **Bool** |  | [optional] 
 **watermarkImage** | **String** |  | [optional] 

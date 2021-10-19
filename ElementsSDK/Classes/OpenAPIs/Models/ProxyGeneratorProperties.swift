@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ProxyGeneratorProperties: Codable, Hashable {
 
@@ -19,10 +21,9 @@ public struct ProxyGeneratorProperties: Codable, Hashable {
     public var supportsWatermark: Bool?
     public var supportsTimecodeBurnIn: Bool?
     public var supportsAudioChannels: Bool?
-    public var supportsRealtimeRead: Bool?
     public var supportsStagingPath: Bool?
 
-    public init(supportsVideoBitrate: Bool? = nil, supportsVideoCrf: Bool? = nil, supportsVideoVbr: Bool? = nil, supportsAudioBitrate: Bool? = nil, supportsLut: Bool? = nil, supportsResolution: Bool? = nil, supportsWatermark: Bool? = nil, supportsTimecodeBurnIn: Bool? = nil, supportsAudioChannels: Bool? = nil, supportsRealtimeRead: Bool? = nil, supportsStagingPath: Bool? = nil) {
+    public init(supportsVideoBitrate: Bool? = nil, supportsVideoCrf: Bool? = nil, supportsVideoVbr: Bool? = nil, supportsAudioBitrate: Bool? = nil, supportsLut: Bool? = nil, supportsResolution: Bool? = nil, supportsWatermark: Bool? = nil, supportsTimecodeBurnIn: Bool? = nil, supportsAudioChannels: Bool? = nil, supportsStagingPath: Bool? = nil) {
         self.supportsVideoBitrate = supportsVideoBitrate
         self.supportsVideoCrf = supportsVideoCrf
         self.supportsVideoVbr = supportsVideoVbr
@@ -32,9 +33,9 @@ public struct ProxyGeneratorProperties: Codable, Hashable {
         self.supportsWatermark = supportsWatermark
         self.supportsTimecodeBurnIn = supportsTimecodeBurnIn
         self.supportsAudioChannels = supportsAudioChannels
-        self.supportsRealtimeRead = supportsRealtimeRead
         self.supportsStagingPath = supportsStagingPath
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case supportsVideoBitrate = "supports_video_bitrate"
         case supportsVideoCrf = "supports_video_crf"
@@ -45,7 +46,6 @@ public struct ProxyGeneratorProperties: Codable, Hashable {
         case supportsWatermark = "supports_watermark"
         case supportsTimecodeBurnIn = "supports_timecode_burn_in"
         case supportsAudioChannels = "supports_audio_channels"
-        case supportsRealtimeRead = "supports_realtime_read"
         case supportsStagingPath = "supports_staging_path"
     }
 
@@ -62,10 +62,7 @@ public struct ProxyGeneratorProperties: Codable, Hashable {
         try container.encodeIfPresent(supportsWatermark, forKey: .supportsWatermark)
         try container.encodeIfPresent(supportsTimecodeBurnIn, forKey: .supportsTimecodeBurnIn)
         try container.encodeIfPresent(supportsAudioChannels, forKey: .supportsAudioChannels)
-        try container.encodeIfPresent(supportsRealtimeRead, forKey: .supportsRealtimeRead)
         try container.encodeIfPresent(supportsStagingPath, forKey: .supportsStagingPath)
     }
-
-
-
 }
+

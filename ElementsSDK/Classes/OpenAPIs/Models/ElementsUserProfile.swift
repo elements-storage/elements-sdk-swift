@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ElementsUserProfile: Codable, Hashable {
 
@@ -43,6 +45,7 @@ public struct ElementsUserProfile: Codable, Hashable {
         self.ldap = ldap
         self.effectivePermissions = effectivePermissions
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case avatar
         case defaultPage = "default_page"
@@ -75,7 +78,5 @@ public struct ElementsUserProfile: Codable, Hashable {
         try container.encodeIfPresent(ldap, forKey: .ldap)
         try container.encodeIfPresent(effectivePermissions, forKey: .effectivePermissions)
     }
-
-
-
 }
+

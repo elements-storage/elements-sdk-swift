@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct FilePartialUpdate: Codable, Hashable {
 
@@ -57,6 +59,7 @@ public struct FilePartialUpdate: Codable, Hashable {
         self.modeOthersWrite = modeOthersWrite
         self.modeOthersExecute = modeOthersExecute
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case files
@@ -109,7 +112,5 @@ public struct FilePartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(modeOthersWrite, forKey: .modeOthersWrite)
         try container.encodeIfPresent(modeOthersExecute, forKey: .modeOthersExecute)
     }
-
-
-
 }
+

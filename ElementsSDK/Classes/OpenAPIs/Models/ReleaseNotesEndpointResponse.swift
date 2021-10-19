@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ReleaseNotesEndpointResponse: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct ReleaseNotesEndpointResponse: Codable, Hashable {
         self.version = version
         self.html = html
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case version
         case html
@@ -29,7 +32,5 @@ public struct ReleaseNotesEndpointResponse: Codable, Hashable {
         try container.encode(version, forKey: .version)
         try container.encode(html, forKey: .html)
     }
-
-
-
 }
+

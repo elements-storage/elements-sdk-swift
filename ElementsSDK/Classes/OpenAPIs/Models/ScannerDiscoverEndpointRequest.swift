@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ScannerDiscoverEndpointRequest: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct ScannerDiscoverEndpointRequest: Codable, Hashable {
         self.path = path
         self.recursive = recursive
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case path
         case recursive
@@ -29,7 +32,5 @@ public struct ScannerDiscoverEndpointRequest: Codable, Hashable {
         try container.encode(path, forKey: .path)
         try container.encodeIfPresent(recursive, forKey: .recursive)
     }
-
-
-
 }
+

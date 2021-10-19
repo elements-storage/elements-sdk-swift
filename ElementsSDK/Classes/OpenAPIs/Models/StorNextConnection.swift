@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct StorNextConnection: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct StorNextConnection: Codable, Hashable {
         self.uptime = uptime
         self.license = license
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case index
         case type
@@ -41,7 +44,5 @@ public struct StorNextConnection: Codable, Hashable {
         try container.encodeIfPresent(uptime, forKey: .uptime)
         try container.encodeIfPresent(license, forKey: .license)
     }
-
-
-
 }
+

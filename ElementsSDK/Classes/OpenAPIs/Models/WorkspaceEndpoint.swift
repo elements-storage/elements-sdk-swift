@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct WorkspaceEndpoint: Codable, Hashable {
 
@@ -27,6 +29,7 @@ public struct WorkspaceEndpoint: Codable, Hashable {
         self.username = username
         self.password = password
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case _protocol = "protocol"
         case address
@@ -49,7 +52,5 @@ public struct WorkspaceEndpoint: Codable, Hashable {
         try container.encode(username, forKey: .username)
         try container.encode(password, forKey: .password)
     }
-
-
-
 }
+

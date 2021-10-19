@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct CreateTemplateFolderEndpointRequest: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct CreateTemplateFolderEndpointRequest: Codable, Hashable {
         self.template = template
         self.path = path
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case group
         case template
@@ -33,7 +36,5 @@ public struct CreateTemplateFolderEndpointRequest: Codable, Hashable {
         try container.encode(template, forKey: .template)
         try container.encode(path, forKey: .path)
     }
-
-
-
 }
+

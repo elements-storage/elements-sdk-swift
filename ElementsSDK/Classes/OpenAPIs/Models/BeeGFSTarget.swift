@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct BeeGFSTarget: Codable, Hashable {
 
@@ -33,6 +35,7 @@ public struct BeeGFSTarget: Codable, Hashable {
         self.consistent = consistent
         self.errors = errors
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case node
         case id
@@ -61,7 +64,5 @@ public struct BeeGFSTarget: Codable, Hashable {
         try container.encode(consistent, forKey: .consistent)
         try container.encode(errors, forKey: .errors)
     }
-
-
-
 }
+

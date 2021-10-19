@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MediaLibraryDeleteRequest: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct MediaLibraryDeleteRequest: Codable, Hashable {
         self.deleteFromDatabase = deleteFromDatabase
         self.deleteFromStorage = deleteFromStorage
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case bundles
         case files
@@ -41,7 +44,5 @@ public struct MediaLibraryDeleteRequest: Codable, Hashable {
         try container.encodeIfPresent(deleteFromDatabase, forKey: .deleteFromDatabase)
         try container.encodeIfPresent(deleteFromStorage, forKey: .deleteFromStorage)
     }
-
-
-
 }
+

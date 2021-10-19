@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Stats: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct Stats: Codable, Hashable {
         self.net = net
         self.io = io
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case cpu
         case ram
@@ -37,7 +40,5 @@ public struct Stats: Codable, Hashable {
         try container.encode(net, forKey: .net)
         try container.encode(io, forKey: .io)
     }
-
-
-
 }
+

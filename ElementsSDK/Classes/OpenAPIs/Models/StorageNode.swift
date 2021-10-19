@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct StorageNode: Codable, Hashable {
 
@@ -45,6 +47,7 @@ public struct StorageNode: Codable, Hashable {
         self.status = status
         self.isLogAggregator = isLogAggregator
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -73,7 +76,5 @@ public struct StorageNode: Codable, Hashable {
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(isLogAggregator, forKey: .isLogAggregator)
     }
-
-
-
 }
+

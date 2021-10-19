@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SyncTOTP: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct SyncTOTP: Codable, Hashable {
     public init(drift: Int) {
         self.drift = drift
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case drift
     }
@@ -25,7 +28,5 @@ public struct SyncTOTP: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(drift, forKey: .drift)
     }
-
-
-
 }
+

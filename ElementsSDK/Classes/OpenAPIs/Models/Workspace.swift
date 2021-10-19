@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Workspace: Codable, Hashable {
 
@@ -21,7 +23,6 @@ public struct Workspace: Codable, Hashable {
         case unc = "unc"
     }
     public enum WinDrive: String, Codable, CaseIterable {
-        case null = "null"
         case a = "a"
         case b = "b"
         case c = "c"
@@ -54,8 +55,8 @@ public struct Workspace: Codable, Hashable {
         case nfs = "nfs"
     }
     public var id: Int?
-    public var production: ProductionReference
-    public var volume: VolumeReference?
+    public var production: ProductionMiniReference
+    public var volume: VolumeMiniReference?
     public var volumePath: String?
     public var path: String?
     public var sharingNfsPermissions: [String]?
@@ -68,7 +69,6 @@ public struct Workspace: Codable, Hashable {
     public var bookmarked: Bool?
     public var resolvedPermissions: [WorkspaceResolvedPermission]?
     public var resolvedReadOnly: Bool?
-    public var recycleBinPath: String?
     public var name: String?
     public var directory: String?
     public var description: String?
@@ -88,6 +88,7 @@ public struct Workspace: Codable, Hashable {
     public var sharingRequireLogin: Bool?
     public var sharingReadOnly: Bool?
     public var sharingAllowExecute: Bool?
+    public var enableQuota: Bool?
     public var quotaSizeHard: Int?
     public var quotaSizeSoft: Int?
     public var affinity: String?
@@ -109,7 +110,7 @@ public struct Workspace: Codable, Hashable {
     public var template: Int?
     public var homeFor: Int?
 
-    public init(id: Int? = nil, production: ProductionReference, volume: VolumeReference? = nil, volumePath: String? = nil, path: String? = nil, sharingNfsPermissions: [String]? = nil, fullPath: String? = nil, currentShareName: String? = nil, endpoints: [WorkspaceEndpoint]? = nil, quota: Quota? = nil, sizeUsed: Int? = nil, sizeTotal: Int? = nil, bookmarked: Bool? = nil, resolvedPermissions: [WorkspaceResolvedPermission]? = nil, resolvedReadOnly: Bool? = nil, recycleBinPath: String? = nil, name: String? = nil, directory: String? = nil, description: String? = nil, longDescription: String? = nil, isTemplate: Bool? = nil, lastLogin: Date? = nil, active: Bool? = nil, macProtocol: MacProtocol? = nil, winProtocol: WinProtocol? = nil, winDrive: WinDrive? = nil, linuxProtocol: LinuxProtocol? = nil, linuxMountpoint: String? = nil, shareName: String? = nil, shareNfs: Bool? = nil, shareAfp: Bool? = nil, sharingHidden: Bool? = nil, sharingRequireLogin: Bool? = nil, sharingReadOnly: Bool? = nil, sharingAllowExecute: Bool? = nil, quotaSizeHard: Int? = nil, quotaSizeSoft: Int? = nil, affinity: String? = nil, emulateAvid: Bool? = nil, emulateCapture: Bool? = nil, emulatePreopen: Bool? = nil, emulateNtfsStreams: Bool? = nil, emulateRecycleBin: Bool? = nil, emulateFruit: Bool? = nil, smbExtraConfig: String? = nil, afpExtraConfig: String? = nil, recycleBinExclude: String? = nil, isExternal: Bool? = nil, externalMacUrl: String? = nil, externalWinUrl: String? = nil, externalLinuxUrl: String? = nil, allowSymlinks: Bool? = nil, rwPermissionPriority: Bool? = nil, template: Int? = nil, homeFor: Int? = nil) {
+    public init(id: Int? = nil, production: ProductionMiniReference, volume: VolumeMiniReference? = nil, volumePath: String? = nil, path: String? = nil, sharingNfsPermissions: [String]? = nil, fullPath: String? = nil, currentShareName: String? = nil, endpoints: [WorkspaceEndpoint]? = nil, quota: Quota? = nil, sizeUsed: Int? = nil, sizeTotal: Int? = nil, bookmarked: Bool? = nil, resolvedPermissions: [WorkspaceResolvedPermission]? = nil, resolvedReadOnly: Bool? = nil, name: String? = nil, directory: String? = nil, description: String? = nil, longDescription: String? = nil, isTemplate: Bool? = nil, lastLogin: Date? = nil, active: Bool? = nil, macProtocol: MacProtocol? = nil, winProtocol: WinProtocol? = nil, winDrive: WinDrive? = nil, linuxProtocol: LinuxProtocol? = nil, linuxMountpoint: String? = nil, shareName: String? = nil, shareNfs: Bool? = nil, shareAfp: Bool? = nil, sharingHidden: Bool? = nil, sharingRequireLogin: Bool? = nil, sharingReadOnly: Bool? = nil, sharingAllowExecute: Bool? = nil, enableQuota: Bool? = nil, quotaSizeHard: Int? = nil, quotaSizeSoft: Int? = nil, affinity: String? = nil, emulateAvid: Bool? = nil, emulateCapture: Bool? = nil, emulatePreopen: Bool? = nil, emulateNtfsStreams: Bool? = nil, emulateRecycleBin: Bool? = nil, emulateFruit: Bool? = nil, smbExtraConfig: String? = nil, afpExtraConfig: String? = nil, recycleBinExclude: String? = nil, isExternal: Bool? = nil, externalMacUrl: String? = nil, externalWinUrl: String? = nil, externalLinuxUrl: String? = nil, allowSymlinks: Bool? = nil, rwPermissionPriority: Bool? = nil, template: Int? = nil, homeFor: Int? = nil) {
         self.id = id
         self.production = production
         self.volume = volume
@@ -125,7 +126,6 @@ public struct Workspace: Codable, Hashable {
         self.bookmarked = bookmarked
         self.resolvedPermissions = resolvedPermissions
         self.resolvedReadOnly = resolvedReadOnly
-        self.recycleBinPath = recycleBinPath
         self.name = name
         self.directory = directory
         self.description = description
@@ -145,6 +145,7 @@ public struct Workspace: Codable, Hashable {
         self.sharingRequireLogin = sharingRequireLogin
         self.sharingReadOnly = sharingReadOnly
         self.sharingAllowExecute = sharingAllowExecute
+        self.enableQuota = enableQuota
         self.quotaSizeHard = quotaSizeHard
         self.quotaSizeSoft = quotaSizeSoft
         self.affinity = affinity
@@ -166,6 +167,7 @@ public struct Workspace: Codable, Hashable {
         self.template = template
         self.homeFor = homeFor
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case production
@@ -182,7 +184,6 @@ public struct Workspace: Codable, Hashable {
         case bookmarked
         case resolvedPermissions = "resolved_permissions"
         case resolvedReadOnly = "resolved_read_only"
-        case recycleBinPath = "recycle_bin_path"
         case name
         case directory
         case description
@@ -202,6 +203,7 @@ public struct Workspace: Codable, Hashable {
         case sharingRequireLogin = "sharing_require_login"
         case sharingReadOnly = "sharing_read_only"
         case sharingAllowExecute = "sharing_allow_execute"
+        case enableQuota = "enable_quota"
         case quotaSizeHard = "quota_size_hard"
         case quotaSizeSoft = "quota_size_soft"
         case affinity
@@ -243,7 +245,6 @@ public struct Workspace: Codable, Hashable {
         try container.encodeIfPresent(bookmarked, forKey: .bookmarked)
         try container.encodeIfPresent(resolvedPermissions, forKey: .resolvedPermissions)
         try container.encodeIfPresent(resolvedReadOnly, forKey: .resolvedReadOnly)
-        try container.encodeIfPresent(recycleBinPath, forKey: .recycleBinPath)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(directory, forKey: .directory)
         try container.encodeIfPresent(description, forKey: .description)
@@ -263,6 +264,7 @@ public struct Workspace: Codable, Hashable {
         try container.encodeIfPresent(sharingRequireLogin, forKey: .sharingRequireLogin)
         try container.encodeIfPresent(sharingReadOnly, forKey: .sharingReadOnly)
         try container.encodeIfPresent(sharingAllowExecute, forKey: .sharingAllowExecute)
+        try container.encodeIfPresent(enableQuota, forKey: .enableQuota)
         try container.encodeIfPresent(quotaSizeHard, forKey: .quotaSizeHard)
         try container.encodeIfPresent(quotaSizeSoft, forKey: .quotaSizeSoft)
         try container.encodeIfPresent(affinity, forKey: .affinity)
@@ -284,7 +286,5 @@ public struct Workspace: Codable, Hashable {
         try container.encodeIfPresent(template, forKey: .template)
         try container.encodeIfPresent(homeFor, forKey: .homeFor)
     }
-
-
-
 }
+

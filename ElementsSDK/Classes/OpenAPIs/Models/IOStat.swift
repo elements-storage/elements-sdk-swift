@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct IOStat: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct IOStat: Codable, Hashable {
         self.cRead = cRead
         self.cWrite = cWrite
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case time
         case cRead = "c_read"
@@ -33,7 +36,5 @@ public struct IOStat: Codable, Hashable {
         try container.encode(cRead, forKey: .cRead)
         try container.encode(cWrite, forKey: .cWrite)
     }
-
-
-
 }
+

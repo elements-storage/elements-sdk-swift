@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TapeLibraryLoadEndpointRequest: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct TapeLibraryLoadEndpointRequest: Codable, Hashable {
     public init(barcode: String) {
         self.barcode = barcode
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case barcode
     }
@@ -25,7 +28,5 @@ public struct TapeLibraryLoadEndpointRequest: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(barcode, forKey: .barcode)
     }
-
-
-
 }
+

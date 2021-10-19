@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SubclipPartialUpdate: Codable, Hashable {
 
@@ -27,6 +29,7 @@ public struct SubclipPartialUpdate: Codable, Hashable {
         self.tOut = tOut
         self.root = root
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case asset
         case rendered
@@ -49,7 +52,5 @@ public struct SubclipPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(tOut, forKey: .tOut)
         try container.encode(root, forKey: .root)
     }
-
-
-
 }
+

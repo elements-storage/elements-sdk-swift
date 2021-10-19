@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SubclipClipboardEntry: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct SubclipClipboardEntry: Codable, Hashable {
         self.bundle = bundle
         self.date = date
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case cut
@@ -37,7 +40,5 @@ public struct SubclipClipboardEntry: Codable, Hashable {
         try container.encodeIfPresent(bundle, forKey: .bundle)
         try container.encodeIfPresent(date, forKey: .date)
     }
-
-
-
 }
+

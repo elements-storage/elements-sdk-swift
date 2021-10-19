@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MediaFileBundle: Codable, Hashable {
 
@@ -14,29 +16,27 @@ public struct MediaFileBundle: Codable, Hashable {
     public var asset: Asset?
     public var mainfile: MediaFileMini?
     public var snmAttributes: StornextManagerAttributes?
-    public var searchHighlight: String?
     public var isShared: Bool?
     public var name: String
     public var location: Int
     public var sharedViaTokens: Set<Int>?
 
-    public init(id: Int? = nil, asset: Asset? = nil, mainfile: MediaFileMini? = nil, snmAttributes: StornextManagerAttributes? = nil, searchHighlight: String? = nil, isShared: Bool? = nil, name: String, location: Int, sharedViaTokens: Set<Int>? = nil) {
+    public init(id: Int? = nil, asset: Asset? = nil, mainfile: MediaFileMini? = nil, snmAttributes: StornextManagerAttributes? = nil, isShared: Bool? = nil, name: String, location: Int, sharedViaTokens: Set<Int>? = nil) {
         self.id = id
         self.asset = asset
         self.mainfile = mainfile
         self.snmAttributes = snmAttributes
-        self.searchHighlight = searchHighlight
         self.isShared = isShared
         self.name = name
         self.location = location
         self.sharedViaTokens = sharedViaTokens
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case asset
         case mainfile
         case snmAttributes = "snm_attributes"
-        case searchHighlight = "search_highlight"
         case isShared = "is_shared"
         case name
         case location
@@ -51,13 +51,10 @@ public struct MediaFileBundle: Codable, Hashable {
         try container.encodeIfPresent(asset, forKey: .asset)
         try container.encodeIfPresent(mainfile, forKey: .mainfile)
         try container.encodeIfPresent(snmAttributes, forKey: .snmAttributes)
-        try container.encodeIfPresent(searchHighlight, forKey: .searchHighlight)
         try container.encodeIfPresent(isShared, forKey: .isShared)
         try container.encode(name, forKey: .name)
         try container.encode(location, forKey: .location)
         try container.encodeIfPresent(sharedViaTokens, forKey: .sharedViaTokens)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct RAMStat: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct RAMStat: Codable, Hashable {
         self.cCached = cCached
         self.cBuffered = cBuffered
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case time
         case cTotal = "c_total"
@@ -41,7 +44,5 @@ public struct RAMStat: Codable, Hashable {
         try container.encode(cCached, forKey: .cCached)
         try container.encode(cBuffered, forKey: .cBuffered)
     }
-
-
-
 }
+

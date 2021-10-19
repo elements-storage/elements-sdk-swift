@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SearchEndpointRequest: Codable, Hashable {
 
@@ -27,6 +29,7 @@ public struct SearchEndpointRequest: Codable, Hashable {
         self.namesOnly = namesOnly
         self.tapes = tapes
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case query
         case exclude
@@ -49,7 +52,5 @@ public struct SearchEndpointRequest: Codable, Hashable {
         try container.encodeIfPresent(namesOnly, forKey: .namesOnly)
         try container.encodeIfPresent(tapes, forKey: .tapes)
     }
-
-
-
 }
+

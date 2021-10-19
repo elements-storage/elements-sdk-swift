@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct CreateHomeWorkspaceRequest: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct CreateHomeWorkspaceRequest: Codable, Hashable {
     public init(volume: Int) {
         self.volume = volume
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case volume
     }
@@ -25,7 +28,5 @@ public struct CreateHomeWorkspaceRequest: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(volume, forKey: .volume)
     }
-
-
-
 }
+

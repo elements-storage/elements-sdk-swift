@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ClientSession: Codable, Hashable {
 
@@ -15,9 +17,9 @@ public struct ClientSession: Codable, Hashable {
     public var mountedWorkspaces: String?
     public var started: Date?
     public var lastUpdated: Date?
-    public var workstation: String
+    public var workstation: WorkstationMini
 
-    public init(id: Int? = nil, user: ElementsUserMini, mountedWorkspaces: String? = nil, started: Date? = nil, lastUpdated: Date? = nil, workstation: String) {
+    public init(id: Int? = nil, user: ElementsUserMini, mountedWorkspaces: String? = nil, started: Date? = nil, lastUpdated: Date? = nil, workstation: WorkstationMini) {
         self.id = id
         self.user = user
         self.mountedWorkspaces = mountedWorkspaces
@@ -25,6 +27,7 @@ public struct ClientSession: Codable, Hashable {
         self.lastUpdated = lastUpdated
         self.workstation = workstation
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case user
@@ -45,7 +48,5 @@ public struct ClientSession: Codable, Hashable {
         try container.encodeIfPresent(lastUpdated, forKey: .lastUpdated)
         try container.encode(workstation, forKey: .workstation)
     }
-
-
-
 }
+

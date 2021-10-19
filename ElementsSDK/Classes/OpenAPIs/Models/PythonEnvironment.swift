@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct PythonEnvironment: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct PythonEnvironment: Codable, Hashable {
         self.name = name
         self.version = version
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -33,7 +36,5 @@ public struct PythonEnvironment: Codable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encode(version, forKey: .version)
     }
-
-
-
 }
+

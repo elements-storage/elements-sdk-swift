@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct RDCSessionCreate: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct RDCSessionCreate: Codable, Hashable {
         self.id = id
         self.user = user
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case user
@@ -29,7 +32,5 @@ public struct RDCSessionCreate: Codable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encode(user, forKey: .user)
     }
-
-
-
 }
+

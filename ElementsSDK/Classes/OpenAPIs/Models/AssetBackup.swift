@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct AssetBackup: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct AssetBackup: Codable, Hashable {
         self.searchHighlight = searchHighlight
         self.customFieldsSnapshot = customFieldsSnapshot
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case tapeFile = "tape_file"
@@ -41,7 +44,5 @@ public struct AssetBackup: Codable, Hashable {
         try container.encodeIfPresent(searchHighlight, forKey: .searchHighlight)
         try container.encodeIfPresent(customFieldsSnapshot, forKey: .customFieldsSnapshot)
     }
-
-
-
 }
+

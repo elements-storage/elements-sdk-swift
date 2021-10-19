@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SlackConnectionStatus: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct SlackConnectionStatus: Codable, Hashable {
         self.user = user
         self.url = url
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case ok
         case team
@@ -37,7 +40,5 @@ public struct SlackConnectionStatus: Codable, Hashable {
         try container.encode(user, forKey: .user)
         try container.encode(url, forKey: .url)
     }
-
-
-
 }
+

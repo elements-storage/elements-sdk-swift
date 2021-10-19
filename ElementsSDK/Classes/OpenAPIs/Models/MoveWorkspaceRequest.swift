@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MoveWorkspaceRequest: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct MoveWorkspaceRequest: Codable, Hashable {
         self.volume = volume
         self.directory = directory
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case production
         case volume
@@ -33,7 +36,5 @@ public struct MoveWorkspaceRequest: Codable, Hashable {
         try container.encodeIfPresent(volume, forKey: .volume)
         try container.encodeIfPresent(directory, forKey: .directory)
     }
-
-
-
 }
+

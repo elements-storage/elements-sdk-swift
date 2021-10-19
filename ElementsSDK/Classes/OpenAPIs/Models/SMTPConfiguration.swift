@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SMTPConfiguration: Codable, Hashable {
 
@@ -25,6 +27,7 @@ public struct SMTPConfiguration: Codable, Hashable {
         self.username = username
         self.password = password
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case fromAddress = "from_address"
         case server
@@ -45,7 +48,5 @@ public struct SMTPConfiguration: Codable, Hashable {
         try container.encode(username, forKey: .username)
         try container.encode(password, forKey: .password)
     }
-
-
-
 }
+

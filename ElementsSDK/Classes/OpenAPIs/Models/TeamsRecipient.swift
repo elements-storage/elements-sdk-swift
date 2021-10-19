@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TeamsRecipient: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct TeamsRecipient: Codable, Hashable {
         self.id = id
         self.name = name
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -29,7 +32,5 @@ public struct TeamsRecipient: Codable, Hashable {
         try container.encode(id, forKey: .id)
         try container.encodeIfPresent(name, forKey: .name)
     }
-
-
-
 }
+

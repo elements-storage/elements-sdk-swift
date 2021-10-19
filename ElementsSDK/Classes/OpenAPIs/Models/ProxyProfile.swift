@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ProxyProfile: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct ProxyProfile: Codable, Hashable {
         case hotfolder = "hotfolder"
         case transkoder = "transkoder"
         case vantage = "vantage"
+        case noop = "noop"
     }
     public enum RateControl: Int, Codable, CaseIterable {
         case _0 = 0
@@ -44,7 +47,6 @@ public struct ProxyProfile: Codable, Hashable {
     public var bitrate: Int?
     public var audioBitrate: Int?
     public var variantsLimit: Int?
-    public var enableRealtimeRead: Bool?
     public var enableDenseFilmstrip: Bool?
     public var enableWatermark: Bool?
     public var watermarkImage: String?
@@ -64,7 +66,7 @@ public struct ProxyProfile: Codable, Hashable {
     public var externalTranscoderStagingPath: String?
     public var externalTranscoder: Int?
 
-    public init(id: Int? = nil, name: String, proxyGenerator: ProxyGenerator? = nil, resolution: String? = nil, rateControl: RateControl? = nil, crf: Int? = nil, bitrate: Int? = nil, audioBitrate: Int? = nil, variantsLimit: Int? = nil, enableRealtimeRead: Bool? = nil, enableDenseFilmstrip: Bool? = nil, enableWatermark: Bool? = nil, watermarkImage: String? = nil, watermarkPosition: WatermarkPosition? = nil, watermarkOpacity: Double? = nil, watermarkSize: Double? = nil, enableTimecode: Bool? = nil, timecodePosition: TimecodePosition? = nil, timecodeOpacity: Double? = nil, timecodeSize: Double? = nil, lut: String? = nil, hotfolderCopyTo: String? = nil, hotfolderReadFrom: String? = nil, hotfolderQueueTimeout: Int? = nil, hotfolderEncodeTimeout: Int? = nil, vantageWorkflowId: String? = nil, externalTranscoderStagingPath: String? = nil, externalTranscoder: Int? = nil) {
+    public init(id: Int? = nil, name: String, proxyGenerator: ProxyGenerator? = nil, resolution: String? = nil, rateControl: RateControl? = nil, crf: Int? = nil, bitrate: Int? = nil, audioBitrate: Int? = nil, variantsLimit: Int? = nil, enableDenseFilmstrip: Bool? = nil, enableWatermark: Bool? = nil, watermarkImage: String? = nil, watermarkPosition: WatermarkPosition? = nil, watermarkOpacity: Double? = nil, watermarkSize: Double? = nil, enableTimecode: Bool? = nil, timecodePosition: TimecodePosition? = nil, timecodeOpacity: Double? = nil, timecodeSize: Double? = nil, lut: String? = nil, hotfolderCopyTo: String? = nil, hotfolderReadFrom: String? = nil, hotfolderQueueTimeout: Int? = nil, hotfolderEncodeTimeout: Int? = nil, vantageWorkflowId: String? = nil, externalTranscoderStagingPath: String? = nil, externalTranscoder: Int? = nil) {
         self.id = id
         self.name = name
         self.proxyGenerator = proxyGenerator
@@ -74,7 +76,6 @@ public struct ProxyProfile: Codable, Hashable {
         self.bitrate = bitrate
         self.audioBitrate = audioBitrate
         self.variantsLimit = variantsLimit
-        self.enableRealtimeRead = enableRealtimeRead
         self.enableDenseFilmstrip = enableDenseFilmstrip
         self.enableWatermark = enableWatermark
         self.watermarkImage = watermarkImage
@@ -94,6 +95,7 @@ public struct ProxyProfile: Codable, Hashable {
         self.externalTranscoderStagingPath = externalTranscoderStagingPath
         self.externalTranscoder = externalTranscoder
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -104,7 +106,6 @@ public struct ProxyProfile: Codable, Hashable {
         case bitrate
         case audioBitrate = "audio_bitrate"
         case variantsLimit = "variants_limit"
-        case enableRealtimeRead = "enable_realtime_read"
         case enableDenseFilmstrip = "enable_dense_filmstrip"
         case enableWatermark = "enable_watermark"
         case watermarkImage = "watermark_image"
@@ -138,7 +139,6 @@ public struct ProxyProfile: Codable, Hashable {
         try container.encodeIfPresent(bitrate, forKey: .bitrate)
         try container.encodeIfPresent(audioBitrate, forKey: .audioBitrate)
         try container.encodeIfPresent(variantsLimit, forKey: .variantsLimit)
-        try container.encodeIfPresent(enableRealtimeRead, forKey: .enableRealtimeRead)
         try container.encodeIfPresent(enableDenseFilmstrip, forKey: .enableDenseFilmstrip)
         try container.encodeIfPresent(enableWatermark, forKey: .enableWatermark)
         try container.encodeIfPresent(watermarkImage, forKey: .watermarkImage)
@@ -158,7 +158,5 @@ public struct ProxyProfile: Codable, Hashable {
         try container.encodeIfPresent(externalTranscoderStagingPath, forKey: .externalTranscoderStagingPath)
         try container.encodeIfPresent(externalTranscoder, forKey: .externalTranscoder)
     }
-
-
-
 }
+

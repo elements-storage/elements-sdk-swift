@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct RestoreEndpointRequest: Codable, Hashable {
 
@@ -25,6 +27,7 @@ public struct RestoreEndpointRequest: Codable, Hashable {
         self.export = export
         self.startDate = startDate
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case source
@@ -45,7 +48,5 @@ public struct RestoreEndpointRequest: Codable, Hashable {
         try container.encodeIfPresent(export, forKey: .export)
         try container.encode(startDate, forKey: .startDate)
     }
-
-
-
 }
+

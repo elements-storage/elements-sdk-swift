@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MarkerPartialUpdate: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct MarkerPartialUpdate: Codable, Hashable {
         self.tOut = tOut
         self.asset = asset
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case title
         case text
@@ -41,7 +44,5 @@ public struct MarkerPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(tOut, forKey: .tOut)
         try container.encodeIfPresent(asset, forKey: .asset)
     }
-
-
-
 }
+

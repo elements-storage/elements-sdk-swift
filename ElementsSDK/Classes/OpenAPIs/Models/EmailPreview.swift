@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct EmailPreview: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct EmailPreview: Codable, Hashable {
     public init(styling: [String: String]? = nil) {
         self.styling = styling
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case styling
     }
@@ -25,7 +28,5 @@ public struct EmailPreview: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(styling, forKey: .styling)
     }
-
-
-
 }
+

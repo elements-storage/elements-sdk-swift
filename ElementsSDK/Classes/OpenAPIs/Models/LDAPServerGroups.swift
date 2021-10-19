@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct LDAPServerGroups: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct LDAPServerGroups: Codable, Hashable {
     public init(groups: [LDAPServerGroup]) {
         self.groups = groups
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case groups
     }
@@ -25,7 +28,5 @@ public struct LDAPServerGroups: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(groups, forKey: .groups)
     }
-
-
-
 }
+

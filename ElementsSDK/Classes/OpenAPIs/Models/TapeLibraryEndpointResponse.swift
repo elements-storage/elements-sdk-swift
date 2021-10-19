@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TapeLibraryEndpointResponse: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct TapeLibraryEndpointResponse: Codable, Hashable {
         self.mailbox = mailbox
         self.slots = slots
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case drives
         case mailbox
@@ -33,7 +36,5 @@ public struct TapeLibraryEndpointResponse: Codable, Hashable {
         try container.encode(mailbox, forKey: .mailbox)
         try container.encode(slots, forKey: .slots)
     }
-
-
-
 }
+

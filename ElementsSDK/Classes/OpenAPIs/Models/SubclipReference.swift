@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SubclipReference: Codable, Hashable {
 
@@ -33,6 +35,7 @@ public struct SubclipReference: Codable, Hashable {
         self.user = user
         self.root = root
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case asset
@@ -61,7 +64,5 @@ public struct SubclipReference: Codable, Hashable {
         try container.encodeIfPresent(user, forKey: .user)
         try container.encode(root, forKey: .root)
     }
-
-
-
 }
+

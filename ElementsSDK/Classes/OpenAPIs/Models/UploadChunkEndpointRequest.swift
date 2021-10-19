@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct UploadChunkEndpointRequest: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct UploadChunkEndpointRequest: Codable, Hashable {
         self.chunkNumber = chunkNumber
         self.totalChunks = totalChunks
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case uploadId = "upload_id"
         case chunkNumber = "chunk_number"
@@ -33,7 +36,5 @@ public struct UploadChunkEndpointRequest: Codable, Hashable {
         try container.encodeIfPresent(chunkNumber, forKey: .chunkNumber)
         try container.encodeIfPresent(totalChunks, forKey: .totalChunks)
     }
-
-
-
 }
+

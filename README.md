@@ -62,6 +62,7 @@ Class | Method | HTTP request | Description
 *AutomationAPI* | [**deleteTask**](docs/AutomationAPI.md#deletetask) | **DELETE** /api/2/tasks/{id} | 
 *AutomationAPI* | [**downloadAllTaskLogs**](docs/AutomationAPI.md#downloadalltasklogs) | **GET** /api/2/tasks/logs/download | 
 *AutomationAPI* | [**downloadTaskLog**](docs/AutomationAPI.md#downloadtasklog) | **GET** /api/2/tasks/{id}/log/download | 
+*AutomationAPI* | [**exportJob**](docs/AutomationAPI.md#exportjob) | **GET** /api/2/jobs/{id}/export | 
 *AutomationAPI* | [**getAllEvents**](docs/AutomationAPI.md#getallevents) | **GET** /api/2/events | 
 *AutomationAPI* | [**getAllJobs**](docs/AutomationAPI.md#getalljobs) | **GET** /api/2/jobs | 
 *AutomationAPI* | [**getAllSchedules**](docs/AutomationAPI.md#getallschedules) | **GET** /api/2/schedules | 
@@ -80,6 +81,7 @@ Class | Method | HTTP request | Description
 *AutomationAPI* | [**getTaskLog**](docs/AutomationAPI.md#gettasklog) | **GET** /api/2/tasks/{id}/log | 
 *AutomationAPI* | [**getTaskType**](docs/AutomationAPI.md#gettasktype) | **GET** /api/2/tasks/types/{type} | 
 *AutomationAPI* | [**getTasksSummary**](docs/AutomationAPI.md#gettaskssummary) | **GET** /api/2/tasks/summary | 
+*AutomationAPI* | [**importJob**](docs/AutomationAPI.md#importjob) | **POST** /api/2/jobs/import | 
 *AutomationAPI* | [**killAllPendingTasks**](docs/AutomationAPI.md#killallpendingtasks) | **DELETE** /api/2/tasks/pending | 
 *AutomationAPI* | [**killTask**](docs/AutomationAPI.md#killtask) | **POST** /api/2/tasks/{id}/kill | 
 *AutomationAPI* | [**patchJob**](docs/AutomationAPI.md#patchjob) | **PATCH** /api/2/jobs/{id} | 
@@ -148,6 +150,7 @@ Class | Method | HTTP request | Description
 *MainAPI* | [**enableUserTOTP**](docs/MainAPI.md#enableusertotp) | **POST** /api/2/users/{id}/totp | 
 *MainAPI* | [**finishUpload**](docs/MainAPI.md#finishupload) | **POST** /api/2/uploads/finish | 
 *MainAPI* | [**fixLDAPGroupMemberships**](docs/MainAPI.md#fixldapgroupmemberships) | **POST** /api/2/ldap-servers/{id}/fix-memberships | 
+*MainAPI* | [**getAllClientSessions**](docs/MainAPI.md#getallclientsessions) | **GET** /api/2/client-sessions | 
 *MainAPI* | [**getAllDownloadArchives**](docs/MainAPI.md#getalldownloadarchives) | **GET** /api/2/download-archive | 
 *MainAPI* | [**getAllDownloads**](docs/MainAPI.md#getalldownloads) | **GET** /api/2/downloads | 
 *MainAPI* | [**getAllGroups**](docs/MainAPI.md#getallgroups) | **GET** /api/2/groups | 
@@ -159,6 +162,7 @@ Class | Method | HTTP request | Description
 *MainAPI* | [**getCertificateConfiguration**](docs/MainAPI.md#getcertificateconfiguration) | **GET** /api/2/system/certificate | 
 *MainAPI* | [**getClientDownloadFile**](docs/MainAPI.md#getclientdownloadfile) | **GET** /api/2/downloads/clients/{file} | 
 *MainAPI* | [**getClientDownloads**](docs/MainAPI.md#getclientdownloads) | **GET** /api/2/downloads/clients | 
+*MainAPI* | [**getClientSession**](docs/MainAPI.md#getclientsession) | **GET** /api/2/client-sessions/{id} | 
 *MainAPI* | [**getCurrentWorkstation**](docs/MainAPI.md#getcurrentworkstation) | **GET** /api/2/workstations/current | 
 *MainAPI* | [**getDownload**](docs/MainAPI.md#getdownload) | **GET** /api/2/downloads/{id} | 
 *MainAPI* | [**getDownloadArchive**](docs/MainAPI.md#getdownloadarchive) | **GET** /api/2/download-archive/{id} | 
@@ -585,6 +589,8 @@ Class | Method | HTTP request | Description
  - [GlobalAlert](docs/GlobalAlert.md)
  - [IOStat](docs/IOStat.md)
  - [ImpersonationEndpointRequest](docs/ImpersonationEndpointRequest.md)
+ - [ImportJobRequest](docs/ImportJobRequest.md)
+ - [ImportJobResponse](docs/ImportJobResponse.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineResponse2001](docs/InlineResponse2001.md)
  - [InlineResponse2002](docs/InlineResponse2002.md)
@@ -613,6 +619,7 @@ Class | Method | HTTP request | Description
  - [MarkerPartialUpdate](docs/MarkerPartialUpdate.md)
  - [MediaFile](docs/MediaFile.md)
  - [MediaFileBundle](docs/MediaFileBundle.md)
+ - [MediaFileBundleMini](docs/MediaFileBundleMini.md)
  - [MediaFileBundleMiniReference](docs/MediaFileBundleMiniReference.md)
  - [MediaFileContents](docs/MediaFileContents.md)
  - [MediaFileMini](docs/MediaFileMini.md)
@@ -645,6 +652,7 @@ Class | Method | HTTP request | Description
  - [Path](docs/Path.md)
  - [PathInput](docs/PathInput.md)
  - [Production](docs/Production.md)
+ - [ProductionMiniReference](docs/ProductionMiniReference.md)
  - [ProductionPartialUpdate](docs/ProductionPartialUpdate.md)
  - [ProductionReference](docs/ProductionReference.md)
  - [Proxy](docs/Proxy.md)
@@ -718,9 +726,7 @@ Class | Method | HTTP request | Description
  - [SyncTOTP](docs/SyncTOTP.md)
  - [SyncTOTPRequest](docs/SyncTOTPRequest.md)
  - [SystemInfoEndpointResponse](docs/SystemInfoEndpointResponse.md)
- - [Tag](docs/Tag.md)
  - [TagMediaDirectoryRequest](docs/TagMediaDirectoryRequest.md)
- - [TagPartialUpdate](docs/TagPartialUpdate.md)
  - [TagReference](docs/TagReference.md)
  - [Tape](docs/Tape.md)
  - [TapeFile](docs/TapeFile.md)
@@ -763,6 +769,8 @@ Class | Method | HTTP request | Description
  - [TraceNode](docs/TraceNode.md)
  - [TranscoderProfile](docs/TranscoderProfile.md)
  - [TypeDocumentation](docs/TypeDocumentation.md)
+ - [UnfilteredTag](docs/UnfilteredTag.md)
+ - [UnfilteredTagPartialUpdate](docs/UnfilteredTagPartialUpdate.md)
  - [UpdateQuotaRequest](docs/UpdateQuotaRequest.md)
  - [UploadChunkEndpointRequest](docs/UploadChunkEndpointRequest.md)
  - [UserPreviewRequest](docs/UserPreviewRequest.md)
@@ -784,12 +792,14 @@ Class | Method | HTTP request | Description
  - [WorkflowTransitionResponse](docs/WorkflowTransitionResponse.md)
  - [Workspace](docs/Workspace.md)
  - [WorkspaceCheckIn](docs/WorkspaceCheckIn.md)
+ - [WorkspaceDetail](docs/WorkspaceDetail.md)
+ - [WorkspaceDetailPartialUpdate](docs/WorkspaceDetailPartialUpdate.md)
  - [WorkspaceEndpoint](docs/WorkspaceEndpoint.md)
  - [WorkspaceMoveToRequest](docs/WorkspaceMoveToRequest.md)
- - [WorkspacePartialUpdate](docs/WorkspacePartialUpdate.md)
  - [WorkspacePermission](docs/WorkspacePermission.md)
  - [WorkspacePermissionPartialUpdate](docs/WorkspacePermissionPartialUpdate.md)
  - [WorkspaceResolvedPermission](docs/WorkspaceResolvedPermission.md)
  - [Workstation](docs/Workstation.md)
+ - [WorkstationMini](docs/WorkstationMini.md)
  - [WorkstationPartialUpdate](docs/WorkstationPartialUpdate.md)
 

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct StorNextLicenseEndpointResponse: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct StorNextLicenseEndpointResponse: Codable, Hashable {
         self.expiry = expiry
         self.capacity = capacity
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case status
         case expiry
@@ -33,7 +36,5 @@ public struct StorNextLicenseEndpointResponse: Codable, Hashable {
         try container.encode(expiry, forKey: .expiry)
         try container.encode(capacity, forKey: .capacity)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct AssetRatingPartialUpdate: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct AssetRatingPartialUpdate: Codable, Hashable {
         self.rating = rating
         self.asset = asset
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case user
         case rating
@@ -33,7 +36,5 @@ public struct AssetRatingPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(rating, forKey: .rating)
         try container.encodeIfPresent(asset, forKey: .asset)
     }
-
-
-
 }
+

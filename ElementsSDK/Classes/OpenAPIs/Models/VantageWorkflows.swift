@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct VantageWorkflows: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct VantageWorkflows: Codable, Hashable {
     public init(workflows: [VantageWorkflow]) {
         self.workflows = workflows
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case workflows
     }
@@ -25,7 +28,5 @@ public struct VantageWorkflows: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(workflows, forKey: .workflows)
     }
-
-
-
 }
+

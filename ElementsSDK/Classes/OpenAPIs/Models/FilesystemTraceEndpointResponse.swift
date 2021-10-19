@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct FilesystemTraceEndpointResponse: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct FilesystemTraceEndpointResponse: Codable, Hashable {
         self.diskDWrite = diskDWrite
         self.isFlat = isFlat
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case root
         case diskDRead = "disk_d_read"
@@ -37,7 +40,5 @@ public struct FilesystemTraceEndpointResponse: Codable, Hashable {
         try container.encode(diskDWrite, forKey: .diskDWrite)
         try container.encode(isFlat, forKey: .isFlat)
     }
-
-
-
 }
+

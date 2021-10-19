@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct FinishUploadEndpointRequest: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct FinishUploadEndpointRequest: Codable, Hashable {
     public init(uploadId: String? = nil) {
         self.uploadId = uploadId
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case uploadId = "upload_id"
     }
@@ -25,7 +28,5 @@ public struct FinishUploadEndpointRequest: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(uploadId, forKey: .uploadId)
     }
-
-
-
 }
+

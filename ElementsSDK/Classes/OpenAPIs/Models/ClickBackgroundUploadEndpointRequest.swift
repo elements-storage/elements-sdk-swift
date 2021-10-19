@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ClickBackgroundUploadEndpointRequest: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct ClickBackgroundUploadEndpointRequest: Codable, Hashable {
         self.linksToSend = linksToSend
         self.notifyOnCompletion = notifyOnCompletion
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case gallery
         case linksToSend = "links_to_send"
@@ -33,7 +36,5 @@ public struct ClickBackgroundUploadEndpointRequest: Codable, Hashable {
         try container.encode(linksToSend, forKey: .linksToSend)
         try container.encode(notifyOnCompletion, forKey: .notifyOnCompletion)
     }
-
-
-
 }
+

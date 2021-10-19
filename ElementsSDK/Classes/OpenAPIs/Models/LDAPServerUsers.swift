@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct LDAPServerUsers: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct LDAPServerUsers: Codable, Hashable {
     public init(users: [LDAPServerUser]) {
         self.users = users
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case users
     }
@@ -25,7 +28,5 @@ public struct LDAPServerUsers: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(users, forKey: .users)
     }
-
-
-
 }
+

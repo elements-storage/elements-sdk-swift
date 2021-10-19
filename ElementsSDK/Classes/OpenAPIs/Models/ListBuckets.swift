@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ListBuckets: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct ListBuckets: Codable, Hashable {
     public init(buckets: [String]) {
         self.buckets = buckets
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case buckets
     }
@@ -25,7 +28,5 @@ public struct ListBuckets: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(buckets, forKey: .buckets)
     }
-
-
-
 }
+

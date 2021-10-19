@@ -6,34 +6,34 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct AssetMiniReference: Codable, Hashable {
 
     public var id: Int?
     public var syncId: UUID?
     public var defaultProxy: Proxy?
-    public var urls: [String: String]?
     public var type: String?
     public var displayName: String?
-    public var info: String?
+    public var info: [String: String]?
     public var thumbnailGenerated: Bool?
 
-    public init(id: Int? = nil, syncId: UUID? = nil, defaultProxy: Proxy? = nil, urls: [String: String]? = nil, type: String? = nil, displayName: String? = nil, info: String? = nil, thumbnailGenerated: Bool? = nil) {
+    public init(id: Int? = nil, syncId: UUID? = nil, defaultProxy: Proxy? = nil, type: String? = nil, displayName: String? = nil, info: [String: String]? = nil, thumbnailGenerated: Bool? = nil) {
         self.id = id
         self.syncId = syncId
         self.defaultProxy = defaultProxy
-        self.urls = urls
         self.type = type
         self.displayName = displayName
         self.info = info
         self.thumbnailGenerated = thumbnailGenerated
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case syncId = "sync_id"
         case defaultProxy = "default_proxy"
-        case urls
         case type
         case displayName = "display_name"
         case info
@@ -47,13 +47,10 @@ public struct AssetMiniReference: Codable, Hashable {
         try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(syncId, forKey: .syncId)
         try container.encodeIfPresent(defaultProxy, forKey: .defaultProxy)
-        try container.encodeIfPresent(urls, forKey: .urls)
         try container.encodeIfPresent(type, forKey: .type)
         try container.encodeIfPresent(displayName, forKey: .displayName)
         try container.encodeIfPresent(info, forKey: .info)
         try container.encodeIfPresent(thumbnailGenerated, forKey: .thumbnailGenerated)
     }
-
-
-
 }
+

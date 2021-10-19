@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct NTPServerPartialUpdate: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct NTPServerPartialUpdate: Codable, Hashable {
         self.address = address
         self.options = options
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case address
         case options
@@ -29,7 +32,5 @@ public struct NTPServerPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(address, forKey: .address)
         try container.encodeIfPresent(options, forKey: .options)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct PasswordResetEndpointRequest: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct PasswordResetEndpointRequest: Codable, Hashable {
         self.token = token
         self.password = password
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case token
         case password
@@ -29,7 +32,5 @@ public struct PasswordResetEndpointRequest: Codable, Hashable {
         try container.encode(token, forKey: .token)
         try container.encode(password, forKey: .password)
     }
-
-
-
 }
+

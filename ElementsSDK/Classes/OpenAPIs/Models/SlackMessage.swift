@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SlackMessage: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct SlackMessage: Codable, Hashable {
         self.username = username
         self.emoji = emoji
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case recipient
         case text
@@ -37,7 +40,5 @@ public struct SlackMessage: Codable, Hashable {
         try container.encodeIfPresent(username, forKey: .username)
         try container.encodeIfPresent(emoji, forKey: .emoji)
     }
-
-
-
 }
+

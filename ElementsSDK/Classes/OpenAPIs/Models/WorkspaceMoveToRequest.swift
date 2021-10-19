@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct WorkspaceMoveToRequest: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct WorkspaceMoveToRequest: Codable, Hashable {
     public init(production: Int) {
         self.production = production
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case production
     }
@@ -25,7 +28,5 @@ public struct WorkspaceMoveToRequest: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(production, forKey: .production)
     }
-
-
-
 }
+

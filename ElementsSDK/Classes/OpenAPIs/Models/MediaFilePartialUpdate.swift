@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MediaFilePartialUpdate: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct MediaFilePartialUpdate: Codable, Hashable {
         self.needsRescan = needsRescan
         self.bookmarkedBy = bookmarkedBy
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case info
         case customFields = "custom_fields"
@@ -41,7 +44,5 @@ public struct MediaFilePartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(needsRescan, forKey: .needsRescan)
         try container.encodeIfPresent(bookmarkedBy, forKey: .bookmarkedBy)
     }
-
-
-
 }
+

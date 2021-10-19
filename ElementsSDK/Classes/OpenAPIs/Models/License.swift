@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct License: Codable, Hashable {
 
@@ -39,6 +41,7 @@ public struct License: Codable, Hashable {
         self.users = users
         self.thirdPartyCapacity = thirdPartyCapacity
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case product
@@ -73,7 +76,5 @@ public struct License: Codable, Hashable {
         try container.encode(users, forKey: .users)
         try container.encode(thirdPartyCapacity, forKey: .thirdPartyCapacity)
     }
-
-
-
 }
+

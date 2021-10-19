@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct KapacitorAlert: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct KapacitorAlert: Codable, Hashable {
         self.details = details
         self.data = data
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case level
@@ -41,7 +44,5 @@ public struct KapacitorAlert: Codable, Hashable {
         try container.encode(details, forKey: .details)
         try container.encode(data, forKey: .data)
     }
-
-
-
 }
+

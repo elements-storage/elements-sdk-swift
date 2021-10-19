@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ArgumentType: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct ArgumentType: Codable, Hashable {
         self.displayName = displayName
         self.documentation = documentation
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case displayName = "display_name"
         case documentation
@@ -29,7 +32,5 @@ public struct ArgumentType: Codable, Hashable {
         try container.encodeIfPresent(displayName, forKey: .displayName)
         try container.encodeIfPresent(documentation, forKey: .documentation)
     }
-
-
-
 }
+

@@ -6,24 +6,25 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Asset: Codable, Hashable {
 
     public var id: Int?
-    public var urls: [String: String]?
     public var proxies: [Proxy]?
     public var defaultProxy: Proxy?
     public var info: [String: String]?
     public var proxyInfo: [String: String]?
     public var customFields: [String: String]
-    public var tags: Set<TagReference>
+    public var tags: Set<Int>
     public var resolvedPermission: MediaRootPermission?
-    public var bundles: [[String: String]]?
     public var backups: String?
     public var proxiesGenerated: Bool?
     public var proxiesFailed: Bool?
     public var modifiedBy: ElementsUserMini?
+    public var bundles: [MediaFileBundleMini]?
     public var syncId: UUID?
     public var displayName: String?
     public var hasFiles: Bool?
@@ -40,9 +41,8 @@ public struct Asset: Codable, Hashable {
     public var modified: Date?
     public var _set: Int?
 
-    public init(id: Int? = nil, urls: [String: String]? = nil, proxies: [Proxy]? = nil, defaultProxy: Proxy? = nil, info: [String: String]? = nil, proxyInfo: [String: String]? = nil, customFields: [String: String], tags: Set<TagReference>, resolvedPermission: MediaRootPermission? = nil, bundles: [[String: String]]? = nil, backups: String? = nil, proxiesGenerated: Bool? = nil, proxiesFailed: Bool? = nil, modifiedBy: ElementsUserMini? = nil, syncId: UUID? = nil, displayName: String? = nil, hasFiles: Bool? = nil, hasBackups: Bool? = nil, hasCloudLinks: Bool? = nil, checksum: String? = nil, type: String? = nil, thumbnailGenerated: Bool? = nil, matchedScanner: String? = nil, rating: Double? = nil, workflowState: Int? = nil, isTemporary: Bool? = nil, created: Date? = nil, modified: Date? = nil, _set: Int? = nil) {
+    public init(id: Int? = nil, proxies: [Proxy]? = nil, defaultProxy: Proxy? = nil, info: [String: String]? = nil, proxyInfo: [String: String]? = nil, customFields: [String: String], tags: Set<Int>, resolvedPermission: MediaRootPermission? = nil, backups: String? = nil, proxiesGenerated: Bool? = nil, proxiesFailed: Bool? = nil, modifiedBy: ElementsUserMini? = nil, bundles: [MediaFileBundleMini]? = nil, syncId: UUID? = nil, displayName: String? = nil, hasFiles: Bool? = nil, hasBackups: Bool? = nil, hasCloudLinks: Bool? = nil, checksum: String? = nil, type: String? = nil, thumbnailGenerated: Bool? = nil, matchedScanner: String? = nil, rating: Double? = nil, workflowState: Int? = nil, isTemporary: Bool? = nil, created: Date? = nil, modified: Date? = nil, _set: Int? = nil) {
         self.id = id
-        self.urls = urls
         self.proxies = proxies
         self.defaultProxy = defaultProxy
         self.info = info
@@ -50,11 +50,11 @@ public struct Asset: Codable, Hashable {
         self.customFields = customFields
         self.tags = tags
         self.resolvedPermission = resolvedPermission
-        self.bundles = bundles
         self.backups = backups
         self.proxiesGenerated = proxiesGenerated
         self.proxiesFailed = proxiesFailed
         self.modifiedBy = modifiedBy
+        self.bundles = bundles
         self.syncId = syncId
         self.displayName = displayName
         self.hasFiles = hasFiles
@@ -71,9 +71,9 @@ public struct Asset: Codable, Hashable {
         self.modified = modified
         self._set = _set
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
-        case urls
         case proxies
         case defaultProxy = "default_proxy"
         case info
@@ -81,11 +81,11 @@ public struct Asset: Codable, Hashable {
         case customFields = "custom_fields"
         case tags
         case resolvedPermission = "resolved_permission"
-        case bundles
         case backups
         case proxiesGenerated = "proxies_generated"
         case proxiesFailed = "proxies_failed"
         case modifiedBy = "modified_by"
+        case bundles
         case syncId = "sync_id"
         case displayName = "display_name"
         case hasFiles = "has_files"
@@ -108,7 +108,6 @@ public struct Asset: Codable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(urls, forKey: .urls)
         try container.encodeIfPresent(proxies, forKey: .proxies)
         try container.encodeIfPresent(defaultProxy, forKey: .defaultProxy)
         try container.encodeIfPresent(info, forKey: .info)
@@ -116,11 +115,11 @@ public struct Asset: Codable, Hashable {
         try container.encode(customFields, forKey: .customFields)
         try container.encode(tags, forKey: .tags)
         try container.encodeIfPresent(resolvedPermission, forKey: .resolvedPermission)
-        try container.encodeIfPresent(bundles, forKey: .bundles)
         try container.encodeIfPresent(backups, forKey: .backups)
         try container.encodeIfPresent(proxiesGenerated, forKey: .proxiesGenerated)
         try container.encodeIfPresent(proxiesFailed, forKey: .proxiesFailed)
         try container.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
+        try container.encodeIfPresent(bundles, forKey: .bundles)
         try container.encodeIfPresent(syncId, forKey: .syncId)
         try container.encodeIfPresent(displayName, forKey: .displayName)
         try container.encodeIfPresent(hasFiles, forKey: .hasFiles)
@@ -137,7 +136,5 @@ public struct Asset: Codable, Hashable {
         try container.encodeIfPresent(modified, forKey: .modified)
         try container.encodeIfPresent(_set, forKey: ._set)
     }
-
-
-
 }
+

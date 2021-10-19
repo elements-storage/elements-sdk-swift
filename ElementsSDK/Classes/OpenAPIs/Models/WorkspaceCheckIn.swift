@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct WorkspaceCheckIn: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct WorkspaceCheckIn: Codable, Hashable {
         self._protocol = _protocol
         self.address = address
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case mountpoint
         case _protocol = "protocol"
@@ -33,7 +36,5 @@ public struct WorkspaceCheckIn: Codable, Hashable {
         try container.encodeIfPresent(_protocol, forKey: ._protocol)
         try container.encodeIfPresent(address, forKey: .address)
     }
-
-
-
 }
+

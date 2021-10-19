@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct VolumeStatus: Codable, Hashable {
 
@@ -27,6 +29,7 @@ public struct VolumeStatus: Codable, Hashable {
         self.lizardfs = lizardfs
         self.beegfs = beegfs
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case online
         case sizeTotal = "size_total"
@@ -49,7 +52,5 @@ public struct VolumeStatus: Codable, Hashable {
         try container.encodeIfPresent(lizardfs, forKey: .lizardfs)
         try container.encodeIfPresent(beegfs, forKey: .beegfs)
     }
-
-
-
 }
+

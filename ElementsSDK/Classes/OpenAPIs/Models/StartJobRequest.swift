@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct StartJobRequest: Codable, Hashable {
 
@@ -18,6 +20,7 @@ public struct StartJobRequest: Codable, Hashable {
         self.variables = variables
         self.secret = secret
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case variables
         case secret
@@ -30,7 +33,5 @@ public struct StartJobRequest: Codable, Hashable {
         try container.encodeIfPresent(variables, forKey: .variables)
         try container.encodeIfPresent(secret, forKey: .secret)
     }
-
-
-
 }
+

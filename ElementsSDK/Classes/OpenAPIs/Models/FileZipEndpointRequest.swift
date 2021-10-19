@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct FileZipEndpointRequest: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct FileZipEndpointRequest: Codable, Hashable {
         self.path = path
         self.name = name
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case input
         case path
@@ -33,7 +36,5 @@ public struct FileZipEndpointRequest: Codable, Hashable {
         try container.encode(path, forKey: .path)
         try container.encode(name, forKey: .name)
     }
-
-
-
 }
+

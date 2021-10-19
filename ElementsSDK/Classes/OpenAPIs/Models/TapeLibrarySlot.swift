@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TapeLibrarySlot: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct TapeLibrarySlot: Codable, Hashable {
         self.origin = origin
         self.locked = locked
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case drive
         case status
@@ -41,7 +44,5 @@ public struct TapeLibrarySlot: Codable, Hashable {
         try container.encodeIfPresent(origin, forKey: .origin)
         try container.encodeIfPresent(locked, forKey: .locked)
     }
-
-
-
 }
+

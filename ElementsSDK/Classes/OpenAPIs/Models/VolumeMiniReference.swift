@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct VolumeMiniReference: Codable, Hashable {
 
@@ -36,6 +38,7 @@ public struct VolumeMiniReference: Codable, Hashable {
         self.visualTag = visualTag
         self.type = type
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -56,7 +59,5 @@ public struct VolumeMiniReference: Codable, Hashable {
         try container.encodeIfPresent(visualTag, forKey: .visualTag)
         try container.encodeIfPresent(type, forKey: .type)
     }
-
-
-
 }
+

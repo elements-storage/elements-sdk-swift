@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TestExternalTranscoderConnectionRequest: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct TestExternalTranscoderConnectionRequest: Codable, Hashable {
         self.type = type
         self.address = address
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case type
         case address
@@ -29,7 +32,5 @@ public struct TestExternalTranscoderConnectionRequest: Codable, Hashable {
         try container.encode(type, forKey: .type)
         try container.encode(address, forKey: .address)
     }
-
-
-
 }
+

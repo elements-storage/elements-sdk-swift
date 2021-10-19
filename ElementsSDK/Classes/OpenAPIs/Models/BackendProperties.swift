@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct BackendProperties: Codable, Hashable {
 
@@ -29,6 +31,7 @@ public struct BackendProperties: Codable, Hashable {
         self.supportsSharingSmbCustomOptions = supportsSharingSmbCustomOptions
         self.supportsSharingNfsPermissions = supportsSharingNfsPermissions
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case supportsSharingRwPermissionsPriority = "supports_sharing_rw_permissions_priority"
         case supportsSharingAfp = "supports_sharing_afp"
@@ -53,7 +56,5 @@ public struct BackendProperties: Codable, Hashable {
         try container.encode(supportsSharingSmbCustomOptions, forKey: .supportsSharingSmbCustomOptions)
         try container.encode(supportsSharingNfsPermissions, forKey: .supportsSharingNfsPermissions)
     }
-
-
-
 }
+

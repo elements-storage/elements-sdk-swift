@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Tape: Codable, Hashable {
 
@@ -50,6 +52,7 @@ public struct Tape: Codable, Hashable {
         self.lto = lto
         self.group = group
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case rootEntry = "root_entry"
@@ -90,7 +93,5 @@ public struct Tape: Codable, Hashable {
         try container.encodeIfPresent(lto, forKey: .lto)
         try container.encodeIfPresent(group, forKey: .group)
     }
-
-
-
 }
+

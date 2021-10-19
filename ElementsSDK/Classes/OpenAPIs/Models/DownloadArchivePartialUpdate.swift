@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct DownloadArchivePartialUpdate: Codable, Hashable {
 
@@ -29,6 +31,7 @@ public struct DownloadArchivePartialUpdate: Codable, Hashable {
         self.progressUnit = progressUnit
         self.user = user
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case taskInfo = "task_info"
@@ -49,7 +52,5 @@ public struct DownloadArchivePartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(progressUnit, forKey: .progressUnit)
         try container.encodeIfPresent(user, forKey: .user)
     }
-
-
-
 }
+

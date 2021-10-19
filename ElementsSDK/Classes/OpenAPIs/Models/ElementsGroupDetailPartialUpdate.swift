@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ElementsGroupDetailPartialUpdate: Codable, Hashable {
 
@@ -31,6 +33,7 @@ public struct ElementsGroupDetailPartialUpdate: Codable, Hashable {
         self.ancillaryPath = ancillaryPath
         self.ancillaryPathReadOnly = ancillaryPathReadOnly
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case permissions
         case members
@@ -57,7 +60,5 @@ public struct ElementsGroupDetailPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(ancillaryPath, forKey: .ancillaryPath)
         try container.encodeIfPresent(ancillaryPathReadOnly, forKey: .ancillaryPathReadOnly)
     }
-
-
-
 }
+

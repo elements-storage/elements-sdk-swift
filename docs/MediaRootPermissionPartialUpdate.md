@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **showSubclips** | **Bool** |  | [optional] 
 **showAiMetadata** | **Bool** |  | [optional] 
 **showMarkers** | **Bool** |  | [optional] 
+**showHistory** | **Bool** |  | [optional] 
 **root** | **Int** |  | [optional] 
 **isTemporaryForToken** | **Int** |  | [optional] 
 

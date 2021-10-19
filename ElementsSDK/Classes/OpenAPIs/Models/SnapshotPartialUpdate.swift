@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SnapshotPartialUpdate: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct SnapshotPartialUpdate: Codable, Hashable {
         self.workspace = workspace
         self.name = name
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case workspace
         case name
@@ -29,7 +32,5 @@ public struct SnapshotPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(workspace, forKey: .workspace)
         try container.encodeIfPresent(name, forKey: .name)
     }
-
-
-
 }
+

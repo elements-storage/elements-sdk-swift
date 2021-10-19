@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TaskType: Codable, Hashable {
 
@@ -45,6 +47,7 @@ public struct TaskType: Codable, Hashable {
         self.allowInJobs = allowInJobs
         self.newSinceVersion = newSinceVersion
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case type
         case displayName = "display_name"
@@ -85,7 +88,5 @@ public struct TaskType: Codable, Hashable {
         try container.encode(allowInJobs, forKey: .allowInJobs)
         try container.encode(newSinceVersion, forKey: .newSinceVersion)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ClickGallery: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct ClickGallery: Codable, Hashable {
         self.description = description
         self.presignedLoginUrl = presignedLoginUrl
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -37,7 +40,5 @@ public struct ClickGallery: Codable, Hashable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(presignedLoginUrl, forKey: .presignedLoginUrl)
     }
-
-
-
 }
+

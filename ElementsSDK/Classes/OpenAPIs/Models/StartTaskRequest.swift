@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct StartTaskRequest: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct StartTaskRequest: Codable, Hashable {
         self.parameters = parameters
         self.sync = sync
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case taskType = "task_type"
         case parameters
@@ -33,7 +36,5 @@ public struct StartTaskRequest: Codable, Hashable {
         try container.encode(parameters, forKey: .parameters)
         try container.encodeIfPresent(sync, forKey: .sync)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct AWSAccountPartialUpdate: Codable, Hashable {
 
@@ -45,6 +47,7 @@ public struct AWSAccountPartialUpdate: Codable, Hashable {
         self.endpointUrl = endpointUrl
         self.defaultRegion = defaultRegion
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case accessKeyId = "access_key_id"
@@ -63,7 +66,5 @@ public struct AWSAccountPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(endpointUrl, forKey: .endpointUrl)
         try container.encodeIfPresent(defaultRegion, forKey: .defaultRegion)
     }
-
-
-
 }
+

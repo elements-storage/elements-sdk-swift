@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct VolumeLizardFSStatus: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct VolumeLizardFSStatus: Codable, Hashable {
         self.nodes = nodes
         self.disks = disks
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case master
         case nodes
@@ -33,7 +36,5 @@ public struct VolumeLizardFSStatus: Codable, Hashable {
         try container.encode(nodes, forKey: .nodes)
         try container.encode(disks, forKey: .disks)
     }
-
-
-
 }
+

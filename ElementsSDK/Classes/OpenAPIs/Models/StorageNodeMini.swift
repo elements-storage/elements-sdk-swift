@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct StorageNodeMini: Codable, Hashable {
 
@@ -27,6 +29,7 @@ public struct StorageNodeMini: Codable, Hashable {
         self.address = address
         self.type = type
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -43,7 +46,5 @@ public struct StorageNodeMini: Codable, Hashable {
         try container.encodeIfPresent(address, forKey: .address)
         try container.encodeIfPresent(type, forKey: .type)
     }
-
-
-
 }
+

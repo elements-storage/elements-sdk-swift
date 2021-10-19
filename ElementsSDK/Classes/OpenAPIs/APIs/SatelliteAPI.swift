@@ -7,15 +7,19 @@
 
 import Foundation
 import PromiseKit
+#if canImport(AnyCodable)
+import AnyCodable
+#endif
 
 open class SatelliteAPI {
+
     /**
 
      - parameter id: (path) A unique integer value identifying this Satellite host. 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<RDCActivation>
      */
-    open class func activateSatelliteHost( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<RDCActivation> {
+    open class func activateSatelliteHost( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<RDCActivation> {
         let deferred = Promise<RDCActivation>.pending()
         activateSatelliteHostWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -38,24 +42,24 @@ open class SatelliteAPI {
      - returns: RequestBuilder<RDCActivation> 
      */
     open class func activateSatelliteHostWithRequestBuilder(id: Int) -> RequestBuilder<RDCActivation> {
-        var path = "/api/2/rdc/hosts/{id}/activate"
+        var localVariablePath = "/api/2/rdc/hosts/{id}/activate"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<RDCActivation>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<RDCActivation>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -63,7 +67,7 @@ open class SatelliteAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<RDCHost>
      */
-    open class func announceSatelliteHost(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<RDCHost> {
+    open class func announceSatelliteHost(apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<RDCHost> {
         let deferred = Promise<RDCHost>.pending()
         announceSatelliteHostWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -84,21 +88,21 @@ open class SatelliteAPI {
      - returns: RequestBuilder<RDCHost> 
      */
     open class func announceSatelliteHostWithRequestBuilder() -> RequestBuilder<RDCHost> {
-        let path = "/api/2/rdc/hosts/announce"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/rdc/hosts/announce"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<RDCHost>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<RDCHost>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -107,7 +111,7 @@ open class SatelliteAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<RDCSession>
      */
-    open class func createSatelliteSession( rDCSessionCreate: RDCSessionCreate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<RDCSession> {
+    open class func createSatelliteSession( rDCSessionCreate: RDCSessionCreate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<RDCSession> {
         let deferred = Promise<RDCSession>.pending()
         createSatelliteSessionWithRequestBuilder(rDCSessionCreate: rDCSessionCreate).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -130,21 +134,21 @@ open class SatelliteAPI {
      - returns: RequestBuilder<RDCSession> 
      */
     open class func createSatelliteSessionWithRequestBuilder(rDCSessionCreate: RDCSessionCreate) -> RequestBuilder<RDCSession> {
-        let path = "/api/2/rdc/sessions"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: rDCSessionCreate)
+        let localVariablePath = "/api/2/rdc/sessions"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: rDCSessionCreate)
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<RDCSession>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<RDCSession>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -153,7 +157,7 @@ open class SatelliteAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteSatelliteSession( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+    open class func deleteSatelliteSession( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
         deleteSatelliteSessionWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -176,24 +180,24 @@ open class SatelliteAPI {
      - returns: RequestBuilder<Void> 
      */
     open class func deleteSatelliteSessionWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
-        var path = "/api/2/rdc/sessions/{id}"
+        var localVariablePath = "/api/2/rdc/sessions/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "DELETE", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -204,7 +208,7 @@ open class SatelliteAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[RDCHost]>
      */
-    open class func getAllSatelliteHosts( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[RDCHost]> {
+    open class func getAllSatelliteHosts( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[RDCHost]> {
         let deferred = Promise<[RDCHost]>.pending()
         getAllSatelliteHostsWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -229,26 +233,26 @@ open class SatelliteAPI {
      - returns: RequestBuilder<[RDCHost]> 
      */
     open class func getAllSatelliteHostsWithRequestBuilder(ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[RDCHost]> {
-        let path = "/api/2/rdc/hosts"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/rdc/hosts"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        var urlComponents = URLComponents(string: URLString)
-        urlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "ordering": ordering?.encodeToJSON(),
             "limit": limit?.encodeToJSON(),
             "offset": offset?.encodeToJSON(),
         ])
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<[RDCHost]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[RDCHost]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -259,7 +263,7 @@ open class SatelliteAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[RDCSession]>
      */
-    open class func getAllSatelliteSessions( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[RDCSession]> {
+    open class func getAllSatelliteSessions( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[RDCSession]> {
         let deferred = Promise<[RDCSession]>.pending()
         getAllSatelliteSessionsWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -284,26 +288,26 @@ open class SatelliteAPI {
      - returns: RequestBuilder<[RDCSession]> 
      */
     open class func getAllSatelliteSessionsWithRequestBuilder(ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[RDCSession]> {
-        let path = "/api/2/rdc/sessions"
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        let localVariablePath = "/api/2/rdc/sessions"
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        var urlComponents = URLComponents(string: URLString)
-        urlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "ordering": ordering?.encodeToJSON(),
             "limit": limit?.encodeToJSON(),
             "offset": offset?.encodeToJSON(),
         ])
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<[RDCSession]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[RDCSession]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -312,7 +316,7 @@ open class SatelliteAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<RDCHost>
      */
-    open class func getSatelliteHost( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<RDCHost> {
+    open class func getSatelliteHost( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<RDCHost> {
         let deferred = Promise<RDCHost>.pending()
         getSatelliteHostWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -335,24 +339,24 @@ open class SatelliteAPI {
      - returns: RequestBuilder<RDCHost> 
      */
     open class func getSatelliteHostWithRequestBuilder(id: Int) -> RequestBuilder<RDCHost> {
-        var path = "/api/2/rdc/hosts/{id}"
+        var localVariablePath = "/api/2/rdc/hosts/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<RDCHost>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<RDCHost>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -361,7 +365,7 @@ open class SatelliteAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<RDCSession>
      */
-    open class func getSatelliteSession( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<RDCSession> {
+    open class func getSatelliteSession( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<RDCSession> {
         let deferred = Promise<RDCSession>.pending()
         getSatelliteSessionWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
             switch result {
@@ -384,24 +388,23 @@ open class SatelliteAPI {
      - returns: RequestBuilder<RDCSession> 
      */
     open class func getSatelliteSessionWithRequestBuilder(id: Int) -> RequestBuilder<RDCSession> {
-        var path = "/api/2/rdc/sessions/{id}"
+        var localVariablePath = "/api/2/rdc/sessions/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let URLString = ElementsSDKAPI.basePath + path
-        let parameters: [String: Any]? = nil
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
 
-        let urlComponents = URLComponents(string: URLString)
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
-        let nillableHeaders: [String: Any?] = [
+        let localVariableNillableHeaders: [String: Any?] = [
             :
         ]
 
-        let headerParameters = APIHelper.rejectNilHeaders(nillableHeaders)
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let requestBuilder: RequestBuilder<RDCSession>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<RDCSession>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "GET", URLString: (urlComponents?.string ?? URLString), parameters: parameters, headers: headerParameters)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
-
 }

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TranscoderProfile: Codable, Hashable {
 
@@ -31,6 +33,7 @@ public struct TranscoderProfile: Codable, Hashable {
         self.acceptsFps = acceptsFps
         self.acceptsResolution = acceptsResolution
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -57,7 +60,5 @@ public struct TranscoderProfile: Codable, Hashable {
         try container.encodeIfPresent(acceptsFps, forKey: .acceptsFps)
         try container.encodeIfPresent(acceptsResolution, forKey: .acceptsResolution)
     }
-
-
-
 }
+

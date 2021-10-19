@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Production: Codable, Hashable {
 
@@ -35,6 +37,7 @@ public struct Production: Codable, Hashable {
         self.template = template
         self.defaultGroup = defaultGroup
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case isSpecial = "is_special"
@@ -65,7 +68,5 @@ public struct Production: Codable, Hashable {
         try container.encodeIfPresent(template, forKey: .template)
         try container.encodeIfPresent(defaultGroup, forKey: .defaultGroup)
     }
-
-
-
 }
+

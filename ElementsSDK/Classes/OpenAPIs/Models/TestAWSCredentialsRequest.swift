@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TestAWSCredentialsRequest: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct TestAWSCredentialsRequest: Codable, Hashable {
         self.accessKeyId = accessKeyId
         self.secretAccessKey = secretAccessKey
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case accessKeyId = "access_key_id"
         case secretAccessKey = "secret_access_key"
@@ -29,7 +32,5 @@ public struct TestAWSCredentialsRequest: Codable, Hashable {
         try container.encode(accessKeyId, forKey: .accessKeyId)
         try container.encode(secretAccessKey, forKey: .secretAccessKey)
     }
-
-
-
 }
+

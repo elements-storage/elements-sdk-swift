@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct InlineResponse2002: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct InlineResponse2002: Codable, Hashable {
         self.previous = previous
         self.results = results
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case count
         case next
@@ -37,7 +40,5 @@ public struct InlineResponse2002: Codable, Hashable {
         try container.encodeIfPresent(previous, forKey: .previous)
         try container.encode(results, forKey: .results)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Event: Codable, Hashable {
 
@@ -25,6 +27,7 @@ public struct Event: Codable, Hashable {
         self.licenseComponent = licenseComponent
         self.argTypes = argTypes
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -45,7 +48,5 @@ public struct Event: Codable, Hashable {
         try container.encode(licenseComponent, forKey: .licenseComponent)
         try container.encodeIfPresent(argTypes, forKey: .argTypes)
     }
-
-
-
 }
+

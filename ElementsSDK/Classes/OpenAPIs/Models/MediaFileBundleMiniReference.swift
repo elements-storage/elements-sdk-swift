@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MediaFileBundleMiniReference: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct MediaFileBundleMiniReference: Codable, Hashable {
         self.location = location
         self.mainfile = mainfile
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case asset
@@ -41,7 +44,5 @@ public struct MediaFileBundleMiniReference: Codable, Hashable {
         try container.encodeIfPresent(location, forKey: .location)
         try container.encodeIfPresent(mainfile, forKey: .mainfile)
     }
-
-
-
 }
+

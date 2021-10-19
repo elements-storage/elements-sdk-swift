@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MediaRootPermissionPartialUpdate: Codable, Hashable {
 
@@ -30,10 +32,11 @@ public struct MediaRootPermissionPartialUpdate: Codable, Hashable {
     public var showSubclips: Bool?
     public var showAiMetadata: Bool?
     public var showMarkers: Bool?
+    public var showHistory: Bool?
     public var root: Int?
     public var isTemporaryForToken: Int?
 
-    public init(user: ElementsUserMiniReference? = nil, group: ElementsGroupReference? = nil, path: String? = nil, allowCreate: Bool? = nil, allowWriteFs: Bool? = nil, allowWriteDb: Bool? = nil, allowProxyDownload: Bool? = nil, allowOriginalDownload: Bool? = nil, allowUpload: Bool? = nil, allowSharing: Bool? = nil, allowDeleteFs: Bool? = nil, allowDeleteDb: Bool? = nil, showTags: Bool? = nil, showComments: Bool? = nil, showLocations: Bool? = nil, showCustomFields: Bool? = nil, showRatings: Bool? = nil, showSubclips: Bool? = nil, showAiMetadata: Bool? = nil, showMarkers: Bool? = nil, root: Int? = nil, isTemporaryForToken: Int? = nil) {
+    public init(user: ElementsUserMiniReference? = nil, group: ElementsGroupReference? = nil, path: String? = nil, allowCreate: Bool? = nil, allowWriteFs: Bool? = nil, allowWriteDb: Bool? = nil, allowProxyDownload: Bool? = nil, allowOriginalDownload: Bool? = nil, allowUpload: Bool? = nil, allowSharing: Bool? = nil, allowDeleteFs: Bool? = nil, allowDeleteDb: Bool? = nil, showTags: Bool? = nil, showComments: Bool? = nil, showLocations: Bool? = nil, showCustomFields: Bool? = nil, showRatings: Bool? = nil, showSubclips: Bool? = nil, showAiMetadata: Bool? = nil, showMarkers: Bool? = nil, showHistory: Bool? = nil, root: Int? = nil, isTemporaryForToken: Int? = nil) {
         self.user = user
         self.group = group
         self.path = path
@@ -54,9 +57,11 @@ public struct MediaRootPermissionPartialUpdate: Codable, Hashable {
         self.showSubclips = showSubclips
         self.showAiMetadata = showAiMetadata
         self.showMarkers = showMarkers
+        self.showHistory = showHistory
         self.root = root
         self.isTemporaryForToken = isTemporaryForToken
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case user
         case group
@@ -78,6 +83,7 @@ public struct MediaRootPermissionPartialUpdate: Codable, Hashable {
         case showSubclips = "show_subclips"
         case showAiMetadata = "show_ai_metadata"
         case showMarkers = "show_markers"
+        case showHistory = "show_history"
         case root
         case isTemporaryForToken = "is_temporary_for_token"
     }
@@ -106,10 +112,9 @@ public struct MediaRootPermissionPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(showSubclips, forKey: .showSubclips)
         try container.encodeIfPresent(showAiMetadata, forKey: .showAiMetadata)
         try container.encodeIfPresent(showMarkers, forKey: .showMarkers)
+        try container.encodeIfPresent(showHistory, forKey: .showHistory)
         try container.encodeIfPresent(root, forKey: .root)
         try container.encodeIfPresent(isTemporaryForToken, forKey: .isTemporaryForToken)
     }
-
-
-
 }
+

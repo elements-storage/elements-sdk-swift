@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ChangeOwnPasswordRequest: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct ChangeOwnPasswordRequest: Codable, Hashable {
         self.currentOtp = currentOtp
         self.password = password
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case currentPassword = "current_password"
         case currentOtp = "current_otp"
@@ -33,7 +36,5 @@ public struct ChangeOwnPasswordRequest: Codable, Hashable {
         try container.encodeIfPresent(currentOtp, forKey: .currentOtp)
         try container.encode(password, forKey: .password)
     }
-
-
-
 }
+

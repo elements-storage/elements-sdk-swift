@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Share: Codable, Hashable {
 
@@ -43,6 +45,7 @@ public struct Share: Codable, Hashable {
         self.rwAccessGroup = rwAccessGroup
         self.roAccessGroup = roAccessGroup
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case sharingNfsPermissions = "sharing_nfs_permissions"
@@ -81,7 +84,5 @@ public struct Share: Codable, Hashable {
         try container.encodeIfPresent(rwAccessGroup, forKey: .rwAccessGroup)
         try container.encodeIfPresent(roAccessGroup, forKey: .roAccessGroup)
     }
-
-
-
 }
+

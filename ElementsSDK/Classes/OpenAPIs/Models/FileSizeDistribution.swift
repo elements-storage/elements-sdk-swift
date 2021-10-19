@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct FileSizeDistribution: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct FileSizeDistribution: Codable, Hashable {
     public init(distribution: [FileSizeDistributionItem]) {
         self.distribution = distribution
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case distribution
     }
@@ -25,7 +28,5 @@ public struct FileSizeDistribution: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(distribution, forKey: .distribution)
     }
-
-
-
 }
+

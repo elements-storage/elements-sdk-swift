@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MediaUpdate: Codable, Hashable {
 
@@ -17,13 +19,13 @@ public struct MediaUpdate: Codable, Hashable {
     public var root: MediaRootMini?
     public var user: ElementsUserMini?
     public var customFieldsDiff: [String: String]
-    public var addedTags: [Tag]?
-    public var removedTags: [Tag]?
+    public var addedTags: [UnfilteredTag]?
+    public var removedTags: [UnfilteredTag]?
     public var type: String
     public var date: Date?
     public var rating: Int?
 
-    public init(id: Int? = nil, asset: AssetMini? = nil, comment: Comment? = nil, directory: MediaFile? = nil, root: MediaRootMini? = nil, user: ElementsUserMini? = nil, customFieldsDiff: [String: String], addedTags: [Tag]? = nil, removedTags: [Tag]? = nil, type: String, date: Date? = nil, rating: Int? = nil) {
+    public init(id: Int? = nil, asset: AssetMini? = nil, comment: Comment? = nil, directory: MediaFile? = nil, root: MediaRootMini? = nil, user: ElementsUserMini? = nil, customFieldsDiff: [String: String], addedTags: [UnfilteredTag]? = nil, removedTags: [UnfilteredTag]? = nil, type: String, date: Date? = nil, rating: Int? = nil) {
         self.id = id
         self.asset = asset
         self.comment = comment
@@ -37,6 +39,7 @@ public struct MediaUpdate: Codable, Hashable {
         self.date = date
         self.rating = rating
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case asset
@@ -69,7 +72,5 @@ public struct MediaUpdate: Codable, Hashable {
         try container.encodeIfPresent(date, forKey: .date)
         try container.encodeIfPresent(rating, forKey: .rating)
     }
-
-
-
 }
+

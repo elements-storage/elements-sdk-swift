@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct WorkflowTransitionRequest: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct WorkflowTransitionRequest: Codable, Hashable {
         self.root = root
         self.variables = variables
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case bundles
         case directories
@@ -41,7 +44,5 @@ public struct WorkflowTransitionRequest: Codable, Hashable {
         try container.encode(root, forKey: .root)
         try container.encodeIfPresent(variables, forKey: .variables)
     }
-
-
-
 }
+

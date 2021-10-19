@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TapeJobSource: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct TapeJobSource: Codable, Hashable {
         self.options = options
         self.include = include
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case path
         case options
@@ -33,7 +36,5 @@ public struct TapeJobSource: Codable, Hashable {
         try container.encodeIfPresent(options, forKey: .options)
         try container.encodeIfPresent(include, forKey: .include)
     }
-
-
-
 }
+

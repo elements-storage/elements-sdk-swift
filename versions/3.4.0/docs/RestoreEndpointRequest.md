@@ -1,0 +1,16 @@
+# RestoreEndpointRequest
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **String** |  | 
+**source** | [TapeJobSource] |  | 
+**exclude** | **[String]** |  | 
+**tape** | **String** |  | 
+**export** | **Bool** |  | [optional] 
+**startDate** | **Date** |  | 
+
+[[Back to Model list]](../#documentation-for-models) [[Back to API list]](../#documentation-for-api-endpoints) [[Back to README]](../)
+
+

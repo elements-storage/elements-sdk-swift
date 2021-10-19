@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct WorkstationPartialUpdate: Codable, Hashable {
 
@@ -33,6 +35,7 @@ public struct WorkstationPartialUpdate: Codable, Hashable {
         self.rdcClientPort = rdcClientPort
         self.rdcHostPort = rdcHostPort
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case rdcAllowUsers = "rdc_allow_users"
@@ -61,7 +64,5 @@ public struct WorkstationPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(rdcClientPort, forKey: .rdcClientPort)
         try container.encodeIfPresent(rdcHostPort, forKey: .rdcHostPort)
     }
-
-
-
 }
+

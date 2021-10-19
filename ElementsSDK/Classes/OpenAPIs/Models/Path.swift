@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Path: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct Path: Codable, Hashable {
     public init(path: String) {
         self.path = path
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case path
     }
@@ -25,7 +28,5 @@ public struct Path: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(path, forKey: .path)
     }
-
-
-
 }
+

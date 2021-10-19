@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MediaFileMini: Codable, Hashable {
 
@@ -41,6 +43,7 @@ public struct MediaFileMini: Codable, Hashable {
         self.size = size
         self.volume = volume
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -77,7 +80,5 @@ public struct MediaFileMini: Codable, Hashable {
         try container.encodeIfPresent(size, forKey: .size)
         try container.encodeIfPresent(volume, forKey: .volume)
     }
-
-
-
 }
+

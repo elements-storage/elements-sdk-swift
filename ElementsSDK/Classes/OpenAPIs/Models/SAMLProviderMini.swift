@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SAMLProviderMini: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct SAMLProviderMini: Codable, Hashable {
         self.name = name
         self.loginUrl = loginUrl
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -33,7 +36,5 @@ public struct SAMLProviderMini: Codable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(loginUrl, forKey: .loginUrl)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct EditorProject: Codable, Hashable {
 
@@ -25,6 +27,7 @@ public struct EditorProject: Codable, Hashable {
         self.format = format
         self.project = project
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case file
         case parent
@@ -45,7 +48,5 @@ public struct EditorProject: Codable, Hashable {
         try container.encodeIfPresent(format, forKey: .format)
         try container.encode(project, forKey: .project)
     }
-
-
-
 }
+

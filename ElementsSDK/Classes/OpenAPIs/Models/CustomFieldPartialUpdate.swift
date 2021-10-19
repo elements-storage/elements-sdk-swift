@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct CustomFieldPartialUpdate: Codable, Hashable {
 
@@ -15,7 +17,6 @@ public struct CustomFieldPartialUpdate: Codable, Hashable {
         case regex = "regex"
         case range = "range"
     }
-    public var labels: [String]?
     public var options: [String]?
     public var name: String?
     public var order: Int?
@@ -33,8 +34,7 @@ public struct CustomFieldPartialUpdate: Codable, Hashable {
     public var multipleResponse: Bool?
     public var helpText: String?
 
-    public init(labels: [String]? = nil, options: [String]? = nil, name: String? = nil, order: Int? = nil, type: String? = nil, useForUploads: Bool? = nil, requireToUpload: Bool? = nil, nonUserEditable: Bool? = nil, validation: Validation? = nil, regex: String? = nil, rangeMin: Int? = nil, rangeMax: Int? = nil, numberOfDigits: Int? = nil, metadataPrefill: String? = nil, highlightExpiration: Bool? = nil, multipleResponse: Bool? = nil, helpText: String? = nil) {
-        self.labels = labels
+    public init(options: [String]? = nil, name: String? = nil, order: Int? = nil, type: String? = nil, useForUploads: Bool? = nil, requireToUpload: Bool? = nil, nonUserEditable: Bool? = nil, validation: Validation? = nil, regex: String? = nil, rangeMin: Int? = nil, rangeMax: Int? = nil, numberOfDigits: Int? = nil, metadataPrefill: String? = nil, highlightExpiration: Bool? = nil, multipleResponse: Bool? = nil, helpText: String? = nil) {
         self.options = options
         self.name = name
         self.order = order
@@ -52,8 +52,8 @@ public struct CustomFieldPartialUpdate: Codable, Hashable {
         self.multipleResponse = multipleResponse
         self.helpText = helpText
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case labels
         case options
         case name
         case order
@@ -76,7 +76,6 @@ public struct CustomFieldPartialUpdate: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(labels, forKey: .labels)
         try container.encodeIfPresent(options, forKey: .options)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(order, forKey: .order)
@@ -94,7 +93,5 @@ public struct CustomFieldPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(multipleResponse, forKey: .multipleResponse)
         try container.encodeIfPresent(helpText, forKey: .helpText)
     }
-
-
-
 }
+

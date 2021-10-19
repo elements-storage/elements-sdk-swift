@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TaskInfo: Codable, Hashable {
 
@@ -65,6 +67,7 @@ public struct TaskInfo: Codable, Hashable {
         self.traceback = traceback
         self.schedule = schedule
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case displayName = "display_name"
@@ -115,7 +118,5 @@ public struct TaskInfo: Codable, Hashable {
         try container.encodeIfPresent(traceback, forKey: .traceback)
         try container.encodeIfPresent(schedule, forKey: .schedule)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct RDCHost: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct RDCHost: Codable, Hashable {
         self.occupied = occupied
         self.lastUpdated = lastUpdated
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case workstation
@@ -37,7 +40,5 @@ public struct RDCHost: Codable, Hashable {
         try container.encodeIfPresent(occupied, forKey: .occupied)
         try container.encodeIfPresent(lastUpdated, forKey: .lastUpdated)
     }
-
-
-
 }
+

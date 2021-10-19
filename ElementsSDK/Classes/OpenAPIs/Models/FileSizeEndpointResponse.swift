@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct FileSizeEndpointResponse: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct FileSizeEndpointResponse: Codable, Hashable {
     public init(totalSize: Int) {
         self.totalSize = totalSize
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case totalSize = "total_size"
     }
@@ -25,7 +28,5 @@ public struct FileSizeEndpointResponse: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(totalSize, forKey: .totalSize)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct BeeGFSNode: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct BeeGFSNode: Codable, Hashable {
         self.roles = roles
         self.addresses = addresses
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case node
         case host
@@ -37,7 +40,5 @@ public struct BeeGFSNode: Codable, Hashable {
         try container.encode(roles, forKey: .roles)
         try container.encode(addresses, forKey: .addresses)
     }
-
-
-
 }
+

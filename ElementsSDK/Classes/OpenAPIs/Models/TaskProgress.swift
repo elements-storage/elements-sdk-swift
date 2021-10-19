@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TaskProgress: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct TaskProgress: Codable, Hashable {
         self.current = current
         self.max = max
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case message
         case current
@@ -33,7 +36,5 @@ public struct TaskProgress: Codable, Hashable {
         try container.encodeIfPresent(current, forKey: .current)
         try container.encodeIfPresent(max, forKey: .max)
     }
-
-
-
 }
+

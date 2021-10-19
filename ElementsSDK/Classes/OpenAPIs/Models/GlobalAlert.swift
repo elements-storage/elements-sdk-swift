@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct GlobalAlert: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct GlobalAlert: Codable, Hashable {
     public init(text: String) {
         self.text = text
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case text
     }
@@ -25,7 +28,5 @@ public struct GlobalAlert: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(text, forKey: .text)
     }
-
-
-
 }
+

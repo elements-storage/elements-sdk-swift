@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct RegisterUploadMetadataEndpointRequest: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct RegisterUploadMetadataEndpointRequest: Codable, Hashable {
     public init(items: [MetadataItem]) {
         self.items = items
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case items
     }
@@ -25,7 +28,5 @@ public struct RegisterUploadMetadataEndpointRequest: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(items, forKey: .items)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct FSProperties: Codable, Hashable {
 
@@ -29,6 +31,7 @@ public struct FSProperties: Codable, Hashable {
         self.creatingDirectoryQuotaDestroysContent = creatingDirectoryQuotaDestroysContent
         self.removingDirectoryQuotaDestroysContent = removingDirectoryQuotaDestroysContent
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case supportsDirectoryQuotas = "supports_directory_quotas"
         case supportsSoftQuotas = "supports_soft_quotas"
@@ -53,7 +56,5 @@ public struct FSProperties: Codable, Hashable {
         try container.encode(creatingDirectoryQuotaDestroysContent, forKey: .creatingDirectoryQuotaDestroysContent)
         try container.encode(removingDirectoryQuotaDestroysContent, forKey: .removingDirectoryQuotaDestroysContent)
     }
-
-
-
 }
+

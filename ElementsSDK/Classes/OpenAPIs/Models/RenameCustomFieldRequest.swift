@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct RenameCustomFieldRequest: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct RenameCustomFieldRequest: Codable, Hashable {
     public init(name: String) {
         self.name = name
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
     }
@@ -25,7 +28,5 @@ public struct RenameCustomFieldRequest: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
     }
-
-
-
 }
+

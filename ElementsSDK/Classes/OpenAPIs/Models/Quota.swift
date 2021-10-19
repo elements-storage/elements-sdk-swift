@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Quota: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct Quota: Codable, Hashable {
         self.soft = soft
         self.hard = hard
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case current
         case soft
@@ -33,7 +36,5 @@ public struct Quota: Codable, Hashable {
         try container.encode(soft, forKey: .soft)
         try container.encode(hard, forKey: .hard)
     }
-
-
-
 }
+

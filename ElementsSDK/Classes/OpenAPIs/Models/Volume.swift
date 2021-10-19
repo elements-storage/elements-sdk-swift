@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Volume: Codable, Hashable {
 
@@ -56,6 +58,7 @@ public struct Volume: Codable, Hashable {
         self.backend = backend
         self.status = status
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -96,7 +99,5 @@ public struct Volume: Codable, Hashable {
         try container.encodeIfPresent(backend, forKey: .backend)
         try container.encodeIfPresent(status, forKey: .status)
     }
-
-
-
 }
+

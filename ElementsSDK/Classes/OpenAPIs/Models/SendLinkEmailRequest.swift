@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SendLinkEmailRequest: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct SendLinkEmailRequest: Codable, Hashable {
         self.subject = subject
         self.text = text
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case email
         case subject
@@ -33,7 +36,5 @@ public struct SendLinkEmailRequest: Codable, Hashable {
         try container.encodeIfPresent(subject, forKey: .subject)
         try container.encodeIfPresent(text, forKey: .text)
     }
-
-
-
 }
+

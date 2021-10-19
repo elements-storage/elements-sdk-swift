@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ElementsUserProfilePartialUpdate: Codable, Hashable {
 
@@ -29,6 +31,7 @@ public struct ElementsUserProfilePartialUpdate: Codable, Hashable {
         self.language = language
         self.fmBookmarks = fmBookmarks
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case avatar
         case defaultPage = "default_page"
@@ -47,7 +50,5 @@ public struct ElementsUserProfilePartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(language, forKey: .language)
         try container.encodeIfPresent(fmBookmarks, forKey: .fmBookmarks)
     }
-
-
-
 }
+

@@ -5,19 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Int** |  | [optional] [readonly] 
-**urls** | **[String: String]** |  | [optional] [readonly] 
 **proxies** | [Proxy] |  | [optional] [readonly] 
 **defaultProxy** | [**Proxy**](Proxy.md) |  | [optional] 
 **info** | **[String: String]** |  | [optional] [readonly] 
 **proxyInfo** | **[String: String]** |  | [optional] [readonly] 
 **customFields** | **[String: String]** |  | 
-**tags** | Set<TagReference> |  | 
+**tags** | **Set<Int>** |  | 
 **resolvedPermission** | [**MediaRootPermission**](MediaRootPermission.md) |  | [optional] 
-**bundles** | [[String: String]] |  | [optional] [readonly] 
 **backups** | **String** |  | [optional] [readonly] 
 **proxiesGenerated** | **Bool** |  | [optional] [readonly] 
 **proxiesFailed** | **Bool** |  | [optional] [readonly] 
 **modifiedBy** | [**ElementsUserMini**](ElementsUserMini.md) |  | [optional] 
+**bundles** | [MediaFileBundleMini] |  | [optional] [readonly] 
 **syncId** | **UUID** |  | [optional] [readonly] 
 **displayName** | **String** |  | [optional] [readonly] 
 **hasFiles** | **Bool** |  | [optional] [readonly] 

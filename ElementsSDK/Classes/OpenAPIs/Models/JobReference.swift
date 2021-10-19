@@ -6,12 +6,17 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct JobReference: Codable, Hashable {
 
+    public enum SpecialType: Int, Codable, CaseIterable {
+        case _2 = 2
+        case _3 = 3
+    }
     public enum InputType: String, Codable, CaseIterable {
-        case null = "null"
         case path = "path"
         case dir = "dir"
         case paths = "paths"
@@ -23,10 +28,10 @@ public struct JobReference: Codable, Hashable {
     public var allowUsers: Set<ElementsUserReference>?
     public var allowGroups: Set<ElementsGroupReference>?
     public var startable: Bool?
-    public var variableDefinitions: [String]?
+    public var variableDefinitions: [[String: String]]?
     public var mediaRoots: Set<Int>?
     public var webhookUrl: String?
-    public var specialType: Int?
+    public var specialType: SpecialType?
     public var name: String?
     public var enabled: Bool?
     public var allowOthersToStart: Bool?
@@ -38,7 +43,7 @@ public struct JobReference: Codable, Hashable {
     public var securityContext: Int?
     public var partOfWorkflowFor: Int?
 
-    public init(id: Int? = nil, subtasks: Set<SubtaskReference>? = nil, schedules: Set<ScheduleReference>? = nil, allowUsers: Set<ElementsUserReference>? = nil, allowGroups: Set<ElementsGroupReference>? = nil, startable: Bool? = nil, variableDefinitions: [String]? = nil, mediaRoots: Set<Int>? = nil, webhookUrl: String? = nil, specialType: Int? = nil, name: String? = nil, enabled: Bool? = nil, allowOthersToStart: Bool? = nil, allowClientToStart: Bool? = nil, showAsButton: Bool? = nil, inputType: InputType? = nil, hook: String? = nil, webhookSecret: String? = nil, securityContext: Int? = nil, partOfWorkflowFor: Int? = nil) {
+    public init(id: Int? = nil, subtasks: Set<SubtaskReference>? = nil, schedules: Set<ScheduleReference>? = nil, allowUsers: Set<ElementsUserReference>? = nil, allowGroups: Set<ElementsGroupReference>? = nil, startable: Bool? = nil, variableDefinitions: [[String: String]]? = nil, mediaRoots: Set<Int>? = nil, webhookUrl: String? = nil, specialType: SpecialType? = nil, name: String? = nil, enabled: Bool? = nil, allowOthersToStart: Bool? = nil, allowClientToStart: Bool? = nil, showAsButton: Bool? = nil, inputType: InputType? = nil, hook: String? = nil, webhookSecret: String? = nil, securityContext: Int? = nil, partOfWorkflowFor: Int? = nil) {
         self.id = id
         self.subtasks = subtasks
         self.schedules = schedules
@@ -60,6 +65,7 @@ public struct JobReference: Codable, Hashable {
         self.securityContext = securityContext
         self.partOfWorkflowFor = partOfWorkflowFor
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case subtasks
@@ -108,7 +114,5 @@ public struct JobReference: Codable, Hashable {
         try container.encodeIfPresent(securityContext, forKey: .securityContext)
         try container.encodeIfPresent(partOfWorkflowFor, forKey: .partOfWorkflowFor)
     }
-
-
-
 }
+

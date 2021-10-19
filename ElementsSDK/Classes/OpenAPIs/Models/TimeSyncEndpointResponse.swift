@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TimeSyncEndpointResponse: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct TimeSyncEndpointResponse: Codable, Hashable {
     public init(output: String) {
         self.output = output
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case output
     }
@@ -25,7 +28,5 @@ public struct TimeSyncEndpointResponse: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(output, forKey: .output)
     }
-
-
-
 }
+

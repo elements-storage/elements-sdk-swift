@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ElementsUserMiniReference: Codable, Hashable {
 
@@ -29,6 +31,7 @@ public struct ElementsUserMiniReference: Codable, Hashable {
         self.isCloud = isCloud
         self.username = username
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case avatar
@@ -53,7 +56,5 @@ public struct ElementsUserMiniReference: Codable, Hashable {
         try container.encodeIfPresent(isCloud, forKey: .isCloud)
         try container.encodeIfPresent(username, forKey: .username)
     }
-
-
-
 }
+

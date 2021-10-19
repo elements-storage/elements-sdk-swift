@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct CheckConnectivityEndpointResponse: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct CheckConnectivityEndpointResponse: Codable, Hashable {
         self.success = success
         self.errors = errors
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case success
         case errors
@@ -29,7 +32,5 @@ public struct CheckConnectivityEndpointResponse: Codable, Hashable {
         try container.encode(success, forKey: .success)
         try container.encode(errors, forKey: .errors)
     }
-
-
-
 }
+

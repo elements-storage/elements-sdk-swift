@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pathMappings** | **[String]** |  | [optional] 
 **name** | **String** |  | [optional] 
 **type** | **String** |  | [optional] 
 **address** | **String** |  | [optional] 

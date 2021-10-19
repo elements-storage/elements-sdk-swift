@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Snapshot: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct Snapshot: Codable, Hashable {
         self.name = name
         self.createdAt = createdAt
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case createdBy = "created_by"
@@ -41,7 +44,5 @@ public struct Snapshot: Codable, Hashable {
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(createdAt, forKey: .createdAt)
     }
-
-
-
 }
+

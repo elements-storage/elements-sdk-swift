@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct FilesystemTraceEndpointRequest: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct FilesystemTraceEndpointRequest: Codable, Hashable {
     public init(duration: Int) {
         self.duration = duration
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case duration
     }
@@ -25,7 +28,5 @@ public struct FilesystemTraceEndpointRequest: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(duration, forKey: .duration)
     }
-
-
-
 }
+

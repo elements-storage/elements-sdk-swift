@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct GeneratePasswordEndpointResponse: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct GeneratePasswordEndpointResponse: Codable, Hashable {
     public init(password: String) {
         self.password = password
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case password
     }
@@ -25,7 +28,5 @@ public struct GeneratePasswordEndpointResponse: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(password, forKey: .password)
     }
-
-
-
 }
+

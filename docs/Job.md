@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **allowUsers** | Set<ElementsUserReference> |  | [optional] 
 **allowGroups** | Set<ElementsGroupReference> |  | [optional] 
 **startable** | **Bool** |  | [optional] [readonly] 
-**variableDefinitions** | **[String]** |  | [optional] 
+**variableDefinitions** | [[String: String]] |  | [optional] 
 **mediaRoots** | **Set<Int>** |  | [optional] 
 **webhookUrl** | **String** |  | [optional] [readonly] 
 **specialType** | **Int** |  | [optional] 

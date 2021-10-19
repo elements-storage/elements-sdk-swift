@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct CustomFieldReference: Codable, Hashable {
 
@@ -54,6 +56,7 @@ public struct CustomFieldReference: Codable, Hashable {
         self.multipleResponse = multipleResponse
         self.helpText = helpText
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case labels
@@ -98,7 +101,5 @@ public struct CustomFieldReference: Codable, Hashable {
         try container.encodeIfPresent(multipleResponse, forKey: .multipleResponse)
         try container.encodeIfPresent(helpText, forKey: .helpText)
     }
-
-
-
 }
+

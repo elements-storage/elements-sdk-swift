@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct EnableTOTPRequest: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct EnableTOTPRequest: Codable, Hashable {
         self.key = key
         self.otp = otp
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case key
         case otp
@@ -29,7 +32,5 @@ public struct EnableTOTPRequest: Codable, Hashable {
         try container.encode(key, forKey: .key)
         try container.encode(otp, forKey: .otp)
     }
-
-
-
 }
+

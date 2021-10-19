@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct AuthLoginEndpointResponse: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct AuthLoginEndpointResponse: Codable, Hashable {
         self.redirect = redirect
         self.user = user
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case reason
         case detail
@@ -37,7 +40,5 @@ public struct AuthLoginEndpointResponse: Codable, Hashable {
         try container.encodeIfPresent(redirect, forKey: .redirect)
         try container.encodeIfPresent(user, forKey: .user)
     }
-
-
-
 }
+

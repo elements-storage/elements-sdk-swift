@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Comment: Codable, Hashable {
 
@@ -45,6 +47,7 @@ public struct Comment: Codable, Hashable {
         self.root = root
         self.parent = parent
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case assignee
@@ -85,7 +88,5 @@ public struct Comment: Codable, Hashable {
         try container.encodeIfPresent(root, forKey: .root)
         try container.encodeIfPresent(parent, forKey: .parent)
     }
-
-
-
 }
+

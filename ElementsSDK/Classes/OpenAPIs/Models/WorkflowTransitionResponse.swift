@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct WorkflowTransitionResponse: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct WorkflowTransitionResponse: Codable, Hashable {
     public init(tasks: [TaskInfo]) {
         self.tasks = tasks
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case tasks
     }
@@ -25,7 +28,5 @@ public struct WorkflowTransitionResponse: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(tasks, forKey: .tasks)
     }
-
-
-
 }
+

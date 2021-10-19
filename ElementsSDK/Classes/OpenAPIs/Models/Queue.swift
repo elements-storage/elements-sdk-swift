@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Queue: Codable, Hashable {
 
@@ -27,6 +29,7 @@ public struct Queue: Codable, Hashable {
         self.node = node
         self.volume = volume
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case group
@@ -49,7 +52,5 @@ public struct Queue: Codable, Hashable {
         try container.encodeIfPresent(node, forKey: .node)
         try container.encodeIfPresent(volume, forKey: .volume)
     }
-
-
-
 }
+

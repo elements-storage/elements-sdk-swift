@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct AssetCloudLink: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct AssetCloudLink: Codable, Hashable {
         self.createdAt = createdAt
         self.asset = asset
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case connection
@@ -41,7 +44,5 @@ public struct AssetCloudLink: Codable, Hashable {
         try container.encodeIfPresent(createdAt, forKey: .createdAt)
         try container.encode(asset, forKey: .asset)
     }
-
-
-
 }
+

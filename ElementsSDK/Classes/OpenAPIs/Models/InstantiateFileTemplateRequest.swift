@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct InstantiateFileTemplateRequest: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct InstantiateFileTemplateRequest: Codable, Hashable {
         self.name = name
         self.customField = customField
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case parent
         case name
@@ -33,7 +36,5 @@ public struct InstantiateFileTemplateRequest: Codable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(customField, forKey: .customField)
     }
-
-
-
 }
+

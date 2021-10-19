@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct LDAPServerReference: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct LDAPServerReference: Codable, Hashable {
         self.winbindSeparator = winbindSeparator
         self.ntDomain = ntDomain
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -37,7 +40,5 @@ public struct LDAPServerReference: Codable, Hashable {
         try container.encodeIfPresent(winbindSeparator, forKey: .winbindSeparator)
         try container.encodeIfPresent(ntDomain, forKey: .ntDomain)
     }
-
-
-
 }
+

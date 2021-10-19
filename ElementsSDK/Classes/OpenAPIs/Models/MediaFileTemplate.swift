@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MediaFileTemplate: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct MediaFileTemplate: Codable, Hashable {
         self.file = file
         self.name = name
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case file
@@ -33,7 +36,5 @@ public struct MediaFileTemplate: Codable, Hashable {
         try container.encode(file, forKey: .file)
         try container.encode(name, forKey: .name)
     }
-
-
-
 }
+

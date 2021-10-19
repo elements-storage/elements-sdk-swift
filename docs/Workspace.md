@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Int** |  | [optional] [readonly] 
-**production** | [**ProductionReference**](ProductionReference.md) |  | 
-**volume** | [**VolumeReference**](VolumeReference.md) |  | [optional] 
+**production** | [**ProductionMiniReference**](ProductionMiniReference.md) |  | 
+**volume** | [**VolumeMiniReference**](VolumeMiniReference.md) |  | [optional] 
 **volumePath** | **String** |  | [optional] [readonly] 
 **path** | **String** |  | [optional] [readonly] 
 **sharingNfsPermissions** | **[String]** |  | [optional] 
@@ -19,7 +19,6 @@ Name | Type | Description | Notes
 **bookmarked** | **Bool** |  | [optional] [readonly] 
 **resolvedPermissions** | [WorkspaceResolvedPermission] |  | [optional] [readonly] 
 **resolvedReadOnly** | **Bool** |  | [optional] [readonly] 
-**recycleBinPath** | **String** |  | [optional] [readonly] 
 **name** | **String** |  | [optional] 
 **directory** | **String** |  | [optional] [readonly] 
 **description** | **String** |  | [optional] 
@@ -39,6 +38,7 @@ Name | Type | Description | Notes
 **sharingRequireLogin** | **Bool** |  | [optional] 
 **sharingReadOnly** | **Bool** |  | [optional] 
 **sharingAllowExecute** | **Bool** |  | [optional] 
+**enableQuota** | **Bool** |  | [optional] 
 **quotaSizeHard** | **Int** |  | [optional] 
 **quotaSizeSoft** | **Int** |  | [optional] 
 **affinity** | **String** |  | [optional] 

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct LocateResult: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct LocateResult: Codable, Hashable {
         self.workspace = workspace
         self.workspaceRelativePath = workspaceRelativePath
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case path
         case workspace
@@ -33,7 +36,5 @@ public struct LocateResult: Codable, Hashable {
         try container.encodeIfPresent(workspace, forKey: .workspace)
         try container.encodeIfPresent(workspaceRelativePath, forKey: .workspaceRelativePath)
     }
-
-
-
 }
+

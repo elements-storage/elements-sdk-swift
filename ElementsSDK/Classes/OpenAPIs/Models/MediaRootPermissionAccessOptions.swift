@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MediaRootPermissionAccessOptions: Codable, Hashable {
 
@@ -18,6 +20,7 @@ public struct MediaRootPermissionAccessOptions: Codable, Hashable {
     public var showSubclips: Bool?
     public var showAiMetadata: Bool?
     public var showMarkers: Bool?
+    public var showHistory: Bool?
     public var allowCreate: Bool?
     public var allowWriteFs: Bool?
     public var allowWriteDb: Bool?
@@ -28,7 +31,7 @@ public struct MediaRootPermissionAccessOptions: Codable, Hashable {
     public var allowDeleteFs: Bool?
     public var allowDeleteDb: Bool?
 
-    public init(showTags: Bool? = nil, showComments: Bool? = nil, showLocations: Bool? = nil, showCustomFields: Bool? = nil, showRatings: Bool? = nil, showSubclips: Bool? = nil, showAiMetadata: Bool? = nil, showMarkers: Bool? = nil, allowCreate: Bool? = nil, allowWriteFs: Bool? = nil, allowWriteDb: Bool? = nil, allowProxyDownload: Bool? = nil, allowOriginalDownload: Bool? = nil, allowUpload: Bool? = nil, allowSharing: Bool? = nil, allowDeleteFs: Bool? = nil, allowDeleteDb: Bool? = nil) {
+    public init(showTags: Bool? = nil, showComments: Bool? = nil, showLocations: Bool? = nil, showCustomFields: Bool? = nil, showRatings: Bool? = nil, showSubclips: Bool? = nil, showAiMetadata: Bool? = nil, showMarkers: Bool? = nil, showHistory: Bool? = nil, allowCreate: Bool? = nil, allowWriteFs: Bool? = nil, allowWriteDb: Bool? = nil, allowProxyDownload: Bool? = nil, allowOriginalDownload: Bool? = nil, allowUpload: Bool? = nil, allowSharing: Bool? = nil, allowDeleteFs: Bool? = nil, allowDeleteDb: Bool? = nil) {
         self.showTags = showTags
         self.showComments = showComments
         self.showLocations = showLocations
@@ -37,6 +40,7 @@ public struct MediaRootPermissionAccessOptions: Codable, Hashable {
         self.showSubclips = showSubclips
         self.showAiMetadata = showAiMetadata
         self.showMarkers = showMarkers
+        self.showHistory = showHistory
         self.allowCreate = allowCreate
         self.allowWriteFs = allowWriteFs
         self.allowWriteDb = allowWriteDb
@@ -47,6 +51,7 @@ public struct MediaRootPermissionAccessOptions: Codable, Hashable {
         self.allowDeleteFs = allowDeleteFs
         self.allowDeleteDb = allowDeleteDb
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case showTags = "show_tags"
         case showComments = "show_comments"
@@ -56,6 +61,7 @@ public struct MediaRootPermissionAccessOptions: Codable, Hashable {
         case showSubclips = "show_subclips"
         case showAiMetadata = "show_ai_metadata"
         case showMarkers = "show_markers"
+        case showHistory = "show_history"
         case allowCreate = "allow_create"
         case allowWriteFs = "allow_write_fs"
         case allowWriteDb = "allow_write_db"
@@ -79,6 +85,7 @@ public struct MediaRootPermissionAccessOptions: Codable, Hashable {
         try container.encodeIfPresent(showSubclips, forKey: .showSubclips)
         try container.encodeIfPresent(showAiMetadata, forKey: .showAiMetadata)
         try container.encodeIfPresent(showMarkers, forKey: .showMarkers)
+        try container.encodeIfPresent(showHistory, forKey: .showHistory)
         try container.encodeIfPresent(allowCreate, forKey: .allowCreate)
         try container.encodeIfPresent(allowWriteFs, forKey: .allowWriteFs)
         try container.encodeIfPresent(allowWriteDb, forKey: .allowWriteDb)
@@ -89,7 +96,5 @@ public struct MediaRootPermissionAccessOptions: Codable, Hashable {
         try container.encodeIfPresent(allowDeleteFs, forKey: .allowDeleteFs)
         try container.encodeIfPresent(allowDeleteDb, forKey: .allowDeleteDb)
     }
-
-
-
 }
+

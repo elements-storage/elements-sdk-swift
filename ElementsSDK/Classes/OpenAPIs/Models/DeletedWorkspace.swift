@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct DeletedWorkspace: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct DeletedWorkspace: Codable, Hashable {
         self.name = name
         self.path = path
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case path
@@ -29,7 +32,5 @@ public struct DeletedWorkspace: Codable, Hashable {
         try container.encode(name, forKey: .name)
         try container.encode(path, forKey: .path)
     }
-
-
-
 }
+

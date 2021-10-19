@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Marker: Codable, Hashable {
 
@@ -37,6 +39,7 @@ public struct Marker: Codable, Hashable {
         self.comment = comment
         self.veritoneMetadata = veritoneMetadata
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case veritoneMetadataParser = "veritone_metadata_parser"
@@ -69,7 +72,5 @@ public struct Marker: Codable, Hashable {
         try container.encodeIfPresent(comment, forKey: .comment)
         try container.encodeIfPresent(veritoneMetadata, forKey: .veritoneMetadata)
     }
-
-
-
 }
+

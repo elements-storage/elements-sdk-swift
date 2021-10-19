@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct FileCopyEndpointRequest: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct FileCopyEndpointRequest: Codable, Hashable {
         self.hardlink = hardlink
         self.sync = sync
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case input
         case destination
@@ -37,7 +40,5 @@ public struct FileCopyEndpointRequest: Codable, Hashable {
         try container.encodeIfPresent(hardlink, forKey: .hardlink)
         try container.encodeIfPresent(sync, forKey: .sync)
     }
-
-
-
 }
+

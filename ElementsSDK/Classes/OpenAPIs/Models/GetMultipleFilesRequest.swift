@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct GetMultipleFilesRequest: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct GetMultipleFilesRequest: Codable, Hashable {
     public init(files: [Int]) {
         self.files = files
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case files
     }
@@ -25,7 +28,5 @@ public struct GetMultipleFilesRequest: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(files, forKey: .files)
     }
-
-
-
 }
+

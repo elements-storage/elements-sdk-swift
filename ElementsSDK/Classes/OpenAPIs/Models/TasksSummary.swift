@@ -6,19 +6,25 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TasksSummary: Codable, Hashable {
 
     public var running: [TaskInfo]
+    public var recentFinished: [TaskInfo]
     public var pendingCount: Int
 
-    public init(running: [TaskInfo], pendingCount: Int) {
+    public init(running: [TaskInfo], recentFinished: [TaskInfo], pendingCount: Int) {
         self.running = running
+        self.recentFinished = recentFinished
         self.pendingCount = pendingCount
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case running
+        case recentFinished = "recent_finished"
         case pendingCount = "pending_count"
     }
 
@@ -27,9 +33,8 @@ public struct TasksSummary: Codable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(running, forKey: .running)
+        try container.encode(recentFinished, forKey: .recentFinished)
         try container.encode(pendingCount, forKey: .pendingCount)
     }
-
-
-
 }
+

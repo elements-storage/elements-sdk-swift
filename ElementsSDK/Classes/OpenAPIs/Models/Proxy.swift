@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Proxy: Codable, Hashable {
 
@@ -35,6 +37,7 @@ public struct Proxy: Codable, Hashable {
         self.variantConfig = variantConfig
         self.asset = asset
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case urls
@@ -65,7 +68,5 @@ public struct Proxy: Codable, Hashable {
         try container.encodeIfPresent(variantConfig, forKey: .variantConfig)
         try container.encode(asset, forKey: .asset)
     }
-
-
-
 }
+

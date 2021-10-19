@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct BasicFile: Codable, Hashable {
 
@@ -25,6 +27,7 @@ public struct BasicFile: Codable, Hashable {
         self.isDir = isDir
         self.files = files
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case path
         case name
@@ -45,7 +48,5 @@ public struct BasicFile: Codable, Hashable {
         try container.encodeIfPresent(isDir, forKey: .isDir)
         try container.encodeIfPresent(files, forKey: .files)
     }
-
-
-
 }
+

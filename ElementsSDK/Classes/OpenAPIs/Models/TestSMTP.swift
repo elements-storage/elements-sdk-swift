@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TestSMTP: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct TestSMTP: Codable, Hashable {
     public init(email: String) {
         self.email = email
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case email
     }
@@ -25,7 +28,5 @@ public struct TestSMTP: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(email, forKey: .email)
     }
-
-
-
 }
+

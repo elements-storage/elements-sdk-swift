@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct AddAssetsToClickGallery: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct AddAssetsToClickGallery: Codable, Hashable {
     public init(assets: [String]) {
         self.assets = assets
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case assets
     }
@@ -25,7 +28,5 @@ public struct AddAssetsToClickGallery: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(assets, forKey: .assets)
     }
-
-
-
 }
+

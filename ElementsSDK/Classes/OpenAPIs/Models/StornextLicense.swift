@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct StornextLicense: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct StornextLicense: Codable, Hashable {
     public init(license: String) {
         self.license = license
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case license
     }
@@ -25,7 +28,5 @@ public struct StornextLicense: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(license, forKey: .license)
     }
-
-
-
 }
+

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **schedules** | Set<ScheduleReference> |  | [optional] 
 **allowUsers** | Set<ElementsUserReference> |  | [optional] 
 **allowGroups** | Set<ElementsGroupReference> |  | [optional] 
-**variableDefinitions** | **[String]** |  | [optional] 
+**variableDefinitions** | [[String: String]] |  | [optional] 
 **mediaRoots** | **Set<Int>** |  | [optional] 
 **specialType** | **Int** |  | [optional] 
 **name** | **String** |  | [optional] 

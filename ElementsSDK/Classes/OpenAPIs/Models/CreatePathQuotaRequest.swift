@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct CreatePathQuotaRequest: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct CreatePathQuotaRequest: Codable, Hashable {
     public init(forceDestroyContent: Bool? = nil) {
         self.forceDestroyContent = forceDestroyContent
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case forceDestroyContent = "force_destroy_content"
     }
@@ -25,7 +28,5 @@ public struct CreatePathQuotaRequest: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(forceDestroyContent, forKey: .forceDestroyContent)
     }
-
-
-
 }
+

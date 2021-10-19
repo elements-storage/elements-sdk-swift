@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ClickLinkUser: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct ClickLinkUser: Codable, Hashable {
         self.email = email
         self.displayName = displayName
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case username
@@ -37,7 +40,5 @@ public struct ClickLinkUser: Codable, Hashable {
         try container.encode(email, forKey: .email)
         try container.encode(displayName, forKey: .displayName)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ImpersonationEndpointRequest: Codable, Hashable {
 
@@ -15,6 +17,7 @@ public struct ImpersonationEndpointRequest: Codable, Hashable {
     public init(user: Int) {
         self.user = user
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case user
     }
@@ -25,7 +28,5 @@ public struct ImpersonationEndpointRequest: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(user, forKey: .user)
     }
-
-
-
 }
+

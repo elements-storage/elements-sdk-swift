@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Ipmi: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct Ipmi: Codable, Hashable {
         self.netmask = netmask
         self.gateway = gateway
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case ip
         case netmask
@@ -33,7 +36,5 @@ public struct Ipmi: Codable, Hashable {
         try container.encode(netmask, forKey: .netmask)
         try container.encode(gateway, forKey: .gateway)
     }
-
-
-
 }
+

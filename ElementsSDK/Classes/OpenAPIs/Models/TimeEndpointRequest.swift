@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct TimeEndpointRequest: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct TimeEndpointRequest: Codable, Hashable {
         self.time = time
         self.timezone = timezone
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case time
         case timezone
@@ -29,7 +32,5 @@ public struct TimeEndpointRequest: Codable, Hashable {
         try container.encode(time, forKey: .time)
         try container.encode(timezone, forKey: .timezone)
     }
-
-
-
 }
+

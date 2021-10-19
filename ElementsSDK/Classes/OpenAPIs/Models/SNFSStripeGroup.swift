@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SNFSStripeGroup: Codable, Hashable {
 
@@ -25,6 +27,7 @@ public struct SNFSStripeGroup: Codable, Hashable {
         self.sizeUsed = sizeUsed
         self.sizeFree = sizeFree
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case statusTags = "status_tags"
@@ -45,7 +48,5 @@ public struct SNFSStripeGroup: Codable, Hashable {
         try container.encodeIfPresent(sizeUsed, forKey: .sizeUsed)
         try container.encodeIfPresent(sizeFree, forKey: .sizeFree)
     }
-
-
-
 }
+

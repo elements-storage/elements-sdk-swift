@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct MemberPreview: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct MemberPreview: Codable, Hashable {
         self.avatar = avatar
         self.email = email
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case avatar
@@ -33,7 +36,5 @@ public struct MemberPreview: Codable, Hashable {
         try container.encodeIfPresent(avatar, forKey: .avatar)
         try container.encodeIfPresent(email, forKey: .email)
     }
-
-
-
 }
+

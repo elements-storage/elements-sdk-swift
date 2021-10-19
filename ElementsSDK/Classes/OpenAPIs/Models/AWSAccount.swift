@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct AWSAccount: Codable, Hashable {
 
@@ -47,6 +49,7 @@ public struct AWSAccount: Codable, Hashable {
         self.endpointUrl = endpointUrl
         self.defaultRegion = defaultRegion
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
@@ -67,7 +70,5 @@ public struct AWSAccount: Codable, Hashable {
         try container.encodeIfPresent(endpointUrl, forKey: .endpointUrl)
         try container.encodeIfPresent(defaultRegion, forKey: .defaultRegion)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct LDAPServerUser: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct LDAPServerUser: Codable, Hashable {
         self.username = username
         self.mail = mail
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case dn
         case name
@@ -37,7 +40,5 @@ public struct LDAPServerUser: Codable, Hashable {
         try container.encode(username, forKey: .username)
         try container.encode(mail, forKey: .mail)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ShareToHomeWorkspaceEndpointRequest: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct ShareToHomeWorkspaceEndpointRequest: Codable, Hashable {
         self.user = user
         self.name = name
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case paths
         case bundles
@@ -37,7 +40,5 @@ public struct ShareToHomeWorkspaceEndpointRequest: Codable, Hashable {
         try container.encode(user, forKey: .user)
         try container.encode(name, forKey: .name)
     }
-
-
-
 }
+

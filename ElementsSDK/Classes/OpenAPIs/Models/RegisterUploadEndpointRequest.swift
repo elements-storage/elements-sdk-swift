@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct RegisterUploadEndpointRequest: Codable, Hashable {
 
@@ -17,6 +19,7 @@ public struct RegisterUploadEndpointRequest: Codable, Hashable {
         self.uploadId = uploadId
         self.path = path
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case uploadId = "upload_id"
         case path
@@ -29,7 +32,5 @@ public struct RegisterUploadEndpointRequest: Codable, Hashable {
         try container.encode(uploadId, forKey: .uploadId)
         try container.encode(path, forKey: .path)
     }
-
-
-
 }
+

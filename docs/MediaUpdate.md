@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **root** | [**MediaRootMini**](MediaRootMini.md) |  | [optional] 
 **user** | [**ElementsUserMini**](ElementsUserMini.md) |  | [optional] 
 **customFieldsDiff** | **[String: String]** |  | 
-**addedTags** | [Tag] |  | [optional] [readonly] 
-**removedTags** | [Tag] |  | [optional] [readonly] 
+**addedTags** | [UnfilteredTag] |  | [optional] [readonly] 
+**removedTags** | [UnfilteredTag] |  | [optional] [readonly] 
 **type** | **String** |  | 
 **date** | **Date** |  | [optional] [readonly] 
 **rating** | **Int** |  | [optional] 

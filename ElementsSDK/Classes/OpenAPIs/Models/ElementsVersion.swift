@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct ElementsVersion: Codable, Hashable {
 
@@ -21,6 +23,7 @@ public struct ElementsVersion: Codable, Hashable {
         self.patchCount = patchCount
         self.patchCommitCount = patchCommitCount
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case release
         case branch
@@ -37,7 +40,5 @@ public struct ElementsVersion: Codable, Hashable {
         try container.encode(patchCount, forKey: .patchCount)
         try container.encode(patchCommitCount, forKey: .patchCommitCount)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct RenderEndpointRequest: Codable, Hashable {
 
@@ -19,6 +21,7 @@ public struct RenderEndpointRequest: Codable, Hashable {
         self.project = project
         self.options = options
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case sequence
         case project
@@ -33,7 +36,5 @@ public struct RenderEndpointRequest: Codable, Hashable {
         try container.encode(project, forKey: .project)
         try container.encode(options, forKey: .options)
     }
-
-
-
 }
+

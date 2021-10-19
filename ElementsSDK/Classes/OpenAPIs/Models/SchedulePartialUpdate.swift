@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct SchedulePartialUpdate: Codable, Hashable {
 
@@ -46,6 +48,7 @@ public struct SchedulePartialUpdate: Codable, Hashable {
         self.crontabMonthOfYear = crontabMonthOfYear
         self.job = job
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case variables
         case type
@@ -78,7 +81,5 @@ public struct SchedulePartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(crontabMonthOfYear, forKey: .crontabMonthOfYear)
         try container.encodeIfPresent(job, forKey: .job)
     }
-
-
-
 }
+

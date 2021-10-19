@@ -6,15 +6,17 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct Workstation: Codable, Hashable {
 
     public var id: String
-    public var clientSessions: [ClientSession]?
     public var displayName: String?
     public var rdcAllowUsers: Set<ElementsUserReference>?
     public var rdcAllowGroups: Set<ElementsGroupReference>?
+    public var clientSessions: [ClientSession]?
     public var name: String?
     public var hostname: String
     public var rdcLastUsed: Date?
@@ -22,12 +24,12 @@ public struct Workstation: Codable, Hashable {
     public var rdcClientPort: Int?
     public var rdcHostPort: Int?
 
-    public init(id: String, clientSessions: [ClientSession]? = nil, displayName: String? = nil, rdcAllowUsers: Set<ElementsUserReference>? = nil, rdcAllowGroups: Set<ElementsGroupReference>? = nil, name: String? = nil, hostname: String, rdcLastUsed: Date? = nil, rdcDisableUpnp: Bool? = nil, rdcClientPort: Int? = nil, rdcHostPort: Int? = nil) {
+    public init(id: String, displayName: String? = nil, rdcAllowUsers: Set<ElementsUserReference>? = nil, rdcAllowGroups: Set<ElementsGroupReference>? = nil, clientSessions: [ClientSession]? = nil, name: String? = nil, hostname: String, rdcLastUsed: Date? = nil, rdcDisableUpnp: Bool? = nil, rdcClientPort: Int? = nil, rdcHostPort: Int? = nil) {
         self.id = id
-        self.clientSessions = clientSessions
         self.displayName = displayName
         self.rdcAllowUsers = rdcAllowUsers
         self.rdcAllowGroups = rdcAllowGroups
+        self.clientSessions = clientSessions
         self.name = name
         self.hostname = hostname
         self.rdcLastUsed = rdcLastUsed
@@ -35,12 +37,13 @@ public struct Workstation: Codable, Hashable {
         self.rdcClientPort = rdcClientPort
         self.rdcHostPort = rdcHostPort
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
-        case clientSessions = "client_sessions"
         case displayName = "display_name"
         case rdcAllowUsers = "rdc_allow_users"
         case rdcAllowGroups = "rdc_allow_groups"
+        case clientSessions = "client_sessions"
         case name
         case hostname
         case rdcLastUsed = "rdc_last_used"
@@ -54,10 +57,10 @@ public struct Workstation: Codable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
-        try container.encodeIfPresent(clientSessions, forKey: .clientSessions)
         try container.encodeIfPresent(displayName, forKey: .displayName)
         try container.encodeIfPresent(rdcAllowUsers, forKey: .rdcAllowUsers)
         try container.encodeIfPresent(rdcAllowGroups, forKey: .rdcAllowGroups)
+        try container.encodeIfPresent(clientSessions, forKey: .clientSessions)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encode(hostname, forKey: .hostname)
         try container.encodeIfPresent(rdcLastUsed, forKey: .rdcLastUsed)
@@ -65,7 +68,5 @@ public struct Workstation: Codable, Hashable {
         try container.encodeIfPresent(rdcClientPort, forKey: .rdcClientPort)
         try container.encodeIfPresent(rdcHostPort, forKey: .rdcHostPort)
     }
-
-
-
 }
+

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct AlertPartialUpdate: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct AlertPartialUpdate: Codable, Hashable {
         self.isOpen = isOpen
         self.closedAt = closedAt
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case message
@@ -41,7 +44,5 @@ public struct AlertPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(isOpen, forKey: .isOpen)
         try container.encodeIfPresent(closedAt, forKey: .closedAt)
     }
-
-
-
 }
+

@@ -6,10 +6,13 @@
 
 import Foundation
 
-open class ElementsSDKAPI {
+@available(*, deprecated, renamed: "ElementsSDK")
+public typealias ElementsSDKAPI = ElementsSDK
+
+open class ElementsSDK {
     public static var basePath = "https://elements.local"
-    public static var credential: URLCredential?
     public static var customHeaders: [String: String] = [:]
+    public static var credential: URLCredential?
     public static var requestBuilderFactory: RequestBuilderFactory = URLSessionRequestBuilderFactory()
     public static var apiResponseQueue: DispatchQueue = .main
 }
@@ -32,7 +35,7 @@ open class RequestBuilder<T> {
         self.parameters = parameters
         self.headers = headers
 
-        addHeaders(ElementsSDKAPI.customHeaders)
+        addHeaders(ElementsSDK.customHeaders)
     }
 
     open func addHeaders(_ aHeaders: [String: String]) {
@@ -41,7 +44,7 @@ open class RequestBuilder<T> {
         }
     }
 
-    open func execute(_ apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<Response<T>, Error>) -> Void) { }
+    open func execute(_ apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue, _ completion: @escaping (_ result: Swift.Result<Response<T>, Error>) -> Void) { }
 
     public func addHeader(name: String, value: String) -> Self {
         if !value.isEmpty {
@@ -51,7 +54,7 @@ open class RequestBuilder<T> {
     }
 
     open func addCredential() -> Self {
-        credential = ElementsSDKAPI.credential
+        credential = ElementsSDK.credential
         return self
     }
 }

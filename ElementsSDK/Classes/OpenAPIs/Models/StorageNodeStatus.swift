@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(AnyCodable)
 import AnyCodable
+#endif
 
 public struct StorageNodeStatus: Codable, Hashable {
 
@@ -23,6 +25,7 @@ public struct StorageNodeStatus: Codable, Hashable {
         self.haStatus = haStatus
         self.haIps = haIps
     }
+
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case online
         case report
@@ -41,7 +44,5 @@ public struct StorageNodeStatus: Codable, Hashable {
         try container.encode(haStatus, forKey: .haStatus)
         try container.encode(haIps, forKey: .haIps)
     }
-
-
-
 }
+
