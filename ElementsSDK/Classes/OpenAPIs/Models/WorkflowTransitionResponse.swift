@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct WorkflowTransitionResponse: Codable, Hashable {
+public struct WorkflowTransitionResponse: Codable, JSONEncodable, Hashable {
 
     public var tasks: [TaskInfo]
 

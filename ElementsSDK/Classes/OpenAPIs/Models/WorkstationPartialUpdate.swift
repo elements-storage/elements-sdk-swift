@@ -10,11 +10,10 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct WorkstationPartialUpdate: Codable, Hashable {
+public struct WorkstationPartialUpdate: Codable, JSONEncodable, Hashable {
 
-    public var id: String?
-    public var rdcAllowUsers: Set<ElementsUserReference>?
-    public var rdcAllowGroups: Set<ElementsGroupReference>?
+    public var rdcAllowUsers: [ElementsUserReference]?
+    public var rdcAllowGroups: [ElementsGroupReference]?
     public var report: [String: String]?
     public var name: String?
     public var hostname: String?
@@ -23,8 +22,7 @@ public struct WorkstationPartialUpdate: Codable, Hashable {
     public var rdcClientPort: Int?
     public var rdcHostPort: Int?
 
-    public init(id: String? = nil, rdcAllowUsers: Set<ElementsUserReference>? = nil, rdcAllowGroups: Set<ElementsGroupReference>? = nil, report: [String: String]? = nil, name: String? = nil, hostname: String? = nil, rdcLastUsed: Date? = nil, rdcDisableUpnp: Bool? = nil, rdcClientPort: Int? = nil, rdcHostPort: Int? = nil) {
-        self.id = id
+    public init(rdcAllowUsers: [ElementsUserReference]? = nil, rdcAllowGroups: [ElementsGroupReference]? = nil, report: [String: String]? = nil, name: String? = nil, hostname: String? = nil, rdcLastUsed: Date? = nil, rdcDisableUpnp: Bool? = nil, rdcClientPort: Int? = nil, rdcHostPort: Int? = nil) {
         self.rdcAllowUsers = rdcAllowUsers
         self.rdcAllowGroups = rdcAllowGroups
         self.report = report
@@ -37,7 +35,6 @@ public struct WorkstationPartialUpdate: Codable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case id
         case rdcAllowUsers = "rdc_allow_users"
         case rdcAllowGroups = "rdc_allow_groups"
         case report
@@ -53,7 +50,6 @@ public struct WorkstationPartialUpdate: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(rdcAllowUsers, forKey: .rdcAllowUsers)
         try container.encodeIfPresent(rdcAllowGroups, forKey: .rdcAllowGroups)
         try container.encodeIfPresent(report, forKey: .report)

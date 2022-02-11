@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TestExternalTranscoderConnectionResponse: Codable, Hashable {
+public struct TestExternalTranscoderConnectionResponse: Codable, JSONEncodable, Hashable {
 
     public var ok: Bool
 

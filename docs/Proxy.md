@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
-**urls** | **[String: String]** |  | [optional] [readonly] 
-**profile** | [**ProxyProfileMini**](ProxyProfileMini.md) |  | [optional] 
-**failedReason** | **String** |  | [optional] [readonly] 
-**transforms** | **String** |  | [optional] [readonly] 
+**id** | **Int** |  | 
+**urls** | **[String: String]** |  | [readonly] 
+**profile** | [**ProxyProfileMini**](ProxyProfileMini.md) |  | 
+**failedReason** | **String** |  | [readonly] 
+**transforms** | **String** |  | [readonly] 
 **generated** | **Bool** |  | [optional] 
 **failed** | **Bool** |  | [optional] 
 **name** | **String** |  | [optional] 

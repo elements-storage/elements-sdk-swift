@@ -1,0 +1,13 @@
+# NFSPermission
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**host** | **String** |  | 
+**readOnly** | **Bool** |  | 
+**options** | **String** |  | 
+
+[[Back to Model list]](../#documentation-for-models) [[Back to API list]](../#documentation-for-api-endpoints) [[Back to README]](../)
+
+

@@ -10,15 +10,15 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct GenerateProxiesRequest: Codable, Hashable {
+public struct GenerateProxiesRequest: Codable, JSONEncodable, Hashable {
 
-    public var bundles: Set<Int>?
-    public var directories: Set<Int>?
-    public var proxyProfiles: Set<Int>
+    public var bundles: [Int]?
+    public var directories: [Int]?
+    public var proxyProfiles: [Int]
     public var enqueueAtFront: Bool?
     public var force: Bool?
 
-    public init(bundles: Set<Int>? = nil, directories: Set<Int>? = nil, proxyProfiles: Set<Int>, enqueueAtFront: Bool? = nil, force: Bool? = nil) {
+    public init(bundles: [Int]? = nil, directories: [Int]? = nil, proxyProfiles: [Int], enqueueAtFront: Bool? = nil, force: Bool? = nil) {
         self.bundles = bundles
         self.directories = directories
         self.proxyProfiles = proxyProfiles

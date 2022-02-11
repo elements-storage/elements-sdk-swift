@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**assignee** | [**ElementsUserMiniReference**](ElementsUserMiniReference.md) |  | [optional] 
-**user** | [**ElementsUserMiniReference**](ElementsUserMiniReference.md) |  | [optional] 
+**assignee** | [**AnyOfElementsUserMiniReferenceAnyType**](AnyOfElementsUserMiniReferenceAnyType.md) |  | [optional] 
+**user** | [**AnyOfElementsUserMiniReferenceAnyType**](AnyOfElementsUserMiniReferenceAnyType.md) |  | [optional] 
 **drawing** | **[String: String]** |  | [optional] 
-**tags** | Set<TagReference> |  | [optional] 
+**tags** | [TagReference] |  | [optional] 
 **text** | **String** |  | [optional] 
 **time** | **Double** |  | [optional] 
 **isCloud** | **Bool** |  | [optional] 

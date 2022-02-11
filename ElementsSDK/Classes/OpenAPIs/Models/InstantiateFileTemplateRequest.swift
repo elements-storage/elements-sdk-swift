@@ -10,22 +10,22 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct InstantiateFileTemplateRequest: Codable, Hashable {
+public struct InstantiateFileTemplateRequest: Codable, JSONEncodable, Hashable {
 
     public var parent: Int
     public var name: String
-    public var customField: [String: String]?
+    public var customFields: [String: String]?
 
-    public init(parent: Int, name: String, customField: [String: String]? = nil) {
+    public init(parent: Int, name: String, customFields: [String: String]? = nil) {
         self.parent = parent
         self.name = name
-        self.customField = customField
+        self.customFields = customFields
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case parent
         case name
-        case customField = "custom_field"
+        case customFields = "custom_fields"
     }
 
     // Encodable protocol methods
@@ -34,7 +34,7 @@ public struct InstantiateFileTemplateRequest: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(parent, forKey: .parent)
         try container.encode(name, forKey: .name)
-        try container.encodeIfPresent(customField, forKey: .customField)
+        try container.encodeIfPresent(customFields, forKey: .customFields)
     }
 }
 

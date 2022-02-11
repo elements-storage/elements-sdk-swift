@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct VolumeBeeGFSStatus: Codable, Hashable {
+public struct VolumeBeeGFSStatus: Codable, JSONEncodable, Hashable {
 
     public var nodes: [BeeGFSNode]
     public var targets: [BeeGFSTarget]

@@ -4,33 +4,34 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **proxies** | [Proxy] |  | [optional] [readonly] 
 **defaultProxy** | [**Proxy**](Proxy.md) |  | [optional] 
-**info** | **[String: String]** |  | [optional] [readonly] 
-**proxyInfo** | **[String: String]** |  | [optional] [readonly] 
+**info** | **[String: String]** |  | [readonly] 
+**proxyInfo** | **[String: String]** |  | [readonly] 
 **customFields** | **[String: String]** |  | 
-**tags** | **Set<Int>** |  | 
+**tags** | **[Int]** |  | 
 **resolvedPermission** | [**MediaRootPermission**](MediaRootPermission.md) |  | [optional] 
-**backups** | **String** |  | [optional] [readonly] 
-**proxiesGenerated** | **Bool** |  | [optional] [readonly] 
-**proxiesFailed** | **Bool** |  | [optional] [readonly] 
+**backups** | **String** |  | [readonly] 
+**proxiesGenerated** | **Bool** |  | [readonly] 
+**proxiesFailed** | **Bool** |  | [readonly] 
 **modifiedBy** | [**ElementsUserMini**](ElementsUserMini.md) |  | [optional] 
-**bundles** | [MediaFileBundleMini] |  | [optional] [readonly] 
-**syncId** | **UUID** |  | [optional] [readonly] 
-**displayName** | **String** |  | [optional] [readonly] 
-**hasFiles** | **Bool** |  | [optional] [readonly] 
-**hasBackups** | **Bool** |  | [optional] [readonly] 
-**hasCloudLinks** | **Bool** |  | [optional] [readonly] 
-**checksum** | **String** |  | [optional] [readonly] 
-**type** | **String** |  | [optional] [readonly] 
-**thumbnailGenerated** | **Bool** |  | [optional] [readonly] 
-**matchedScanner** | **String** |  | [optional] [readonly] 
-**rating** | **Double** |  | [optional] [readonly] 
-**workflowState** | **Int** |  | [optional] [readonly] 
-**isTemporary** | **Bool** |  | [optional] [readonly] 
-**created** | **Date** |  | [optional] [readonly] 
-**modified** | **Date** |  | [optional] [readonly] 
+**bundles** | [MediaFileBundleMini] |  | [readonly] 
+**rating** | **Int** |  | [optional] [readonly] 
+**format** | [**FormatMetadata**](FormatMetadata.md) |  | 
+**syncId** | **UUID** |  | [readonly] 
+**displayName** | **String** |  | [readonly] 
+**hasFiles** | **Bool** |  | [readonly] 
+**hasBackups** | **Bool** |  | [readonly] 
+**hasCloudLinks** | **Bool** |  | [readonly] 
+**checksum** | **String** |  | [readonly] 
+**type** | **String** |  | [readonly] 
+**thumbnailGenerated** | **Bool** |  | [readonly] 
+**matchedScanner** | **String** |  | [readonly] 
+**workflowState** | **Int** |  | [readonly] 
+**isTemporary** | **Bool** |  | [readonly] 
+**created** | **Date** |  | [readonly] 
+**modified** | **Date** |  | [readonly] 
 **_set** | **Int** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

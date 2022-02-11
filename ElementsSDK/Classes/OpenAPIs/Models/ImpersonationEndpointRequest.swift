@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ImpersonationEndpointRequest: Codable, Hashable {
+public struct ImpersonationEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var user: Int
 

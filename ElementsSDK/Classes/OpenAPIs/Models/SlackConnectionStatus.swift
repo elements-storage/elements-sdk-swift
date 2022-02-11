@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SlackConnectionStatus: Codable, Hashable {
+public struct SlackConnectionStatus: Codable, JSONEncodable, Hashable {
 
     public var ok: Bool
     public var team: String

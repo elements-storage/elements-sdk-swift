@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ProxyProfilePartialUpdate: Codable, Hashable {
+public struct ProxyProfilePartialUpdate: Codable, JSONEncodable, Hashable {
 
     public enum ProxyGenerator: String, Codable, CaseIterable {
         case ffmpeg = "ffmpeg"
@@ -19,24 +19,24 @@ public struct ProxyProfilePartialUpdate: Codable, Hashable {
         case vantage = "vantage"
         case noop = "noop"
     }
-    public enum RateControl: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
+    public enum RateControl: String, Codable, CaseIterable {
+        case crf = "CRF"
+        case cbr = "CBR"
+        case vbr = "VBR"
     }
-    public enum WatermarkPosition: Int, Codable, CaseIterable {
-        case _1 = 1
-        case _2 = 2
-        case _3 = 3
-        case _4 = 4
-        case _5 = 5
+    public enum WatermarkPosition: String, Codable, CaseIterable {
+        case tl = "TL"
+        case tr = "TR"
+        case br = "BR"
+        case bl = "BL"
+        case c = "C"
     }
-    public enum TimecodePosition: Int, Codable, CaseIterable {
-        case _1 = 1
-        case _2 = 2
-        case _3 = 3
-        case _4 = 4
-        case _5 = 5
+    public enum TimecodePosition: String, Codable, CaseIterable {
+        case tl = "TL"
+        case tr = "TR"
+        case br = "BR"
+        case bl = "BL"
+        case c = "C"
     }
     public var name: String?
     public var proxyGenerator: ProxyGenerator?

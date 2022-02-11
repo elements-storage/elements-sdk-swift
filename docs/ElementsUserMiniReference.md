@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] 
+**id** | **Int** |  | 
 **avatar** | **String** |  | [optional] [readonly] 
 **displayName** | **String** |  | [optional] [readonly] 
 **email** | **String** |  | [optional] [readonly] 

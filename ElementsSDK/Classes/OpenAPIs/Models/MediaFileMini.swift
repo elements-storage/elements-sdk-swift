@@ -10,24 +10,24 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MediaFileMini: Codable, Hashable {
+public struct MediaFileMini: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var name: String?
-    public var bundle: Int?
-    public var fullPath: String?
+    public var id: Int
+    public var name: String
+    public var bundle: Int
+    public var fullPath: String
     public var customFields: [String: String]?
-    public var isDir: Bool?
-    public var isHardlink: Bool?
-    public var mtime: Int?
-    public var parent: Int?
+    public var isDir: Bool
+    public var isHardlink: Bool
+    public var mtime: Int
+    public var parent: Int
     public var parentFile: [String: String]?
-    public var path: String?
-    public var present: Bool?
-    public var size: Int?
-    public var volume: VolumeMini?
+    public var path: String
+    public var present: Bool
+    public var size: Int
+    public var volume: VolumeMini
 
-    public init(id: Int? = nil, name: String? = nil, bundle: Int? = nil, fullPath: String? = nil, customFields: [String: String]? = nil, isDir: Bool? = nil, isHardlink: Bool? = nil, mtime: Int? = nil, parent: Int? = nil, parentFile: [String: String]? = nil, path: String? = nil, present: Bool? = nil, size: Int? = nil, volume: VolumeMini? = nil) {
+    public init(id: Int, name: String, bundle: Int, fullPath: String, customFields: [String: String]? = nil, isDir: Bool, isHardlink: Bool, mtime: Int, parent: Int, parentFile: [String: String]? = nil, path: String, present: Bool, size: Int, volume: VolumeMini) {
         self.id = id
         self.name = name
         self.bundle = bundle
@@ -65,20 +65,20 @@ public struct MediaFileMini: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(bundle, forKey: .bundle)
-        try container.encodeIfPresent(fullPath, forKey: .fullPath)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(bundle, forKey: .bundle)
+        try container.encode(fullPath, forKey: .fullPath)
         try container.encodeIfPresent(customFields, forKey: .customFields)
-        try container.encodeIfPresent(isDir, forKey: .isDir)
-        try container.encodeIfPresent(isHardlink, forKey: .isHardlink)
-        try container.encodeIfPresent(mtime, forKey: .mtime)
-        try container.encodeIfPresent(parent, forKey: .parent)
+        try container.encode(isDir, forKey: .isDir)
+        try container.encode(isHardlink, forKey: .isHardlink)
+        try container.encode(mtime, forKey: .mtime)
+        try container.encode(parent, forKey: .parent)
         try container.encodeIfPresent(parentFile, forKey: .parentFile)
-        try container.encodeIfPresent(path, forKey: .path)
-        try container.encodeIfPresent(present, forKey: .present)
-        try container.encodeIfPresent(size, forKey: .size)
-        try container.encodeIfPresent(volume, forKey: .volume)
+        try container.encode(path, forKey: .path)
+        try container.encode(present, forKey: .present)
+        try container.encode(size, forKey: .size)
+        try container.encode(volume, forKey: .volume)
     }
 }
 

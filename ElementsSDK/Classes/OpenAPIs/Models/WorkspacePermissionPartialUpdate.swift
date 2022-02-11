@@ -10,14 +10,14 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct WorkspacePermissionPartialUpdate: Codable, Hashable {
+public struct WorkspacePermissionPartialUpdate: Codable, JSONEncodable, Hashable {
 
-    public var user: ElementsUserReference?
-    public var group: ElementsGroupReference?
+    public var user: AnyOfElementsUserReferenceAnyType?
+    public var group: AnyOfElementsGroupReferenceAnyType?
     public var readOnly: Bool?
     public var workspace: Int?
 
-    public init(user: ElementsUserReference? = nil, group: ElementsGroupReference? = nil, readOnly: Bool? = nil, workspace: Int? = nil) {
+    public init(user: AnyOfElementsUserReferenceAnyType? = nil, group: AnyOfElementsGroupReferenceAnyType? = nil, readOnly: Bool? = nil, workspace: Int? = nil) {
         self.user = user
         self.group = group
         self.readOnly = readOnly

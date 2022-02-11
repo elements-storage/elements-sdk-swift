@@ -10,14 +10,14 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct LDAPServer: Codable, Hashable {
+public struct LDAPServer: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var name: String?
-    public var winbindSeparator: String?
+    public var winbindSeparator: String
     public var ntDomain: String?
 
-    public init(id: Int? = nil, name: String? = nil, winbindSeparator: String? = nil, ntDomain: String? = nil) {
+    public init(id: Int, name: String? = nil, winbindSeparator: String, ntDomain: String? = nil) {
         self.id = id
         self.name = name
         self.winbindSeparator = winbindSeparator
@@ -35,9 +35,9 @@ public struct LDAPServer: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(winbindSeparator, forKey: .winbindSeparator)
+        try container.encode(winbindSeparator, forKey: .winbindSeparator)
         try container.encodeIfPresent(ntDomain, forKey: .ntDomain)
     }
 }

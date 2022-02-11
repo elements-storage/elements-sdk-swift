@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**path** | **String** |  | [optional] [readonly] 
+**path** | **String** |  | [readonly] 
 **name** | **String** |  | 
-**size** | **Int** |  | [optional] [readonly] 
-**totalSize** | **Int** |  | [optional] [readonly] 
-**isDir** | **Bool** |  | [optional] [readonly] 
+**size** | **Int** |  | [readonly] 
+**modificationTime** | **Date** |  | [readonly] 
+**totalSize** | **Int** |  | [readonly] 
+**isDir** | **Bool** |  | [readonly] 
 **files** | [AnyCodable] |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

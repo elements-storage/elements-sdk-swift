@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MediaFileTemplatePartialUpdate: Codable, Hashable {
+public struct MediaFileTemplatePartialUpdate: Codable, JSONEncodable, Hashable {
 
     public var file: MediaFileReference?
     public var name: String?

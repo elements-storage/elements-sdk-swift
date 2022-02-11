@@ -10,41 +10,41 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MediaFile: Codable, Hashable {
+public struct MediaFile: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var volume: VolumeMini?
+    public var id: Int
+    public var volume: VolumeMini
     public var info: [String: String]?
     public var customFields: [String: String]?
     public var resolvedPermission: MediaRootPermission?
     public var parentFile: [String: String]?
     public var root: MediaRootMini?
-    public var effectiveCustomFields: [String: String]?
+    public var effectiveCustomFields: [String: String]
     public var modifiedBy: ElementsUserMini?
-    public var fullPath: String?
+    public var fullPath: String
     public var isShared: Bool?
-    public var isExcluded: Bool?
-    public var isHardlink: Bool?
+    public var isExcluded: Bool
+    public var isHardlink: Bool
     public var isBookmarked: Bool?
     public var childCount: Int?
-    public var name: String?
-    public var path: String?
-    public var pathhash: String?
-    public var ancestry: String?
-    public var isDir: Bool?
+    public var name: String
+    public var path: String
+    public var pathhash: String
+    public var ancestry: String
+    public var isDir: Bool
     public var totalFiles: Int?
-    public var size: Int?
-    public var mtime: Int?
-    public var present: Bool?
+    public var size: Int
+    public var mtime: Int
+    public var present: Bool
     public var needsRescan: Bool?
-    public var isShowroom: Bool?
-    public var bundleIndex: Int?
-    public var modified: Date?
-    public var parent: Int?
-    public var bundle: Int?
-    public var bookmarkedBy: Set<Int>?
+    public var isShowroom: Bool
+    public var bundleIndex: Int
+    public var modified: Date
+    public var parent: Int
+    public var bundle: Int
+    public var bookmarkedBy: [Int]?
 
-    public init(id: Int? = nil, volume: VolumeMini? = nil, info: [String: String]? = nil, customFields: [String: String]? = nil, resolvedPermission: MediaRootPermission? = nil, parentFile: [String: String]? = nil, root: MediaRootMini? = nil, effectiveCustomFields: [String: String]? = nil, modifiedBy: ElementsUserMini? = nil, fullPath: String? = nil, isShared: Bool? = nil, isExcluded: Bool? = nil, isHardlink: Bool? = nil, isBookmarked: Bool? = nil, childCount: Int? = nil, name: String? = nil, path: String? = nil, pathhash: String? = nil, ancestry: String? = nil, isDir: Bool? = nil, totalFiles: Int? = nil, size: Int? = nil, mtime: Int? = nil, present: Bool? = nil, needsRescan: Bool? = nil, isShowroom: Bool? = nil, bundleIndex: Int? = nil, modified: Date? = nil, parent: Int? = nil, bundle: Int? = nil, bookmarkedBy: Set<Int>? = nil) {
+    public init(id: Int, volume: VolumeMini, info: [String: String]? = nil, customFields: [String: String]? = nil, resolvedPermission: MediaRootPermission? = nil, parentFile: [String: String]? = nil, root: MediaRootMini? = nil, effectiveCustomFields: [String: String], modifiedBy: ElementsUserMini? = nil, fullPath: String, isShared: Bool?, isExcluded: Bool, isHardlink: Bool, isBookmarked: Bool?, childCount: Int?, name: String, path: String, pathhash: String, ancestry: String, isDir: Bool, totalFiles: Int? = nil, size: Int, mtime: Int, present: Bool, needsRescan: Bool? = nil, isShowroom: Bool, bundleIndex: Int, modified: Date, parent: Int, bundle: Int, bookmarkedBy: [Int]? = nil) {
         self.id = id
         self.volume = volume
         self.info = info
@@ -116,36 +116,36 @@ public struct MediaFile: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(volume, forKey: .volume)
+        try container.encode(id, forKey: .id)
+        try container.encode(volume, forKey: .volume)
         try container.encodeIfPresent(info, forKey: .info)
         try container.encodeIfPresent(customFields, forKey: .customFields)
         try container.encodeIfPresent(resolvedPermission, forKey: .resolvedPermission)
         try container.encodeIfPresent(parentFile, forKey: .parentFile)
         try container.encodeIfPresent(root, forKey: .root)
-        try container.encodeIfPresent(effectiveCustomFields, forKey: .effectiveCustomFields)
+        try container.encode(effectiveCustomFields, forKey: .effectiveCustomFields)
         try container.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
-        try container.encodeIfPresent(fullPath, forKey: .fullPath)
-        try container.encodeIfPresent(isShared, forKey: .isShared)
-        try container.encodeIfPresent(isExcluded, forKey: .isExcluded)
-        try container.encodeIfPresent(isHardlink, forKey: .isHardlink)
-        try container.encodeIfPresent(isBookmarked, forKey: .isBookmarked)
-        try container.encodeIfPresent(childCount, forKey: .childCount)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(path, forKey: .path)
-        try container.encodeIfPresent(pathhash, forKey: .pathhash)
-        try container.encodeIfPresent(ancestry, forKey: .ancestry)
-        try container.encodeIfPresent(isDir, forKey: .isDir)
+        try container.encode(fullPath, forKey: .fullPath)
+        try container.encode(isShared, forKey: .isShared)
+        try container.encode(isExcluded, forKey: .isExcluded)
+        try container.encode(isHardlink, forKey: .isHardlink)
+        try container.encode(isBookmarked, forKey: .isBookmarked)
+        try container.encode(childCount, forKey: .childCount)
+        try container.encode(name, forKey: .name)
+        try container.encode(path, forKey: .path)
+        try container.encode(pathhash, forKey: .pathhash)
+        try container.encode(ancestry, forKey: .ancestry)
+        try container.encode(isDir, forKey: .isDir)
         try container.encodeIfPresent(totalFiles, forKey: .totalFiles)
-        try container.encodeIfPresent(size, forKey: .size)
-        try container.encodeIfPresent(mtime, forKey: .mtime)
-        try container.encodeIfPresent(present, forKey: .present)
+        try container.encode(size, forKey: .size)
+        try container.encode(mtime, forKey: .mtime)
+        try container.encode(present, forKey: .present)
         try container.encodeIfPresent(needsRescan, forKey: .needsRescan)
-        try container.encodeIfPresent(isShowroom, forKey: .isShowroom)
-        try container.encodeIfPresent(bundleIndex, forKey: .bundleIndex)
-        try container.encodeIfPresent(modified, forKey: .modified)
-        try container.encodeIfPresent(parent, forKey: .parent)
-        try container.encodeIfPresent(bundle, forKey: .bundle)
+        try container.encode(isShowroom, forKey: .isShowroom)
+        try container.encode(bundleIndex, forKey: .bundleIndex)
+        try container.encode(modified, forKey: .modified)
+        try container.encode(parent, forKey: .parent)
+        try container.encode(bundle, forKey: .bundle)
         try container.encodeIfPresent(bookmarkedBy, forKey: .bookmarkedBy)
     }
 }

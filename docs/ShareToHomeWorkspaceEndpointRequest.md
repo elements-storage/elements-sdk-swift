@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **paths** | **[String]** |  | [optional] 
-**bundles** | **Set<Int>** |  | [optional] 
+**bundles** | **[Int]** |  | [optional] 
 **user** | **Int** |  | 
 **name** | **String** |  | 
 

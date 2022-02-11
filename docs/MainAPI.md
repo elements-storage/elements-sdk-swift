@@ -12,12 +12,16 @@ Method | HTTP request | Description
 [**checkStorNextLicense**](MainAPI.md#checkstornextlicense) | **POST** /api/2/stornext-license/check | 
 [**collectDiagnostics**](MainAPI.md#collectdiagnostics) | **POST** /api/2/system/collect-diagnostics | 
 [**createArchive**](MainAPI.md#createarchive) | **POST** /api/2/download-archive/create | 
+[**createCloudAccount**](MainAPI.md#createcloudaccount) | **POST** /api/2/cloud/accounts | 
+[**createFilesystemPermission**](MainAPI.md#createfilesystempermission) | **POST** /api/2/filesystem-permissions | 
 [**createGroup**](MainAPI.md#creategroup) | **POST** /api/2/groups | 
 [**createHomeWorkspace**](MainAPI.md#createhomeworkspace) | **POST** /api/2/users/{id}/home | 
 [**createNTPServer**](MainAPI.md#createntpserver) | **POST** /api/2/system/time/servers | 
 [**createUser**](MainAPI.md#createuser) | **POST** /api/2/users | 
 [**createWorkstation**](MainAPI.md#createworkstation) | **POST** /api/2/workstations | 
+[**deleteCloudAccount**](MainAPI.md#deletecloudaccount) | **DELETE** /api/2/cloud/accounts/{id} | 
 [**deleteDownloadArchive**](MainAPI.md#deletedownloadarchive) | **DELETE** /api/2/download-archive/{id} | 
+[**deleteFilesystemPermission**](MainAPI.md#deletefilesystempermission) | **DELETE** /api/2/filesystem-permissions/{id} | 
 [**deleteGroup**](MainAPI.md#deletegroup) | **DELETE** /api/2/groups/{id} | 
 [**deleteHomeWorkspace**](MainAPI.md#deletehomeworkspace) | **DELETE** /api/2/users/{id}/home | 
 [**deleteNTPServer**](MainAPI.md#deletentpserver) | **DELETE** /api/2/system/time/servers/{id} | 
@@ -28,8 +32,10 @@ Method | HTTP request | Description
 [**finishUpload**](MainAPI.md#finishupload) | **POST** /api/2/uploads/finish | 
 [**fixLDAPGroupMemberships**](MainAPI.md#fixldapgroupmemberships) | **POST** /api/2/ldap-servers/{id}/fix-memberships | 
 [**getAllClientSessions**](MainAPI.md#getallclientsessions) | **GET** /api/2/client-sessions | 
+[**getAllCloudAccounts**](MainAPI.md#getallcloudaccounts) | **GET** /api/2/cloud/accounts | 
 [**getAllDownloadArchives**](MainAPI.md#getalldownloadarchives) | **GET** /api/2/download-archive | 
 [**getAllDownloads**](MainAPI.md#getalldownloads) | **GET** /api/2/downloads | 
+[**getAllFilesystemPermissions**](MainAPI.md#getallfilesystempermissions) | **GET** /api/2/filesystem-permissions | 
 [**getAllGroups**](MainAPI.md#getallgroups) | **GET** /api/2/groups | 
 [**getAllLDAPServers**](MainAPI.md#getallldapservers) | **GET** /api/2/ldap-servers | 
 [**getAllNTPServers**](MainAPI.md#getallntpservers) | **GET** /api/2/system/time/servers | 
@@ -40,12 +46,15 @@ Method | HTTP request | Description
 [**getClientDownloadFile**](MainAPI.md#getclientdownloadfile) | **GET** /api/2/downloads/clients/{file} | 
 [**getClientDownloads**](MainAPI.md#getclientdownloads) | **GET** /api/2/downloads/clients | 
 [**getClientSession**](MainAPI.md#getclientsession) | **GET** /api/2/client-sessions/{id} | 
+[**getCloudAccount**](MainAPI.md#getcloudaccount) | **GET** /api/2/cloud/accounts/{id} | 
+[**getCloudAccountStorageRoots**](MainAPI.md#getcloudaccountstorageroots) | **GET** /api/2/cloud/accounts/{id}/storage-roots | 
 [**getCurrentWorkstation**](MainAPI.md#getcurrentworkstation) | **GET** /api/2/workstations/current | 
 [**getDownload**](MainAPI.md#getdownload) | **GET** /api/2/downloads/{id} | 
 [**getDownloadArchive**](MainAPI.md#getdownloadarchive) | **GET** /api/2/download-archive/{id} | 
 [**getDownloadArchiveFile**](MainAPI.md#getdownloadarchivefile) | **GET** /api/2/download-archive/{id}/download | 
 [**getDownloadFile**](MainAPI.md#getdownloadfile) | **GET** /api/2/downloads/{id}/download | 
 [**getDownloadIcon**](MainAPI.md#getdownloadicon) | **GET** /api/2/downloads/{id}/icon | 
+[**getFilesystemPermission**](MainAPI.md#getfilesystempermission) | **GET** /api/2/filesystem-permissions/{id} | 
 [**getGroup**](MainAPI.md#getgroup) | **GET** /api/2/groups/{id} | 
 [**getHomeWorkspace**](MainAPI.md#gethomeworkspace) | **GET** /api/2/users/{id}/home | 
 [**getIPMIConfiguration**](MainAPI.md#getipmiconfiguration) | **GET** /api/2/nodes/{id}/ipmi | 
@@ -69,8 +78,10 @@ Method | HTTP request | Description
 [**getUser**](MainAPI.md#getuser) | **GET** /api/2/users/{id} | 
 [**getWorkstation**](MainAPI.md#getworkstation) | **GET** /api/2/workstations/{id} | 
 [**installStorNextLicense**](MainAPI.md#installstornextlicense) | **POST** /api/2/stornext-license | 
+[**patchCloudAccount**](MainAPI.md#patchcloudaccount) | **PATCH** /api/2/cloud/accounts/{id} | 
 [**patchCurrentWorkstation**](MainAPI.md#patchcurrentworkstation) | **PATCH** /api/2/workstations/current | 
 [**patchDownloadArchive**](MainAPI.md#patchdownloadarchive) | **PATCH** /api/2/download-archive/{id} | 
+[**patchFilesystemPermission**](MainAPI.md#patchfilesystempermission) | **PATCH** /api/2/filesystem-permissions/{id} | 
 [**patchGroup**](MainAPI.md#patchgroup) | **PATCH** /api/2/groups/{id} | 
 [**patchNTPServer**](MainAPI.md#patchntpserver) | **PATCH** /api/2/system/time/servers/{id} | 
 [**patchProfile**](MainAPI.md#patchprofile) | **PATCH** /api/2/users/me | 
@@ -82,6 +93,7 @@ Method | HTTP request | Description
 [**registerUploadMetadata**](MainAPI.md#registeruploadmetadata) | **POST** /api/2/uploads/metadata | 
 [**renderEmailTemplatePreview**](MainAPI.md#renderemailtemplatepreview) | **POST** /api/2/system/smtp/preview | 
 [**resetUserPassword**](MainAPI.md#resetuserpassword) | **POST** /api/2/users/{id}/password/reset | 
+[**restartWebUI**](MainAPI.md#restartwebui) | **POST** /api/2/system/restart-webui | 
 [**runServiceOperation**](MainAPI.md#runserviceoperation) | **POST** /api/2/nodes/{id}/services/{service}/{operation} | 
 [**setIPMIConfiguration**](MainAPI.md#setipmiconfiguration) | **PUT** /api/2/nodes/{id}/ipmi | 
 [**setLocalTime**](MainAPI.md#setlocaltime) | **POST** /api/2/system/time | 
@@ -95,10 +107,13 @@ Method | HTTP request | Description
 [**syncLDAPUsers**](MainAPI.md#syncldapusers) | **POST** /api/2/ldap-servers/{id}/sync-users | 
 [**syncTime**](MainAPI.md#synctime) | **POST** /api/2/system/time/sync | 
 [**syncUserTOTP**](MainAPI.md#syncusertotp) | **PUT** /api/2/users/{id}/totp | 
+[**testCloudAccountCredentials**](MainAPI.md#testcloudaccountcredentials) | **POST** /api/2/cloud/accounts/test-credentials | 
 [**testSMTPConfiguration**](MainAPI.md#testsmtpconfiguration) | **POST** /api/2/system/smtp/test | 
 [**updateCertificateConfiguration**](MainAPI.md#updatecertificateconfiguration) | **PUT** /api/2/system/certificate | 
+[**updateCloudAccount**](MainAPI.md#updatecloudaccount) | **PUT** /api/2/cloud/accounts/{id} | 
 [**updateCurrentWorkstation**](MainAPI.md#updatecurrentworkstation) | **PUT** /api/2/workstations/current | 
 [**updateDownloadArchive**](MainAPI.md#updatedownloadarchive) | **PUT** /api/2/download-archive/{id} | 
+[**updateFilesystemPermission**](MainAPI.md#updatefilesystempermission) | **PUT** /api/2/filesystem-permissions/{id} | 
 [**updateGroup**](MainAPI.md#updategroup) | **PUT** /api/2/groups/{id} | 
 [**updateNTPServer**](MainAPI.md#updatentpserver) | **PUT** /api/2/system/time/servers/{id} | 
 [**updateParameters**](MainAPI.md#updateparameters) | **PUT** /api/2/parameters | 
@@ -118,7 +133,7 @@ Method | HTTP request | Description
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -160,7 +175,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -202,7 +217,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -248,7 +263,7 @@ Void (empty response body)
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -296,7 +311,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -338,7 +353,7 @@ This endpoint does not need any parameter.
 
 ### Required permissions    * User account permission: `system:admin-access`   * License component: stornext_mdc 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -384,7 +399,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -426,7 +441,7 @@ This endpoint does not need any parameter.
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -463,23 +478,23 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createGroup**
+# **createCloudAccount**
 ```swift
-    open class func createGroup( elementsGroupDetail: ElementsGroupDetail) -> Promise<ElementsGroupDetail>
+    open class func createCloudAccount( cloudAccountUpdate: CloudAccountUpdate) -> Promise<CloudAccount>
 ```
 
 
 
-### Required permissions    * User account permission: `users:view` (read) / `users:manage` (write) 
+### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let elementsGroupDetail = ElementsGroupDetail(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], members: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], ldap: LDAPServerReference(id: 123, name: "name_example", winbindSeparator: "winbindSeparator_example", ntDomain: "ntDomain_example"), name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false) // ElementsGroupDetail | 
+let cloudAccountUpdate = CloudAccountUpdate(name: "name_example", provider: "provider_example", accessId: "accessId_example", secret: "secret_example", tenant: "tenant_example", subscription: "subscription_example", endpoint: "endpoint_example", mountCredentialsManagement: "mountCredentialsManagement_example") // CloudAccountUpdate | 
 
-MainAPI.createGroup(elementsGroupDetail: elementsGroupDetail).then {
+MainAPI.createCloudAccount(cloudAccountUpdate: cloudAccountUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -492,7 +507,99 @@ MainAPI.createGroup(elementsGroupDetail: elementsGroupDetail).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **elementsGroupDetail** | [**ElementsGroupDetail**](ElementsGroupDetail.md) |  | 
+ **cloudAccountUpdate** | [**CloudAccountUpdate**](CloudAccountUpdate.md) |  | 
+
+### Return type
+
+[**CloudAccount**](CloudAccount.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createFilesystemPermission**
+```swift
+    open class func createFilesystemPermission( filesystemPermissionUpdate: FilesystemPermissionUpdate) -> Promise<FilesystemPermission>
+```
+
+
+
+### Required permissions    * User account permission: `None` (read) / `users:manage` (write) 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let filesystemPermissionUpdate = FilesystemPermissionUpdate(path: "path_example", readOnly: false, user: 123, group: 123) // FilesystemPermissionUpdate | 
+
+MainAPI.createFilesystemPermission(filesystemPermissionUpdate: filesystemPermissionUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filesystemPermissionUpdate** | [**FilesystemPermissionUpdate**](FilesystemPermissionUpdate.md) |  | 
+
+### Return type
+
+[**FilesystemPermission**](FilesystemPermission.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createGroup**
+```swift
+    open class func createGroup( elementsGroupDetailUpdate: ElementsGroupDetailUpdate) -> Promise<ElementsGroupDetail>
+```
+
+
+
+### Required permissions    * User account permission: `users:view` (read) / `users:manage` (write) 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let elementsGroupDetailUpdate = ElementsGroupDetailUpdate(permissions: ["permissions_example"], members: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], ldap: "TODO", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123) // ElementsGroupDetailUpdate | 
+
+MainAPI.createGroup(elementsGroupDetailUpdate: elementsGroupDetailUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **elementsGroupDetailUpdate** | [**ElementsGroupDetailUpdate**](ElementsGroupDetailUpdate.md) |  | 
 
 ### Return type
 
@@ -518,7 +625,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `users:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -559,21 +666,21 @@ Name | Type | Description  | Notes
 
 # **createNTPServer**
 ```swift
-    open class func createNTPServer( nTPServer: NTPServer) -> Promise<NTPServer>
+    open class func createNTPServer( nTPServerUpdate: NTPServerUpdate) -> Promise<NTPServer>
 ```
 
 
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let nTPServer = NTPServer(id: 123, address: "address_example", options: "options_example") // NTPServer | 
+let nTPServerUpdate = NTPServerUpdate(address: "address_example", options: "options_example") // NTPServerUpdate | 
 
-MainAPI.createNTPServer(nTPServer: nTPServer).then {
+MainAPI.createNTPServer(nTPServerUpdate: nTPServerUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -586,7 +693,7 @@ MainAPI.createNTPServer(nTPServer: nTPServer).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **nTPServer** | [**NTPServer**](NTPServer.md) |  | 
+ **nTPServerUpdate** | [**NTPServerUpdate**](NTPServerUpdate.md) |  | 
 
 ### Return type
 
@@ -605,21 +712,21 @@ Name | Type | Description  | Notes
 
 # **createUser**
 ```swift
-    open class func createUser( elementsUserDetail: ElementsUserDetail) -> Promise<ElementsUserDetail>
+    open class func createUser( elementsUserDetailUpdate: ElementsUserDetailUpdate) -> Promise<ElementsUserDetail>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `users:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let elementsUserDetail = ElementsUserDetail(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: LDAPServerReference(id: 123, name: "name_example", winbindSeparator: "winbindSeparator_example", ntDomain: "ntDomain_example"), ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example", groups: [123]) // ElementsUserDetail | 
+let elementsUserDetailUpdate = ElementsUserDetailUpdate(allowChangingPassword: false, allowWanLogin: false, avatar: "avatar_example", defaultPage: "defaultPage_example", email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: "TODO", ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example", groups: [123]) // ElementsUserDetailUpdate | 
 
-MainAPI.createUser(elementsUserDetail: elementsUserDetail).then {
+MainAPI.createUser(elementsUserDetailUpdate: elementsUserDetailUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -632,7 +739,7 @@ MainAPI.createUser(elementsUserDetail: elementsUserDetail).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **elementsUserDetail** | [**ElementsUserDetail**](ElementsUserDetail.md) |  | 
+ **elementsUserDetailUpdate** | [**ElementsUserDetailUpdate**](ElementsUserDetailUpdate.md) |  | 
 
 ### Return type
 
@@ -651,21 +758,21 @@ Name | Type | Description  | Notes
 
 # **createWorkstation**
 ```swift
-    open class func createWorkstation( workstation: Workstation) -> Promise<Workstation>
+    open class func createWorkstation( workstationUpdate: WorkstationUpdate) -> Promise<Workstation>
 ```
 
 
 
 ### Required permissions    * Authenticated user   * Own workstation or User account permission: `workstations:view` (read) / `workstations:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let workstation = Workstation(id: "id_example", displayName: "displayName_example", rdcAllowUsers: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], rdcAllowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123])], clientSessions: [nil], name: "name_example", hostname: "hostname_example", rdcLastUsed: Date(), rdcDisableUpnp: false, rdcClientPort: 123, rdcHostPort: 123) // Workstation | 
+let workstationUpdate = WorkstationUpdate(rdcAllowUsers: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], rdcAllowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ldap: 123, members: [123])], report: "TODO", name: "name_example", hostname: "hostname_example", rdcLastUsed: Date(), rdcDisableUpnp: false, rdcClientPort: 123, rdcHostPort: 123) // WorkstationUpdate | 
 
-MainAPI.createWorkstation(workstation: workstation).then {
+MainAPI.createWorkstation(workstationUpdate: workstationUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -678,7 +785,7 @@ MainAPI.createWorkstation(workstation: workstation).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workstation** | [**Workstation**](Workstation.md) |  | 
+ **workstationUpdate** | [**WorkstationUpdate**](WorkstationUpdate.md) |  | 
 
 ### Return type
 
@@ -695,6 +802,52 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **deleteCloudAccount**
+```swift
+    open class func deleteCloudAccount( id: Int) -> Promise<Void>
+```
+
+
+
+### Required permissions    * Authenticated user 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this cloud account.
+
+MainAPI.deleteCloudAccount(id: id).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this cloud account. | 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **deleteDownloadArchive**
 ```swift
     open class func deleteDownloadArchive( id: UUID) -> Promise<Void>
@@ -704,7 +857,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -724,7 +877,53 @@ MainAPI.deleteDownloadArchive(id: id).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md) | A UUID string identifying this download archive. | 
+ **id** | **UUID** | A UUID string identifying this download archive. | 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteFilesystemPermission**
+```swift
+    open class func deleteFilesystemPermission( id: Int) -> Promise<Void>
+```
+
+
+
+### Required permissions    * User account permission: `None` (read) / `users:manage` (write) 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this filesystem permission.
+
+MainAPI.deleteFilesystemPermission(id: id).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this filesystem permission. | 
 
 ### Return type
 
@@ -750,7 +949,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `users:view` (read) / `users:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -796,7 +995,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `users:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -842,7 +1041,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -888,7 +1087,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `None` (read) / `users:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -934,7 +1133,7 @@ Void (empty response body)
 
 ### Required permissions    * Authenticated user   * Own workstation or User account permission: `workstations:view` (read) / `workstations:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -978,7 +1177,7 @@ Void (empty response body)
 
 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1022,7 +1221,7 @@ Void (empty response body)
 
 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1070,7 +1269,7 @@ Void (empty response body)
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1116,7 +1315,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `users:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1155,20 +1354,20 @@ Void (empty response body)
 
 # **getAllClientSessions**
 ```swift
-    open class func getAllClientSessions( user: String? = nil,  mountedWorkspacesMountNode: String? = nil,  workstation: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[ClientSession]>
+    open class func getAllClientSessions( user: Double? = nil,  mountedWorkspacesMountNode: Double? = nil,  workstation: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[ClientSession]>
 ```
 
 
 
 ### Required permissions    * User account permission: `system:status:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let user = "user_example" // String | Filter the returned list by `user`. (optional)
-let mountedWorkspacesMountNode = "mountedWorkspacesMountNode_example" // String | Filter the returned list by `mounted_workspaces__mount_node`. (optional)
+let user = 987 // Double | Filter the returned list by `user`. (optional)
+let mountedWorkspacesMountNode = 987 // Double | Filter the returned list by `mounted_workspaces__mount_node`. (optional)
 let workstation = "workstation_example" // String | Filter the returned list by `workstation`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
@@ -1187,8 +1386,8 @@ MainAPI.getAllClientSessions(user: user, mountedWorkspacesMountNode: mountedWork
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user** | **String** | Filter the returned list by &#x60;user&#x60;. | [optional] 
- **mountedWorkspacesMountNode** | **String** | Filter the returned list by &#x60;mounted_workspaces__mount_node&#x60;. | [optional] 
+ **user** | **Double** | Filter the returned list by &#x60;user&#x60;. | [optional] 
+ **mountedWorkspacesMountNode** | **Double** | Filter the returned list by &#x60;mounted_workspaces__mount_node&#x60;. | [optional] 
  **workstation** | **String** | Filter the returned list by &#x60;workstation&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
@@ -1197,6 +1396,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[ClientSession]**](ClientSession.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAllCloudAccounts**
+```swift
+    open class func getAllCloudAccounts( name: String? = nil,  provider: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[CloudAccount]>
+```
+
+
+
+### Required permissions    * Authenticated user 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let name = "name_example" // String | Filter the returned list by `name`. (optional)
+let provider = "provider_example" // String | Filter the returned list by `provider`. (optional)
+let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
+let limit = 987 // Int | Number of results to return per page. (optional)
+let offset = 987 // Int | The initial index from which to return the results. (optional)
+
+MainAPI.getAllCloudAccounts(name: name, provider: provider, ordering: ordering, limit: limit, offset: offset).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **String** | Filter the returned list by &#x60;name&#x60;. | [optional] 
+ **provider** | **String** | Filter the returned list by &#x60;provider&#x60;. | [optional] 
+ **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **limit** | **Int** | Number of results to return per page. | [optional] 
+ **offset** | **Int** | The initial index from which to return the results. | [optional] 
+
+### Return type
+
+[**[CloudAccount]**](CloudAccount.md)
 
 ### Authorization
 
@@ -1218,7 +1471,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1268,7 +1521,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `downloads:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1311,6 +1564,62 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getAllFilesystemPermissions**
+```swift
+    open class func getAllFilesystemPermissions( user: Double? = nil,  group: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  forUser: Int? = nil) -> Promise<[FilesystemPermission]>
+```
+
+
+
+### Required permissions    * User account permission: `None` (read) / `users:manage` (write) 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let user = 987 // Double | Filter the returned list by `user`. (optional)
+let group = 987 // Double | Filter the returned list by `group`. (optional)
+let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
+let limit = 987 // Int | Number of results to return per page. (optional)
+let offset = 987 // Int | The initial index from which to return the results. (optional)
+let forUser = 987 // Int |  (optional)
+
+MainAPI.getAllFilesystemPermissions(user: user, group: group, ordering: ordering, limit: limit, offset: offset, forUser: forUser).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user** | **Double** | Filter the returned list by &#x60;user&#x60;. | [optional] 
+ **group** | **Double** | Filter the returned list by &#x60;group&#x60;. | [optional] 
+ **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **limit** | **Int** | Number of results to return per page. | [optional] 
+ **offset** | **Int** | The initial index from which to return the results. | [optional] 
+ **forUser** | **Int** |  | [optional] 
+
+### Return type
+
+[**[FilesystemPermission]**](FilesystemPermission.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getAllGroups**
 ```swift
     open class func getAllGroups( name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[ElementsGroup]>
@@ -1320,7 +1629,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `users:view` (read) / `users:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1372,7 +1681,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1422,7 +1731,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1474,7 +1783,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1534,7 +1843,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `users:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1592,7 +1901,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user   * Own workstation or User account permission: `workstations:view` (read) / `workstations:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1646,7 +1955,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1688,7 +1997,7 @@ This endpoint does not need any parameter.
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1734,7 +2043,7 @@ Void (empty response body)
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1776,7 +2085,7 @@ This endpoint does not need any parameter.
 
 ### Required permissions    * User account permission: `system:status:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1813,6 +2122,98 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getCloudAccount**
+```swift
+    open class func getCloudAccount( id: Int) -> Promise<CloudAccount>
+```
+
+
+
+### Required permissions    * Authenticated user 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this cloud account.
+
+MainAPI.getCloudAccount(id: id).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this cloud account. | 
+
+### Return type
+
+[**CloudAccount**](CloudAccount.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getCloudAccountStorageRoots**
+```swift
+    open class func getCloudAccountStorageRoots( id: Int) -> Promise<[StorageRoot]>
+```
+
+
+
+### Required permissions    * User account permission: `system:admin-access` 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this cloud account.
+
+MainAPI.getCloudAccountStorageRoots(id: id).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this cloud account. | 
+
+### Return type
+
+[**[StorageRoot]**](StorageRoot.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getCurrentWorkstation**
 ```swift
     open class func getCurrentWorkstation( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<Workstation>
@@ -1822,7 +2223,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1872,7 +2273,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `downloads:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1918,7 +2319,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1938,7 +2339,7 @@ MainAPI.getDownloadArchive(id: id).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md) | A UUID string identifying this download archive. | 
+ **id** | **UUID** | A UUID string identifying this download archive. | 
 
 ### Return type
 
@@ -1964,7 +2365,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1984,7 +2385,7 @@ MainAPI.getDownloadArchiveFile(id: id).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md) | A UUID string identifying this download archive. | 
+ **id** | **UUID** | A UUID string identifying this download archive. | 
 
 ### Return type
 
@@ -2010,7 +2411,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `downloads:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2056,7 +2457,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `downloads:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2093,6 +2494,52 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getFilesystemPermission**
+```swift
+    open class func getFilesystemPermission( id: Int) -> Promise<FilesystemPermission>
+```
+
+
+
+### Required permissions    * User account permission: `None` (read) / `users:manage` (write) 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this filesystem permission.
+
+MainAPI.getFilesystemPermission(id: id).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this filesystem permission. | 
+
+### Return type
+
+[**FilesystemPermission**](FilesystemPermission.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getGroup**
 ```swift
     open class func getGroup( id: Int) -> Promise<ElementsGroupDetail>
@@ -2102,7 +2549,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `users:view` (read) / `users:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2148,7 +2595,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `users:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2194,7 +2641,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2240,7 +2687,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2286,7 +2733,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `users:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2332,7 +2779,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `users:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2378,7 +2825,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2420,7 +2867,7 @@ This endpoint does not need any parameter.
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2462,7 +2909,7 @@ This endpoint does not need any parameter.
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2510,7 +2957,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2556,7 +3003,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:status:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2602,7 +3049,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:status:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2648,7 +3095,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2698,7 +3145,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2748,7 +3195,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2790,7 +3237,7 @@ This endpoint does not need any parameter.
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2832,7 +3279,7 @@ This endpoint does not need any parameter.
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2880,7 +3327,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:admin-access`   * License component: stornext_mdc 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2922,7 +3369,7 @@ This endpoint does not need any parameter.
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2970,7 +3417,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3005,21 +3452,22 @@ This endpoint does not need any parameter.
 
 # **getUser**
 ```swift
-    open class func getUser( id: Int) -> Promise<ElementsUserDetail>
+    open class func getUser( id: Int,  includeAllowedFsPaths: Bool? = nil) -> Promise<ElementsUserDetail>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `users:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this User.
+let includeAllowedFsPaths = true // Bool |  (optional)
 
-MainAPI.getUser(id: id).then {
+MainAPI.getUser(id: id, includeAllowedFsPaths: includeAllowedFsPaths).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -3033,6 +3481,7 @@ MainAPI.getUser(id: id).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this User. | 
+ **includeAllowedFsPaths** | **Bool** |  | [optional] 
 
 ### Return type
 
@@ -3058,7 +3507,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user   * Own workstation or User account permission: `workstations:view` (read) / `workstations:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3104,7 +3553,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:admin-access`   * License component: stornext_mdc 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3141,6 +3590,54 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchCloudAccount**
+```swift
+    open class func patchCloudAccount( id: Int,  cloudAccountPartialUpdate: CloudAccountPartialUpdate) -> Promise<CloudAccount>
+```
+
+
+
+### Required permissions    * Authenticated user 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this cloud account.
+let cloudAccountPartialUpdate = CloudAccountPartialUpdate(name: "name_example", provider: "provider_example", accessId: "accessId_example", secret: "secret_example", tenant: "tenant_example", subscription: "subscription_example", endpoint: "endpoint_example", mountCredentialsManagement: "mountCredentialsManagement_example") // CloudAccountPartialUpdate | 
+
+MainAPI.patchCloudAccount(id: id, cloudAccountPartialUpdate: cloudAccountPartialUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this cloud account. | 
+ **cloudAccountPartialUpdate** | [**CloudAccountPartialUpdate**](CloudAccountPartialUpdate.md) |  | 
+
+### Return type
+
+[**CloudAccount**](CloudAccount.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **patchCurrentWorkstation**
 ```swift
     open class func patchCurrentWorkstation( workstationPartialUpdate: WorkstationPartialUpdate) -> Promise<Workstation>
@@ -3150,12 +3647,12 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let workstationPartialUpdate = WorkstationPartialUpdate(id: "id_example", rdcAllowUsers: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], rdcAllowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123])], report: "TODO", name: "name_example", hostname: "hostname_example", rdcLastUsed: Date(), rdcDisableUpnp: false, rdcClientPort: 123, rdcHostPort: 123) // WorkstationPartialUpdate | 
+let workstationPartialUpdate = WorkstationPartialUpdate(rdcAllowUsers: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], rdcAllowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ldap: 123, members: [123])], report: "TODO", name: "name_example", hostname: "hostname_example", rdcLastUsed: Date(), rdcDisableUpnp: false, rdcClientPort: 123, rdcHostPort: 123) // WorkstationPartialUpdate | 
 
 MainAPI.patchCurrentWorkstation(workstationPartialUpdate: workstationPartialUpdate).then {
          // when the promise is fulfilled
@@ -3196,13 +3693,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // UUID | A UUID string identifying this download archive.
-let downloadArchivePartialUpdate = DownloadArchivePartialUpdate(id: 123, taskInfo: TaskInfo(id: "id_example", displayName: "displayName_example", kwargs: "TODO", subtask: Subtask(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123), worker: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), workstation: Workstation(id: "id_example", displayName: "displayName_example", rdcAllowUsers: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: nil, mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], rdcAllowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123])], clientSessions: [nil], name: "name_example", hostname: "hostname_example", rdcLastUsed: Date(), rdcDisableUpnp: false, rdcClientPort: 123, rdcHostPort: 123), progress: TaskProgress(message: "message_example", current: 123, max: 123), logPath: "logPath_example", name: "name_example", taskName: "taskName_example", workerName: "workerName_example", queue: "queue_example", state: 123, stateText: "stateText_example", jobInstance: 123, started: Date(), finished: Date(), exception: "exception_example", traceback: "traceback_example", schedule: 123), name: "name_example", path: "path_example", progressUnit: 123, user: 123) // DownloadArchivePartialUpdate | 
+let downloadArchivePartialUpdate = DownloadArchivePartialUpdate(taskInfo: TaskInfo(id: "id_example", displayName: "displayName_example", kwargs: "TODO", subtask: Subtask(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123), worker: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), workstation: Workstation(id: "id_example", displayName: "displayName_example", rdcAllowUsers: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], rdcAllowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ldap: 123, members: [123])], name: "name_example", hostname: "hostname_example", rdcLastUsed: Date(), rdcDisableUpnp: false, rdcClientPort: 123, rdcHostPort: 123), progress: TaskProgress(message: "message_example", current: 123, max: 123, bar: false), logPath: "logPath_example", finished: Date(), name: "name_example", taskName: "taskName_example", workerName: "workerName_example", queue: "queue_example", state: 123, stateText: "stateText_example", jobInstance: 123, started: Date(), exception: "exception_example", traceback: "traceback_example", schedule: 123), name: "name_example", path: "path_example", progressUnit: 123, user: 123) // DownloadArchivePartialUpdate | 
 
 MainAPI.patchDownloadArchive(id: id, downloadArchivePartialUpdate: downloadArchivePartialUpdate).then {
          // when the promise is fulfilled
@@ -3217,12 +3714,60 @@ MainAPI.patchDownloadArchive(id: id, downloadArchivePartialUpdate: downloadArchi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md) | A UUID string identifying this download archive. | 
+ **id** | **UUID** | A UUID string identifying this download archive. | 
  **downloadArchivePartialUpdate** | [**DownloadArchivePartialUpdate**](DownloadArchivePartialUpdate.md) |  | 
 
 ### Return type
 
 [**DownloadArchive**](DownloadArchive.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchFilesystemPermission**
+```swift
+    open class func patchFilesystemPermission( id: Int,  filesystemPermissionPartialUpdate: FilesystemPermissionPartialUpdate) -> Promise<FilesystemPermission>
+```
+
+
+
+### Required permissions    * User account permission: `None` (read) / `users:manage` (write) 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this filesystem permission.
+let filesystemPermissionPartialUpdate = FilesystemPermissionPartialUpdate(path: "path_example", readOnly: false, user: 123, group: 123) // FilesystemPermissionPartialUpdate | 
+
+MainAPI.patchFilesystemPermission(id: id, filesystemPermissionPartialUpdate: filesystemPermissionPartialUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this filesystem permission. | 
+ **filesystemPermissionPartialUpdate** | [**FilesystemPermissionPartialUpdate**](FilesystemPermissionPartialUpdate.md) |  | 
+
+### Return type
+
+[**FilesystemPermission**](FilesystemPermission.md)
 
 ### Authorization
 
@@ -3244,13 +3789,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `users:view` (read) / `users:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Group.
-let elementsGroupDetailPartialUpdate = ElementsGroupDetailPartialUpdate(permissions: ["permissions_example"], members: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], ldap: LDAPServerReference(id: 123, name: "name_example", winbindSeparator: "winbindSeparator_example", ntDomain: "ntDomain_example"), name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false) // ElementsGroupDetailPartialUpdate | 
+let elementsGroupDetailPartialUpdate = ElementsGroupDetailPartialUpdate(permissions: ["permissions_example"], members: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], ldap: "TODO", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123) // ElementsGroupDetailPartialUpdate | 
 
 MainAPI.patchGroup(id: id, elementsGroupDetailPartialUpdate: elementsGroupDetailPartialUpdate).then {
          // when the promise is fulfilled
@@ -3292,7 +3837,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3340,7 +3885,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3386,13 +3931,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `users:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this User.
-let elementsUserDetailPartialUpdate = ElementsUserDetailPartialUpdate(allowChangingPassword: false, allowWanLogin: false, avatar: "avatar_example", defaultPage: "defaultPage_example", email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: LDAPServerReference(id: 123, name: "name_example", winbindSeparator: "winbindSeparator_example", ntDomain: "ntDomain_example"), ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example", groups: [123]) // ElementsUserDetailPartialUpdate | 
+let elementsUserDetailPartialUpdate = ElementsUserDetailPartialUpdate(allowChangingPassword: false, allowWanLogin: false, avatar: "avatar_example", defaultPage: "defaultPage_example", email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: "TODO", ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example", groups: [123]) // ElementsUserDetailPartialUpdate | 
 
 MainAPI.patchUser(id: id, elementsUserDetailPartialUpdate: elementsUserDetailPartialUpdate).then {
          // when the promise is fulfilled
@@ -3434,13 +3979,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user   * Own workstation or User account permission: `workstations:view` (read) / `workstations:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = "id_example" // String | A unique value identifying this workstation.
-let workstationPartialUpdate = WorkstationPartialUpdate(id: "id_example", rdcAllowUsers: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], rdcAllowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123])], report: "TODO", name: "name_example", hostname: "hostname_example", rdcLastUsed: Date(), rdcDisableUpnp: false, rdcClientPort: 123, rdcHostPort: 123) // WorkstationPartialUpdate | 
+let workstationPartialUpdate = WorkstationPartialUpdate(rdcAllowUsers: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], rdcAllowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ldap: 123, members: [123])], report: "TODO", name: "name_example", hostname: "hostname_example", rdcLastUsed: Date(), rdcDisableUpnp: false, rdcClientPort: 123, rdcHostPort: 123) // WorkstationPartialUpdate | 
 
 MainAPI.patchWorkstation(id: id, workstationPartialUpdate: workstationPartialUpdate).then {
          // when the promise is fulfilled
@@ -3480,7 +4025,7 @@ Name | Type | Description  | Notes
 
 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3526,7 +4071,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3568,7 +4113,7 @@ Void (empty response body)
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3614,7 +4159,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3660,7 +4205,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3706,7 +4251,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `users:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3743,6 +4288,48 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **restartWebUI**
+```swift
+    open class func restartWebUI() -> Promise<Void>
+```
+
+
+
+### Required permissions    * User account permission: `system:admin-access` 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+
+MainAPI.restartWebUI().then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **runServiceOperation**
 ```swift
     open class func runServiceOperation( id: Int,  operation: String,  service: String) -> Promise<Void>
@@ -3752,7 +4339,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3802,7 +4389,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3850,7 +4437,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3896,7 +4483,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3942,7 +4529,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `users:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3990,7 +4577,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4032,7 +4619,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4074,7 +4661,7 @@ This endpoint does not need any parameter.
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4116,7 +4703,7 @@ This endpoint does not need any parameter.
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4162,7 +4749,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `users:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4208,7 +4795,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `users:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4254,7 +4841,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4298,7 +4885,7 @@ Name | Type | Description  | Notes
 
 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4337,6 +4924,52 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **testCloudAccountCredentials**
+```swift
+    open class func testCloudAccountCredentials( testCloudAccountCredentialsRequest: TestCloudAccountCredentialsRequest) -> Promise<TestCloudAccountCredentialsResponse>
+```
+
+
+
+### Required permissions    * User account permission: `system:admin-access` 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let testCloudAccountCredentialsRequest = TestCloudAccountCredentialsRequest(name: "name_example", provider: "provider_example", accessId: "accessId_example", secret: "secret_example", tenant: "tenant_example", subscription: "subscription_example", endpoint: "endpoint_example", mountCredentialsManagement: "mountCredentialsManagement_example") // TestCloudAccountCredentialsRequest | 
+
+MainAPI.testCloudAccountCredentials(testCloudAccountCredentialsRequest: testCloudAccountCredentialsRequest).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **testCloudAccountCredentialsRequest** | [**TestCloudAccountCredentialsRequest**](TestCloudAccountCredentialsRequest.md) |  | 
+
+### Return type
+
+[**TestCloudAccountCredentialsResponse**](TestCloudAccountCredentialsResponse.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **testSMTPConfiguration**
 ```swift
     open class func testSMTPConfiguration( testSMTP: TestSMTP) -> Promise<Void>
@@ -4346,7 +4979,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4385,21 +5018,21 @@ Void (empty response body)
 
 # **updateCertificateConfiguration**
 ```swift
-    open class func updateCertificateConfiguration( certificate: Certificate) -> Promise<Certificate>
+    open class func updateCertificateConfiguration( certificateUpdate: CertificateUpdate) -> Promise<Certificate>
 ```
 
 
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let certificate = Certificate(certificate: "certificate_example", key: "key_example", name: "name_example", issuer: "issuer_example", domains: "domains_example", fingerprint: "fingerprint_example", notValidBefore: "notValidBefore_example", notValidAfter: "notValidAfter_example", expired: "expired_example", keyMatches: "keyMatches_example", domainMatches: "domainMatches_example") // Certificate | 
+let certificateUpdate = CertificateUpdate(certificate: "certificate_example", key: "key_example") // CertificateUpdate | 
 
-MainAPI.updateCertificateConfiguration(certificate: certificate).then {
+MainAPI.updateCertificateConfiguration(certificateUpdate: certificateUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -4412,7 +5045,7 @@ MainAPI.updateCertificateConfiguration(certificate: certificate).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **certificate** | [**Certificate**](Certificate.md) |  | 
+ **certificateUpdate** | [**CertificateUpdate**](CertificateUpdate.md) |  | 
 
 ### Return type
 
@@ -4429,23 +5062,24 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateCurrentWorkstation**
+# **updateCloudAccount**
 ```swift
-    open class func updateCurrentWorkstation( workstation: Workstation) -> Promise<Workstation>
+    open class func updateCloudAccount( id: Int,  cloudAccountUpdate: CloudAccountUpdate) -> Promise<CloudAccount>
 ```
 
 
 
-### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
+### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let workstation = Workstation(id: "id_example", displayName: "displayName_example", rdcAllowUsers: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], rdcAllowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123])], clientSessions: [nil], name: "name_example", hostname: "hostname_example", rdcLastUsed: Date(), rdcDisableUpnp: false, rdcClientPort: 123, rdcHostPort: 123) // Workstation | 
+let id = 987 // Int | A unique integer value identifying this cloud account.
+let cloudAccountUpdate = CloudAccountUpdate(name: "name_example", provider: "provider_example", accessId: "accessId_example", secret: "secret_example", tenant: "tenant_example", subscription: "subscription_example", endpoint: "endpoint_example", mountCredentialsManagement: "mountCredentialsManagement_example") // CloudAccountUpdate | 
 
-MainAPI.updateCurrentWorkstation(workstation: workstation).then {
+MainAPI.updateCloudAccount(id: id, cloudAccountUpdate: cloudAccountUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -4458,7 +5092,54 @@ MainAPI.updateCurrentWorkstation(workstation: workstation).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workstation** | [**Workstation**](Workstation.md) |  | 
+ **id** | **Int** | A unique integer value identifying this cloud account. | 
+ **cloudAccountUpdate** | [**CloudAccountUpdate**](CloudAccountUpdate.md) |  | 
+
+### Return type
+
+[**CloudAccount**](CloudAccount.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateCurrentWorkstation**
+```swift
+    open class func updateCurrentWorkstation( workstationUpdate: WorkstationUpdate) -> Promise<Workstation>
+```
+
+
+
+### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let workstationUpdate = WorkstationUpdate(rdcAllowUsers: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], rdcAllowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ldap: 123, members: [123])], report: "TODO", name: "name_example", hostname: "hostname_example", rdcLastUsed: Date(), rdcDisableUpnp: false, rdcClientPort: 123, rdcHostPort: 123) // WorkstationUpdate | 
+
+MainAPI.updateCurrentWorkstation(workstationUpdate: workstationUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workstationUpdate** | [**WorkstationUpdate**](WorkstationUpdate.md) |  | 
 
 ### Return type
 
@@ -4477,22 +5158,22 @@ Name | Type | Description  | Notes
 
 # **updateDownloadArchive**
 ```swift
-    open class func updateDownloadArchive( id: UUID,  downloadArchive: DownloadArchive) -> Promise<DownloadArchive>
+    open class func updateDownloadArchive( id: UUID,  downloadArchiveUpdate: DownloadArchiveUpdate) -> Promise<DownloadArchive>
 ```
 
 
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // UUID | A UUID string identifying this download archive.
-let downloadArchive = DownloadArchive(id: 123, taskInfo: TaskInfo(id: "id_example", displayName: "displayName_example", kwargs: "TODO", subtask: Subtask(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123), worker: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), workstation: Workstation(id: "id_example", displayName: "displayName_example", rdcAllowUsers: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: nil, mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], rdcAllowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123])], clientSessions: [nil], name: "name_example", hostname: "hostname_example", rdcLastUsed: Date(), rdcDisableUpnp: false, rdcClientPort: 123, rdcHostPort: 123), progress: TaskProgress(message: "message_example", current: 123, max: 123), logPath: "logPath_example", name: "name_example", taskName: "taskName_example", workerName: "workerName_example", queue: "queue_example", state: 123, stateText: "stateText_example", jobInstance: 123, started: Date(), finished: Date(), exception: "exception_example", traceback: "traceback_example", schedule: 123), uncompressedSize: 123, size: 123, expires: "expires_example", files: ["files_example"], name: "name_example", path: "path_example", createdAt: Date(), progressUnit: 123, user: 123) // DownloadArchive | 
+let downloadArchiveUpdate = DownloadArchiveUpdate(taskInfo: TaskInfo(id: "id_example", displayName: "displayName_example", kwargs: "TODO", subtask: Subtask(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123), worker: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), workstation: Workstation(id: "id_example", displayName: "displayName_example", rdcAllowUsers: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], rdcAllowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ldap: 123, members: [123])], name: "name_example", hostname: "hostname_example", rdcLastUsed: Date(), rdcDisableUpnp: false, rdcClientPort: 123, rdcHostPort: 123), progress: TaskProgress(message: "message_example", current: 123, max: 123, bar: false), logPath: "logPath_example", finished: Date(), name: "name_example", taskName: "taskName_example", workerName: "workerName_example", queue: "queue_example", state: 123, stateText: "stateText_example", jobInstance: 123, started: Date(), exception: "exception_example", traceback: "traceback_example", schedule: 123), name: "name_example", path: "path_example", progressUnit: 123, user: 123) // DownloadArchiveUpdate | 
 
-MainAPI.updateDownloadArchive(id: id, downloadArchive: downloadArchive).then {
+MainAPI.updateDownloadArchive(id: id, downloadArchiveUpdate: downloadArchiveUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -4505,8 +5186,8 @@ MainAPI.updateDownloadArchive(id: id, downloadArchive: downloadArchive).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | [**UUID**](.md) | A UUID string identifying this download archive. | 
- **downloadArchive** | [**DownloadArchive**](DownloadArchive.md) |  | 
+ **id** | **UUID** | A UUID string identifying this download archive. | 
+ **downloadArchiveUpdate** | [**DownloadArchiveUpdate**](DownloadArchiveUpdate.md) |  | 
 
 ### Return type
 
@@ -4523,24 +5204,72 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **updateFilesystemPermission**
+```swift
+    open class func updateFilesystemPermission( id: Int,  filesystemPermissionUpdate: FilesystemPermissionUpdate) -> Promise<FilesystemPermission>
+```
+
+
+
+### Required permissions    * User account permission: `None` (read) / `users:manage` (write) 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this filesystem permission.
+let filesystemPermissionUpdate = FilesystemPermissionUpdate(path: "path_example", readOnly: false, user: 123, group: 123) // FilesystemPermissionUpdate | 
+
+MainAPI.updateFilesystemPermission(id: id, filesystemPermissionUpdate: filesystemPermissionUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this filesystem permission. | 
+ **filesystemPermissionUpdate** | [**FilesystemPermissionUpdate**](FilesystemPermissionUpdate.md) |  | 
+
+### Return type
+
+[**FilesystemPermission**](FilesystemPermission.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateGroup**
 ```swift
-    open class func updateGroup( id: Int,  elementsGroupDetail: ElementsGroupDetail) -> Promise<ElementsGroupDetail>
+    open class func updateGroup( id: Int,  elementsGroupDetailUpdate: ElementsGroupDetailUpdate) -> Promise<ElementsGroupDetail>
 ```
 
 
 
 ### Required permissions    * User account permission: `users:view` (read) / `users:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Group.
-let elementsGroupDetail = ElementsGroupDetail(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], members: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], ldap: LDAPServerReference(id: 123, name: "name_example", winbindSeparator: "winbindSeparator_example", ntDomain: "ntDomain_example"), name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false) // ElementsGroupDetail | 
+let elementsGroupDetailUpdate = ElementsGroupDetailUpdate(permissions: ["permissions_example"], members: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], ldap: "TODO", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123) // ElementsGroupDetailUpdate | 
 
-MainAPI.updateGroup(id: id, elementsGroupDetail: elementsGroupDetail).then {
+MainAPI.updateGroup(id: id, elementsGroupDetailUpdate: elementsGroupDetailUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -4554,7 +5283,7 @@ MainAPI.updateGroup(id: id, elementsGroupDetail: elementsGroupDetail).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this Group. | 
- **elementsGroupDetail** | [**ElementsGroupDetail**](ElementsGroupDetail.md) |  | 
+ **elementsGroupDetailUpdate** | [**ElementsGroupDetailUpdate**](ElementsGroupDetailUpdate.md) |  | 
 
 ### Return type
 
@@ -4573,22 +5302,22 @@ Name | Type | Description  | Notes
 
 # **updateNTPServer**
 ```swift
-    open class func updateNTPServer( id: Int,  nTPServer: NTPServer) -> Promise<NTPServer>
+    open class func updateNTPServer( id: Int,  nTPServerUpdate: NTPServerUpdate) -> Promise<NTPServer>
 ```
 
 
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this NTP Server.
-let nTPServer = NTPServer(id: 123, address: "address_example", options: "options_example") // NTPServer | 
+let nTPServerUpdate = NTPServerUpdate(address: "address_example", options: "options_example") // NTPServerUpdate | 
 
-MainAPI.updateNTPServer(id: id, nTPServer: nTPServer).then {
+MainAPI.updateNTPServer(id: id, nTPServerUpdate: nTPServerUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -4602,7 +5331,7 @@ MainAPI.updateNTPServer(id: id, nTPServer: nTPServer).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this NTP Server. | 
- **nTPServer** | [**NTPServer**](NTPServer.md) |  | 
+ **nTPServerUpdate** | [**NTPServerUpdate**](NTPServerUpdate.md) |  | 
 
 ### Return type
 
@@ -4621,21 +5350,21 @@ Name | Type | Description  | Notes
 
 # **updateParameters**
 ```swift
-    open class func updateParameters( parameters: Parameters) -> Promise<Parameters>
+    open class func updateParameters( parametersUpdate: ParametersUpdate) -> Promise<Parameters>
 ```
 
 
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let parameters = Parameters(analytics: false, brandingCss: "brandingCss_example", brandingLogo: "brandingLogo_example", externalUrl: "externalUrl_example", fileManagerRecycleBin: false, httpsRedirect: "httpsRedirect_example", language: "language_example", ltfsDefaultRestoreToOriginalLocation: false, ltfsDefaultSearchDirectories: false, ltfsLibraryAddress: "ltfsLibraryAddress_example", mailStyling: "TODO", mediaAutoPlay: false, mediaAutoProxy: false, mediaAutoScan: false, mediaAutoTransport: false, mediaAutoVeritoneUpload: false, mediaDefaultCustomFieldType: "mediaDefaultCustomFieldType_example", mediaDefaultDeleteBehaviour: "mediaDefaultDeleteBehaviour_example", mediaForceShowDeleted: false, mediaKeepSelectionWhenBrowsing: false, mediaRecycleBin: false, ntpOfferSync: false, otpPolicy: "otpPolicy_example", tasksRunScheduled: false, usersDefaultPermissions: "usersDefaultPermissions_example", workspacesFolderTemplatePath: "workspacesFolderTemplatePath_example", workspacesPath: "workspacesPath_example") // Parameters | 
+let parametersUpdate = ParametersUpdate(analytics: false, brandingCss: "brandingCss_example", brandingLogo: "brandingLogo_example", clientOfferFileSearch: false, externalUrl: "externalUrl_example", fileManagerRecycleBin: false, httpsRedirect: "httpsRedirect_example", language: "language_example", ltfsDefaultRestoreToOriginalLocation: false, ltfsDefaultSearchDirectories: false, ltfsLibraryAddress: "ltfsLibraryAddress_example", mailStyling: "TODO", mediaAutoPlay: false, mediaAutoProxy: false, mediaAutoScan: false, mediaAutoTransport: false, mediaAutoVeritoneUpload: false, mediaDefaultCustomFieldType: "mediaDefaultCustomFieldType_example", mediaDefaultDeleteBehaviour: "mediaDefaultDeleteBehaviour_example", mediaForceShowDeleted: false, mediaKeepSelectionWhenBrowsing: false, mediaRecycleBin: false, ntpOfferSync: false, otpPolicy: "otpPolicy_example", tasksRunScheduled: false, usersDefaultPermissions: "usersDefaultPermissions_example", workspacesFolderTemplatePath: "workspacesFolderTemplatePath_example", workspacesPath: "workspacesPath_example") // ParametersUpdate | 
 
-MainAPI.updateParameters(parameters: parameters).then {
+MainAPI.updateParameters(parametersUpdate: parametersUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -4648,7 +5377,7 @@ MainAPI.updateParameters(parameters: parameters).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameters** | [**Parameters**](Parameters.md) |  | 
+ **parametersUpdate** | [**ParametersUpdate**](ParametersUpdate.md) |  | 
 
 ### Return type
 
@@ -4667,21 +5396,21 @@ Name | Type | Description  | Notes
 
 # **updateProfile**
 ```swift
-    open class func updateProfile( elementsUserProfile: ElementsUserProfile) -> Promise<ElementsUserProfile>
+    open class func updateProfile( elementsUserProfileUpdate: ElementsUserProfileUpdate) -> Promise<ElementsUserProfile>
 ```
 
 
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let elementsUserProfile = ElementsUserProfile(avatar: "avatar_example", defaultPage: "defaultPage_example", fullName: "fullName_example", language: "language_example", fmBookmarks: ["fmBookmarks_example"], id: 123, username: "username_example", unixUsername: "unixUsername_example", displayName: "displayName_example", email: "email_example", ldap: LDAPServer(id: 123, name: "name_example", winbindSeparator: "winbindSeparator_example", ntDomain: "ntDomain_example"), effectivePermissions: ["effectivePermissions_example"]) // ElementsUserProfile | 
+let elementsUserProfileUpdate = ElementsUserProfileUpdate(avatar: "avatar_example", defaultPage: "defaultPage_example", fullName: "fullName_example", language: "language_example", fmBookmarks: ["fmBookmarks_example"]) // ElementsUserProfileUpdate | 
 
-MainAPI.updateProfile(elementsUserProfile: elementsUserProfile).then {
+MainAPI.updateProfile(elementsUserProfileUpdate: elementsUserProfileUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -4694,7 +5423,7 @@ MainAPI.updateProfile(elementsUserProfile: elementsUserProfile).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **elementsUserProfile** | [**ElementsUserProfile**](ElementsUserProfile.md) |  | 
+ **elementsUserProfileUpdate** | [**ElementsUserProfileUpdate**](ElementsUserProfileUpdate.md) |  | 
 
 ### Return type
 
@@ -4713,21 +5442,21 @@ Name | Type | Description  | Notes
 
 # **updateSMTPConfiguration**
 ```swift
-    open class func updateSMTPConfiguration( sMTPConfiguration: SMTPConfiguration) -> Promise<SMTPConfiguration>
+    open class func updateSMTPConfiguration( sMTPConfigurationUpdate: SMTPConfigurationUpdate) -> Promise<SMTPConfiguration>
 ```
 
 
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let sMTPConfiguration = SMTPConfiguration(fromAddress: "fromAddress_example", server: "server_example", port: 123, tls: "tls_example", username: "username_example", password: "password_example") // SMTPConfiguration | 
+let sMTPConfigurationUpdate = SMTPConfigurationUpdate(fromAddress: "fromAddress_example", server: "server_example", port: 123, tls: "tls_example", username: "username_example", password: "password_example") // SMTPConfigurationUpdate | 
 
-MainAPI.updateSMTPConfiguration(sMTPConfiguration: sMTPConfiguration).then {
+MainAPI.updateSMTPConfiguration(sMTPConfigurationUpdate: sMTPConfigurationUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -4740,7 +5469,7 @@ MainAPI.updateSMTPConfiguration(sMTPConfiguration: sMTPConfiguration).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sMTPConfiguration** | [**SMTPConfiguration**](SMTPConfiguration.md) |  | 
+ **sMTPConfigurationUpdate** | [**SMTPConfigurationUpdate**](SMTPConfigurationUpdate.md) |  | 
 
 ### Return type
 
@@ -4759,22 +5488,22 @@ Name | Type | Description  | Notes
 
 # **updateUser**
 ```swift
-    open class func updateUser( id: Int,  elementsUserDetail: ElementsUserDetail) -> Promise<ElementsUserDetail>
+    open class func updateUser( id: Int,  elementsUserDetailUpdate: ElementsUserDetailUpdate) -> Promise<ElementsUserDetail>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `users:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this User.
-let elementsUserDetail = ElementsUserDetail(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: LDAPServerReference(id: 123, name: "name_example", winbindSeparator: "winbindSeparator_example", ntDomain: "ntDomain_example"), ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example", groups: [123]) // ElementsUserDetail | 
+let elementsUserDetailUpdate = ElementsUserDetailUpdate(allowChangingPassword: false, allowWanLogin: false, avatar: "avatar_example", defaultPage: "defaultPage_example", email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: "TODO", ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example", groups: [123]) // ElementsUserDetailUpdate | 
 
-MainAPI.updateUser(id: id, elementsUserDetail: elementsUserDetail).then {
+MainAPI.updateUser(id: id, elementsUserDetailUpdate: elementsUserDetailUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -4788,7 +5517,7 @@ MainAPI.updateUser(id: id, elementsUserDetail: elementsUserDetail).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this User. | 
- **elementsUserDetail** | [**ElementsUserDetail**](ElementsUserDetail.md) |  | 
+ **elementsUserDetailUpdate** | [**ElementsUserDetailUpdate**](ElementsUserDetailUpdate.md) |  | 
 
 ### Return type
 
@@ -4807,22 +5536,22 @@ Name | Type | Description  | Notes
 
 # **updateWorkstation**
 ```swift
-    open class func updateWorkstation( id: String,  workstation: Workstation) -> Promise<Workstation>
+    open class func updateWorkstation( id: String,  workstationUpdate: WorkstationUpdate) -> Promise<Workstation>
 ```
 
 
 
 ### Required permissions    * Authenticated user   * Own workstation or User account permission: `workstations:view` (read) / `workstations:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = "id_example" // String | A unique value identifying this workstation.
-let workstation = Workstation(id: "id_example", displayName: "displayName_example", rdcAllowUsers: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], rdcAllowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123])], clientSessions: [nil], name: "name_example", hostname: "hostname_example", rdcLastUsed: Date(), rdcDisableUpnp: false, rdcClientPort: 123, rdcHostPort: 123) // Workstation | 
+let workstationUpdate = WorkstationUpdate(rdcAllowUsers: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], rdcAllowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ldap: 123, members: [123])], report: "TODO", name: "name_example", hostname: "hostname_example", rdcLastUsed: Date(), rdcDisableUpnp: false, rdcClientPort: 123, rdcHostPort: 123) // WorkstationUpdate | 
 
-MainAPI.updateWorkstation(id: id, workstation: workstation).then {
+MainAPI.updateWorkstation(id: id, workstationUpdate: workstationUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -4836,7 +5565,7 @@ MainAPI.updateWorkstation(id: id, workstation: workstation).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String** | A unique value identifying this workstation. | 
- **workstation** | [**Workstation**](Workstation.md) |  | 
+ **workstationUpdate** | [**WorkstationUpdate**](WorkstationUpdate.md) |  | 
 
 ### Return type
 
@@ -4862,7 +5591,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **name** | **String** |  | 
-**status** | [**SlackConnectionStatus**](SlackConnectionStatus.md) |  | [optional] 
+**status** | [**SlackConnectionStatus**](SlackConnectionStatus.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -10,11 +10,11 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct AllMediaFilesForBundlesRequest: Codable, Hashable {
+public struct AllMediaFilesForBundlesRequest: Codable, JSONEncodable, Hashable {
 
-    public var bundles: Set<Int>
+    public var bundles: [Int]
 
-    public init(bundles: Set<Int>) {
+    public init(bundles: [Int]) {
         self.bundles = bundles
     }
 

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct FilePartialUpdate: Codable, Hashable {
+public struct FilePartialUpdate: Codable, JSONEncodable, Hashable {
 
     public var name: String?
     public var files: [BasicFile]?

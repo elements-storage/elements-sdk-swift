@@ -10,9 +10,9 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SharePartialUpdate: Codable, Hashable {
+public struct SharePartialUpdate: Codable, JSONEncodable, Hashable {
 
-    public var sharingNfsPermissions: [String]?
+    public var sharingNfsPermissions: [NFSPermission]?
     public var volume: VolumeReference?
     public var name: String?
     public var path: String?
@@ -27,7 +27,7 @@ public struct SharePartialUpdate: Codable, Hashable {
     public var rwAccessGroup: Int?
     public var roAccessGroup: Int?
 
-    public init(sharingNfsPermissions: [String]? = nil, volume: VolumeReference? = nil, name: String? = nil, path: String? = nil, shareSmb: Bool? = nil, shareNfs: Bool? = nil, shareAfp: Bool? = nil, sharingReadOnly: Bool? = nil, sharingHidden: Bool? = nil, sharingRequireLogin: Bool? = nil, smbExtraConfig: String? = nil, afpExtraConfig: String? = nil, rwAccessGroup: Int? = nil, roAccessGroup: Int? = nil) {
+    public init(sharingNfsPermissions: [NFSPermission]? = nil, volume: VolumeReference? = nil, name: String? = nil, path: String? = nil, shareSmb: Bool? = nil, shareNfs: Bool? = nil, shareAfp: Bool? = nil, sharingReadOnly: Bool? = nil, sharingHidden: Bool? = nil, sharingRequireLogin: Bool? = nil, smbExtraConfig: String? = nil, afpExtraConfig: String? = nil, rwAccessGroup: Int? = nil, roAccessGroup: Int? = nil) {
         self.sharingNfsPermissions = sharingNfsPermissions
         self.volume = volume
         self.name = name

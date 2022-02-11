@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**subtasks** | Set<SubtaskReference> |  | [optional] 
-**schedules** | Set<ScheduleReference> |  | [optional] 
-**allowUsers** | Set<ElementsUserReference> |  | [optional] 
-**allowGroups** | Set<ElementsGroupReference> |  | [optional] 
+**subtasks** | [SubtaskReference] |  | [optional] 
+**schedules** | [ScheduleReference] |  | [optional] 
+**allowUsers** | [ElementsUserReference] |  | [optional] 
+**allowGroups** | [ElementsGroupReference] |  | [optional] 
 **variableDefinitions** | [[String: String]] |  | [optional] 
-**mediaRoots** | **Set<Int>** |  | [optional] 
+**mediaRoots** | **[Int]** |  | [optional] 
 **specialType** | **Int** |  | [optional] 
 **name** | **String** |  | [optional] 
 **enabled** | **Bool** |  | [optional] 

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ImportJobRequest: Codable, Hashable {
+public struct ImportJobRequest: Codable, JSONEncodable, Hashable {
 
     public var content: String
     public var replace: Bool

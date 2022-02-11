@@ -10,22 +10,22 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Marker: Codable, Hashable {
+public struct Marker: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var veritoneMetadataParser: String?
+    public var id: Int
+    public var veritoneMetadataParser: String
     public var title: String?
     public var text: String?
     public var tIn: Double
     public var tOut: Double
-    public var createdAt: Date?
-    public var modifiedAt: Date?
-    public var user: Int?
+    public var createdAt: Date
+    public var modifiedAt: Date
+    public var user: Int
     public var asset: Int
-    public var comment: Int?
-    public var veritoneMetadata: Int?
+    public var comment: Int
+    public var veritoneMetadata: Int
 
-    public init(id: Int? = nil, veritoneMetadataParser: String? = nil, title: String? = nil, text: String? = nil, tIn: Double, tOut: Double, createdAt: Date? = nil, modifiedAt: Date? = nil, user: Int? = nil, asset: Int, comment: Int? = nil, veritoneMetadata: Int? = nil) {
+    public init(id: Int, veritoneMetadataParser: String, title: String? = nil, text: String? = nil, tIn: Double, tOut: Double, createdAt: Date, modifiedAt: Date, user: Int, asset: Int, comment: Int, veritoneMetadata: Int) {
         self.id = id
         self.veritoneMetadataParser = veritoneMetadataParser
         self.title = title
@@ -59,18 +59,18 @@ public struct Marker: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(veritoneMetadataParser, forKey: .veritoneMetadataParser)
+        try container.encode(id, forKey: .id)
+        try container.encode(veritoneMetadataParser, forKey: .veritoneMetadataParser)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(text, forKey: .text)
         try container.encode(tIn, forKey: .tIn)
         try container.encode(tOut, forKey: .tOut)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
-        try container.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
-        try container.encodeIfPresent(user, forKey: .user)
+        try container.encode(createdAt, forKey: .createdAt)
+        try container.encode(modifiedAt, forKey: .modifiedAt)
+        try container.encode(user, forKey: .user)
         try container.encode(asset, forKey: .asset)
-        try container.encodeIfPresent(comment, forKey: .comment)
-        try container.encodeIfPresent(veritoneMetadata, forKey: .veritoneMetadata)
+        try container.encode(comment, forKey: .comment)
+        try container.encode(veritoneMetadata, forKey: .veritoneMetadata)
     }
 }
 

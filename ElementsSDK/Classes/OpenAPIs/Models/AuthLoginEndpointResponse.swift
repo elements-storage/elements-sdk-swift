@@ -10,14 +10,14 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct AuthLoginEndpointResponse: Codable, Hashable {
+public struct AuthLoginEndpointResponse: Codable, JSONEncodable, Hashable {
 
     public var reason: String?
     public var detail: String?
     public var redirect: String?
-    public var user: ElementsUserDetail?
+    public var user: ElementsUserDetail
 
-    public init(reason: String? = nil, detail: String? = nil, redirect: String? = nil, user: ElementsUserDetail? = nil) {
+    public init(reason: String? = nil, detail: String? = nil, redirect: String? = nil, user: ElementsUserDetail) {
         self.reason = reason
         self.detail = detail
         self.redirect = redirect
@@ -38,7 +38,7 @@ public struct AuthLoginEndpointResponse: Codable, Hashable {
         try container.encodeIfPresent(reason, forKey: .reason)
         try container.encodeIfPresent(detail, forKey: .detail)
         try container.encodeIfPresent(redirect, forKey: .redirect)
-        try container.encodeIfPresent(user, forKey: .user)
+        try container.encode(user, forKey: .user)
     }
 }
 

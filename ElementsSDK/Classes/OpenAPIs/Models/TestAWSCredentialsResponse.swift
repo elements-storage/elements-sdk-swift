@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TestAWSCredentialsResponse: Codable, Hashable {
+public struct TestAWSCredentialsResponse: Codable, JSONEncodable, Hashable {
 
     public var ok: Bool
     public var arn: String?

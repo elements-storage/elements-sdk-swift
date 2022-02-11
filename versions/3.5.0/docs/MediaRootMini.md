@@ -1,0 +1,17 @@
+# MediaRootMini
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **Int** |  | 
+**name** | **String** |  | 
+**fullPath** | **String** |  | [readonly] 
+**customFields** | [CustomFieldReference] |  | [optional] 
+**volume** | [**VolumeMiniReference**](VolumeMiniReference.md) |  | 
+**path** | **String** |  | [optional] 
+**prefetchThumbnailStrips** | **Bool** |  | [optional] 
+
+[[Back to Model list]](../#documentation-for-models) [[Back to API list]](../#documentation-for-api-endpoints) [[Back to README]](../)
+
+

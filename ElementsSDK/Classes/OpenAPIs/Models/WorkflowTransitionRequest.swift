@@ -10,15 +10,15 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct WorkflowTransitionRequest: Codable, Hashable {
+public struct WorkflowTransitionRequest: Codable, JSONEncodable, Hashable {
 
-    public var bundles: Set<Int>?
-    public var directories: Set<Int>?
+    public var bundles: [Int]?
+    public var directories: [Int]?
     public var job: Int
     public var root: Int
     public var variables: [String: String]?
 
-    public init(bundles: Set<Int>? = nil, directories: Set<Int>? = nil, job: Int, root: Int, variables: [String: String]? = nil) {
+    public init(bundles: [Int]? = nil, directories: [Int]? = nil, job: Int, root: Int, variables: [String: String]? = nil) {
         self.bundles = bundles
         self.directories = directories
         self.job = job

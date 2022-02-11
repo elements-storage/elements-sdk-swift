@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct DeletedWorkspace: Codable, Hashable {
+public struct DeletedWorkspace: Codable, JSONEncodable, Hashable {
 
     public var name: String
     public var path: String

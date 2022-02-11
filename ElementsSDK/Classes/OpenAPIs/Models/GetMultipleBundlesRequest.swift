@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct GetMultipleBundlesRequest: Codable, Hashable {
+public struct GetMultipleBundlesRequest: Codable, JSONEncodable, Hashable {
 
     public var bundles: [Int]?
     public var files: [Int]?

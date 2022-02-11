@@ -10,12 +10,12 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ProxyProfileMini: Codable, Hashable {
+public struct ProxyProfileMini: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var name: String
 
-    public init(id: Int? = nil, name: String) {
+    public init(id: Int, name: String) {
         self.id = id
         self.name = name
     }
@@ -29,7 +29,7 @@ public struct ProxyProfileMini: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
     }
 }

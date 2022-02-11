@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SearchEndpointResponse: Codable, Hashable {
+public struct SearchEndpointResponse: Codable, JSONEncodable, Hashable {
 
     public var tapes: [Tape]
     public var entries: [TapeFile]

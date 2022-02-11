@@ -10,16 +10,16 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ClientSession: Codable, Hashable {
+public struct ClientSession: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var user: ElementsUserMini
-    public var mountedWorkspaces: String?
-    public var started: Date?
-    public var lastUpdated: Date?
+    public var mountedWorkspaces: String
+    public var started: Date
+    public var lastUpdated: Date
     public var workstation: WorkstationMini
 
-    public init(id: Int? = nil, user: ElementsUserMini, mountedWorkspaces: String? = nil, started: Date? = nil, lastUpdated: Date? = nil, workstation: WorkstationMini) {
+    public init(id: Int, user: ElementsUserMini, mountedWorkspaces: String, started: Date, lastUpdated: Date, workstation: WorkstationMini) {
         self.id = id
         self.user = user
         self.mountedWorkspaces = mountedWorkspaces
@@ -41,11 +41,11 @@ public struct ClientSession: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(user, forKey: .user)
-        try container.encodeIfPresent(mountedWorkspaces, forKey: .mountedWorkspaces)
-        try container.encodeIfPresent(started, forKey: .started)
-        try container.encodeIfPresent(lastUpdated, forKey: .lastUpdated)
+        try container.encode(mountedWorkspaces, forKey: .mountedWorkspaces)
+        try container.encode(started, forKey: .started)
+        try container.encode(lastUpdated, forKey: .lastUpdated)
         try container.encode(workstation, forKey: .workstation)
     }
 }

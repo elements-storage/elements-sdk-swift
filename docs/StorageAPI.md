@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**createShare**](StorageAPI.md#createshare) | **POST** /api/2/shares | 
 [**createSnapshot**](StorageAPI.md#createsnapshot) | **POST** /api/2/snapshots | 
 [**createTemplateFolder**](StorageAPI.md#createtemplatefolder) | **POST** /api/2/private/create-template-folder | 
+[**createVolume**](StorageAPI.md#createvolume) | **POST** /api/2/volumes | 
 [**createWorkspace**](StorageAPI.md#createworkspace) | **POST** /api/2/workspaces | 
 [**createWorkspacePermission**](StorageAPI.md#createworkspacepermission) | **POST** /api/2/workspace-permissions | 
 [**deleteFile**](StorageAPI.md#deletefile) | **DELETE** /api/2/files/{path} | 
@@ -85,7 +86,7 @@ Method | HTTP request | Description
 
 ### Required permissions    * User account permission: `projects:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -131,7 +132,7 @@ Void (empty response body)
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -177,7 +178,7 @@ Void (empty response body)
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -223,7 +224,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -271,7 +272,7 @@ Void (empty response body)
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -317,12 +318,12 @@ Void (empty response body)
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let fileCopyEndpointRequest = FileCopyEndpointRequest(input: ["input_example"], destination: "destination_example", hardlink: false, sync: false) // FileCopyEndpointRequest | 
+let fileCopyEndpointRequest = FileCopyEndpointRequest(input: ["input_example"], destination: "destination_example", hardlink: false, sync: false, overwrite: "overwrite_example", folders: "folders_example") // FileCopyEndpointRequest | 
 
 StorageAPI.copyFiles(fileCopyEndpointRequest: fileCopyEndpointRequest).then {
          // when the promise is fulfilled
@@ -356,21 +357,21 @@ Name | Type | Description  | Notes
 
 # **createFile**
 ```swift
-    open class func createFile( filesystemFile: FilesystemFile) -> Promise<FilesystemFile>
+    open class func createFile( fileUpdate: FileUpdate) -> Promise<FilesystemFile>
 ```
 
 
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let filesystemFile = FilesystemFile(path: "path_example", name: "name_example", size: 123, totalSize: 123, isDir: false, files: [BasicFile(path: "path_example", name: "name_example", size: 123, totalSize: 123, isDir: false, files: ["TODO"])], parent: "parent_example", modificationTime: Date(), accessTime: Date(), creationTime: Date(), mode: "mode_example", uid: 123, gid: 123, user: "user_example", group: "group_example", recursive: false, affinity: "affinity_example", modeSetuid: false, modeSetgid: false, modeSetvfx: false, modeUserRead: false, modeUserWrite: false, modeUserExecute: false, modeGroupRead: false, modeGroupWrite: false, modeGroupExecute: false, modeOthersRead: false, modeOthersWrite: false, modeOthersExecute: false) // FilesystemFile | 
+let fileUpdate = FileUpdate(name: "name_example", files: [BasicFile(path: "path_example", name: "name_example", size: 123, modificationTime: Date(), totalSize: 123, isDir: false, files: ["TODO"])], parent: "parent_example", mode: "mode_example", uid: 123, gid: 123, user: "user_example", group: "group_example", recursive: false, affinity: "affinity_example", modeSetuid: false, modeSetgid: false, modeSetvfx: false, modeUserRead: false, modeUserWrite: false, modeUserExecute: false, modeGroupRead: false, modeGroupWrite: false, modeGroupExecute: false, modeOthersRead: false, modeOthersWrite: false, modeOthersExecute: false) // FileUpdate | 
 
-StorageAPI.createFile(filesystemFile: filesystemFile).then {
+StorageAPI.createFile(fileUpdate: fileUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -383,7 +384,7 @@ StorageAPI.createFile(filesystemFile: filesystemFile).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filesystemFile** | [**FilesystemFile**](FilesystemFile.md) |  | 
+ **fileUpdate** | [**FileUpdate**](FileUpdate.md) |  | 
 
 ### Return type
 
@@ -409,7 +410,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -452,21 +453,21 @@ Void (empty response body)
 
 # **createProduction**
 ```swift
-    open class func createProduction( production: Production) -> Promise<Production>
+    open class func createProduction( productionUpdate: ProductionUpdate) -> Promise<Production>
 ```
 
 
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let production = Production(id: 123, isSpecial: false, specialType: 123, totalSize: 123, name: "name_example", obscureName: false, description: "description_example", longDescription: "longDescription_example", active: false, template: 123, defaultGroup: 123) // Production | 
+let productionUpdate = ProductionUpdate(name: "name_example", obscureName: false, description: "description_example", longDescription: "longDescription_example", active: false, template: 123, defaultGroup: 123) // ProductionUpdate | 
 
-StorageAPI.createProduction(production: production).then {
+StorageAPI.createProduction(productionUpdate: productionUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -479,7 +480,7 @@ StorageAPI.createProduction(production: production).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **production** | [**Production**](Production.md) |  | 
+ **productionUpdate** | [**ProductionUpdate**](ProductionUpdate.md) |  | 
 
 ### Return type
 
@@ -498,21 +499,21 @@ Name | Type | Description  | Notes
 
 # **createShare**
 ```swift
-    open class func createShare( share: Share) -> Promise<Share>
+    open class func createShare( shareUpdate: ShareUpdate) -> Promise<Share>
 ```
 
 
 
 ### Required permissions    * User account permission: `shares:view` (read) / `shares:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let share = Share(id: 123, sharingNfsPermissions: ["sharingNfsPermissions_example"], volume: VolumeReference(id: 123, name: "name_example", path: "path_example", nodes: [123], displayName: "displayName_example", visualTag: "visualTag_example", isDefault: false, useForHomes: false, useForWorkspaces: false, type: "type_example", snmEnabled: false, snfsName: "snfsName_example", simulatedQuotas: false, fsProperties: FSProperties(supportsDirectoryQuotas: false, supportsSoftQuotas: false, supportsUserQuotas: false, supportsGroupQuotas: false, supportsXattrs: false, supportsSnapshots: false, creatingDirectoryQuotaDestroysContent: false, removingDirectoryQuotaDestroysContent: false), backend: Backend(name: "name_example", properties: BackendProperties(supportsSharingRwPermissionsPriority: false, supportsSharingAfp: false, supportsSharingSmbRequireLogon: false, supportsSharingSmbRecycleBin: false, supportsSharingSmbXattrs: false, supportsSharingSmbSymlinks: false, supportsSharingSmbCustomOptions: false, supportsSharingNfsPermissions: false)), status: VolumeStatus(online: false, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, snfs: VolumeSNFSStatus(stripeGroups: [SNFSStripeGroup(name: "name_example", statusTags: ["statusTags_example"], affinity: "affinity_example", sizeTotal: 123, sizeUsed: 123, sizeFree: 123)]), lizardfs: VolumeLizardFSStatus(master: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), nodes: [LizardFSNode(node: nil, host: "host_example", online: false, version: "version_example", chunks: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunksForRemoval: 123, label: "label_example")], disks: [LizardFSDisk(node: nil, host: "host_example", mountpoint: "mountpoint_example", toDelete: false, damaged: false, scanning: false, errorChunk: 123, errorTimestamp: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunks: 123)]), beegfs: VolumeBeeGFSStatus(nodes: [BeeGFSNode(node: nil, host: "host_example", roles: ["roles_example"], addresses: ["addresses_example"])], targets: [BeeGFSTarget(node: nil, id: 123, host: "host_example", storagePool: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, online: false, consistent: false, errors: ["errors_example"])]))), name: "name_example", path: "path_example", shareSmb: false, shareNfs: false, shareAfp: false, sharingReadOnly: false, sharingHidden: false, sharingRequireLogin: false, smbExtraConfig: "smbExtraConfig_example", afpExtraConfig: "afpExtraConfig_example", rwAccessGroup: 123, roAccessGroup: 123) // Share | 
+let shareUpdate = ShareUpdate(sharingNfsPermissions: [NFSPermission(host: "host_example", readOnly: false, options: "options_example")], volume: VolumeReference(id: 123, path: "path_example", nodes: [123], displayName: "displayName_example", visualTag: "visualTag_example", isDefault: false, useForHomes: false, useForWorkspaces: false, type: "type_example", snmEnabled: false, snfsName: "snfsName_example", simulatedQuotas: false, fsProperties: FSProperties(needsSshConnection: false, supportsDirectoryQuotas: false, supportsSoftQuotas: false, supportsUserQuotas: false, supportsGroupQuotas: false, supportsXattrs: false, supportsSnapshots: false, creatingDirectoryQuotaDestroysContent: false, removingDirectoryQuotaDestroysContent: false), backend: Backend(name: "name_example", properties: BackendProperties(supportsSharingRwPermissionsPriority: false, supportsSharingAfp: false, supportsSharingSmbRequireLogon: false, supportsSharingSmbRecycleBin: false, supportsSharingSmbXattrs: false, supportsSharingSmbSymlinks: false, supportsSharingSmbCustomOptions: false, supportsSharingNfsPermissions: false)), status: VolumeStatus(online: false, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, snfs: VolumeSNFSStatus(stripeGroups: [SNFSStripeGroup(name: "name_example", statusTags: ["statusTags_example"], affinity: "affinity_example", sizeTotal: 123, sizeUsed: 123, sizeFree: 123)]), lizardfs: VolumeLizardFSStatus(master: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), nodes: [LizardFSNode(node: nil, host: "host_example", online: false, version: "version_example", chunks: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunksForRemoval: 123, label: "label_example")], disks: [LizardFSDisk(node: nil, host: "host_example", mountpoint: "mountpoint_example", toDelete: false, damaged: false, scanning: false, errorChunk: 123, errorTimestamp: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunks: 123)]), beegfs: VolumeBeeGFSStatus(nodes: [BeeGFSNode(node: nil, host: "host_example", roles: ["roles_example"], addresses: ["addresses_example"])], targets: [BeeGFSTarget(node: nil, id: 123, host: "host_example", storagePool: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, online: false, consistent: false, errors: ["errors_example"])])), cloudAccount: 123, name: "name_example"), name: "name_example", path: "path_example", shareSmb: false, shareNfs: false, shareAfp: false, sharingReadOnly: false, sharingHidden: false, sharingRequireLogin: false, smbExtraConfig: "smbExtraConfig_example", afpExtraConfig: "afpExtraConfig_example", rwAccessGroup: 123, roAccessGroup: 123) // ShareUpdate | 
 
-StorageAPI.createShare(share: share).then {
+StorageAPI.createShare(shareUpdate: shareUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -525,7 +526,7 @@ StorageAPI.createShare(share: share).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **share** | [**Share**](Share.md) |  | 
+ **shareUpdate** | [**ShareUpdate**](ShareUpdate.md) |  | 
 
 ### Return type
 
@@ -544,21 +545,21 @@ Name | Type | Description  | Notes
 
 # **createSnapshot**
 ```swift
-    open class func createSnapshot( snapshot: Snapshot) -> Promise<Snapshot>
+    open class func createSnapshot( snapshotUpdate: SnapshotUpdate) -> Promise<Snapshot>
 ```
 
 
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let snapshot = Snapshot(id: 123, createdBy: 123, workspace: 123, name: "name_example", createdAt: Date()) // Snapshot | 
+let snapshotUpdate = SnapshotUpdate(workspace: 123, name: "name_example") // SnapshotUpdate | 
 
-StorageAPI.createSnapshot(snapshot: snapshot).then {
+StorageAPI.createSnapshot(snapshotUpdate: snapshotUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -571,7 +572,7 @@ StorageAPI.createSnapshot(snapshot: snapshot).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **snapshot** | [**Snapshot**](Snapshot.md) |  | 
+ **snapshotUpdate** | [**SnapshotUpdate**](SnapshotUpdate.md) |  | 
 
 ### Return type
 
@@ -597,7 +598,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `folder_templates:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -634,23 +635,23 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createWorkspace**
+# **createVolume**
 ```swift
-    open class func createWorkspace( workspaceDetail: WorkspaceDetail) -> Promise<WorkspaceDetail>
+    open class func createVolume( volumeUpdate: VolumeUpdate) -> Promise<Volume>
 ```
 
 
 
-### Required permissions    * User account permission: `None` (read) / `projects:manage` (write) 
+### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let workspaceDetail = WorkspaceDetail(id: 123, production: ProductionReference(id: 123, isSpecial: false, specialType: 123, totalSize: 123, name: "name_example", obscureName: false, description: "description_example", longDescription: "longDescription_example", active: false, template: 123, defaultGroup: 123), volume: VolumeReference(id: 123, name: "name_example", path: "path_example", nodes: [123], displayName: "displayName_example", visualTag: "visualTag_example", isDefault: false, useForHomes: false, useForWorkspaces: false, type: "type_example", snmEnabled: false, snfsName: "snfsName_example", simulatedQuotas: false, fsProperties: FSProperties(supportsDirectoryQuotas: false, supportsSoftQuotas: false, supportsUserQuotas: false, supportsGroupQuotas: false, supportsXattrs: false, supportsSnapshots: false, creatingDirectoryQuotaDestroysContent: false, removingDirectoryQuotaDestroysContent: false), backend: Backend(name: "name_example", properties: BackendProperties(supportsSharingRwPermissionsPriority: false, supportsSharingAfp: false, supportsSharingSmbRequireLogon: false, supportsSharingSmbRecycleBin: false, supportsSharingSmbXattrs: false, supportsSharingSmbSymlinks: false, supportsSharingSmbCustomOptions: false, supportsSharingNfsPermissions: false)), status: VolumeStatus(online: false, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, snfs: VolumeSNFSStatus(stripeGroups: [SNFSStripeGroup(name: "name_example", statusTags: ["statusTags_example"], affinity: "affinity_example", sizeTotal: 123, sizeUsed: 123, sizeFree: 123)]), lizardfs: VolumeLizardFSStatus(master: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), nodes: [LizardFSNode(node: nil, host: "host_example", online: false, version: "version_example", chunks: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunksForRemoval: 123, label: "label_example")], disks: [LizardFSDisk(node: nil, host: "host_example", mountpoint: "mountpoint_example", toDelete: false, damaged: false, scanning: false, errorChunk: 123, errorTimestamp: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunks: 123)]), beegfs: VolumeBeeGFSStatus(nodes: [BeeGFSNode(node: nil, host: "host_example", roles: ["roles_example"], addresses: ["addresses_example"])], targets: [BeeGFSTarget(node: nil, id: 123, host: "host_example", storagePool: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, online: false, consistent: false, errors: ["errors_example"])]))), volumePath: "volumePath_example", path: "path_example", sharingNfsPermissions: ["sharingNfsPermissions_example"], fullPath: "fullPath_example", currentShareName: "currentShareName_example", endpoints: [WorkspaceEndpoint(_protocol: "_protocol_example", address: "address_example", path: "path_example", priority: 123, platform: "platform_example", username: "username_example", password: "password_example")], quota: Quota(current: 123, soft: 123, hard: 123), sizeUsed: 123, sizeTotal: 123, bookmarked: false, resolvedPermissions: [WorkspaceResolvedPermission(id: 123, readOnly: false, workspace: 123, user: 123, group: 123)], resolvedReadOnly: false, recycleBinPath: "recycleBinPath_example", name: "name_example", directory: "directory_example", description: "description_example", longDescription: "longDescription_example", isTemplate: false, lastLogin: Date(), active: false, macProtocol: "macProtocol_example", winProtocol: "winProtocol_example", winDrive: "winDrive_example", linuxProtocol: "linuxProtocol_example", linuxMountpoint: "linuxMountpoint_example", shareName: "shareName_example", shareNfs: false, shareAfp: false, sharingHidden: false, sharingRequireLogin: false, sharingReadOnly: false, sharingAllowExecute: false, enableQuota: false, quotaSizeHard: 123, quotaSizeSoft: 123, affinity: "affinity_example", emulateAvid: false, emulateCapture: false, emulatePreopen: false, emulateNtfsStreams: false, emulateRecycleBin: false, emulateFruit: false, smbExtraConfig: "smbExtraConfig_example", afpExtraConfig: "afpExtraConfig_example", recycleBinExclude: "recycleBinExclude_example", isExternal: false, externalMacUrl: "externalMacUrl_example", externalWinUrl: "externalWinUrl_example", externalLinuxUrl: "externalLinuxUrl_example", allowSymlinks: false, rwPermissionPriority: false, template: 123, homeFor: 123) // WorkspaceDetail | 
+let volumeUpdate = VolumeUpdate(path: "path_example", nodes: [123], displayName: "displayName_example", visualTag: "visualTag_example", isDefault: false, useForHomes: false, useForWorkspaces: false, type: "type_example", snmEnabled: false, snfsName: "snfsName_example", simulatedQuotas: false, cloudAccount: 123) // VolumeUpdate | 
 
-StorageAPI.createWorkspace(workspaceDetail: workspaceDetail).then {
+StorageAPI.createVolume(volumeUpdate: volumeUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -663,7 +664,53 @@ StorageAPI.createWorkspace(workspaceDetail: workspaceDetail).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workspaceDetail** | [**WorkspaceDetail**](WorkspaceDetail.md) |  | 
+ **volumeUpdate** | [**VolumeUpdate**](VolumeUpdate.md) |  | 
+
+### Return type
+
+[**Volume**](Volume.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createWorkspace**
+```swift
+    open class func createWorkspace( workspaceDetailUpdate: WorkspaceDetailUpdate) -> Promise<WorkspaceDetail>
+```
+
+
+
+### Required permissions    * User account permission: `None` (read) / `projects:manage` (write) 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let workspaceDetailUpdate = WorkspaceDetailUpdate(production: ProductionReference(id: 123, isSpecial: false, specialType: 123, totalSize: 123, name: "name_example", obscureName: false, description: "description_example", longDescription: "longDescription_example", active: false, template: 123, defaultGroup: 123), volume: "TODO", sharingNfsPermissions: [NFSPermission(host: "host_example", readOnly: false, options: "options_example")], quotaSizeHard: 123, quotaSizeSoft: 123, name: "name_example", description: "description_example", longDescription: "longDescription_example", isTemplate: false, active: false, macProtocol: "macProtocol_example", winProtocol: "winProtocol_example", winDrive: "winDrive_example", linuxProtocol: "linuxProtocol_example", linuxMountpoint: "linuxMountpoint_example", shareName: "shareName_example", shareNfs: false, shareAfp: false, sharingHidden: false, sharingRequireLogin: false, sharingReadOnly: false, sharingAllowExecute: false, enableQuota: false, affinity: "affinity_example", emulateAvid: false, emulateCapture: false, emulatePreopen: false, emulateNtfsStreams: false, emulateRecycleBin: false, emulateFruit: false, smbExtraConfig: "smbExtraConfig_example", afpExtraConfig: "afpExtraConfig_example", recycleBinExclude: "recycleBinExclude_example", isExternal: false, externalMacUrl: "externalMacUrl_example", externalWinUrl: "externalWinUrl_example", externalLinuxUrl: "externalLinuxUrl_example", allowSymlinks: false, rwPermissionPriority: false, template: 123) // WorkspaceDetailUpdate | 
+
+StorageAPI.createWorkspace(workspaceDetailUpdate: workspaceDetailUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspaceDetailUpdate** | [**WorkspaceDetailUpdate**](WorkspaceDetailUpdate.md) |  | 
 
 ### Return type
 
@@ -682,21 +729,21 @@ Name | Type | Description  | Notes
 
 # **createWorkspacePermission**
 ```swift
-    open class func createWorkspacePermission( workspacePermission: WorkspacePermission) -> Promise<WorkspacePermission>
+    open class func createWorkspacePermission( workspacePermissionUpdate: WorkspacePermissionUpdate) -> Promise<WorkspacePermission>
 ```
 
 
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let workspacePermission = WorkspacePermission(id: 123, user: ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example"), group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), readOnly: false, workspace: 123) // WorkspacePermission | 
+let workspacePermissionUpdate = WorkspacePermissionUpdate(user: "TODO", group: "TODO", readOnly: false, workspace: 123) // WorkspacePermissionUpdate | 
 
-StorageAPI.createWorkspacePermission(workspacePermission: workspacePermission).then {
+StorageAPI.createWorkspacePermission(workspacePermissionUpdate: workspacePermissionUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -709,7 +756,7 @@ StorageAPI.createWorkspacePermission(workspacePermission: workspacePermission).t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workspacePermission** | [**WorkspacePermission**](WorkspacePermission.md) |  | 
+ **workspacePermissionUpdate** | [**WorkspacePermissionUpdate**](WorkspacePermissionUpdate.md) |  | 
 
 ### Return type
 
@@ -735,7 +782,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -781,7 +828,7 @@ Void (empty response body)
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -827,7 +874,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -875,7 +922,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -921,7 +968,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `shares:view` (read) / `shares:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -967,7 +1014,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1013,7 +1060,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `None` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1059,7 +1106,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1098,22 +1145,22 @@ Void (empty response body)
 
 # **getAllDeletedWorkspaces**
 ```swift
-    open class func getAllDeletedWorkspaces( isTemplate: String? = nil,  production: String? = nil,  volume: String? = nil,  homeFor: String? = nil,  volumeType: String? = nil,  productionName: String? = nil,  productionActive: String? = nil,  name: String? = nil,  isExternal: String? = nil,  active: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[DeletedWorkspace]>
+    open class func getAllDeletedWorkspaces( isTemplate: String? = nil,  production: Double? = nil,  volume: Double? = nil,  homeFor: Double? = nil,  volumeType: String? = nil,  productionName: String? = nil,  productionActive: String? = nil,  name: String? = nil,  isExternal: String? = nil,  active: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[DeletedWorkspace]>
 ```
 
 
 
 ### Required permissions    * User account permission: `projects:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let isTemplate = "isTemplate_example" // String | Filter the returned list by `is_template`. (optional)
-let production = "production_example" // String | Filter the returned list by `production`. (optional)
-let volume = "volume_example" // String | Filter the returned list by `volume`. (optional)
-let homeFor = "homeFor_example" // String | Filter the returned list by `home_for`. (optional)
+let production = 987 // Double | Filter the returned list by `production`. (optional)
+let volume = 987 // Double | Filter the returned list by `volume`. (optional)
+let homeFor = 987 // Double | Filter the returned list by `home_for`. (optional)
 let volumeType = "volumeType_example" // String | Filter the returned list by `volume__type`. (optional)
 let productionName = "productionName_example" // String | Filter the returned list by `production__name`. (optional)
 let productionActive = "productionActive_example" // String | Filter the returned list by `production__active`. (optional)
@@ -1138,9 +1185,9 @@ StorageAPI.getAllDeletedWorkspaces(isTemplate: isTemplate, production: productio
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **isTemplate** | **String** | Filter the returned list by &#x60;is_template&#x60;. | [optional] 
- **production** | **String** | Filter the returned list by &#x60;production&#x60;. | [optional] 
- **volume** | **String** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
- **homeFor** | **String** | Filter the returned list by &#x60;home_for&#x60;. | [optional] 
+ **production** | **Double** | Filter the returned list by &#x60;production&#x60;. | [optional] 
+ **volume** | **Double** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
+ **homeFor** | **Double** | Filter the returned list by &#x60;home_for&#x60;. | [optional] 
  **volumeType** | **String** | Filter the returned list by &#x60;volume__type&#x60;. | [optional] 
  **productionName** | **String** | Filter the returned list by &#x60;production__name&#x60;. | [optional] 
  **productionActive** | **String** | Filter the returned list by &#x60;production__active&#x60;. | [optional] 
@@ -1175,7 +1222,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1233,7 +1280,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `shares:view` (read) / `shares:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1276,19 +1323,19 @@ Name | Type | Description  | Notes
 
 # **getAllSnapshots**
 ```swift
-    open class func getAllSnapshots( workspace: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Snapshot]>
+    open class func getAllSnapshots( workspace: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Snapshot]>
 ```
 
 
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let workspace = "workspace_example" // String | Filter the returned list by `workspace`. (optional)
+let workspace = 987 // Double | Filter the returned list by `workspace`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -1306,7 +1353,7 @@ StorageAPI.getAllSnapshots(workspace: workspace, ordering: ordering, limit: limi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workspace** | **String** | Filter the returned list by &#x60;workspace&#x60;. | [optional] 
+ **workspace** | **Double** | Filter the returned list by &#x60;workspace&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -1328,14 +1375,14 @@ Name | Type | Description  | Notes
 
 # **getAllVolumes**
 ```swift
-    open class func getAllVolumes( isDefault: String? = nil,  type: String? = nil,  useForHomes: String? = nil,  useForWorkspaces: String? = nil,  name: String? = nil,  displayName: String? = nil,  visualTag: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  includeStatus: Bool? = nil) -> Promise<[Volume]>
+    open class func getAllVolumes( isDefault: String? = nil,  type: String? = nil,  useForHomes: String? = nil,  useForWorkspaces: String? = nil,  displayName: String? = nil,  visualTag: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  includeStatus: Bool? = nil) -> Promise<[Volume]>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1344,7 +1391,6 @@ let isDefault = "isDefault_example" // String | Filter the returned list by `is_
 let type = "type_example" // String | Filter the returned list by `type`. (optional)
 let useForHomes = "useForHomes_example" // String | Filter the returned list by `use_for_homes`. (optional)
 let useForWorkspaces = "useForWorkspaces_example" // String | Filter the returned list by `use_for_workspaces`. (optional)
-let name = "name_example" // String | Filter the returned list by `name`. (optional)
 let displayName = "displayName_example" // String | Filter the returned list by `display_name`. (optional)
 let visualTag = "visualTag_example" // String | Filter the returned list by `visual_tag`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
@@ -1352,7 +1398,7 @@ let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
 let includeStatus = true // Bool |  (optional)
 
-StorageAPI.getAllVolumes(isDefault: isDefault, type: type, useForHomes: useForHomes, useForWorkspaces: useForWorkspaces, name: name, displayName: displayName, visualTag: visualTag, ordering: ordering, limit: limit, offset: offset, includeStatus: includeStatus).then {
+StorageAPI.getAllVolumes(isDefault: isDefault, type: type, useForHomes: useForHomes, useForWorkspaces: useForWorkspaces, displayName: displayName, visualTag: visualTag, ordering: ordering, limit: limit, offset: offset, includeStatus: includeStatus).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -1369,7 +1415,6 @@ Name | Type | Description  | Notes
  **type** | **String** | Filter the returned list by &#x60;type&#x60;. | [optional] 
  **useForHomes** | **String** | Filter the returned list by &#x60;use_for_homes&#x60;. | [optional] 
  **useForWorkspaces** | **String** | Filter the returned list by &#x60;use_for_workspaces&#x60;. | [optional] 
- **name** | **String** | Filter the returned list by &#x60;name&#x60;. | [optional] 
  **displayName** | **String** | Filter the returned list by &#x60;display_name&#x60;. | [optional] 
  **visualTag** | **String** | Filter the returned list by &#x60;visual_tag&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
@@ -1394,21 +1439,21 @@ Name | Type | Description  | Notes
 
 # **getAllWorkspacePermissions**
 ```swift
-    open class func getAllWorkspacePermissions( workspace: String? = nil,  user: String? = nil,  group: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[WorkspacePermission]>
+    open class func getAllWorkspacePermissions( workspace: Double? = nil,  user: Double? = nil,  group: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[WorkspacePermission]>
 ```
 
 
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let workspace = "workspace_example" // String | Filter the returned list by `workspace`. (optional)
-let user = "user_example" // String | Filter the returned list by `user`. (optional)
-let group = "group_example" // String | Filter the returned list by `group`. (optional)
+let workspace = 987 // Double | Filter the returned list by `workspace`. (optional)
+let user = 987 // Double | Filter the returned list by `user`. (optional)
+let group = 987 // Double | Filter the returned list by `group`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -1426,9 +1471,9 @@ StorageAPI.getAllWorkspacePermissions(workspace: workspace, user: user, group: g
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **workspace** | **String** | Filter the returned list by &#x60;workspace&#x60;. | [optional] 
- **user** | **String** | Filter the returned list by &#x60;user&#x60;. | [optional] 
- **group** | **String** | Filter the returned list by &#x60;group&#x60;. | [optional] 
+ **workspace** | **Double** | Filter the returned list by &#x60;workspace&#x60;. | [optional] 
+ **user** | **Double** | Filter the returned list by &#x60;user&#x60;. | [optional] 
+ **group** | **Double** | Filter the returned list by &#x60;group&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -1450,22 +1495,22 @@ Name | Type | Description  | Notes
 
 # **getAllWorkspaces**
 ```swift
-    open class func getAllWorkspaces( isTemplate: String? = nil,  production: String? = nil,  volume: String? = nil,  homeFor: String? = nil,  volumeType: String? = nil,  productionName: String? = nil,  productionActive: String? = nil,  name: String? = nil,  isExternal: String? = nil,  active: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  resolveAccessFor: Int? = nil,  includeEndpoints: Bool? = nil,  includeQuotas: Bool? = nil) -> Promise<[Workspace]>
+    open class func getAllWorkspaces( isTemplate: String? = nil,  production: Double? = nil,  volume: Double? = nil,  homeFor: Double? = nil,  volumeType: String? = nil,  productionName: String? = nil,  productionActive: String? = nil,  name: String? = nil,  isExternal: String? = nil,  active: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  resolveAccessFor: Int? = nil,  includeEndpoints: Bool? = nil,  includeQuotas: Bool? = nil) -> Promise<[Workspace]>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let isTemplate = "isTemplate_example" // String | Filter the returned list by `is_template`. (optional)
-let production = "production_example" // String | Filter the returned list by `production`. (optional)
-let volume = "volume_example" // String | Filter the returned list by `volume`. (optional)
-let homeFor = "homeFor_example" // String | Filter the returned list by `home_for`. (optional)
+let production = 987 // Double | Filter the returned list by `production`. (optional)
+let volume = 987 // Double | Filter the returned list by `volume`. (optional)
+let homeFor = 987 // Double | Filter the returned list by `home_for`. (optional)
 let volumeType = "volumeType_example" // String | Filter the returned list by `volume__type`. (optional)
 let productionName = "productionName_example" // String | Filter the returned list by `production__name`. (optional)
 let productionActive = "productionActive_example" // String | Filter the returned list by `production__active`. (optional)
@@ -1493,9 +1538,9 @@ StorageAPI.getAllWorkspaces(isTemplate: isTemplate, production: production, volu
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **isTemplate** | **String** | Filter the returned list by &#x60;is_template&#x60;. | [optional] 
- **production** | **String** | Filter the returned list by &#x60;production&#x60;. | [optional] 
- **volume** | **String** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
- **homeFor** | **String** | Filter the returned list by &#x60;home_for&#x60;. | [optional] 
+ **production** | **Double** | Filter the returned list by &#x60;production&#x60;. | [optional] 
+ **volume** | **Double** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
+ **homeFor** | **Double** | Filter the returned list by &#x60;home_for&#x60;. | [optional] 
  **volumeType** | **String** | Filter the returned list by &#x60;volume__type&#x60;. | [optional] 
  **productionName** | **String** | Filter the returned list by &#x60;production__name&#x60;. | [optional] 
  **productionActive** | **String** | Filter the returned list by &#x60;production__active&#x60;. | [optional] 
@@ -1533,7 +1578,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1583,7 +1628,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `users:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1624,22 +1669,22 @@ Name | Type | Description  | Notes
 
 # **getMyWorkspaces**
 ```swift
-    open class func getMyWorkspaces( isTemplate: String? = nil,  production: String? = nil,  volume: String? = nil,  homeFor: String? = nil,  volumeType: String? = nil,  productionName: String? = nil,  productionActive: String? = nil,  name: String? = nil,  isExternal: String? = nil,  active: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Workspace]>
+    open class func getMyWorkspaces( isTemplate: String? = nil,  production: Double? = nil,  volume: Double? = nil,  homeFor: Double? = nil,  volumeType: String? = nil,  productionName: String? = nil,  productionActive: String? = nil,  name: String? = nil,  isExternal: String? = nil,  active: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Workspace]>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let isTemplate = "isTemplate_example" // String | Filter the returned list by `is_template`. (optional)
-let production = "production_example" // String | Filter the returned list by `production`. (optional)
-let volume = "volume_example" // String | Filter the returned list by `volume`. (optional)
-let homeFor = "homeFor_example" // String | Filter the returned list by `home_for`. (optional)
+let production = 987 // Double | Filter the returned list by `production`. (optional)
+let volume = 987 // Double | Filter the returned list by `volume`. (optional)
+let homeFor = 987 // Double | Filter the returned list by `home_for`. (optional)
 let volumeType = "volumeType_example" // String | Filter the returned list by `volume__type`. (optional)
 let productionName = "productionName_example" // String | Filter the returned list by `production__name`. (optional)
 let productionActive = "productionActive_example" // String | Filter the returned list by `production__active`. (optional)
@@ -1664,9 +1709,9 @@ StorageAPI.getMyWorkspaces(isTemplate: isTemplate, production: production, volum
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **isTemplate** | **String** | Filter the returned list by &#x60;is_template&#x60;. | [optional] 
- **production** | **String** | Filter the returned list by &#x60;production&#x60;. | [optional] 
- **volume** | **String** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
- **homeFor** | **String** | Filter the returned list by &#x60;home_for&#x60;. | [optional] 
+ **production** | **Double** | Filter the returned list by &#x60;production&#x60;. | [optional] 
+ **volume** | **Double** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
+ **homeFor** | **Double** | Filter the returned list by &#x60;home_for&#x60;. | [optional] 
  **volumeType** | **String** | Filter the returned list by &#x60;volume__type&#x60;. | [optional] 
  **productionName** | **String** | Filter the returned list by &#x60;production__name&#x60;. | [optional] 
  **productionActive** | **String** | Filter the returned list by &#x60;production__active&#x60;. | [optional] 
@@ -1701,7 +1746,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1749,7 +1794,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1799,7 +1844,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1849,7 +1894,7 @@ Void (empty response body)
 
 ### Required permissions    * localhost only 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1891,7 +1936,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `shares:view` (read) / `shares:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1937,7 +1982,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1983,7 +2028,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `users:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2031,7 +2076,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2079,7 +2124,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:status:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2125,7 +2170,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:status:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2171,7 +2216,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:status:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2217,7 +2262,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2263,7 +2308,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2309,12 +2354,12 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let fileMoveEndpointRequest = FileMoveEndpointRequest(input: ["input_example"], destination: "destination_example", sync: false) // FileMoveEndpointRequest | 
+let fileMoveEndpointRequest = FileMoveEndpointRequest(input: ["input_example"], destination: "destination_example", sync: false, overwrite: "overwrite_example") // FileMoveEndpointRequest | 
 
 StorageAPI.moveFiles(fileMoveEndpointRequest: fileMoveEndpointRequest).then {
          // when the promise is fulfilled
@@ -2355,7 +2400,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `projects:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2403,7 +2448,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `projects:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2451,13 +2496,13 @@ Void (empty response body)
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let path = "path_example" // String | 
-let filePartialUpdate = FilePartialUpdate(name: "name_example", files: [BasicFile(path: "path_example", name: "name_example", size: 123, totalSize: 123, isDir: false, files: ["TODO"])], parent: "parent_example", mode: "mode_example", uid: 123, gid: 123, user: "user_example", group: "group_example", recursive: false, affinity: "affinity_example", modeSetuid: false, modeSetgid: false, modeSetvfx: false, modeUserRead: false, modeUserWrite: false, modeUserExecute: false, modeGroupRead: false, modeGroupWrite: false, modeGroupExecute: false, modeOthersRead: false, modeOthersWrite: false, modeOthersExecute: false) // FilePartialUpdate | 
+let filePartialUpdate = FilePartialUpdate(name: "name_example", files: [BasicFile(path: "path_example", name: "name_example", size: 123, modificationTime: Date(), totalSize: 123, isDir: false, files: ["TODO"])], parent: "parent_example", mode: "mode_example", uid: 123, gid: 123, user: "user_example", group: "group_example", recursive: false, affinity: "affinity_example", modeSetuid: false, modeSetgid: false, modeSetvfx: false, modeUserRead: false, modeUserWrite: false, modeUserExecute: false, modeGroupRead: false, modeGroupWrite: false, modeGroupExecute: false, modeOthersRead: false, modeOthersWrite: false, modeOthersExecute: false) // FilePartialUpdate | 
 let maxDepth = 987 // Int |  (optional)
 let bundle = true // Bool |  (optional)
 
@@ -2503,7 +2548,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2551,13 +2596,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `shares:view` (read) / `shares:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this share.
-let sharePartialUpdate = SharePartialUpdate(sharingNfsPermissions: ["sharingNfsPermissions_example"], volume: VolumeReference(id: 123, name: "name_example", path: "path_example", nodes: [123], displayName: "displayName_example", visualTag: "visualTag_example", isDefault: false, useForHomes: false, useForWorkspaces: false, type: "type_example", snmEnabled: false, snfsName: "snfsName_example", simulatedQuotas: false, fsProperties: FSProperties(supportsDirectoryQuotas: false, supportsSoftQuotas: false, supportsUserQuotas: false, supportsGroupQuotas: false, supportsXattrs: false, supportsSnapshots: false, creatingDirectoryQuotaDestroysContent: false, removingDirectoryQuotaDestroysContent: false), backend: Backend(name: "name_example", properties: BackendProperties(supportsSharingRwPermissionsPriority: false, supportsSharingAfp: false, supportsSharingSmbRequireLogon: false, supportsSharingSmbRecycleBin: false, supportsSharingSmbXattrs: false, supportsSharingSmbSymlinks: false, supportsSharingSmbCustomOptions: false, supportsSharingNfsPermissions: false)), status: VolumeStatus(online: false, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, snfs: VolumeSNFSStatus(stripeGroups: [SNFSStripeGroup(name: "name_example", statusTags: ["statusTags_example"], affinity: "affinity_example", sizeTotal: 123, sizeUsed: 123, sizeFree: 123)]), lizardfs: VolumeLizardFSStatus(master: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), nodes: [LizardFSNode(node: nil, host: "host_example", online: false, version: "version_example", chunks: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunksForRemoval: 123, label: "label_example")], disks: [LizardFSDisk(node: nil, host: "host_example", mountpoint: "mountpoint_example", toDelete: false, damaged: false, scanning: false, errorChunk: 123, errorTimestamp: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunks: 123)]), beegfs: VolumeBeeGFSStatus(nodes: [BeeGFSNode(node: nil, host: "host_example", roles: ["roles_example"], addresses: ["addresses_example"])], targets: [BeeGFSTarget(node: nil, id: 123, host: "host_example", storagePool: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, online: false, consistent: false, errors: ["errors_example"])]))), name: "name_example", path: "path_example", shareSmb: false, shareNfs: false, shareAfp: false, sharingReadOnly: false, sharingHidden: false, sharingRequireLogin: false, smbExtraConfig: "smbExtraConfig_example", afpExtraConfig: "afpExtraConfig_example", rwAccessGroup: 123, roAccessGroup: 123) // SharePartialUpdate | 
+let sharePartialUpdate = SharePartialUpdate(sharingNfsPermissions: [NFSPermission(host: "host_example", readOnly: false, options: "options_example")], volume: VolumeReference(id: 123, path: "path_example", nodes: [123], displayName: "displayName_example", visualTag: "visualTag_example", isDefault: false, useForHomes: false, useForWorkspaces: false, type: "type_example", snmEnabled: false, snfsName: "snfsName_example", simulatedQuotas: false, fsProperties: FSProperties(needsSshConnection: false, supportsDirectoryQuotas: false, supportsSoftQuotas: false, supportsUserQuotas: false, supportsGroupQuotas: false, supportsXattrs: false, supportsSnapshots: false, creatingDirectoryQuotaDestroysContent: false, removingDirectoryQuotaDestroysContent: false), backend: Backend(name: "name_example", properties: BackendProperties(supportsSharingRwPermissionsPriority: false, supportsSharingAfp: false, supportsSharingSmbRequireLogon: false, supportsSharingSmbRecycleBin: false, supportsSharingSmbXattrs: false, supportsSharingSmbSymlinks: false, supportsSharingSmbCustomOptions: false, supportsSharingNfsPermissions: false)), status: VolumeStatus(online: false, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, snfs: VolumeSNFSStatus(stripeGroups: [SNFSStripeGroup(name: "name_example", statusTags: ["statusTags_example"], affinity: "affinity_example", sizeTotal: 123, sizeUsed: 123, sizeFree: 123)]), lizardfs: VolumeLizardFSStatus(master: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), nodes: [LizardFSNode(node: nil, host: "host_example", online: false, version: "version_example", chunks: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunksForRemoval: 123, label: "label_example")], disks: [LizardFSDisk(node: nil, host: "host_example", mountpoint: "mountpoint_example", toDelete: false, damaged: false, scanning: false, errorChunk: 123, errorTimestamp: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunks: 123)]), beegfs: VolumeBeeGFSStatus(nodes: [BeeGFSNode(node: nil, host: "host_example", roles: ["roles_example"], addresses: ["addresses_example"])], targets: [BeeGFSTarget(node: nil, id: 123, host: "host_example", storagePool: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, online: false, consistent: false, errors: ["errors_example"])])), cloudAccount: 123, name: "name_example"), name: "name_example", path: "path_example", shareSmb: false, shareNfs: false, shareAfp: false, sharingReadOnly: false, sharingHidden: false, sharingRequireLogin: false, smbExtraConfig: "smbExtraConfig_example", afpExtraConfig: "afpExtraConfig_example", rwAccessGroup: 123, roAccessGroup: 123) // SharePartialUpdate | 
 
 StorageAPI.patchShare(id: id, sharePartialUpdate: sharePartialUpdate).then {
          // when the promise is fulfilled
@@ -2599,7 +2644,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2647,13 +2692,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this volume.
-let volumePartialUpdate = VolumePartialUpdate(name: "name_example", nodes: [123], displayName: "displayName_example", visualTag: "visualTag_example", isDefault: false, useForHomes: false, useForWorkspaces: false, type: "type_example", snmEnabled: false, snfsName: "snfsName_example", simulatedQuotas: false) // VolumePartialUpdate | 
+let volumePartialUpdate = VolumePartialUpdate(path: "path_example", nodes: [123], displayName: "displayName_example", visualTag: "visualTag_example", isDefault: false, useForHomes: false, useForWorkspaces: false, type: "type_example", snmEnabled: false, snfsName: "snfsName_example", simulatedQuotas: false, cloudAccount: 123) // VolumePartialUpdate | 
 
 StorageAPI.patchVolume(id: id, volumePartialUpdate: volumePartialUpdate).then {
          // when the promise is fulfilled
@@ -2695,13 +2740,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this workspace.
-let workspaceDetailPartialUpdate = WorkspaceDetailPartialUpdate(production: ProductionReference(id: 123, isSpecial: false, specialType: 123, totalSize: 123, name: "name_example", obscureName: false, description: "description_example", longDescription: "longDescription_example", active: false, template: 123, defaultGroup: 123), volume: VolumeReference(id: 123, name: "name_example", path: "path_example", nodes: [123], displayName: "displayName_example", visualTag: "visualTag_example", isDefault: false, useForHomes: false, useForWorkspaces: false, type: "type_example", snmEnabled: false, snfsName: "snfsName_example", simulatedQuotas: false, fsProperties: FSProperties(supportsDirectoryQuotas: false, supportsSoftQuotas: false, supportsUserQuotas: false, supportsGroupQuotas: false, supportsXattrs: false, supportsSnapshots: false, creatingDirectoryQuotaDestroysContent: false, removingDirectoryQuotaDestroysContent: false), backend: Backend(name: "name_example", properties: BackendProperties(supportsSharingRwPermissionsPriority: false, supportsSharingAfp: false, supportsSharingSmbRequireLogon: false, supportsSharingSmbRecycleBin: false, supportsSharingSmbXattrs: false, supportsSharingSmbSymlinks: false, supportsSharingSmbCustomOptions: false, supportsSharingNfsPermissions: false)), status: VolumeStatus(online: false, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, snfs: VolumeSNFSStatus(stripeGroups: [SNFSStripeGroup(name: "name_example", statusTags: ["statusTags_example"], affinity: "affinity_example", sizeTotal: 123, sizeUsed: 123, sizeFree: 123)]), lizardfs: VolumeLizardFSStatus(master: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), nodes: [LizardFSNode(node: nil, host: "host_example", online: false, version: "version_example", chunks: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunksForRemoval: 123, label: "label_example")], disks: [LizardFSDisk(node: nil, host: "host_example", mountpoint: "mountpoint_example", toDelete: false, damaged: false, scanning: false, errorChunk: 123, errorTimestamp: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunks: 123)]), beegfs: VolumeBeeGFSStatus(nodes: [BeeGFSNode(node: nil, host: "host_example", roles: ["roles_example"], addresses: ["addresses_example"])], targets: [BeeGFSTarget(node: nil, id: 123, host: "host_example", storagePool: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, online: false, consistent: false, errors: ["errors_example"])]))), sharingNfsPermissions: ["sharingNfsPermissions_example"], name: "name_example", description: "description_example", longDescription: "longDescription_example", isTemplate: false, active: false, macProtocol: "macProtocol_example", winProtocol: "winProtocol_example", winDrive: "winDrive_example", linuxProtocol: "linuxProtocol_example", linuxMountpoint: "linuxMountpoint_example", shareName: "shareName_example", shareNfs: false, shareAfp: false, sharingHidden: false, sharingRequireLogin: false, sharingReadOnly: false, sharingAllowExecute: false, enableQuota: false, quotaSizeHard: 123, quotaSizeSoft: 123, affinity: "affinity_example", emulateAvid: false, emulateCapture: false, emulatePreopen: false, emulateNtfsStreams: false, emulateRecycleBin: false, emulateFruit: false, smbExtraConfig: "smbExtraConfig_example", afpExtraConfig: "afpExtraConfig_example", recycleBinExclude: "recycleBinExclude_example", isExternal: false, externalMacUrl: "externalMacUrl_example", externalWinUrl: "externalWinUrl_example", externalLinuxUrl: "externalLinuxUrl_example", allowSymlinks: false, rwPermissionPriority: false, template: 123) // WorkspaceDetailPartialUpdate | 
+let workspaceDetailPartialUpdate = WorkspaceDetailPartialUpdate(production: ProductionReference(id: 123, isSpecial: false, specialType: 123, totalSize: 123, name: "name_example", obscureName: false, description: "description_example", longDescription: "longDescription_example", active: false, template: 123, defaultGroup: 123), volume: "TODO", sharingNfsPermissions: [NFSPermission(host: "host_example", readOnly: false, options: "options_example")], quotaSizeHard: 123, quotaSizeSoft: 123, name: "name_example", description: "description_example", longDescription: "longDescription_example", isTemplate: false, active: false, macProtocol: "macProtocol_example", winProtocol: "winProtocol_example", winDrive: "winDrive_example", linuxProtocol: "linuxProtocol_example", linuxMountpoint: "linuxMountpoint_example", shareName: "shareName_example", shareNfs: false, shareAfp: false, sharingHidden: false, sharingRequireLogin: false, sharingReadOnly: false, sharingAllowExecute: false, enableQuota: false, affinity: "affinity_example", emulateAvid: false, emulateCapture: false, emulatePreopen: false, emulateNtfsStreams: false, emulateRecycleBin: false, emulateFruit: false, smbExtraConfig: "smbExtraConfig_example", afpExtraConfig: "afpExtraConfig_example", recycleBinExclude: "recycleBinExclude_example", isExternal: false, externalMacUrl: "externalMacUrl_example", externalWinUrl: "externalWinUrl_example", externalLinuxUrl: "externalLinuxUrl_example", allowSymlinks: false, rwPermissionPriority: false, template: 123) // WorkspaceDetailPartialUpdate | 
 
 StorageAPI.patchWorkspace(id: id, workspaceDetailPartialUpdate: workspaceDetailPartialUpdate).then {
          // when the promise is fulfilled
@@ -2743,13 +2788,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this workspace permission.
-let workspacePermissionPartialUpdate = WorkspacePermissionPartialUpdate(user: ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example"), group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), readOnly: false, workspace: 123) // WorkspacePermissionPartialUpdate | 
+let workspacePermissionPartialUpdate = WorkspacePermissionPartialUpdate(user: "TODO", group: "TODO", readOnly: false, workspace: 123) // WorkspacePermissionPartialUpdate | 
 
 StorageAPI.patchWorkspacePermission(id: id, workspacePermissionPartialUpdate: workspacePermissionPartialUpdate).then {
          // when the promise is fulfilled
@@ -2791,7 +2836,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2837,7 +2882,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `projects:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2883,7 +2928,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2929,7 +2974,7 @@ Void (empty response body)
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2975,7 +3020,7 @@ Void (empty response body)
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3021,7 +3066,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `users:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3071,7 +3116,7 @@ Void (empty response body)
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3114,22 +3159,22 @@ Void (empty response body)
 
 # **updateProduction**
 ```swift
-    open class func updateProduction( id: Int,  production: Production) -> Promise<Production>
+    open class func updateProduction( id: Int,  productionUpdate: ProductionUpdate) -> Promise<Production>
 ```
 
 
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this production.
-let production = Production(id: 123, isSpecial: false, specialType: 123, totalSize: 123, name: "name_example", obscureName: false, description: "description_example", longDescription: "longDescription_example", active: false, template: 123, defaultGroup: 123) // Production | 
+let productionUpdate = ProductionUpdate(name: "name_example", obscureName: false, description: "description_example", longDescription: "longDescription_example", active: false, template: 123, defaultGroup: 123) // ProductionUpdate | 
 
-StorageAPI.updateProduction(id: id, production: production).then {
+StorageAPI.updateProduction(id: id, productionUpdate: productionUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -3143,7 +3188,7 @@ StorageAPI.updateProduction(id: id, production: production).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this production. | 
- **production** | [**Production**](Production.md) |  | 
+ **productionUpdate** | [**ProductionUpdate**](ProductionUpdate.md) |  | 
 
 ### Return type
 
@@ -3162,22 +3207,22 @@ Name | Type | Description  | Notes
 
 # **updateShare**
 ```swift
-    open class func updateShare( id: Int,  share: Share) -> Promise<Share>
+    open class func updateShare( id: Int,  shareUpdate: ShareUpdate) -> Promise<Share>
 ```
 
 
 
 ### Required permissions    * User account permission: `shares:view` (read) / `shares:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this share.
-let share = Share(id: 123, sharingNfsPermissions: ["sharingNfsPermissions_example"], volume: VolumeReference(id: 123, name: "name_example", path: "path_example", nodes: [123], displayName: "displayName_example", visualTag: "visualTag_example", isDefault: false, useForHomes: false, useForWorkspaces: false, type: "type_example", snmEnabled: false, snfsName: "snfsName_example", simulatedQuotas: false, fsProperties: FSProperties(supportsDirectoryQuotas: false, supportsSoftQuotas: false, supportsUserQuotas: false, supportsGroupQuotas: false, supportsXattrs: false, supportsSnapshots: false, creatingDirectoryQuotaDestroysContent: false, removingDirectoryQuotaDestroysContent: false), backend: Backend(name: "name_example", properties: BackendProperties(supportsSharingRwPermissionsPriority: false, supportsSharingAfp: false, supportsSharingSmbRequireLogon: false, supportsSharingSmbRecycleBin: false, supportsSharingSmbXattrs: false, supportsSharingSmbSymlinks: false, supportsSharingSmbCustomOptions: false, supportsSharingNfsPermissions: false)), status: VolumeStatus(online: false, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, snfs: VolumeSNFSStatus(stripeGroups: [SNFSStripeGroup(name: "name_example", statusTags: ["statusTags_example"], affinity: "affinity_example", sizeTotal: 123, sizeUsed: 123, sizeFree: 123)]), lizardfs: VolumeLizardFSStatus(master: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), nodes: [LizardFSNode(node: nil, host: "host_example", online: false, version: "version_example", chunks: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunksForRemoval: 123, label: "label_example")], disks: [LizardFSDisk(node: nil, host: "host_example", mountpoint: "mountpoint_example", toDelete: false, damaged: false, scanning: false, errorChunk: 123, errorTimestamp: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunks: 123)]), beegfs: VolumeBeeGFSStatus(nodes: [BeeGFSNode(node: nil, host: "host_example", roles: ["roles_example"], addresses: ["addresses_example"])], targets: [BeeGFSTarget(node: nil, id: 123, host: "host_example", storagePool: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, online: false, consistent: false, errors: ["errors_example"])]))), name: "name_example", path: "path_example", shareSmb: false, shareNfs: false, shareAfp: false, sharingReadOnly: false, sharingHidden: false, sharingRequireLogin: false, smbExtraConfig: "smbExtraConfig_example", afpExtraConfig: "afpExtraConfig_example", rwAccessGroup: 123, roAccessGroup: 123) // Share | 
+let shareUpdate = ShareUpdate(sharingNfsPermissions: [NFSPermission(host: "host_example", readOnly: false, options: "options_example")], volume: VolumeReference(id: 123, path: "path_example", nodes: [123], displayName: "displayName_example", visualTag: "visualTag_example", isDefault: false, useForHomes: false, useForWorkspaces: false, type: "type_example", snmEnabled: false, snfsName: "snfsName_example", simulatedQuotas: false, fsProperties: FSProperties(needsSshConnection: false, supportsDirectoryQuotas: false, supportsSoftQuotas: false, supportsUserQuotas: false, supportsGroupQuotas: false, supportsXattrs: false, supportsSnapshots: false, creatingDirectoryQuotaDestroysContent: false, removingDirectoryQuotaDestroysContent: false), backend: Backend(name: "name_example", properties: BackendProperties(supportsSharingRwPermissionsPriority: false, supportsSharingAfp: false, supportsSharingSmbRequireLogon: false, supportsSharingSmbRecycleBin: false, supportsSharingSmbXattrs: false, supportsSharingSmbSymlinks: false, supportsSharingSmbCustomOptions: false, supportsSharingNfsPermissions: false)), status: VolumeStatus(online: false, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, snfs: VolumeSNFSStatus(stripeGroups: [SNFSStripeGroup(name: "name_example", statusTags: ["statusTags_example"], affinity: "affinity_example", sizeTotal: 123, sizeUsed: 123, sizeFree: 123)]), lizardfs: VolumeLizardFSStatus(master: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), nodes: [LizardFSNode(node: nil, host: "host_example", online: false, version: "version_example", chunks: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunksForRemoval: 123, label: "label_example")], disks: [LizardFSDisk(node: nil, host: "host_example", mountpoint: "mountpoint_example", toDelete: false, damaged: false, scanning: false, errorChunk: 123, errorTimestamp: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunks: 123)]), beegfs: VolumeBeeGFSStatus(nodes: [BeeGFSNode(node: nil, host: "host_example", roles: ["roles_example"], addresses: ["addresses_example"])], targets: [BeeGFSTarget(node: nil, id: 123, host: "host_example", storagePool: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, online: false, consistent: false, errors: ["errors_example"])])), cloudAccount: 123, name: "name_example"), name: "name_example", path: "path_example", shareSmb: false, shareNfs: false, shareAfp: false, sharingReadOnly: false, sharingHidden: false, sharingRequireLogin: false, smbExtraConfig: "smbExtraConfig_example", afpExtraConfig: "afpExtraConfig_example", rwAccessGroup: 123, roAccessGroup: 123) // ShareUpdate | 
 
-StorageAPI.updateShare(id: id, share: share).then {
+StorageAPI.updateShare(id: id, shareUpdate: shareUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -3191,7 +3236,7 @@ StorageAPI.updateShare(id: id, share: share).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this share. | 
- **share** | [**Share**](Share.md) |  | 
+ **shareUpdate** | [**ShareUpdate**](ShareUpdate.md) |  | 
 
 ### Return type
 
@@ -3210,22 +3255,22 @@ Name | Type | Description  | Notes
 
 # **updateSnapshot**
 ```swift
-    open class func updateSnapshot( id: Int,  snapshot: Snapshot) -> Promise<Snapshot>
+    open class func updateSnapshot( id: Int,  snapshotUpdate: SnapshotUpdate) -> Promise<Snapshot>
 ```
 
 
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this snapshot.
-let snapshot = Snapshot(id: 123, createdBy: 123, workspace: 123, name: "name_example", createdAt: Date()) // Snapshot | 
+let snapshotUpdate = SnapshotUpdate(workspace: 123, name: "name_example") // SnapshotUpdate | 
 
-StorageAPI.updateSnapshot(id: id, snapshot: snapshot).then {
+StorageAPI.updateSnapshot(id: id, snapshotUpdate: snapshotUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -3239,7 +3284,7 @@ StorageAPI.updateSnapshot(id: id, snapshot: snapshot).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this snapshot. | 
- **snapshot** | [**Snapshot**](Snapshot.md) |  | 
+ **snapshotUpdate** | [**SnapshotUpdate**](SnapshotUpdate.md) |  | 
 
 ### Return type
 
@@ -3265,7 +3310,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `users:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3308,22 +3353,22 @@ Void (empty response body)
 
 # **updateVolume**
 ```swift
-    open class func updateVolume( id: Int,  volume: Volume) -> Promise<Volume>
+    open class func updateVolume( id: Int,  volumeUpdate: VolumeUpdate) -> Promise<Volume>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this volume.
-let volume = Volume(id: 123, name: "name_example", path: "path_example", nodes: [123], displayName: "displayName_example", visualTag: "visualTag_example", isDefault: false, useForHomes: false, useForWorkspaces: false, type: "type_example", snmEnabled: false, snfsName: "snfsName_example", simulatedQuotas: false, fsProperties: FSProperties(supportsDirectoryQuotas: false, supportsSoftQuotas: false, supportsUserQuotas: false, supportsGroupQuotas: false, supportsXattrs: false, supportsSnapshots: false, creatingDirectoryQuotaDestroysContent: false, removingDirectoryQuotaDestroysContent: false), backend: Backend(name: "name_example", properties: BackendProperties(supportsSharingRwPermissionsPriority: false, supportsSharingAfp: false, supportsSharingSmbRequireLogon: false, supportsSharingSmbRecycleBin: false, supportsSharingSmbXattrs: false, supportsSharingSmbSymlinks: false, supportsSharingSmbCustomOptions: false, supportsSharingNfsPermissions: false)), status: VolumeStatus(online: false, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, snfs: VolumeSNFSStatus(stripeGroups: [SNFSStripeGroup(name: "name_example", statusTags: ["statusTags_example"], affinity: "affinity_example", sizeTotal: 123, sizeUsed: 123, sizeFree: 123)]), lizardfs: VolumeLizardFSStatus(master: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), nodes: [LizardFSNode(node: nil, host: "host_example", online: false, version: "version_example", chunks: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunksForRemoval: 123, label: "label_example")], disks: [LizardFSDisk(node: nil, host: "host_example", mountpoint: "mountpoint_example", toDelete: false, damaged: false, scanning: false, errorChunk: 123, errorTimestamp: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunks: 123)]), beegfs: VolumeBeeGFSStatus(nodes: [BeeGFSNode(node: nil, host: "host_example", roles: ["roles_example"], addresses: ["addresses_example"])], targets: [BeeGFSTarget(node: nil, id: 123, host: "host_example", storagePool: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, online: false, consistent: false, errors: ["errors_example"])]))) // Volume | 
+let volumeUpdate = VolumeUpdate(path: "path_example", nodes: [123], displayName: "displayName_example", visualTag: "visualTag_example", isDefault: false, useForHomes: false, useForWorkspaces: false, type: "type_example", snmEnabled: false, snfsName: "snfsName_example", simulatedQuotas: false, cloudAccount: 123) // VolumeUpdate | 
 
-StorageAPI.updateVolume(id: id, volume: volume).then {
+StorageAPI.updateVolume(id: id, volumeUpdate: volumeUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -3337,7 +3382,7 @@ StorageAPI.updateVolume(id: id, volume: volume).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this volume. | 
- **volume** | [**Volume**](Volume.md) |  | 
+ **volumeUpdate** | [**VolumeUpdate**](VolumeUpdate.md) |  | 
 
 ### Return type
 
@@ -3356,22 +3401,22 @@ Name | Type | Description  | Notes
 
 # **updateWorkspace**
 ```swift
-    open class func updateWorkspace( id: Int,  workspaceDetail: WorkspaceDetail) -> Promise<WorkspaceDetail>
+    open class func updateWorkspace( id: Int,  workspaceDetailUpdate: WorkspaceDetailUpdate) -> Promise<WorkspaceDetail>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this workspace.
-let workspaceDetail = WorkspaceDetail(id: 123, production: ProductionReference(id: 123, isSpecial: false, specialType: 123, totalSize: 123, name: "name_example", obscureName: false, description: "description_example", longDescription: "longDescription_example", active: false, template: 123, defaultGroup: 123), volume: VolumeReference(id: 123, name: "name_example", path: "path_example", nodes: [123], displayName: "displayName_example", visualTag: "visualTag_example", isDefault: false, useForHomes: false, useForWorkspaces: false, type: "type_example", snmEnabled: false, snfsName: "snfsName_example", simulatedQuotas: false, fsProperties: FSProperties(supportsDirectoryQuotas: false, supportsSoftQuotas: false, supportsUserQuotas: false, supportsGroupQuotas: false, supportsXattrs: false, supportsSnapshots: false, creatingDirectoryQuotaDestroysContent: false, removingDirectoryQuotaDestroysContent: false), backend: Backend(name: "name_example", properties: BackendProperties(supportsSharingRwPermissionsPriority: false, supportsSharingAfp: false, supportsSharingSmbRequireLogon: false, supportsSharingSmbRecycleBin: false, supportsSharingSmbXattrs: false, supportsSharingSmbSymlinks: false, supportsSharingSmbCustomOptions: false, supportsSharingNfsPermissions: false)), status: VolumeStatus(online: false, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, snfs: VolumeSNFSStatus(stripeGroups: [SNFSStripeGroup(name: "name_example", statusTags: ["statusTags_example"], affinity: "affinity_example", sizeTotal: 123, sizeUsed: 123, sizeFree: 123)]), lizardfs: VolumeLizardFSStatus(master: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), nodes: [LizardFSNode(node: nil, host: "host_example", online: false, version: "version_example", chunks: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunksForRemoval: 123, label: "label_example")], disks: [LizardFSDisk(node: nil, host: "host_example", mountpoint: "mountpoint_example", toDelete: false, damaged: false, scanning: false, errorChunk: 123, errorTimestamp: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, chunks: 123)]), beegfs: VolumeBeeGFSStatus(nodes: [BeeGFSNode(node: nil, host: "host_example", roles: ["roles_example"], addresses: ["addresses_example"])], targets: [BeeGFSTarget(node: nil, id: 123, host: "host_example", storagePool: 123, sizeTotal: 123, sizeUsed: 123, sizeFree: 123, online: false, consistent: false, errors: ["errors_example"])]))), volumePath: "volumePath_example", path: "path_example", sharingNfsPermissions: ["sharingNfsPermissions_example"], fullPath: "fullPath_example", currentShareName: "currentShareName_example", endpoints: [WorkspaceEndpoint(_protocol: "_protocol_example", address: "address_example", path: "path_example", priority: 123, platform: "platform_example", username: "username_example", password: "password_example")], quota: Quota(current: 123, soft: 123, hard: 123), sizeUsed: 123, sizeTotal: 123, bookmarked: false, resolvedPermissions: [WorkspaceResolvedPermission(id: 123, readOnly: false, workspace: 123, user: 123, group: 123)], resolvedReadOnly: false, recycleBinPath: "recycleBinPath_example", name: "name_example", directory: "directory_example", description: "description_example", longDescription: "longDescription_example", isTemplate: false, lastLogin: Date(), active: false, macProtocol: "macProtocol_example", winProtocol: "winProtocol_example", winDrive: "winDrive_example", linuxProtocol: "linuxProtocol_example", linuxMountpoint: "linuxMountpoint_example", shareName: "shareName_example", shareNfs: false, shareAfp: false, sharingHidden: false, sharingRequireLogin: false, sharingReadOnly: false, sharingAllowExecute: false, enableQuota: false, quotaSizeHard: 123, quotaSizeSoft: 123, affinity: "affinity_example", emulateAvid: false, emulateCapture: false, emulatePreopen: false, emulateNtfsStreams: false, emulateRecycleBin: false, emulateFruit: false, smbExtraConfig: "smbExtraConfig_example", afpExtraConfig: "afpExtraConfig_example", recycleBinExclude: "recycleBinExclude_example", isExternal: false, externalMacUrl: "externalMacUrl_example", externalWinUrl: "externalWinUrl_example", externalLinuxUrl: "externalLinuxUrl_example", allowSymlinks: false, rwPermissionPriority: false, template: 123, homeFor: 123) // WorkspaceDetail | 
+let workspaceDetailUpdate = WorkspaceDetailUpdate(production: ProductionReference(id: 123, isSpecial: false, specialType: 123, totalSize: 123, name: "name_example", obscureName: false, description: "description_example", longDescription: "longDescription_example", active: false, template: 123, defaultGroup: 123), volume: "TODO", sharingNfsPermissions: [NFSPermission(host: "host_example", readOnly: false, options: "options_example")], quotaSizeHard: 123, quotaSizeSoft: 123, name: "name_example", description: "description_example", longDescription: "longDescription_example", isTemplate: false, active: false, macProtocol: "macProtocol_example", winProtocol: "winProtocol_example", winDrive: "winDrive_example", linuxProtocol: "linuxProtocol_example", linuxMountpoint: "linuxMountpoint_example", shareName: "shareName_example", shareNfs: false, shareAfp: false, sharingHidden: false, sharingRequireLogin: false, sharingReadOnly: false, sharingAllowExecute: false, enableQuota: false, affinity: "affinity_example", emulateAvid: false, emulateCapture: false, emulatePreopen: false, emulateNtfsStreams: false, emulateRecycleBin: false, emulateFruit: false, smbExtraConfig: "smbExtraConfig_example", afpExtraConfig: "afpExtraConfig_example", recycleBinExclude: "recycleBinExclude_example", isExternal: false, externalMacUrl: "externalMacUrl_example", externalWinUrl: "externalWinUrl_example", externalLinuxUrl: "externalLinuxUrl_example", allowSymlinks: false, rwPermissionPriority: false, template: 123) // WorkspaceDetailUpdate | 
 
-StorageAPI.updateWorkspace(id: id, workspaceDetail: workspaceDetail).then {
+StorageAPI.updateWorkspace(id: id, workspaceDetailUpdate: workspaceDetailUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -3385,7 +3430,7 @@ StorageAPI.updateWorkspace(id: id, workspaceDetail: workspaceDetail).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this workspace. | 
- **workspaceDetail** | [**WorkspaceDetail**](WorkspaceDetail.md) |  | 
+ **workspaceDetailUpdate** | [**WorkspaceDetailUpdate**](WorkspaceDetailUpdate.md) |  | 
 
 ### Return type
 
@@ -3404,22 +3449,22 @@ Name | Type | Description  | Notes
 
 # **updateWorkspacePermission**
 ```swift
-    open class func updateWorkspacePermission( id: Int,  workspacePermission: WorkspacePermission) -> Promise<WorkspacePermission>
+    open class func updateWorkspacePermission( id: Int,  workspacePermissionUpdate: WorkspacePermissionUpdate) -> Promise<WorkspacePermission>
 ```
 
 
 
 ### Required permissions    * User account permission: `projects:view` (read) / `projects:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this workspace permission.
-let workspacePermission = WorkspacePermission(id: 123, user: ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example"), group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), readOnly: false, workspace: 123) // WorkspacePermission | 
+let workspacePermissionUpdate = WorkspacePermissionUpdate(user: "TODO", group: "TODO", readOnly: false, workspace: 123) // WorkspacePermissionUpdate | 
 
-StorageAPI.updateWorkspacePermission(id: id, workspacePermission: workspacePermission).then {
+StorageAPI.updateWorkspacePermission(id: id, workspacePermissionUpdate: workspacePermissionUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -3433,7 +3478,7 @@ StorageAPI.updateWorkspacePermission(id: id, workspacePermission: workspacePermi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this workspace permission. | 
- **workspacePermission** | [**WorkspacePermission**](WorkspacePermission.md) |  | 
+ **workspacePermissionUpdate** | [**WorkspacePermissionUpdate**](WorkspacePermissionUpdate.md) |  | 
 
 ### Return type
 
@@ -3459,7 +3504,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * Authenticated user 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK

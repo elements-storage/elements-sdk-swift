@@ -10,12 +10,12 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct RDCSessionCreate: Codable, Hashable {
+public struct RDCSessionCreate: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var user: ElementsUserMiniReference
 
-    public init(id: Int? = nil, user: ElementsUserMiniReference) {
+    public init(id: Int, user: ElementsUserMiniReference) {
         self.id = id
         self.user = user
     }
@@ -29,7 +29,7 @@ public struct RDCSessionCreate: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(user, forKey: .user)
     }
 }

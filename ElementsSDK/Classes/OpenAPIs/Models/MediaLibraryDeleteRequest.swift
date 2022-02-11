@@ -10,15 +10,15 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MediaLibraryDeleteRequest: Codable, Hashable {
+public struct MediaLibraryDeleteRequest: Codable, JSONEncodable, Hashable {
 
-    public var bundles: Set<Int>?
-    public var files: Set<Int>?
-    public var assets: Set<Int>?
+    public var bundles: [Int]?
+    public var files: [Int]?
+    public var assets: [Int]?
     public var deleteFromDatabase: Bool? = false
     public var deleteFromStorage: Bool? = false
 
-    public init(bundles: Set<Int>? = nil, files: Set<Int>? = nil, assets: Set<Int>? = nil, deleteFromDatabase: Bool? = false, deleteFromStorage: Bool? = false) {
+    public init(bundles: [Int]? = nil, files: [Int]? = nil, assets: [Int]? = nil, deleteFromDatabase: Bool? = false, deleteFromStorage: Bool? = false) {
         self.bundles = bundles
         self.files = files
         self.assets = assets

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct WorkspaceMoveToRequest: Codable, Hashable {
+public struct WorkspaceMoveToRequest: Codable, JSONEncodable, Hashable {
 
     public var production: Int
 

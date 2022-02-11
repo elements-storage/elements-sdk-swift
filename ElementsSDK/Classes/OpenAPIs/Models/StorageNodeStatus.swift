@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct StorageNodeStatus: Codable, Hashable {
+public struct StorageNodeStatus: Codable, JSONEncodable, Hashable {
 
     public var online: Bool
     public var report: [String: String]?

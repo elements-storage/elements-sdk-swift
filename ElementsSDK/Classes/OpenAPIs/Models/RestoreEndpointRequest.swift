@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct RestoreEndpointRequest: Codable, Hashable {
+public struct RestoreEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var name: String
     public var source: [TapeJobSource]

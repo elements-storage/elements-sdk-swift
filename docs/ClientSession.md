@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **user** | [**ElementsUserMini**](ElementsUserMini.md) |  | 
-**mountedWorkspaces** | **String** |  | [optional] [readonly] 
-**started** | **Date** |  | [optional] [readonly] 
-**lastUpdated** | **Date** |  | [optional] [readonly] 
+**mountedWorkspaces** | **String** |  | [readonly] 
+**started** | **Date** |  | [readonly] 
+**lastUpdated** | **Date** |  | [readonly] 
 **workstation** | [**WorkstationMini**](WorkstationMini.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

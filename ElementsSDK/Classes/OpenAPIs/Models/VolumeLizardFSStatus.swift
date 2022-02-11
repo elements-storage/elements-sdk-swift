@@ -10,13 +10,13 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct VolumeLizardFSStatus: Codable, Hashable {
+public struct VolumeLizardFSStatus: Codable, JSONEncodable, Hashable {
 
-    public var master: StorageNodeMini
+    public var master: StorageNodeMini?
     public var nodes: [LizardFSNode]
     public var disks: [LizardFSDisk]
 
-    public init(master: StorageNodeMini, nodes: [LizardFSNode], disks: [LizardFSDisk]) {
+    public init(master: StorageNodeMini?, nodes: [LizardFSNode], disks: [LizardFSDisk]) {
         self.master = master
         self.nodes = nodes
         self.disks = disks

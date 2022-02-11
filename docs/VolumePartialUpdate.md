@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** |  | [optional] 
-**nodes** | **Set<Int>** |  | [optional] 
+**path** | **String** |  | [optional] 
+**nodes** | **[Int]** |  | [optional] 
 **displayName** | **String** |  | [optional] 
 **visualTag** | **String** |  | [optional] 
 **isDefault** | **Bool** |  | [optional] 
@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **snmEnabled** | **Bool** |  | [optional] 
 **snfsName** | **String** |  | [optional] 
 **simulatedQuotas** | **Bool** |  | [optional] 
+**cloudAccount** | **Int** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

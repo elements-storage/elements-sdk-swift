@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct StartTaskRequest: Codable, Hashable {
+public struct StartTaskRequest: Codable, JSONEncodable, Hashable {
 
     public var taskType: String
     public var parameters: [String: String]

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ElementsUserProfile: Codable, Hashable {
+public struct ElementsUserProfile: Codable, JSONEncodable, Hashable {
 
     public enum Language: String, Codable, CaseIterable {
         case en = "en"
@@ -23,15 +23,17 @@ public struct ElementsUserProfile: Codable, Hashable {
     public var fullName: String?
     public var language: Language?
     public var fmBookmarks: [String]?
-    public var id: Int?
-    public var username: String?
-    public var unixUsername: String?
-    public var displayName: String?
-    public var email: String?
-    public var ldap: LDAPServer?
-    public var effectivePermissions: [String]?
+    public var id: Int
+    public var username: String
+    public var unixUsername: String
+    public var displayName: String
+    public var email: String
+    public var ldap: LDAPServer
+    public var effectivePermissions: [String]
+    public var hasPassword: Bool
+    public var allowChangingPassword: Bool
 
-    public init(avatar: String? = nil, defaultPage: String? = nil, fullName: String? = nil, language: Language? = nil, fmBookmarks: [String]? = nil, id: Int? = nil, username: String? = nil, unixUsername: String? = nil, displayName: String? = nil, email: String? = nil, ldap: LDAPServer? = nil, effectivePermissions: [String]? = nil) {
+    public init(avatar: String? = nil, defaultPage: String? = nil, fullName: String? = nil, language: Language? = nil, fmBookmarks: [String]? = nil, id: Int, username: String, unixUsername: String, displayName: String, email: String, ldap: LDAPServer, effectivePermissions: [String], hasPassword: Bool, allowChangingPassword: Bool) {
         self.avatar = avatar
         self.defaultPage = defaultPage
         self.fullName = fullName
@@ -44,6 +46,8 @@ public struct ElementsUserProfile: Codable, Hashable {
         self.email = email
         self.ldap = ldap
         self.effectivePermissions = effectivePermissions
+        self.hasPassword = hasPassword
+        self.allowChangingPassword = allowChangingPassword
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -59,6 +63,8 @@ public struct ElementsUserProfile: Codable, Hashable {
         case email
         case ldap
         case effectivePermissions = "effective_permissions"
+        case hasPassword = "has_password"
+        case allowChangingPassword = "allow_changing_password"
     }
 
     // Encodable protocol methods
@@ -70,13 +76,15 @@ public struct ElementsUserProfile: Codable, Hashable {
         try container.encodeIfPresent(fullName, forKey: .fullName)
         try container.encodeIfPresent(language, forKey: .language)
         try container.encodeIfPresent(fmBookmarks, forKey: .fmBookmarks)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(username, forKey: .username)
-        try container.encodeIfPresent(unixUsername, forKey: .unixUsername)
-        try container.encodeIfPresent(displayName, forKey: .displayName)
-        try container.encodeIfPresent(email, forKey: .email)
-        try container.encodeIfPresent(ldap, forKey: .ldap)
-        try container.encodeIfPresent(effectivePermissions, forKey: .effectivePermissions)
+        try container.encode(id, forKey: .id)
+        try container.encode(username, forKey: .username)
+        try container.encode(unixUsername, forKey: .unixUsername)
+        try container.encode(displayName, forKey: .displayName)
+        try container.encode(email, forKey: .email)
+        try container.encode(ldap, forKey: .ldap)
+        try container.encode(effectivePermissions, forKey: .effectivePermissions)
+        try container.encode(hasPassword, forKey: .hasPassword)
+        try container.encode(allowChangingPassword, forKey: .allowChangingPassword)
     }
 }
 

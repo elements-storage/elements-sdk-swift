@@ -10,13 +10,13 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TapeGroup: Codable, Hashable {
+public struct TapeGroup: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var tapes: Set<TapeReference>
+    public var id: Int
+    public var tapes: [TapeReference]
     public var name: String
 
-    public init(id: Int? = nil, tapes: Set<TapeReference>, name: String) {
+    public init(id: Int, tapes: [TapeReference], name: String) {
         self.id = id
         self.tapes = tapes
         self.name = name
@@ -32,7 +32,7 @@ public struct TapeGroup: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(tapes, forKey: .tapes)
         try container.encode(name, forKey: .name)
     }

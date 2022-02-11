@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ArchiveEndpointRequest: Codable, Hashable {
+public struct ArchiveEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var source: [TapeJobSource]
     public var startDate: Date

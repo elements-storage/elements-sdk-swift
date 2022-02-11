@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
-**name** | **String** |  | [optional] 
-**path** | **String** |  | [optional] [readonly] 
+**id** | **Int** |  | 
+**path** | **String** |  | [optional] 
 **displayName** | **String** |  | [optional] 
 **visualTag** | **String** |  | [optional] 
 **type** | **String** |  | [optional] 
+**name** | **String** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

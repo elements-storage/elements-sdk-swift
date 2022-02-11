@@ -1,0 +1,65 @@
+# Workspace
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **Int** |  | 
+**production** | [**ProductionMiniReference**](ProductionMiniReference.md) |  | 
+**volume** | [**AnyOfVolumeMiniReferenceAnyType**](AnyOfVolumeMiniReferenceAnyType.md) |  | [optional] 
+**volumePath** | **String** |  | [optional] [readonly] 
+**path** | **String** |  | [optional] [readonly] 
+**sharingNfsPermissions** | [NFSPermission] |  | [optional] 
+**fullPath** | **String** |  | [optional] [readonly] 
+**currentShareName** | **String** |  | [readonly] 
+**endpoints** | [WorkspaceEndpoint] |  | [optional] [readonly] 
+**quota** | [**Quota**](Quota.md) |  | [optional] 
+**sizeUsed** | **Int** |  | [readonly] 
+**sizeTotal** | **Int** |  | [readonly] 
+**bookmarked** | **Bool** |  | [readonly] 
+**quotaSizeHard** | **Int** |  | [optional] 
+**quotaSizeSoft** | **Int** |  | [optional] 
+**resolvedPermissions** | [WorkspaceResolvedPermission] |  | [optional] [readonly] 
+**resolvedReadOnly** | **Bool** |  | [readonly] 
+**name** | **String** |  | [optional] 
+**directory** | **String** |  | [optional] [readonly] 
+**description** | **String** |  | [optional] 
+**longDescription** | **String** |  | [optional] 
+**isTemplate** | **Bool** |  | [optional] 
+**lastLogin** | **Date** |  | [optional] [readonly] 
+**active** | **Bool** |  | [optional] 
+**macProtocol** | **String** |  | [optional] 
+**winProtocol** | **String** |  | [optional] 
+**winDrive** | **String** |  | [optional] 
+**linuxProtocol** | **String** |  | [optional] 
+**linuxMountpoint** | **String** |  | [optional] 
+**shareName** | **String** |  | [optional] 
+**shareNfs** | **Bool** |  | [optional] 
+**shareAfp** | **Bool** |  | [optional] 
+**sharingHidden** | **Bool** |  | [optional] 
+**sharingRequireLogin** | **Bool** |  | [optional] 
+**sharingReadOnly** | **Bool** |  | [optional] 
+**sharingAllowExecute** | **Bool** |  | [optional] 
+**enableQuota** | **Bool** |  | [optional] 
+**affinity** | **String** |  | [optional] 
+**emulateAvid** | **Bool** |  | [optional] 
+**emulateCapture** | **Bool** |  | [optional] 
+**emulatePreopen** | **Bool** |  | [optional] 
+**emulateNtfsStreams** | **Bool** |  | [optional] 
+**emulateRecycleBin** | **Bool** |  | [optional] 
+**emulateFruit** | **Bool** |  | [optional] 
+**smbExtraConfig** | **String** |  | [optional] 
+**afpExtraConfig** | **String** |  | [optional] 
+**recycleBinExclude** | **String** |  | [optional] 
+**isExternal** | **Bool** |  | [optional] 
+**externalMacUrl** | **String** |  | [optional] 
+**externalWinUrl** | **String** |  | [optional] 
+**externalLinuxUrl** | **String** |  | [optional] 
+**allowSymlinks** | **Bool** |  | [optional] 
+**rwPermissionPriority** | **Bool** |  | [optional] 
+**template** | **Int** |  | [optional] 
+**homeFor** | **Int** |  | [optional] [readonly] 
+
+[[Back to Model list]](../#documentation-for-models) [[Back to API list]](../#documentation-for-api-endpoints) [[Back to README]](../)
+
+

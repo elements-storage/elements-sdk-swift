@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] 
-**subtasks** | Set<SubtaskReference> |  | [optional] [readonly] 
-**schedules** | Set<ScheduleReference> |  | [optional] [readonly] 
-**allowUsers** | Set<ElementsUserReference> |  | [optional] [readonly] 
-**allowGroups** | Set<ElementsGroupReference> |  | [optional] [readonly] 
+**id** | **Int** |  | 
+**subtasks** | [SubtaskReference] |  | [optional] [readonly] 
+**schedules** | [ScheduleReference] |  | [optional] [readonly] 
+**allowUsers** | [ElementsUserReference] |  | [optional] [readonly] 
+**allowGroups** | [ElementsGroupReference] |  | [optional] [readonly] 
 **startable** | **Bool** |  | [optional] [readonly] 
 **variableDefinitions** | [[String: String]] |  | [optional] [readonly] 
-**mediaRoots** | **Set<Int>** |  | [optional] [readonly] 
+**mediaRoots** | **[Int]** |  | [optional] [readonly] 
 **webhookUrl** | **String** |  | [optional] [readonly] 
 **specialType** | **Int** |  | [optional] [readonly] 
 **name** | **String** |  | [optional] [readonly] 

@@ -10,13 +10,13 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MediaFileTemplate: Codable, Hashable {
+public struct MediaFileTemplate: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var file: MediaFileReference
     public var name: String
 
-    public init(id: Int? = nil, file: MediaFileReference, name: String) {
+    public init(id: Int, file: MediaFileReference, name: String) {
         self.id = id
         self.file = file
         self.name = name
@@ -32,7 +32,7 @@ public struct MediaFileTemplate: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(file, forKey: .file)
         try container.encode(name, forKey: .name)
     }

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SNFSStripeGroup: Codable, Hashable {
+public struct SNFSStripeGroup: Codable, JSONEncodable, Hashable {
 
     public var name: String
     public var statusTags: [String]

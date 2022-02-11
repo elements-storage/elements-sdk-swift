@@ -4,10 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] 
-**name** | **String** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **path** | **String** |  | [optional] [readonly] 
-**nodes** | **Set<Int>** |  | [optional] [readonly] 
+**nodes** | **[Int]** |  | [optional] [readonly] 
 **displayName** | **String** |  | [optional] [readonly] 
 **visualTag** | **String** |  | [optional] [readonly] 
 **isDefault** | **Bool** |  | [optional] [readonly] 
@@ -20,6 +19,8 @@ Name | Type | Description | Notes
 **fsProperties** | [**FSProperties**](FSProperties.md) |  | [optional] 
 **backend** | [**Backend**](Backend.md) |  | [optional] 
 **status** | [**VolumeStatus**](VolumeStatus.md) |  | [optional] 
+**cloudAccount** | **Int** |  | [optional] [readonly] 
+**name** | **String** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

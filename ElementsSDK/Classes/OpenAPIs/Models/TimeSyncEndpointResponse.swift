@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TimeSyncEndpointResponse: Codable, Hashable {
+public struct TimeSyncEndpointResponse: Codable, JSONEncodable, Hashable {
 
     public var output: String
 

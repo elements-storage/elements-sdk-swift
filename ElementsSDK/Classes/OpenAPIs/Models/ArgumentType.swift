@@ -10,12 +10,12 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ArgumentType: Codable, Hashable {
+public struct ArgumentType: Codable, JSONEncodable, Hashable {
 
-    public var displayName: String?
-    public var documentation: [TypeDocumentation]?
+    public var displayName: String
+    public var documentation: [TypeDocumentation]
 
-    public init(displayName: String? = nil, documentation: [TypeDocumentation]? = nil) {
+    public init(displayName: String, documentation: [TypeDocumentation]) {
         self.displayName = displayName
         self.documentation = documentation
     }
@@ -29,8 +29,8 @@ public struct ArgumentType: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(displayName, forKey: .displayName)
-        try container.encodeIfPresent(documentation, forKey: .documentation)
+        try container.encode(displayName, forKey: .displayName)
+        try container.encode(documentation, forKey: .documentation)
     }
 }
 

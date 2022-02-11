@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct StornextManagerAttributes: Codable, Hashable {
+public struct StornextManagerAttributes: Codable, JSONEncodable, Hashable {
 
     public var location: String
     public var policyClass: String

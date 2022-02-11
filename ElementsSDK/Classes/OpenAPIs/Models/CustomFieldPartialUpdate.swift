@@ -10,13 +10,14 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct CustomFieldPartialUpdate: Codable, Hashable {
+public struct CustomFieldPartialUpdate: Codable, JSONEncodable, Hashable {
 
     public enum Validation: String, Codable, CaseIterable {
         case numberOfDigits = "number_of_digits"
         case regex = "regex"
         case range = "range"
     }
+    public var labels: [[String: String]]?
     public var options: [String]?
     public var name: String?
     public var order: Int?
@@ -34,7 +35,8 @@ public struct CustomFieldPartialUpdate: Codable, Hashable {
     public var multipleResponse: Bool?
     public var helpText: String?
 
-    public init(options: [String]? = nil, name: String? = nil, order: Int? = nil, type: String? = nil, useForUploads: Bool? = nil, requireToUpload: Bool? = nil, nonUserEditable: Bool? = nil, validation: Validation? = nil, regex: String? = nil, rangeMin: Int? = nil, rangeMax: Int? = nil, numberOfDigits: Int? = nil, metadataPrefill: String? = nil, highlightExpiration: Bool? = nil, multipleResponse: Bool? = nil, helpText: String? = nil) {
+    public init(labels: [[String: String]]? = nil, options: [String]? = nil, name: String? = nil, order: Int? = nil, type: String? = nil, useForUploads: Bool? = nil, requireToUpload: Bool? = nil, nonUserEditable: Bool? = nil, validation: Validation? = nil, regex: String? = nil, rangeMin: Int? = nil, rangeMax: Int? = nil, numberOfDigits: Int? = nil, metadataPrefill: String? = nil, highlightExpiration: Bool? = nil, multipleResponse: Bool? = nil, helpText: String? = nil) {
+        self.labels = labels
         self.options = options
         self.name = name
         self.order = order
@@ -54,6 +56,7 @@ public struct CustomFieldPartialUpdate: Codable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case labels
         case options
         case name
         case order
@@ -76,6 +79,7 @@ public struct CustomFieldPartialUpdate: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(labels, forKey: .labels)
         try container.encodeIfPresent(options, forKey: .options)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(order, forKey: .order)

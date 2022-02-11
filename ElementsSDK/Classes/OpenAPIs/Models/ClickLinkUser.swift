@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ClickLinkUser: Codable, Hashable {
+public struct ClickLinkUser: Codable, JSONEncodable, Hashable {
 
     public var id: String
     public var username: String

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct PythonEnvironment: Codable, Hashable {
+public struct PythonEnvironment: Codable, JSONEncodable, Hashable {
 
     public var id: String
     public var name: String

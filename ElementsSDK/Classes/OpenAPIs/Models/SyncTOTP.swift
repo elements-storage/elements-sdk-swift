@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SyncTOTP: Codable, Hashable {
+public struct SyncTOTP: Codable, JSONEncodable, Hashable {
 
     public var drift: Int
 

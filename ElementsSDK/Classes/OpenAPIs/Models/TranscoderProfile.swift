@@ -10,9 +10,9 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TranscoderProfile: Codable, Hashable {
+public struct TranscoderProfile: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var name: String
     public var options: String?
     public var binary: String?
@@ -22,7 +22,7 @@ public struct TranscoderProfile: Codable, Hashable {
     public var acceptsFps: Bool?
     public var acceptsResolution: Bool?
 
-    public init(id: Int? = nil, name: String, options: String? = nil, binary: String? = nil, command: String? = nil, outputExtension: String? = nil, acceptsBitrate: Bool? = nil, acceptsFps: Bool? = nil, acceptsResolution: Bool? = nil) {
+    public init(id: Int, name: String, options: String? = nil, binary: String? = nil, command: String? = nil, outputExtension: String? = nil, acceptsBitrate: Bool? = nil, acceptsFps: Bool? = nil, acceptsResolution: Bool? = nil) {
         self.id = id
         self.name = name
         self.options = options
@@ -50,7 +50,7 @@ public struct TranscoderProfile: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(options, forKey: .options)
         try container.encodeIfPresent(binary, forKey: .binary)

@@ -10,15 +10,15 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct AssetCloudLink: Codable, Hashable {
+public struct AssetCloudLink: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var connection: CloudConnection?
+    public var id: Int
+    public var connection: CloudConnection
     public var presignedAssetUrl: String?
-    public var createdAt: Date?
+    public var createdAt: Date
     public var asset: Int
 
-    public init(id: Int? = nil, connection: CloudConnection? = nil, presignedAssetUrl: String? = nil, createdAt: Date? = nil, asset: Int) {
+    public init(id: Int, connection: CloudConnection, presignedAssetUrl: String?, createdAt: Date, asset: Int) {
         self.id = id
         self.connection = connection
         self.presignedAssetUrl = presignedAssetUrl
@@ -38,10 +38,10 @@ public struct AssetCloudLink: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(connection, forKey: .connection)
-        try container.encodeIfPresent(presignedAssetUrl, forKey: .presignedAssetUrl)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
+        try container.encode(id, forKey: .id)
+        try container.encode(connection, forKey: .connection)
+        try container.encode(presignedAssetUrl, forKey: .presignedAssetUrl)
+        try container.encode(createdAt, forKey: .createdAt)
         try container.encode(asset, forKey: .asset)
     }
 }

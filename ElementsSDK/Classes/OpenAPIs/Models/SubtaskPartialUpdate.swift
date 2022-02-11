@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SubtaskPartialUpdate: Codable, Hashable {
+public struct SubtaskPartialUpdate: Codable, JSONEncodable, Hashable {
 
     public var kwargs: [String: String]?
     public var graphLayout: [String: String]?

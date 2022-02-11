@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct FileUnzipEndpointRequest: Codable, Hashable {
+public struct FileUnzipEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var input: String
     public var remove: Bool?

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bundles** | **Set<Int>** |  | [optional] 
-**directories** | **Set<Int>** |  | [optional] 
+**bundles** | **[Int]** |  | [optional] 
+**directories** | **[Int]** |  | [optional] 
 **job** | **Int** |  | 
 **root** | **Int** |  | 
 **variables** | **[String: String]** |  | [optional] 

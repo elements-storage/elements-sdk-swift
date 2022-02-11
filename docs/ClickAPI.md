@@ -5,6 +5,7 @@ All URIs are relative to *https://elements.local*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**abortClickUpload**](ClickAPI.md#abortclickupload) | **DELETE** /api/2/click/uploads/{upload_id} | 
+[**addAssetsToClickGallery**](ClickAPI.md#addassetstoclickgallery) | **POST** /api/2/click/connections/{connection_id}/galleries/{id}/add-assets | 
 [**continueClickUploadInBackground**](ClickAPI.md#continueclickuploadinbackground) | **POST** /api/2/click/uploads/{upload_id}/background | 
 [**createClickGallery**](ClickAPI.md#createclickgallery) | **POST** /api/2/click/connections/{connection_id}/galleries | 
 [**createClickGalleryLink**](ClickAPI.md#createclickgallerylink) | **POST** /api/2/click/connections/{connection_id}/gallery-links | 
@@ -13,10 +14,8 @@ Method | HTTP request | Description
 [**getAllClickGalleryLinks**](ClickAPI.md#getallclickgallerylinks) | **GET** /api/2/click/connections/{connection_id}/gallery-links | 
 [**getClickGallery**](ClickAPI.md#getclickgallery) | **GET** /api/2/click/connections/{connection_id}/galleries/{id} | 
 [**getClickGalleryLink**](ClickAPI.md#getclickgallerylink) | **GET** /api/2/click/connections/{connection_id}/gallery-links/{id} | 
-[**patchClickGallery**](ClickAPI.md#patchclickgallery) | **PATCH** /api/2/click/connections/{connection_id}/galleries/{id} | 
 [**sendClickGalleryLinkEmail**](ClickAPI.md#sendclickgallerylinkemail) | **POST** /api/2/click/connections/{connection_id}/gallery-links/{link_id}/send | 
 [**startClickUpload**](ClickAPI.md#startclickupload) | **POST** /api/2/click/uploads | 
-[**updateClickGallery**](ClickAPI.md#updateclickgallery) | **PUT** /api/2/click/connections/{connection_id}/galleries/{id} | 
 
 
 # **abortClickUpload**
@@ -28,7 +27,7 @@ Method | HTTP request | Description
 
 ### Required permissions    * User account permission: `cloud:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -65,6 +64,56 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **addAssetsToClickGallery**
+```swift
+    open class func addAssetsToClickGallery( connectionId: String,  id: String,  addAssetsToClickGallery: AddAssetsToClickGallery) -> Promise<ClickGallery>
+```
+
+
+
+### Required permissions    * User account permission: `cloud:access` 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let connectionId = "connectionId_example" // String | 
+let id = "id_example" // String | 
+let addAssetsToClickGallery = AddAssetsToClickGallery(assets: ["assets_example"]) // AddAssetsToClickGallery | 
+
+ClickAPI.addAssetsToClickGallery(connectionId: connectionId, id: id, addAssetsToClickGallery: addAssetsToClickGallery).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **connectionId** | **String** |  | 
+ **id** | **String** |  | 
+ **addAssetsToClickGallery** | [**AddAssetsToClickGallery**](AddAssetsToClickGallery.md) |  | 
+
+### Return type
+
+[**ClickGallery**](ClickGallery.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **continueClickUploadInBackground**
 ```swift
     open class func continueClickUploadInBackground( uploadId: String,  clickBackgroundUploadEndpointRequest: ClickBackgroundUploadEndpointRequest) -> Promise<Void>
@@ -74,7 +123,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `cloud:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -115,22 +164,22 @@ Void (empty response body)
 
 # **createClickGallery**
 ```swift
-    open class func createClickGallery( connectionId: String,  clickGallery: ClickGallery) -> Promise<ClickGallery>
+    open class func createClickGallery( connectionId: String,  clickGalleryUpdate: ClickGalleryUpdate) -> Promise<ClickGallery>
 ```
 
 
 
 ### Required permissions    * User account permission: `cloud:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let connectionId = "connectionId_example" // String | 
-let clickGallery = ClickGallery(id: 123, name: "name_example", description: "description_example", presignedLoginUrl: "presignedLoginUrl_example") // ClickGallery | 
+let clickGalleryUpdate = ClickGalleryUpdate(name: "name_example", description: "description_example") // ClickGalleryUpdate | 
 
-ClickAPI.createClickGallery(connectionId: connectionId, clickGallery: clickGallery).then {
+ClickAPI.createClickGallery(connectionId: connectionId, clickGalleryUpdate: clickGalleryUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -144,7 +193,7 @@ ClickAPI.createClickGallery(connectionId: connectionId, clickGallery: clickGalle
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **connectionId** | **String** |  | 
- **clickGallery** | [**ClickGallery**](ClickGallery.md) |  | 
+ **clickGalleryUpdate** | [**ClickGalleryUpdate**](ClickGalleryUpdate.md) |  | 
 
 ### Return type
 
@@ -170,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `cloud:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -218,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `cloud:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -259,14 +308,14 @@ Void (empty response body)
 
 # **getAllClickGalleries**
 ```swift
-    open class func getAllClickGalleries( connectionId: String,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<InlineResponse200>
+    open class func getAllClickGalleries( connectionId: String,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[ClickGallery]>
 ```
 
 
 
 ### Required permissions    * User account permission: `cloud:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -277,6 +326,58 @@ let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
 
 ClickAPI.getAllClickGalleries(connectionId: connectionId, ordering: ordering, limit: limit, offset: offset).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **connectionId** | **String** |  | 
+ **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **limit** | **Int** | Number of results to return per page. | [optional] 
+ **offset** | **Int** | The initial index from which to return the results. | [optional] 
+
+### Return type
+
+[**[ClickGallery]**](ClickGallery.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAllClickGalleryLinks**
+```swift
+    open class func getAllClickGalleryLinks( connectionId: String,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<InlineResponse200>
+```
+
+
+
+### Required permissions    * User account permission: `cloud:access` 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let connectionId = "connectionId_example" // String | 
+let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
+let limit = 987 // Int | Number of results to return per page. (optional)
+let offset = 987 // Int | The initial index from which to return the results. (optional)
+
+ClickAPI.getAllClickGalleryLinks(connectionId: connectionId, ordering: ordering, limit: limit, offset: offset).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -309,58 +410,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getAllClickGalleryLinks**
-```swift
-    open class func getAllClickGalleryLinks( connectionId: String,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<InlineResponse2001>
-```
-
-
-
-### Required permissions    * User account permission: `cloud:access` 
-
-### Example 
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import ElementsSDK
-
-let connectionId = "connectionId_example" // String | 
-let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
-let limit = 987 // Int | Number of results to return per page. (optional)
-let offset = 987 // Int | The initial index from which to return the results. (optional)
-
-ClickAPI.getAllClickGalleryLinks(connectionId: connectionId, ordering: ordering, limit: limit, offset: offset).then {
-         // when the promise is fulfilled
-     }.always {
-         // regardless of whether the promise is fulfilled, or rejected
-     }.catch { errorType in
-         // when the promise is rejected
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **connectionId** | **String** |  | 
- **ordering** | **String** | Which field to use when ordering the results. | [optional] 
- **limit** | **Int** | Number of results to return per page. | [optional] 
- **offset** | **Int** | The initial index from which to return the results. | [optional] 
-
-### Return type
-
-[**InlineResponse2001**](InlineResponse2001.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **getClickGallery**
 ```swift
     open class func getClickGallery( connectionId: String,  id: String) -> Promise<ClickGallery>
@@ -370,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `cloud:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -418,7 +467,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `cloud:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -457,56 +506,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **patchClickGallery**
-```swift
-    open class func patchClickGallery( connectionId: String,  id: String,  clickGallery: ClickGallery) -> Promise<ClickGallery>
-```
-
-
-
-### Required permissions    * User account permission: `cloud:access` 
-
-### Example 
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import ElementsSDK
-
-let connectionId = "connectionId_example" // String | 
-let id = "id_example" // String | 
-let clickGallery = ClickGallery(id: 123, name: "name_example", description: "description_example", presignedLoginUrl: "presignedLoginUrl_example") // ClickGallery | 
-
-ClickAPI.patchClickGallery(connectionId: connectionId, id: id, clickGallery: clickGallery).then {
-         // when the promise is fulfilled
-     }.always {
-         // regardless of whether the promise is fulfilled, or rejected
-     }.catch { errorType in
-         // when the promise is rejected
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **connectionId** | **String** |  | 
- **id** | **String** |  | 
- **clickGallery** | [**ClickGallery**](ClickGallery.md) |  | 
-
-### Return type
-
-[**ClickGallery**](ClickGallery.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **sendClickGalleryLinkEmail**
 ```swift
     open class func sendClickGalleryLinkEmail( connectionId: String,  linkId: String) -> Promise<Void>
@@ -516,7 +515,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `cloud:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -564,7 +563,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `cloud:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -589,56 +588,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TaskInfo**](TaskInfo.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateClickGallery**
-```swift
-    open class func updateClickGallery( connectionId: String,  id: String,  addAssetsToClickGallery: AddAssetsToClickGallery) -> Promise<AddAssetsToClickGallery>
-```
-
-
-
-### Required permissions    * User account permission: `cloud:access` 
-
-### Example 
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import ElementsSDK
-
-let connectionId = "connectionId_example" // String | 
-let id = "id_example" // String | 
-let addAssetsToClickGallery = AddAssetsToClickGallery(assets: ["assets_example"]) // AddAssetsToClickGallery | 
-
-ClickAPI.updateClickGallery(connectionId: connectionId, id: id, addAssetsToClickGallery: addAssetsToClickGallery).then {
-         // when the promise is fulfilled
-     }.always {
-         // regardless of whether the promise is fulfilled, or rejected
-     }.catch { errorType in
-         // when the promise is rejected
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **connectionId** | **String** |  | 
- **id** | **String** |  | 
- **addAssetsToClickGallery** | [**AddAssetsToClickGallery**](AddAssetsToClickGallery.md) |  | 
-
-### Return type
-
-[**AddAssetsToClickGallery**](AddAssetsToClickGallery.md)
 
 ### Authorization
 

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TimeEndpointRequest: Codable, Hashable {
+public struct TimeEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var time: Double
     public var timezone: Timezone

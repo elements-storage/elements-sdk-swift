@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TapeLibraryEndpointResponse: Codable, Hashable {
+public struct TapeLibraryEndpointResponse: Codable, JSONEncodable, Hashable {
 
     public var drives: [TapeLibrarySlot]
     public var mailbox: [TapeLibrarySlot]

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct FileSizeEndpointResponse: Codable, Hashable {
+public struct FileSizeEndpointResponse: Codable, JSONEncodable, Hashable {
 
     public var totalSize: Int
 

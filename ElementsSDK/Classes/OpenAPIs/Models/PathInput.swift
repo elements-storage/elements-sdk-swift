@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct PathInput: Codable, Hashable {
+public struct PathInput: Codable, JSONEncodable, Hashable {
 
     public var input: [String]
 

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct LDAPServerGroup: Codable, Hashable {
+public struct LDAPServerGroup: Codable, JSONEncodable, Hashable {
 
     public var dn: String
     public var name: String

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct BackendProperties: Codable, Hashable {
+public struct BackendProperties: Codable, JSONEncodable, Hashable {
 
     public var supportsSharingRwPermissionsPriority: Bool
     public var supportsSharingAfp: Bool

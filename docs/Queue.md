@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] [readonly] 
-**group** | **String** |  | [optional] [readonly] 
-**priority** | **String** |  | [optional] [readonly] 
+**group** | **String** |  | [readonly] 
+**priority** | **String** |  | [readonly] 
 **inputBased** | **Bool** |  | 
-**isServiced** | **Bool** |  | [optional] [readonly] 
+**isServiced** | **Bool** |  | [readonly] 
 **node** | [**StorageNodeMini**](StorageNodeMini.md) |  | [optional] 
 **volume** | [**VolumeMini**](VolumeMini.md) |  | [optional] 
 

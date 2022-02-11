@@ -10,15 +10,15 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct UnfilteredTag: Codable, Hashable {
+public struct UnfilteredTag: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var roots: Set<Int>
+    public var id: Int
+    public var roots: [Int]
     public var name: String
     public var shared: Bool?
     public var color: String?
 
-    public init(id: Int? = nil, roots: Set<Int>, name: String, shared: Bool? = nil, color: String? = nil) {
+    public init(id: Int, roots: [Int], name: String, shared: Bool? = nil, color: String? = nil) {
         self.id = id
         self.roots = roots
         self.name = name
@@ -38,7 +38,7 @@ public struct UnfilteredTag: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(roots, forKey: .roots)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(shared, forKey: .shared)

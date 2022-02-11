@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TapeLibraryFsckEndpointRequest: Codable, Hashable {
+public struct TapeLibraryFsckEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var barcode: String
 

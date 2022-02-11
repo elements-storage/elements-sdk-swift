@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct StorNextConnection: Codable, Hashable {
+public struct StorNextConnection: Codable, JSONEncodable, Hashable {
 
     public var index: String
     public var type: String

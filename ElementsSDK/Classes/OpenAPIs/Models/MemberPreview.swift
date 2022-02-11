@@ -10,13 +10,13 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MemberPreview: Codable, Hashable {
+public struct MemberPreview: Codable, JSONEncodable, Hashable {
 
     public var id: Int
     public var avatar: String?
     public var email: String?
 
-    public init(id: Int, avatar: String? = nil, email: String? = nil) {
+    public init(id: Int, avatar: String?, email: String?) {
         self.id = id
         self.avatar = avatar
         self.email = email
@@ -33,8 +33,8 @@ public struct MemberPreview: Codable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
-        try container.encodeIfPresent(avatar, forKey: .avatar)
-        try container.encodeIfPresent(email, forKey: .email)
+        try container.encode(avatar, forKey: .avatar)
+        try container.encode(email, forKey: .email)
     }
 }
 

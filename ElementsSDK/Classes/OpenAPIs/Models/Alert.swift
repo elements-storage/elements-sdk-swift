@@ -10,19 +10,19 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Alert: Codable, Hashable {
+public struct Alert: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var name: String
     public var message: String
     public var level: String
     public var isOpen: Bool
     public var node: StorageNodeMini?
-    public var openedAt: Date?
+    public var openedAt: Date
     public var closedAt: Date?
-    public var duration: String?
+    public var duration: String
 
-    public init(id: Int? = nil, name: String, message: String, level: String, isOpen: Bool, node: StorageNodeMini? = nil, openedAt: Date? = nil, closedAt: Date? = nil, duration: String? = nil) {
+    public init(id: Int, name: String, message: String, level: String, isOpen: Bool, node: StorageNodeMini?, openedAt: Date, closedAt: Date? = nil, duration: String) {
         self.id = id
         self.name = name
         self.message = message
@@ -50,15 +50,15 @@ public struct Alert: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(message, forKey: .message)
         try container.encode(level, forKey: .level)
         try container.encode(isOpen, forKey: .isOpen)
-        try container.encodeIfPresent(node, forKey: .node)
-        try container.encodeIfPresent(openedAt, forKey: .openedAt)
+        try container.encode(node, forKey: .node)
+        try container.encode(openedAt, forKey: .openedAt)
         try container.encodeIfPresent(closedAt, forKey: .closedAt)
-        try container.encodeIfPresent(duration, forKey: .duration)
+        try container.encode(duration, forKey: .duration)
     }
 }
 

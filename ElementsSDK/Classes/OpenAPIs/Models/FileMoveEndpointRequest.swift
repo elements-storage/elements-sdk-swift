@@ -10,22 +10,32 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct FileMoveEndpointRequest: Codable, Hashable {
+public struct FileMoveEndpointRequest: Codable, JSONEncodable, Hashable {
 
+    public enum Overwrite: String, Codable, CaseIterable {
+        case null = "null"
+        case warn = "warn"
+        case number = "number"
+        case timestamp = "timestamp"
+        case overwrite = "overwrite"
+    }
     public var input: [String]
     public var destination: String
     public var sync: Bool?
+    public var overwrite: Overwrite?
 
-    public init(input: [String], destination: String, sync: Bool? = nil) {
+    public init(input: [String], destination: String, sync: Bool? = nil, overwrite: Overwrite? = nil) {
         self.input = input
         self.destination = destination
         self.sync = sync
+        self.overwrite = overwrite
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case input
         case destination
         case sync
+        case overwrite
     }
 
     // Encodable protocol methods
@@ -35,6 +45,7 @@ public struct FileMoveEndpointRequest: Codable, Hashable {
         try container.encode(input, forKey: .input)
         try container.encode(destination, forKey: .destination)
         try container.encodeIfPresent(sync, forKey: .sync)
+        try container.encodeIfPresent(overwrite, forKey: .overwrite)
     }
 }
 

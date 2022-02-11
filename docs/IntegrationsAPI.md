@@ -36,7 +36,7 @@ Method | HTTP request | Description
 
 ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -82,7 +82,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -128,7 +128,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -458,7 +458,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -504,7 +504,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -550,7 +550,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -598,7 +598,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -646,7 +646,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -694,7 +694,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `tasks:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -742,7 +742,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -792,7 +792,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -838,7 +838,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -890,7 +890,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:admin-access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -931,22 +931,22 @@ Void (empty response body)
 
 # **updateSlackConnection**
 ```swift
-    open class func updateSlackConnection( id: Int,  slackConnection: SlackConnection) -> Promise<SlackConnection>
+    open class func updateSlackConnection( id: Int,  slackConnectionUpdate: SlackConnectionUpdate) -> Promise<SlackConnection>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Slack connection.
-let slackConnection = SlackConnection(id: 123, name: "name_example", status: SlackConnectionStatus(ok: false, team: "team_example", user: "user_example", url: "url_example")) // SlackConnection | 
+let slackConnectionUpdate = SlackConnectionUpdate(name: "name_example") // SlackConnectionUpdate | 
 
-IntegrationsAPI.updateSlackConnection(id: id, slackConnection: slackConnection).then {
+IntegrationsAPI.updateSlackConnection(id: id, slackConnectionUpdate: slackConnectionUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -960,7 +960,7 @@ IntegrationsAPI.updateSlackConnection(id: id, slackConnection: slackConnection).
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this Slack connection. | 
- **slackConnection** | [**SlackConnection**](SlackConnection.md) |  | 
+ **slackConnectionUpdate** | [**SlackConnectionUpdate**](SlackConnectionUpdate.md) |  | 
 
 ### Return type
 
@@ -979,22 +979,22 @@ Name | Type | Description  | Notes
 
 # **updateTeamsConnection**
 ```swift
-    open class func updateTeamsConnection( id: Int,  teamsConnection: TeamsConnection) -> Promise<TeamsConnection>
+    open class func updateTeamsConnection( id: Int,  teamsConnectionUpdate: TeamsConnectionUpdate) -> Promise<TeamsConnection>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Teams connection.
-let teamsConnection = TeamsConnection(id: 123, name: "name_example", status: TeamsConnectionStatus(ok: false, team: "team_example")) // TeamsConnection | 
+let teamsConnectionUpdate = TeamsConnectionUpdate(name: "name_example") // TeamsConnectionUpdate | 
 
-IntegrationsAPI.updateTeamsConnection(id: id, teamsConnection: teamsConnection).then {
+IntegrationsAPI.updateTeamsConnection(id: id, teamsConnectionUpdate: teamsConnectionUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -1008,7 +1008,7 @@ IntegrationsAPI.updateTeamsConnection(id: id, teamsConnection: teamsConnection).
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this Teams connection. | 
- **teamsConnection** | [**TeamsConnection**](TeamsConnection.md) |  | 
+ **teamsConnectionUpdate** | [**TeamsConnectionUpdate**](TeamsConnectionUpdate.md) |  | 
 
 ### Return type
 

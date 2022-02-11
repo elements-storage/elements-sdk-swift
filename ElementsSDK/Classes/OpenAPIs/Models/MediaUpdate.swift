@@ -10,22 +10,22 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MediaUpdate: Codable, Hashable {
+public struct MediaUpdate: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var asset: AssetMini?
-    public var comment: Comment?
-    public var directory: MediaFile?
-    public var root: MediaRootMini?
-    public var user: ElementsUserMini?
+    public var id: Int
+    public var asset: AssetMini
+    public var comment: Comment
+    public var directory: MediaFile
+    public var root: MediaRootMini
+    public var user: ElementsUserMini
     public var customFieldsDiff: [String: String]
-    public var addedTags: [UnfilteredTag]?
-    public var removedTags: [UnfilteredTag]?
+    public var addedTags: [UnfilteredTag]
+    public var removedTags: [UnfilteredTag]
     public var type: String
-    public var date: Date?
+    public var date: Date
     public var rating: Int?
 
-    public init(id: Int? = nil, asset: AssetMini? = nil, comment: Comment? = nil, directory: MediaFile? = nil, root: MediaRootMini? = nil, user: ElementsUserMini? = nil, customFieldsDiff: [String: String], addedTags: [UnfilteredTag]? = nil, removedTags: [UnfilteredTag]? = nil, type: String, date: Date? = nil, rating: Int? = nil) {
+    public init(id: Int, asset: AssetMini, comment: Comment, directory: MediaFile, root: MediaRootMini, user: ElementsUserMini, customFieldsDiff: [String: String], addedTags: [UnfilteredTag], removedTags: [UnfilteredTag], type: String, date: Date, rating: Int? = nil) {
         self.id = id
         self.asset = asset
         self.comment = comment
@@ -59,17 +59,17 @@ public struct MediaUpdate: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(asset, forKey: .asset)
-        try container.encodeIfPresent(comment, forKey: .comment)
-        try container.encodeIfPresent(directory, forKey: .directory)
-        try container.encodeIfPresent(root, forKey: .root)
-        try container.encodeIfPresent(user, forKey: .user)
+        try container.encode(id, forKey: .id)
+        try container.encode(asset, forKey: .asset)
+        try container.encode(comment, forKey: .comment)
+        try container.encode(directory, forKey: .directory)
+        try container.encode(root, forKey: .root)
+        try container.encode(user, forKey: .user)
         try container.encode(customFieldsDiff, forKey: .customFieldsDiff)
-        try container.encodeIfPresent(addedTags, forKey: .addedTags)
-        try container.encodeIfPresent(removedTags, forKey: .removedTags)
+        try container.encode(addedTags, forKey: .addedTags)
+        try container.encode(removedTags, forKey: .removedTags)
         try container.encode(type, forKey: .type)
-        try container.encodeIfPresent(date, forKey: .date)
+        try container.encode(date, forKey: .date)
         try container.encodeIfPresent(rating, forKey: .rating)
     }
 }

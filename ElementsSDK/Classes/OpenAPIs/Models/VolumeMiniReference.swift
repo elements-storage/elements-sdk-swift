@@ -10,54 +10,54 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct VolumeMiniReference: Codable, Hashable {
+public struct VolumeMiniReference: Codable, JSONEncodable, Hashable {
 
     public enum ModelType: String, Codable, CaseIterable {
         case generic = "generic"
         case genericMount = "generic-mount"
         case snfs = "snfs"
         case btrfs = "btrfs"
-        case s3fs = "s3fs"
         case lizardfs = "lizardfs"
         case bcachefs = "bcachefs"
-        case isilon = "isilon"
+        case onefs = "onefs"
         case beegfs = "beegfs"
+        case cloud = "cloud"
     }
-    public var id: Int?
-    public var name: String?
+    public var id: Int
     public var path: String?
     public var displayName: String?
     public var visualTag: String?
     public var type: ModelType?
+    public var name: String?
 
-    public init(id: Int? = nil, name: String? = nil, path: String? = nil, displayName: String? = nil, visualTag: String? = nil, type: ModelType? = nil) {
+    public init(id: Int, path: String? = nil, displayName: String? = nil, visualTag: String? = nil, type: ModelType? = nil, name: String? = nil) {
         self.id = id
-        self.name = name
         self.path = path
         self.displayName = displayName
         self.visualTag = visualTag
         self.type = type
+        self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
-        case name
         case path
         case displayName = "display_name"
         case visualTag = "visual_tag"
         case type
+        case name
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(name, forKey: .name)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(path, forKey: .path)
         try container.encodeIfPresent(displayName, forKey: .displayName)
         try container.encodeIfPresent(visualTag, forKey: .visualTag)
         try container.encodeIfPresent(type, forKey: .type)
+        try container.encodeIfPresent(name, forKey: .name)
     }
 }
 

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct EditorProjectPartialUpdate: Codable, Hashable {
+public struct EditorProjectPartialUpdate: Codable, JSONEncodable, Hashable {
 
     public var file: Int?
     public var parent: Int?

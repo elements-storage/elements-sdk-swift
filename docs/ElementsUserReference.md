@@ -4,20 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] 
+**id** | **Int** |  | 
+**ancillaryPath** | **String** |  | [optional] [readonly] 
+**ancillaryPathReadOnly** | **String** |  | [optional] [readonly] 
 **allowChangingPassword** | **Bool** |  | [optional] [readonly] 
 **allowWanLogin** | **Bool** |  | [optional] [readonly] 
 **allowedFsPaths** | **[String]** |  | [optional] [readonly] 
 **allowedFsWritePaths** | **[String]** |  | [optional] [readonly] 
 **avatar** | **String** |  | [optional] [readonly] 
-**clientSessions** | [ClientSession] |  | [optional] [readonly] 
 **defaultPage** | **String** |  | [optional] [readonly] 
 **displayName** | **String** |  | [optional] [readonly] 
 **effectivePermissions** | **[String]** |  | [optional] [readonly] 
 **email** | **String** |  | [optional] [readonly] 
 **expiry** | **Date** |  | [optional] [readonly] 
-**ancillaryPathReadOnly** | **Bool** |  | [optional] [readonly] 
-**ancillaryPath** | **String** |  | [optional] [readonly] 
 **fmBookmarks** | **[String]** |  | [optional] [readonly] 
 **fullName** | **String** |  | [optional] [readonly] 
 **gid** | **Int** |  | [optional] [readonly] 

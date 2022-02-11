@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct VolumeSNFSStatus: Codable, Hashable {
+public struct VolumeSNFSStatus: Codable, JSONEncodable, Hashable {
 
     public var stripeGroups: [SNFSStripeGroup]
 

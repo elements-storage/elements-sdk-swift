@@ -10,11 +10,11 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MultipleAssetsRequest: Codable, Hashable {
+public struct MultipleAssetsRequest: Codable, JSONEncodable, Hashable {
 
-    public var assets: Set<Int>
+    public var assets: [Int]
 
-    public init(assets: Set<Int>) {
+    public init(assets: [Int]) {
         self.assets = assets
     }
 

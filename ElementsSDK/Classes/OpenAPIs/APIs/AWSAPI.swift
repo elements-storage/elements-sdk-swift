@@ -15,16 +15,16 @@ open class AWSAPI {
 
     /**
 
-     - parameter aWSAccount: (body)  
+     - parameter cloudAccountMiniUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<AWSAccount>
+     - returns: Promise<CloudAccountMini>
      */
-    open class func createAWSAccount( aWSAccount: AWSAccount, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<AWSAccount> {
-        let deferred = Promise<AWSAccount>.pending()
-        createAWSAccountWithRequestBuilder(aWSAccount: aWSAccount).execute(apiResponseQueue) { result -> Void in
+    open class func createAWSAccount( cloudAccountMiniUpdate: CloudAccountMiniUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<CloudAccountMini> {
+        let deferred = Promise<CloudAccountMini>.pending()
+        createAWSAccountWithRequestBuilder(cloudAccountMiniUpdate: cloudAccountMiniUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -38,13 +38,13 @@ open class AWSAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter aWSAccount: (body)  
-     - returns: RequestBuilder<AWSAccount> 
+     - parameter cloudAccountMiniUpdate: (body)  
+     - returns: RequestBuilder<CloudAccountMini> 
      */
-    open class func createAWSAccountWithRequestBuilder(aWSAccount: AWSAccount) -> RequestBuilder<AWSAccount> {
+    open class func createAWSAccountWithRequestBuilder(cloudAccountMiniUpdate: CloudAccountMiniUpdate) -> RequestBuilder<CloudAccountMini> {
         let localVariablePath = "/api/2/aws-accounts"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: aWSAccount)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: cloudAccountMiniUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -54,20 +54,20 @@ open class AWSAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AWSAccount>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CloudAccountMini>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter id: (path) A unique integer value identifying this AWS Account. 
+     - parameter id: (path) A unique integer value identifying this cloud account. 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteAWSAccount( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteAWSAccount( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteAWSAccountWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteAWSAccountWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -84,7 +84,7 @@ open class AWSAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter id: (path) A unique integer value identifying this AWS Account. 
+     - parameter id: (path) A unique integer value identifying this cloud account. 
      - returns: RequestBuilder<Void> 
      */
     open class func deleteAWSAccountWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
@@ -92,7 +92,7 @@ open class AWSAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -103,23 +103,23 @@ open class AWSAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter id: (path) A unique integer value identifying this AWS Account. 
+     - parameter id: (path) A unique integer value identifying this cloud account. 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<AWSAccount>
+     - returns: Promise<CloudAccountMini>
      */
-    open class func getAWSAccount( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<AWSAccount> {
-        let deferred = Promise<AWSAccount>.pending()
-        getAWSAccountWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+    open class func getAWSAccount( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<CloudAccountMini> {
+        let deferred = Promise<CloudAccountMini>.pending()
+        getAWSAccountWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -133,15 +133,15 @@ open class AWSAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter id: (path) A unique integer value identifying this AWS Account. 
-     - returns: RequestBuilder<AWSAccount> 
+     - parameter id: (path) A unique integer value identifying this cloud account. 
+     - returns: RequestBuilder<CloudAccountMini> 
      */
-    open class func getAWSAccountWithRequestBuilder(id: Int) -> RequestBuilder<AWSAccount> {
+    open class func getAWSAccountWithRequestBuilder(id: Int) -> RequestBuilder<CloudAccountMini> {
         var localVariablePath = "/api/2/aws-accounts/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -152,72 +152,23 @@ open class AWSAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AWSAccount>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CloudAccountMini>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter id: (path) A unique integer value identifying this AWS Account. 
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<ListBuckets>
-     */
-    open class func getAWSAccountBuckets( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ListBuckets> {
-        let deferred = Promise<ListBuckets>.pending()
-        getAWSAccountBucketsWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                deferred.resolver.fulfill(response.body!)
-            case let .failure(error):
-                deferred.resolver.reject(error)
-            }
-        }
-        return deferred.promise
-    }
-
-    /**
-     - GET /api/2/aws-accounts/{id}/buckets
-     - ### Required permissions    * User account permission: `tasks:manage` (read) / `system:admin-access` (write) 
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
-     - parameter id: (path) A unique integer value identifying this AWS Account. 
-     - returns: RequestBuilder<ListBuckets> 
-     */
-    open class func getAWSAccountBucketsWithRequestBuilder(id: Int) -> RequestBuilder<ListBuckets> {
-        var localVariablePath = "/api/2/aws-accounts/{id}/buckets"
-        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
-        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<ListBuckets>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
-    }
-
-    /**
-
-     - parameter id: (path) A unique integer value identifying this AWS Account. 
+     - parameter id: (path) A unique integer value identifying this cloud account. 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ListTopics>
      */
-    open class func getAWSAccountSNSTopics( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ListTopics> {
+    open class func getAWSAccountSNSTopics( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ListTopics> {
         let deferred = Promise<ListTopics>.pending()
-        getAWSAccountSNSTopicsWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getAWSAccountSNSTopicsWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -231,7 +182,7 @@ open class AWSAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter id: (path) A unique integer value identifying this AWS Account. 
+     - parameter id: (path) A unique integer value identifying this cloud account. 
      - returns: RequestBuilder<ListTopics> 
      */
     open class func getAWSAccountSNSTopicsWithRequestBuilder(id: Int) -> RequestBuilder<ListTopics> {
@@ -239,7 +190,7 @@ open class AWSAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -250,7 +201,7 @@ open class AWSAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ListTopics>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ListTopics>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -263,14 +214,14 @@ open class AWSAPI {
      - parameter limit: (query) Number of results to return per page. (optional)
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<[AWSAccount]>
+     - returns: Promise<[CloudAccountMini]>
      */
-    open class func getAllAWSAccounts( name: String? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[AWSAccount]> {
-        let deferred = Promise<[AWSAccount]>.pending()
-        getAllAWSAccountsWithRequestBuilder(name: name, id: id, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+    open class func getAllAWSAccounts( name: String? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[CloudAccountMini]> {
+        let deferred = Promise<[CloudAccountMini]>.pending()
+        getAllAWSAccountsWithRequestBuilder(name: name, id: id, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -289,11 +240,11 @@ open class AWSAPI {
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
      - parameter limit: (query) Number of results to return per page. (optional)
      - parameter offset: (query) The initial index from which to return the results. (optional)
-     - returns: RequestBuilder<[AWSAccount]> 
+     - returns: RequestBuilder<[CloudAccountMini]> 
      */
-    open class func getAllAWSAccountsWithRequestBuilder(name: String? = nil, id: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[AWSAccount]> {
+    open class func getAllAWSAccountsWithRequestBuilder(name: String? = nil, id: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[CloudAccountMini]> {
         let localVariablePath = "/api/2/aws-accounts"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -311,24 +262,24 @@ open class AWSAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[AWSAccount]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[CloudAccountMini]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter id: (path) A unique integer value identifying this AWS Account. 
-     - parameter aWSAccountPartialUpdate: (body)  
+     - parameter id: (path) A unique integer value identifying this cloud account. 
+     - parameter cloudAccountMiniPartialUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<AWSAccount>
+     - returns: Promise<CloudAccountMini>
      */
-    open class func patchAWSAccount( id: Int,  aWSAccountPartialUpdate: AWSAccountPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<AWSAccount> {
-        let deferred = Promise<AWSAccount>.pending()
-        patchAWSAccountWithRequestBuilder(id: id, aWSAccountPartialUpdate: aWSAccountPartialUpdate).execute(apiResponseQueue) { result -> Void in
+    open class func patchAWSAccount( id: Int,  cloudAccountMiniPartialUpdate: CloudAccountMiniPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<CloudAccountMini> {
+        let deferred = Promise<CloudAccountMini>.pending()
+        patchAWSAccountWithRequestBuilder(id: id, cloudAccountMiniPartialUpdate: cloudAccountMiniPartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -342,17 +293,17 @@ open class AWSAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter id: (path) A unique integer value identifying this AWS Account. 
-     - parameter aWSAccountPartialUpdate: (body)  
-     - returns: RequestBuilder<AWSAccount> 
+     - parameter id: (path) A unique integer value identifying this cloud account. 
+     - parameter cloudAccountMiniPartialUpdate: (body)  
+     - returns: RequestBuilder<CloudAccountMini> 
      */
-    open class func patchAWSAccountWithRequestBuilder(id: Int, aWSAccountPartialUpdate: AWSAccountPartialUpdate) -> RequestBuilder<AWSAccount> {
+    open class func patchAWSAccountWithRequestBuilder(id: Int, cloudAccountMiniPartialUpdate: CloudAccountMiniPartialUpdate) -> RequestBuilder<CloudAccountMini> {
         var localVariablePath = "/api/2/aws-accounts/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: aWSAccountPartialUpdate)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: cloudAccountMiniPartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -362,7 +313,7 @@ open class AWSAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AWSAccount>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CloudAccountMini>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -373,12 +324,12 @@ open class AWSAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TestAWSCredentialsResponse>
      */
-    open class func testAWSAccountCredentials( testAWSCredentialsRequest: TestAWSCredentialsRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TestAWSCredentialsResponse> {
+    open class func testAWSAccountCredentials( testAWSCredentialsRequest: TestAWSCredentialsRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TestAWSCredentialsResponse> {
         let deferred = Promise<TestAWSCredentialsResponse>.pending()
-        testAWSAccountCredentialsWithRequestBuilder(testAWSCredentialsRequest: testAWSCredentialsRequest).execute(apiResponseQueue) { result -> Void in
+        testAWSAccountCredentialsWithRequestBuilder(testAWSCredentialsRequest: testAWSCredentialsRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -397,7 +348,7 @@ open class AWSAPI {
      */
     open class func testAWSAccountCredentialsWithRequestBuilder(testAWSCredentialsRequest: TestAWSCredentialsRequest) -> RequestBuilder<TestAWSCredentialsResponse> {
         let localVariablePath = "/api/2/aws-accounts/test-credentials"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testAWSCredentialsRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -408,24 +359,24 @@ open class AWSAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TestAWSCredentialsResponse>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TestAWSCredentialsResponse>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter id: (path) A unique integer value identifying this AWS Account. 
-     - parameter aWSAccount: (body)  
+     - parameter id: (path) A unique integer value identifying this cloud account. 
+     - parameter cloudAccountMiniUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<AWSAccount>
+     - returns: Promise<CloudAccountMini>
      */
-    open class func updateAWSAccount( id: Int,  aWSAccount: AWSAccount, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<AWSAccount> {
-        let deferred = Promise<AWSAccount>.pending()
-        updateAWSAccountWithRequestBuilder(id: id, aWSAccount: aWSAccount).execute(apiResponseQueue) { result -> Void in
+    open class func updateAWSAccount( id: Int,  cloudAccountMiniUpdate: CloudAccountMiniUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<CloudAccountMini> {
+        let deferred = Promise<CloudAccountMini>.pending()
+        updateAWSAccountWithRequestBuilder(id: id, cloudAccountMiniUpdate: cloudAccountMiniUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -439,17 +390,17 @@ open class AWSAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter id: (path) A unique integer value identifying this AWS Account. 
-     - parameter aWSAccount: (body)  
-     - returns: RequestBuilder<AWSAccount> 
+     - parameter id: (path) A unique integer value identifying this cloud account. 
+     - parameter cloudAccountMiniUpdate: (body)  
+     - returns: RequestBuilder<CloudAccountMini> 
      */
-    open class func updateAWSAccountWithRequestBuilder(id: Int, aWSAccount: AWSAccount) -> RequestBuilder<AWSAccount> {
+    open class func updateAWSAccountWithRequestBuilder(id: Int, cloudAccountMiniUpdate: CloudAccountMiniUpdate) -> RequestBuilder<CloudAccountMini> {
         var localVariablePath = "/api/2/aws-accounts/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: aWSAccount)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: cloudAccountMiniUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -459,7 +410,7 @@ open class AWSAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AWSAccount>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CloudAccountMini>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

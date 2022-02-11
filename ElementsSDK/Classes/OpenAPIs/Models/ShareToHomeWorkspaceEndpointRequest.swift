@@ -10,14 +10,14 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ShareToHomeWorkspaceEndpointRequest: Codable, Hashable {
+public struct ShareToHomeWorkspaceEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var paths: [String]?
-    public var bundles: Set<Int>?
+    public var bundles: [Int]?
     public var user: Int
     public var name: String
 
-    public init(paths: [String]? = nil, bundles: Set<Int>? = nil, user: Int, name: String) {
+    public init(paths: [String]? = nil, bundles: [Int]? = nil, user: Int, name: String) {
         self.paths = paths
         self.bundles = bundles
         self.user = user

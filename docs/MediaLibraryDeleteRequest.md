@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bundles** | **Set<Int>** |  | [optional] 
-**files** | **Set<Int>** |  | [optional] 
-**assets** | **Set<Int>** |  | [optional] 
+**bundles** | **[Int]** |  | [optional] 
+**files** | **[Int]** |  | [optional] 
+**assets** | **[Int]** |  | [optional] 
 **deleteFromDatabase** | **Bool** |  | [optional] [default to false]
 **deleteFromStorage** | **Bool** |  | [optional] [default to false]
 

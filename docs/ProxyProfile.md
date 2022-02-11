@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **name** | **String** |  | 
 **proxyGenerator** | **String** |  | [optional] 
 **resolution** | **String** |  | [optional] 
-**rateControl** | **Int** |  | [optional] 
+**rateControl** | **String** |  | [optional] 
 **crf** | **Int** |  | [optional] 
 **bitrate** | **Int** |  | [optional] 
 **audioBitrate** | **Int** |  | [optional] 
@@ -16,11 +16,11 @@ Name | Type | Description | Notes
 **enableDenseFilmstrip** | **Bool** |  | [optional] 
 **enableWatermark** | **Bool** |  | [optional] 
 **watermarkImage** | **String** |  | [optional] 
-**watermarkPosition** | **Int** |  | [optional] 
+**watermarkPosition** | **String** |  | [optional] 
 **watermarkOpacity** | **Double** |  | [optional] 
 **watermarkSize** | **Double** |  | [optional] 
 **enableTimecode** | **Bool** |  | [optional] 
-**timecodePosition** | **Int** |  | [optional] 
+**timecodePosition** | **String** |  | [optional] 
 **timecodeOpacity** | **Double** |  | [optional] 
 **timecodeSize** | **Double** |  | [optional] 
 **lut** | **String** |  | [optional] 

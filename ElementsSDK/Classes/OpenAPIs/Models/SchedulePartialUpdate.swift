@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SchedulePartialUpdate: Codable, Hashable {
+public struct SchedulePartialUpdate: Codable, JSONEncodable, Hashable {
 
     public enum ModelType: Int, Codable, CaseIterable {
         case _1 = 1

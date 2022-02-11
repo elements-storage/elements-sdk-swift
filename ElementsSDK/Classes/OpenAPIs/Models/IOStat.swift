@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct IOStat: Codable, Hashable {
+public struct IOStat: Codable, JSONEncodable, Hashable {
 
     public var time: Double
     public var cRead: Double

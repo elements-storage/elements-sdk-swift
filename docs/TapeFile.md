@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
-**tape** | [**Tape**](Tape.md) |  | [optional] 
+**id** | **Int** |  | 
+**tape** | [**Tape**](Tape.md) |  | 
 **path** | **String** |  | 
-**searchHighlight** | **String** |  | [optional] [readonly] 
+**searchHighlight** | **String** |  | [readonly] 
 **uid** | **Int** |  | 
 **name** | **String** |  | 
 **isDir** | **Bool** |  | [optional] 

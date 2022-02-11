@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct CreatePathQuotaRequest: Codable, Hashable {
+public struct CreatePathQuotaRequest: Codable, JSONEncodable, Hashable {
 
     public var forceDestroyContent: Bool?
 

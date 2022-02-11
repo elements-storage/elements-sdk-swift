@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TagMediaDirectoryRequest: Codable, Hashable {
+public struct TagMediaDirectoryRequest: Codable, JSONEncodable, Hashable {
 
     public var tag: Int
     public var add: Bool

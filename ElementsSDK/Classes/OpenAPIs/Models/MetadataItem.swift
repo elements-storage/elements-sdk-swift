@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MetadataItem: Codable, Hashable {
+public struct MetadataItem: Codable, JSONEncodable, Hashable {
 
     public var customFields: [String: String]
     public var tags: [[String: String]]

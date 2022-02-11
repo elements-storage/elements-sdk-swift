@@ -5,10 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
-**displayName** | **String** |  | [optional] [readonly] 
-**rdcAllowUsers** | Set<ElementsUserReference> |  | [optional] 
-**rdcAllowGroups** | Set<ElementsGroupReference> |  | [optional] 
-**clientSessions** | [ClientSession] |  | [optional] [readonly] 
+**displayName** | **String** |  | [readonly] 
+**rdcAllowUsers** | [ElementsUserReference] |  | [optional] 
+**rdcAllowGroups** | [ElementsGroupReference] |  | [optional] 
 **name** | **String** |  | [optional] 
 **hostname** | **String** |  | 
 **rdcLastUsed** | **Date** |  | [optional] 

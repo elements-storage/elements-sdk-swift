@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct RenderRequest: Codable, Hashable {
+public struct RenderRequest: Codable, JSONEncodable, Hashable {
 
     public var destination: String
 

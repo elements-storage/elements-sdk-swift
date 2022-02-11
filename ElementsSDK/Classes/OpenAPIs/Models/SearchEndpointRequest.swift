@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SearchEndpointRequest: Codable, Hashable {
+public struct SearchEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var query: String
     public var exclude: String?

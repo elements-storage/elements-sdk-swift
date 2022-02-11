@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SyncTOTPRequest: Codable, Hashable {
+public struct SyncTOTPRequest: Codable, JSONEncodable, Hashable {
 
     public var otp: String
 

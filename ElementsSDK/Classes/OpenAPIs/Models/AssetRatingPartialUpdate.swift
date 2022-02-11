@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct AssetRatingPartialUpdate: Codable, Hashable {
+public struct AssetRatingPartialUpdate: Codable, JSONEncodable, Hashable {
 
     public var user: ElementsUserMiniReference?
     public var rating: Int?

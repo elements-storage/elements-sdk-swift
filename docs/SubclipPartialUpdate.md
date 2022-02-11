@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **asset** | [**AssetMiniReference**](AssetMiniReference.md) |  | [optional] 
-**rendered** | [**AssetMiniReference**](AssetMiniReference.md) |  | [optional] 
+**rendered** | [**AnyOfAssetMiniReferenceAnyType**](AnyOfAssetMiniReferenceAnyType.md) |  | [optional] 
 **shared** | **Bool** |  | [optional] 
 **name** | **String** |  | [optional] 
 **tIn** | **Double** |  | [optional] 

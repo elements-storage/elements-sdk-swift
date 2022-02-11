@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ScheduleReference: Codable, Hashable {
+public struct ScheduleReference: Codable, JSONEncodable, Hashable {
 
     public enum ModelType: Int, Codable, CaseIterable {
         case _1 = 1
@@ -21,7 +21,7 @@ public struct ScheduleReference: Codable, Hashable {
         case hours = "hours"
         case days = "days"
     }
-    public var id: Int?
+    public var id: Int
     public var variables: [String: String]?
     public var nextRun: Date?
     public var type: ModelType?
@@ -36,7 +36,7 @@ public struct ScheduleReference: Codable, Hashable {
     public var crontabMonthOfYear: String?
     public var job: Int?
 
-    public init(id: Int? = nil, variables: [String: String]? = nil, nextRun: Date? = nil, type: ModelType? = nil, enabled: Bool? = nil, lastRun: Date? = nil, every: Int? = nil, period: Period? = nil, crontabDayOfMonth: String? = nil, crontabDayOfWeek: String? = nil, crontabHour: String? = nil, crontabMinute: String? = nil, crontabMonthOfYear: String? = nil, job: Int? = nil) {
+    public init(id: Int, variables: [String: String]? = nil, nextRun: Date? = nil, type: ModelType? = nil, enabled: Bool? = nil, lastRun: Date? = nil, every: Int? = nil, period: Period? = nil, crontabDayOfMonth: String? = nil, crontabDayOfWeek: String? = nil, crontabHour: String? = nil, crontabMinute: String? = nil, crontabMonthOfYear: String? = nil, job: Int? = nil) {
         self.id = id
         self.variables = variables
         self.nextRun = nextRun
@@ -74,7 +74,7 @@ public struct ScheduleReference: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(variables, forKey: .variables)
         try container.encodeIfPresent(nextRun, forKey: .nextRun)
         try container.encodeIfPresent(type, forKey: .type)

@@ -19,9 +19,9 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteSlackConnection( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteSlackConnection( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteSlackConnectionWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteSlackConnectionWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -46,7 +46,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -57,7 +57,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -68,9 +68,9 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteTeamsConnection( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteTeamsConnection( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteTeamsConnectionWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteTeamsConnectionWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -95,7 +95,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -106,7 +106,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -119,12 +119,12 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[SlackConnection]>
      */
-    open class func getAllSlackConnections( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[SlackConnection]> {
+    open class func getAllSlackConnections( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[SlackConnection]> {
         let deferred = Promise<[SlackConnection]>.pending()
-        getAllSlackConnectionsWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllSlackConnectionsWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -145,7 +145,7 @@ open class IntegrationsAPI {
      */
     open class func getAllSlackConnectionsWithRequestBuilder(ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[SlackConnection]> {
         let localVariablePath = "/api/2/integrations/slack"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -161,7 +161,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[SlackConnection]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[SlackConnection]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -174,12 +174,12 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[TeamsConnection]>
      */
-    open class func getAllTeamsConnections( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[TeamsConnection]> {
+    open class func getAllTeamsConnections( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[TeamsConnection]> {
         let deferred = Promise<[TeamsConnection]>.pending()
-        getAllTeamsConnectionsWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllTeamsConnectionsWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -200,7 +200,7 @@ open class IntegrationsAPI {
      */
     open class func getAllTeamsConnectionsWithRequestBuilder(ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[TeamsConnection]> {
         let localVariablePath = "/api/2/integrations/teams"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -216,7 +216,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TeamsConnection]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TeamsConnection]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -227,12 +227,12 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[SlackChannel]>
      */
-    open class func getSlackChannels( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[SlackChannel]> {
+    open class func getSlackChannels( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[SlackChannel]> {
         let deferred = Promise<[SlackChannel]>.pending()
-        getSlackChannelsWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getSlackChannelsWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -254,7 +254,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -265,7 +265,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[SlackChannel]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[SlackChannel]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -276,12 +276,12 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<SlackConnection>
      */
-    open class func getSlackConnection( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<SlackConnection> {
+    open class func getSlackConnection( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<SlackConnection> {
         let deferred = Promise<SlackConnection>.pending()
-        getSlackConnectionWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getSlackConnectionWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -303,7 +303,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -314,7 +314,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<SlackConnection>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SlackConnection>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -325,12 +325,12 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[SlackEmoji]>
      */
-    open class func getSlackEmoji( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[SlackEmoji]> {
+    open class func getSlackEmoji( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[SlackEmoji]> {
         let deferred = Promise<[SlackEmoji]>.pending()
-        getSlackEmojiWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getSlackEmojiWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -352,7 +352,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -363,7 +363,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[SlackEmoji]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[SlackEmoji]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -374,12 +374,12 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[SlackUser]>
      */
-    open class func getSlackUsers( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[SlackUser]> {
+    open class func getSlackUsers( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[SlackUser]> {
         let deferred = Promise<[SlackUser]>.pending()
-        getSlackUsersWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getSlackUsersWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -401,7 +401,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -412,7 +412,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[SlackUser]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[SlackUser]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -423,12 +423,12 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[TeamsRecipient]>
      */
-    open class func getTeamsChannels( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[TeamsRecipient]> {
+    open class func getTeamsChannels( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[TeamsRecipient]> {
         let deferred = Promise<[TeamsRecipient]>.pending()
-        getTeamsChannelsWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getTeamsChannelsWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -450,7 +450,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -461,7 +461,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TeamsRecipient]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TeamsRecipient]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -472,12 +472,12 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TeamsConnection>
      */
-    open class func getTeamsConnection( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TeamsConnection> {
+    open class func getTeamsConnection( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TeamsConnection> {
         let deferred = Promise<TeamsConnection>.pending()
-        getTeamsConnectionWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getTeamsConnectionWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -499,7 +499,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -510,7 +510,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TeamsConnection>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TeamsConnection>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -521,12 +521,12 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[TeamsRecipient]>
      */
-    open class func getTeamsUsers( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[TeamsRecipient]> {
+    open class func getTeamsUsers( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[TeamsRecipient]> {
         let deferred = Promise<[TeamsRecipient]>.pending()
-        getTeamsUsersWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getTeamsUsersWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -548,7 +548,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -559,7 +559,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TeamsRecipient]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TeamsRecipient]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -571,12 +571,12 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<SlackConnection>
      */
-    open class func patchSlackConnection( id: Int,  slackConnectionPartialUpdate: SlackConnectionPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<SlackConnection> {
+    open class func patchSlackConnection( id: Int,  slackConnectionPartialUpdate: SlackConnectionPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<SlackConnection> {
         let deferred = Promise<SlackConnection>.pending()
-        patchSlackConnectionWithRequestBuilder(id: id, slackConnectionPartialUpdate: slackConnectionPartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchSlackConnectionWithRequestBuilder(id: id, slackConnectionPartialUpdate: slackConnectionPartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -599,7 +599,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: slackConnectionPartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -610,7 +610,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<SlackConnection>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SlackConnection>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -622,12 +622,12 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TeamsConnection>
      */
-    open class func patchTeamsConnection( id: Int,  teamsConnectionPartialUpdate: TeamsConnectionPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TeamsConnection> {
+    open class func patchTeamsConnection( id: Int,  teamsConnectionPartialUpdate: TeamsConnectionPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TeamsConnection> {
         let deferred = Promise<TeamsConnection>.pending()
-        patchTeamsConnectionWithRequestBuilder(id: id, teamsConnectionPartialUpdate: teamsConnectionPartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchTeamsConnectionWithRequestBuilder(id: id, teamsConnectionPartialUpdate: teamsConnectionPartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -650,7 +650,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: teamsConnectionPartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -661,7 +661,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TeamsConnection>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TeamsConnection>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -673,9 +673,9 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func sendSlackMessage( id: Int,  slackMessage: SlackMessage, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func sendSlackMessage( id: Int,  slackMessage: SlackMessage, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        sendSlackMessageWithRequestBuilder(id: id, slackMessage: slackMessage).execute(apiResponseQueue) { result -> Void in
+        sendSlackMessageWithRequestBuilder(id: id, slackMessage: slackMessage).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -701,7 +701,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: slackMessage)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -712,7 +712,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -724,9 +724,9 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func sendTeamsMessage( id: Int,  teamsMessage: TeamsMessage, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func sendTeamsMessage( id: Int,  teamsMessage: TeamsMessage, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        sendTeamsMessageWithRequestBuilder(id: id, teamsMessage: teamsMessage).execute(apiResponseQueue) { result -> Void in
+        sendTeamsMessageWithRequestBuilder(id: id, teamsMessage: teamsMessage).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -752,7 +752,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: teamsMessage)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -763,7 +763,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -776,9 +776,9 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func startSlackConnectionFlow( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func startSlackConnectionFlow( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        startSlackConnectionFlowWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        startSlackConnectionFlowWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -802,7 +802,7 @@ open class IntegrationsAPI {
      */
     open class func startSlackConnectionFlowWithRequestBuilder(ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/2/integrations/slack/connect"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -818,7 +818,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -829,9 +829,9 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func startSlackConnectionTokenRefreshFlow( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func startSlackConnectionTokenRefreshFlow( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        startSlackConnectionTokenRefreshFlowWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        startSlackConnectionTokenRefreshFlowWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -856,7 +856,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -867,7 +867,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -881,9 +881,9 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func startTeamsConnectionFlow( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  team: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func startTeamsConnectionFlow( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  team: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        startTeamsConnectionFlowWithRequestBuilder(ordering: ordering, limit: limit, offset: offset, team: team).execute(apiResponseQueue) { result -> Void in
+        startTeamsConnectionFlowWithRequestBuilder(ordering: ordering, limit: limit, offset: offset, team: team).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -908,7 +908,7 @@ open class IntegrationsAPI {
      */
     open class func startTeamsConnectionFlowWithRequestBuilder(ordering: String? = nil, limit: Int? = nil, offset: Int? = nil, team: String? = nil) -> RequestBuilder<Void> {
         let localVariablePath = "/api/2/integrations/teams/connect"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -925,7 +925,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -937,9 +937,9 @@ open class IntegrationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func startTeamsConnectionTokenRefreshFlow( id: Int,  team: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func startTeamsConnectionTokenRefreshFlow( id: Int,  team: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        startTeamsConnectionTokenRefreshFlowWithRequestBuilder(id: id, team: team).execute(apiResponseQueue) { result -> Void in
+        startTeamsConnectionTokenRefreshFlowWithRequestBuilder(id: id, team: team).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -965,7 +965,7 @@ open class IntegrationsAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -979,7 +979,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -987,16 +987,16 @@ open class IntegrationsAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this Slack connection. 
-     - parameter slackConnection: (body)  
+     - parameter slackConnectionUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<SlackConnection>
      */
-    open class func updateSlackConnection( id: Int,  slackConnection: SlackConnection, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<SlackConnection> {
+    open class func updateSlackConnection( id: Int,  slackConnectionUpdate: SlackConnectionUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<SlackConnection> {
         let deferred = Promise<SlackConnection>.pending()
-        updateSlackConnectionWithRequestBuilder(id: id, slackConnection: slackConnection).execute(apiResponseQueue) { result -> Void in
+        updateSlackConnectionWithRequestBuilder(id: id, slackConnectionUpdate: slackConnectionUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -1011,16 +1011,16 @@ open class IntegrationsAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this Slack connection. 
-     - parameter slackConnection: (body)  
+     - parameter slackConnectionUpdate: (body)  
      - returns: RequestBuilder<SlackConnection> 
      */
-    open class func updateSlackConnectionWithRequestBuilder(id: Int, slackConnection: SlackConnection) -> RequestBuilder<SlackConnection> {
+    open class func updateSlackConnectionWithRequestBuilder(id: Int, slackConnectionUpdate: SlackConnectionUpdate) -> RequestBuilder<SlackConnection> {
         var localVariablePath = "/api/2/integrations/slack/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: slackConnection)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: slackConnectionUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -1030,7 +1030,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<SlackConnection>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SlackConnection>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1038,16 +1038,16 @@ open class IntegrationsAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this Teams connection. 
-     - parameter teamsConnection: (body)  
+     - parameter teamsConnectionUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TeamsConnection>
      */
-    open class func updateTeamsConnection( id: Int,  teamsConnection: TeamsConnection, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TeamsConnection> {
+    open class func updateTeamsConnection( id: Int,  teamsConnectionUpdate: TeamsConnectionUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TeamsConnection> {
         let deferred = Promise<TeamsConnection>.pending()
-        updateTeamsConnectionWithRequestBuilder(id: id, teamsConnection: teamsConnection).execute(apiResponseQueue) { result -> Void in
+        updateTeamsConnectionWithRequestBuilder(id: id, teamsConnectionUpdate: teamsConnectionUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -1062,16 +1062,16 @@ open class IntegrationsAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this Teams connection. 
-     - parameter teamsConnection: (body)  
+     - parameter teamsConnectionUpdate: (body)  
      - returns: RequestBuilder<TeamsConnection> 
      */
-    open class func updateTeamsConnectionWithRequestBuilder(id: Int, teamsConnection: TeamsConnection) -> RequestBuilder<TeamsConnection> {
+    open class func updateTeamsConnectionWithRequestBuilder(id: Int, teamsConnectionUpdate: TeamsConnectionUpdate) -> RequestBuilder<TeamsConnection> {
         var localVariablePath = "/api/2/integrations/teams/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: teamsConnection)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: teamsConnectionUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -1081,7 +1081,7 @@ open class IntegrationsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TeamsConnection>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TeamsConnection>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

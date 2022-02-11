@@ -10,10 +10,10 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Share: Codable, Hashable {
+public struct Share: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var sharingNfsPermissions: [String]?
+    public var id: Int
+    public var sharingNfsPermissions: [NFSPermission]?
     public var volume: VolumeReference
     public var name: String
     public var path: String?
@@ -28,7 +28,7 @@ public struct Share: Codable, Hashable {
     public var rwAccessGroup: Int?
     public var roAccessGroup: Int?
 
-    public init(id: Int? = nil, sharingNfsPermissions: [String]? = nil, volume: VolumeReference, name: String, path: String? = nil, shareSmb: Bool? = nil, shareNfs: Bool? = nil, shareAfp: Bool? = nil, sharingReadOnly: Bool? = nil, sharingHidden: Bool? = nil, sharingRequireLogin: Bool? = nil, smbExtraConfig: String? = nil, afpExtraConfig: String? = nil, rwAccessGroup: Int? = nil, roAccessGroup: Int? = nil) {
+    public init(id: Int, sharingNfsPermissions: [NFSPermission]? = nil, volume: VolumeReference, name: String, path: String? = nil, shareSmb: Bool? = nil, shareNfs: Bool? = nil, shareAfp: Bool? = nil, sharingReadOnly: Bool? = nil, sharingHidden: Bool? = nil, sharingRequireLogin: Bool? = nil, smbExtraConfig: String? = nil, afpExtraConfig: String? = nil, rwAccessGroup: Int? = nil, roAccessGroup: Int? = nil) {
         self.id = id
         self.sharingNfsPermissions = sharingNfsPermissions
         self.volume = volume
@@ -68,7 +68,7 @@ public struct Share: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(sharingNfsPermissions, forKey: .sharingNfsPermissions)
         try container.encode(volume, forKey: .volume)
         try container.encode(name, forKey: .name)

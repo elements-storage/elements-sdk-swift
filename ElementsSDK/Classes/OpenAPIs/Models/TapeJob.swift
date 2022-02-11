@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TapeJob: Codable, Hashable {
+public struct TapeJob: Codable, JSONEncodable, Hashable {
 
     public var group: TapeGroup?
     public var id: Int?

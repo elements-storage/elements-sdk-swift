@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct FileSizeDistributionItem: Codable, Hashable {
+public struct FileSizeDistributionItem: Codable, JSONEncodable, Hashable {
 
     public var min: Int
     public var max: Int

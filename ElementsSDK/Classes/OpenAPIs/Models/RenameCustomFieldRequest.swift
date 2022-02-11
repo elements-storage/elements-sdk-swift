@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct RenameCustomFieldRequest: Codable, Hashable {
+public struct RenameCustomFieldRequest: Codable, JSONEncodable, Hashable {
 
     public var name: String
 

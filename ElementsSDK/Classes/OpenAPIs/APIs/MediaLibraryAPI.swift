@@ -19,9 +19,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func bookmarkMediaDirectory( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func bookmarkMediaDirectory( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        bookmarkMediaDirectoryWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        bookmarkMediaDirectoryWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -46,7 +46,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -57,7 +57,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -67,9 +67,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func clearSubclipClipboard(apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func clearSubclipClipboard(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        clearSubclipClipboardWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
+        clearSubclipClipboardWithRequestBuilder().execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -90,7 +90,7 @@ open class MediaLibraryAPI {
      */
     open class func clearSubclipClipboardWithRequestBuilder() -> RequestBuilder<Void> {
         let localVariablePath = "/api/2/media/subclips/clipboard/clear"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -101,7 +101,51 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    open class func clearSubtitleClipboard(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+        let deferred = Promise<Void>.pending()
+        clearSubtitleClipboardWithRequestBuilder().execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                deferred.resolver.fulfill(())
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - DELETE /api/2/media/subtitles/clipboard/clear
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - returns: RequestBuilder<Void> 
+     */
+    open class func clearSubtitleClipboardWithRequestBuilder() -> RequestBuilder<Void> {
+        let localVariablePath = "/api/2/media/subtitles/clipboard/clear"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -112,9 +156,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func combineAssetsIntoSet( multipleAssetsRequest: MultipleAssetsRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func combineAssetsIntoSet( multipleAssetsRequest: MultipleAssetsRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        combineAssetsIntoSetWithRequestBuilder(multipleAssetsRequest: multipleAssetsRequest).execute(apiResponseQueue) { result -> Void in
+        combineAssetsIntoSetWithRequestBuilder(multipleAssetsRequest: multipleAssetsRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -136,7 +180,7 @@ open class MediaLibraryAPI {
      */
     open class func combineAssetsIntoSetWithRequestBuilder(multipleAssetsRequest: MultipleAssetsRequest) -> RequestBuilder<Void> {
         let localVariablePath = "/api/2/media/assets/combine"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: multipleAssetsRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -147,23 +191,23 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter asset: (body)  
+     - parameter assetUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Asset>
      */
-    open class func createAsset( asset: Asset, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Asset> {
+    open class func createAsset( assetUpdate: AssetUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Asset> {
         let deferred = Promise<Asset>.pending()
-        createAssetWithRequestBuilder(asset: asset).execute(apiResponseQueue) { result -> Void in
+        createAssetWithRequestBuilder(assetUpdate: assetUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -177,13 +221,13 @@ open class MediaLibraryAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter asset: (body)  
+     - parameter assetUpdate: (body)  
      - returns: RequestBuilder<Asset> 
      */
-    open class func createAssetWithRequestBuilder(asset: Asset) -> RequestBuilder<Asset> {
+    open class func createAssetWithRequestBuilder(assetUpdate: AssetUpdate) -> RequestBuilder<Asset> {
         let localVariablePath = "/api/2/media/assets"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: asset)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -193,23 +237,24 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Asset>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Asset>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter assetRating: (body)  
+     - parameter assetRatingUpdate: (body)  
+     - parameter root: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<AssetRating>
      */
-    open class func createAssetRating( assetRating: AssetRating, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<AssetRating> {
+    open class func createAssetRating( assetRatingUpdate: AssetRatingUpdate,  root: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<AssetRating> {
         let deferred = Promise<AssetRating>.pending()
-        createAssetRatingWithRequestBuilder(assetRating: assetRating).execute(apiResponseQueue) { result -> Void in
+        createAssetRatingWithRequestBuilder(assetRatingUpdate: assetRatingUpdate, root: root).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -223,13 +268,63 @@ open class MediaLibraryAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter assetRating: (body)  
+     - parameter assetRatingUpdate: (body)  
+     - parameter root: (query)  (optional)
      - returns: RequestBuilder<AssetRating> 
      */
-    open class func createAssetRatingWithRequestBuilder(assetRating: AssetRating) -> RequestBuilder<AssetRating> {
+    open class func createAssetRatingWithRequestBuilder(assetRatingUpdate: AssetRatingUpdate, root: Int? = nil) -> RequestBuilder<AssetRating> {
         let localVariablePath = "/api/2/media/ratings"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetRating)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetRatingUpdate)
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "root": root?.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<AssetRating>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter assetSubtitleLinkUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<AssetSubtitleLink>
+     */
+    open class func createAssetSubtitleLink( assetSubtitleLinkUpdate: AssetSubtitleLinkUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<AssetSubtitleLink> {
+        let deferred = Promise<AssetSubtitleLink>.pending()
+        createAssetSubtitleLinkWithRequestBuilder(assetSubtitleLinkUpdate: assetSubtitleLinkUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - POST /api/2/media/assets/subtitle-links
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter assetSubtitleLinkUpdate: (body)  
+     - returns: RequestBuilder<AssetSubtitleLink> 
+     */
+    open class func createAssetSubtitleLinkWithRequestBuilder(assetSubtitleLinkUpdate: AssetSubtitleLinkUpdate) -> RequestBuilder<AssetSubtitleLink> {
+        let localVariablePath = "/api/2/media/assets/subtitle-links"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetSubtitleLinkUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -239,23 +334,25 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AssetRating>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AssetSubtitleLink>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter comment: (body)  
+     - parameter commentUpdate: (body)  
+     - parameter root: (query)  (optional)
+     - parameter bundle: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Comment>
      */
-    open class func createComment( comment: Comment, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Comment> {
+    open class func createComment( commentUpdate: CommentUpdate,  root: Int? = nil,  bundle: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Comment> {
         let deferred = Promise<Comment>.pending()
-        createCommentWithRequestBuilder(comment: comment).execute(apiResponseQueue) { result -> Void in
+        createCommentWithRequestBuilder(commentUpdate: commentUpdate, root: root, bundle: bundle).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -269,15 +366,21 @@ open class MediaLibraryAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter comment: (body)  
+     - parameter commentUpdate: (body)  
+     - parameter root: (query)  (optional)
+     - parameter bundle: (query)  (optional)
      - returns: RequestBuilder<Comment> 
      */
-    open class func createCommentWithRequestBuilder(comment: Comment) -> RequestBuilder<Comment> {
+    open class func createCommentWithRequestBuilder(commentUpdate: CommentUpdate, root: Int? = nil, bundle: Int? = nil) -> RequestBuilder<Comment> {
         let localVariablePath = "/api/2/media/comments"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: comment)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: commentUpdate)
 
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "root": root?.encodeToJSON(),
+            "bundle": bundle?.encodeToJSON(),
+        ])
 
         let localVariableNillableHeaders: [String: Any?] = [
             :
@@ -285,23 +388,23 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Comment>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Comment>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter customField: (body)  
+     - parameter customFieldUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<CustomField>
      */
-    open class func createCustomField( customField: CustomField, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<CustomField> {
+    open class func createCustomField( customFieldUpdate: CustomFieldUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<CustomField> {
         let deferred = Promise<CustomField>.pending()
-        createCustomFieldWithRequestBuilder(customField: customField).execute(apiResponseQueue) { result -> Void in
+        createCustomFieldWithRequestBuilder(customFieldUpdate: customFieldUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -315,13 +418,13 @@ open class MediaLibraryAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter customField: (body)  
+     - parameter customFieldUpdate: (body)  
      - returns: RequestBuilder<CustomField> 
      */
-    open class func createCustomFieldWithRequestBuilder(customField: CustomField) -> RequestBuilder<CustomField> {
+    open class func createCustomFieldWithRequestBuilder(customFieldUpdate: CustomFieldUpdate) -> RequestBuilder<CustomField> {
         let localVariablePath = "/api/2/media/custom-fields"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: customField)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: customFieldUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -331,23 +434,23 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<CustomField>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CustomField>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter editorProject: (body)  
+     - parameter editorProjectUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<EditorProject>
      */
-    open class func createEditorProject( editorProject: EditorProject, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<EditorProject> {
+    open class func createEditorProject( editorProjectUpdate: EditorProjectUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<EditorProject> {
         let deferred = Promise<EditorProject>.pending()
-        createEditorProjectWithRequestBuilder(editorProject: editorProject).execute(apiResponseQueue) { result -> Void in
+        createEditorProjectWithRequestBuilder(editorProjectUpdate: editorProjectUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -361,13 +464,13 @@ open class MediaLibraryAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter editorProject: (body)  
+     - parameter editorProjectUpdate: (body)  
      - returns: RequestBuilder<EditorProject> 
      */
-    open class func createEditorProjectWithRequestBuilder(editorProject: EditorProject) -> RequestBuilder<EditorProject> {
+    open class func createEditorProjectWithRequestBuilder(editorProjectUpdate: EditorProjectUpdate) -> RequestBuilder<EditorProject> {
         let localVariablePath = "/api/2/media/editor"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: editorProject)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: editorProjectUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -377,23 +480,69 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<EditorProject>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<EditorProject>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter externalTranscoder: (body)  
+     - parameter editorSubtitleUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<EditorSubtitle>
+     */
+    open class func createEditorSubtitle( editorSubtitleUpdate: EditorSubtitleUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<EditorSubtitle> {
+        let deferred = Promise<EditorSubtitle>.pending()
+        createEditorSubtitleWithRequestBuilder(editorSubtitleUpdate: editorSubtitleUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - POST /api/2/media/subtitles
+     - ### Required permissions    * User account permission: `media:access` 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter editorSubtitleUpdate: (body)  
+     - returns: RequestBuilder<EditorSubtitle> 
+     */
+    open class func createEditorSubtitleWithRequestBuilder(editorSubtitleUpdate: EditorSubtitleUpdate) -> RequestBuilder<EditorSubtitle> {
+        let localVariablePath = "/api/2/media/subtitles"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: editorSubtitleUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EditorSubtitle>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter externalTranscoderUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ExternalTranscoder>
      */
-    open class func createExternalTranscoder( externalTranscoder: ExternalTranscoder, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ExternalTranscoder> {
+    open class func createExternalTranscoder( externalTranscoderUpdate: ExternalTranscoderUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ExternalTranscoder> {
         let deferred = Promise<ExternalTranscoder>.pending()
-        createExternalTranscoderWithRequestBuilder(externalTranscoder: externalTranscoder).execute(apiResponseQueue) { result -> Void in
+        createExternalTranscoderWithRequestBuilder(externalTranscoderUpdate: externalTranscoderUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -407,13 +556,13 @@ open class MediaLibraryAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter externalTranscoder: (body)  
+     - parameter externalTranscoderUpdate: (body)  
      - returns: RequestBuilder<ExternalTranscoder> 
      */
-    open class func createExternalTranscoderWithRequestBuilder(externalTranscoder: ExternalTranscoder) -> RequestBuilder<ExternalTranscoder> {
+    open class func createExternalTranscoderWithRequestBuilder(externalTranscoderUpdate: ExternalTranscoderUpdate) -> RequestBuilder<ExternalTranscoder> {
         let localVariablePath = "/api/2/media/external-transcoders"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: externalTranscoder)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: externalTranscoderUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -423,23 +572,23 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ExternalTranscoder>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ExternalTranscoder>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter marker: (body)  
+     - parameter markerUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Marker>
      */
-    open class func createMarker( marker: Marker, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Marker> {
+    open class func createMarker( markerUpdate: MarkerUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Marker> {
         let deferred = Promise<Marker>.pending()
-        createMarkerWithRequestBuilder(marker: marker).execute(apiResponseQueue) { result -> Void in
+        createMarkerWithRequestBuilder(markerUpdate: markerUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -453,13 +602,13 @@ open class MediaLibraryAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter marker: (body)  
+     - parameter markerUpdate: (body)  
      - returns: RequestBuilder<Marker> 
      */
-    open class func createMarkerWithRequestBuilder(marker: Marker) -> RequestBuilder<Marker> {
+    open class func createMarkerWithRequestBuilder(markerUpdate: MarkerUpdate) -> RequestBuilder<Marker> {
         let localVariablePath = "/api/2/media/markers"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: marker)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: markerUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -469,23 +618,23 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Marker>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Marker>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter mediaFileTemplate: (body)  
+     - parameter mediaFileTemplateUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaFileTemplate>
      */
-    open class func createMediaFileTemplate( mediaFileTemplate: MediaFileTemplate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaFileTemplate> {
+    open class func createMediaFileTemplate( mediaFileTemplateUpdate: MediaFileTemplateUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaFileTemplate> {
         let deferred = Promise<MediaFileTemplate>.pending()
-        createMediaFileTemplateWithRequestBuilder(mediaFileTemplate: mediaFileTemplate).execute(apiResponseQueue) { result -> Void in
+        createMediaFileTemplateWithRequestBuilder(mediaFileTemplateUpdate: mediaFileTemplateUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -499,13 +648,13 @@ open class MediaLibraryAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter mediaFileTemplate: (body)  
+     - parameter mediaFileTemplateUpdate: (body)  
      - returns: RequestBuilder<MediaFileTemplate> 
      */
-    open class func createMediaFileTemplateWithRequestBuilder(mediaFileTemplate: MediaFileTemplate) -> RequestBuilder<MediaFileTemplate> {
+    open class func createMediaFileTemplateWithRequestBuilder(mediaFileTemplateUpdate: MediaFileTemplateUpdate) -> RequestBuilder<MediaFileTemplate> {
         let localVariablePath = "/api/2/media/files/templates"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaFileTemplate)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaFileTemplateUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -515,23 +664,23 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaFileTemplate>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaFileTemplate>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter mediaRoot: (body)  
+     - parameter mediaRootDetailUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<MediaRoot>
+     - returns: Promise<MediaRootDetail>
      */
-    open class func createMediaRoot( mediaRoot: MediaRoot, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaRoot> {
-        let deferred = Promise<MediaRoot>.pending()
-        createMediaRootWithRequestBuilder(mediaRoot: mediaRoot).execute(apiResponseQueue) { result -> Void in
+    open class func createMediaRoot( mediaRootDetailUpdate: MediaRootDetailUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaRootDetail> {
+        let deferred = Promise<MediaRootDetail>.pending()
+        createMediaRootWithRequestBuilder(mediaRootDetailUpdate: mediaRootDetailUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -545,13 +694,13 @@ open class MediaLibraryAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter mediaRoot: (body)  
-     - returns: RequestBuilder<MediaRoot> 
+     - parameter mediaRootDetailUpdate: (body)  
+     - returns: RequestBuilder<MediaRootDetail> 
      */
-    open class func createMediaRootWithRequestBuilder(mediaRoot: MediaRoot) -> RequestBuilder<MediaRoot> {
+    open class func createMediaRootWithRequestBuilder(mediaRootDetailUpdate: MediaRootDetailUpdate) -> RequestBuilder<MediaRootDetail> {
         let localVariablePath = "/api/2/media/roots"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaRoot)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaRootDetailUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -561,23 +710,23 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaRoot>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaRootDetail>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter mediaRootPermission: (body)  
+     - parameter mediaRootPermissionUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaRootPermission>
      */
-    open class func createMediaRootPermission( mediaRootPermission: MediaRootPermission, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaRootPermission> {
+    open class func createMediaRootPermission( mediaRootPermissionUpdate: MediaRootPermissionUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaRootPermission> {
         let deferred = Promise<MediaRootPermission>.pending()
-        createMediaRootPermissionWithRequestBuilder(mediaRootPermission: mediaRootPermission).execute(apiResponseQueue) { result -> Void in
+        createMediaRootPermissionWithRequestBuilder(mediaRootPermissionUpdate: mediaRootPermissionUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -591,13 +740,13 @@ open class MediaLibraryAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter mediaRootPermission: (body)  
+     - parameter mediaRootPermissionUpdate: (body)  
      - returns: RequestBuilder<MediaRootPermission> 
      */
-    open class func createMediaRootPermissionWithRequestBuilder(mediaRootPermission: MediaRootPermission) -> RequestBuilder<MediaRootPermission> {
+    open class func createMediaRootPermissionWithRequestBuilder(mediaRootPermissionUpdate: MediaRootPermissionUpdate) -> RequestBuilder<MediaRootPermission> {
         let localVariablePath = "/api/2/media/root-permissions"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaRootPermission)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaRootPermissionUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -607,23 +756,23 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaRootPermission>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaRootPermission>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter unfilteredTag: (body)  
+     - parameter unfilteredTagUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<UnfilteredTag>
      */
-    open class func createMediaTag( unfilteredTag: UnfilteredTag, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<UnfilteredTag> {
+    open class func createMediaTag( unfilteredTagUpdate: UnfilteredTagUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<UnfilteredTag> {
         let deferred = Promise<UnfilteredTag>.pending()
-        createMediaTagWithRequestBuilder(unfilteredTag: unfilteredTag).execute(apiResponseQueue) { result -> Void in
+        createMediaTagWithRequestBuilder(unfilteredTagUpdate: unfilteredTagUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -637,13 +786,13 @@ open class MediaLibraryAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter unfilteredTag: (body)  
+     - parameter unfilteredTagUpdate: (body)  
      - returns: RequestBuilder<UnfilteredTag> 
      */
-    open class func createMediaTagWithRequestBuilder(unfilteredTag: UnfilteredTag) -> RequestBuilder<UnfilteredTag> {
+    open class func createMediaTagWithRequestBuilder(unfilteredTagUpdate: UnfilteredTagUpdate) -> RequestBuilder<UnfilteredTag> {
         let localVariablePath = "/api/2/media/tags"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: unfilteredTag)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: unfilteredTagUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -653,23 +802,23 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<UnfilteredTag>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<UnfilteredTag>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter proxyProfile: (body)  
+     - parameter proxyProfileUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ProxyProfile>
      */
-    open class func createProxyProfile( proxyProfile: ProxyProfile, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ProxyProfile> {
+    open class func createProxyProfile( proxyProfileUpdate: ProxyProfileUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ProxyProfile> {
         let deferred = Promise<ProxyProfile>.pending()
-        createProxyProfileWithRequestBuilder(proxyProfile: proxyProfile).execute(apiResponseQueue) { result -> Void in
+        createProxyProfileWithRequestBuilder(proxyProfileUpdate: proxyProfileUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -683,13 +832,13 @@ open class MediaLibraryAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter proxyProfile: (body)  
+     - parameter proxyProfileUpdate: (body)  
      - returns: RequestBuilder<ProxyProfile> 
      */
-    open class func createProxyProfileWithRequestBuilder(proxyProfile: ProxyProfile) -> RequestBuilder<ProxyProfile> {
+    open class func createProxyProfileWithRequestBuilder(proxyProfileUpdate: ProxyProfileUpdate) -> RequestBuilder<ProxyProfile> {
         let localVariablePath = "/api/2/media/proxy-profiles"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: proxyProfile)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: proxyProfileUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -699,23 +848,69 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ProxyProfile>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ProxyProfile>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter subclip: (body)  
+     - parameter savedSearchUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<SavedSearch>
+     */
+    open class func createSavedSearch( savedSearchUpdate: SavedSearchUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<SavedSearch> {
+        let deferred = Promise<SavedSearch>.pending()
+        createSavedSearchWithRequestBuilder(savedSearchUpdate: savedSearchUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - POST /api/2/media/saved-searches
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter savedSearchUpdate: (body)  
+     - returns: RequestBuilder<SavedSearch> 
+     */
+    open class func createSavedSearchWithRequestBuilder(savedSearchUpdate: SavedSearchUpdate) -> RequestBuilder<SavedSearch> {
+        let localVariablePath = "/api/2/media/saved-searches"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: savedSearchUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SavedSearch>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter subclipUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Subclip>
      */
-    open class func createSubclip( subclip: Subclip, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Subclip> {
+    open class func createSubclip( subclipUpdate: SubclipUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Subclip> {
         let deferred = Promise<Subclip>.pending()
-        createSubclipWithRequestBuilder(subclip: subclip).execute(apiResponseQueue) { result -> Void in
+        createSubclipWithRequestBuilder(subclipUpdate: subclipUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -729,13 +924,13 @@ open class MediaLibraryAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter subclip: (body)  
+     - parameter subclipUpdate: (body)  
      - returns: RequestBuilder<Subclip> 
      */
-    open class func createSubclipWithRequestBuilder(subclip: Subclip) -> RequestBuilder<Subclip> {
+    open class func createSubclipWithRequestBuilder(subclipUpdate: SubclipUpdate) -> RequestBuilder<Subclip> {
         let localVariablePath = "/api/2/media/subclips"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: subclip)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: subclipUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -745,23 +940,23 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Subclip>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Subclip>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
 
-     - parameter subclipClipboardEntry: (body)  
+     - parameter subclipClipboardEntryUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<SubclipClipboardEntry>
      */
-    open class func createSubclipClipboardEntry( subclipClipboardEntry: SubclipClipboardEntry, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<SubclipClipboardEntry> {
+    open class func createSubclipClipboardEntry( subclipClipboardEntryUpdate: SubclipClipboardEntryUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<SubclipClipboardEntry> {
         let deferred = Promise<SubclipClipboardEntry>.pending()
-        createSubclipClipboardEntryWithRequestBuilder(subclipClipboardEntry: subclipClipboardEntry).execute(apiResponseQueue) { result -> Void in
+        createSubclipClipboardEntryWithRequestBuilder(subclipClipboardEntryUpdate: subclipClipboardEntryUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -775,13 +970,13 @@ open class MediaLibraryAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: Bearer
-     - parameter subclipClipboardEntry: (body)  
+     - parameter subclipClipboardEntryUpdate: (body)  
      - returns: RequestBuilder<SubclipClipboardEntry> 
      */
-    open class func createSubclipClipboardEntryWithRequestBuilder(subclipClipboardEntry: SubclipClipboardEntry) -> RequestBuilder<SubclipClipboardEntry> {
+    open class func createSubclipClipboardEntryWithRequestBuilder(subclipClipboardEntryUpdate: SubclipClipboardEntryUpdate) -> RequestBuilder<SubclipClipboardEntry> {
         let localVariablePath = "/api/2/media/subclips/clipboard"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: subclipClipboardEntry)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: subclipClipboardEntryUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -791,7 +986,53 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<SubclipClipboardEntry>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<SubclipClipboardEntry>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter subtitleClipboardEntryUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<SubtitleClipboardEntry>
+     */
+    open class func createSubtitleClipboardEntry( subtitleClipboardEntryUpdate: SubtitleClipboardEntryUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<SubtitleClipboardEntry> {
+        let deferred = Promise<SubtitleClipboardEntry>.pending()
+        createSubtitleClipboardEntryWithRequestBuilder(subtitleClipboardEntryUpdate: subtitleClipboardEntryUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - POST /api/2/media/subtitles/clipboard
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter subtitleClipboardEntryUpdate: (body)  
+     - returns: RequestBuilder<SubtitleClipboardEntry> 
+     */
+    open class func createSubtitleClipboardEntryWithRequestBuilder(subtitleClipboardEntryUpdate: SubtitleClipboardEntryUpdate) -> RequestBuilder<SubtitleClipboardEntry> {
+        let localVariablePath = "/api/2/media/subtitles/clipboard"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: subtitleClipboardEntryUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SubtitleClipboardEntry>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -802,9 +1043,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteAsset( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteAsset( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteAssetWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteAssetWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -829,7 +1070,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -840,7 +1081,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -848,12 +1089,13 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this Rating. 
+     - parameter root: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteAssetRating( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteAssetRating( id: Int,  root: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteAssetRatingWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteAssetRatingWithRequestBuilder(id: id, root: root).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -871,14 +1113,67 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this Rating. 
+     - parameter root: (query)  (optional)
      - returns: RequestBuilder<Void> 
      */
-    open class func deleteAssetRatingWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
+    open class func deleteAssetRatingWithRequestBuilder(id: Int, root: Int? = nil) -> RequestBuilder<Void> {
         var localVariablePath = "/api/2/media/ratings/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "root": root?.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this Asset subtitle file link. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    open class func deleteAssetSubtitleLink( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+        let deferred = Promise<Void>.pending()
+        deleteAssetSubtitleLinkWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                deferred.resolver.fulfill(())
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - DELETE /api/2/media/assets/subtitle-links/{id}
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this Asset subtitle file link. 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func deleteAssetSubtitleLinkWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/2/media/assets/subtitle-links/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -889,7 +1184,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -900,9 +1195,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteComment( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteComment( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteCommentWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteCommentWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -927,7 +1222,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -938,7 +1233,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -949,9 +1244,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteCustomField( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteCustomField( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteCustomFieldWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteCustomFieldWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -976,7 +1271,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -987,7 +1282,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -998,9 +1293,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteEasySharingTokenForBundle( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteEasySharingTokenForBundle( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteEasySharingTokenForBundleWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteEasySharingTokenForBundleWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1025,7 +1320,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1036,7 +1331,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1047,9 +1342,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteEasySharingTokenForDirectory( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteEasySharingTokenForDirectory( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteEasySharingTokenForDirectoryWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteEasySharingTokenForDirectoryWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1074,7 +1369,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1085,7 +1380,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1096,9 +1391,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteExternalTranscoder( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteExternalTranscoder( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteExternalTranscoderWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteExternalTranscoderWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1123,7 +1418,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1134,7 +1429,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1145,9 +1440,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteMarker( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteMarker( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteMarkerWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteMarkerWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1172,7 +1467,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1183,7 +1478,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1194,9 +1489,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteMediaFileTemplate( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteMediaFileTemplate( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteMediaFileTemplateWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteMediaFileTemplateWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1221,7 +1516,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1232,7 +1527,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1243,12 +1538,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[TaskInfo]>
      */
-    open class func deleteMediaLibraryObjects( mediaLibraryDeleteRequest: MediaLibraryDeleteRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[TaskInfo]> {
+    open class func deleteMediaLibraryObjects( mediaLibraryDeleteRequest: MediaLibraryDeleteRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[TaskInfo]> {
         let deferred = Promise<[TaskInfo]>.pending()
-        deleteMediaLibraryObjectsWithRequestBuilder(mediaLibraryDeleteRequest: mediaLibraryDeleteRequest).execute(apiResponseQueue) { result -> Void in
+        deleteMediaLibraryObjectsWithRequestBuilder(mediaLibraryDeleteRequest: mediaLibraryDeleteRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -1267,7 +1562,7 @@ open class MediaLibraryAPI {
      */
     open class func deleteMediaLibraryObjectsWithRequestBuilder(mediaLibraryDeleteRequest: MediaLibraryDeleteRequest) -> RequestBuilder<[TaskInfo]> {
         let localVariablePath = "/api/2/media/delete"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaLibraryDeleteRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1278,7 +1573,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TaskInfo]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TaskInfo]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1289,9 +1584,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteMediaRoot( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteMediaRoot( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteMediaRootWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteMediaRootWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1316,7 +1611,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1327,7 +1622,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1338,9 +1633,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteMediaRootPermission( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteMediaRootPermission( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteMediaRootPermissionWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteMediaRootPermissionWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1365,7 +1660,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1376,7 +1671,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1387,9 +1682,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteMediaTag( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteMediaTag( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteMediaTagWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteMediaTagWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1414,7 +1709,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1425,7 +1720,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1436,9 +1731,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteMediaUpdate( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteMediaUpdate( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteMediaUpdateWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteMediaUpdateWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1463,7 +1758,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1474,7 +1769,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1485,9 +1780,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteProxy( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteProxy( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteProxyWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteProxyWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1512,7 +1807,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1523,7 +1818,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1534,9 +1829,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteProxyProfile( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteProxyProfile( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteProxyProfileWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteProxyProfileWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1561,7 +1856,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1572,7 +1867,56 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this saved search. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    open class func deleteSavedSearch( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+        let deferred = Promise<Void>.pending()
+        deleteSavedSearchWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                deferred.resolver.fulfill(())
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - DELETE /api/2/media/saved-searches/{id}
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this saved search. 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func deleteSavedSearchWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/2/media/saved-searches/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1583,9 +1927,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteSubclip( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteSubclip( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteSubclipWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteSubclipWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1610,7 +1954,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1621,7 +1965,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1632,9 +1976,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteSubclipClipboardEntry( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteSubclipClipboardEntry( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteSubclipClipboardEntryWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteSubclipClipboardEntryWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1659,7 +2003,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1670,7 +2014,56 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this subtitle clipboard entry. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    open class func deleteSubtitleClipboardEntry( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+        let deferred = Promise<Void>.pending()
+        deleteSubtitleClipboardEntryWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                deferred.resolver.fulfill(())
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - DELETE /api/2/media/subtitles/clipboard/{id}
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this subtitle clipboard entry. 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func deleteSubtitleClipboardEntryWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/2/media/subtitles/clipboard/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1681,12 +2074,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaFile>
      */
-    open class func discoverMedia( scannerDiscoverEndpointRequest: ScannerDiscoverEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaFile> {
+    open class func discoverMedia( scannerDiscoverEndpointRequest: ScannerDiscoverEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaFile> {
         let deferred = Promise<MediaFile>.pending()
-        discoverMediaWithRequestBuilder(scannerDiscoverEndpointRequest: scannerDiscoverEndpointRequest).execute(apiResponseQueue) { result -> Void in
+        discoverMediaWithRequestBuilder(scannerDiscoverEndpointRequest: scannerDiscoverEndpointRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -1705,7 +2098,7 @@ open class MediaLibraryAPI {
      */
     open class func discoverMediaWithRequestBuilder(scannerDiscoverEndpointRequest: ScannerDiscoverEndpointRequest) -> RequestBuilder<MediaFile> {
         let localVariablePath = "/api/2/scanner/discover"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: scannerDiscoverEndpointRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1716,7 +2109,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaFile>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaFile>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1728,9 +2121,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func downloadAssetProxyFile( filename: String,  id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func downloadAssetProxyFile( filename: String,  id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        downloadAssetProxyFileWithRequestBuilder(filename: filename, id: id).execute(apiResponseQueue) { result -> Void in
+        downloadAssetProxyFileWithRequestBuilder(filename: filename, id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1759,7 +2152,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1770,7 +2163,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1781,9 +2174,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func downloadMediaFile( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func downloadMediaFile( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        downloadMediaFileWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        downloadMediaFileWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1808,7 +2201,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1819,7 +2212,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1830,9 +2223,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func downloadProxy( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func downloadProxy( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        downloadProxyWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        downloadProxyWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1857,7 +2250,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1868,7 +2261,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1882,9 +2275,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func editorExportXMLForAssset( assetIds: String,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func editorExportXMLForAssset( assetIds: String,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        editorExportXMLForAsssetWithRequestBuilder(assetIds: assetIds, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        editorExportXMLForAsssetWithRequestBuilder(assetIds: assetIds, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1912,7 +2305,7 @@ open class MediaLibraryAPI {
         let assetIdsPreEscape = "\(APIHelper.mapValueToPathItem(assetIds))"
         let assetIdsPostEscape = assetIdsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{asset_ids}", with: assetIdsPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1928,7 +2321,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1942,9 +2335,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func editorExportXMLForBundle( bundleIds: String,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func editorExportXMLForBundle( bundleIds: String,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        editorExportXMLForBundleWithRequestBuilder(bundleIds: bundleIds, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        editorExportXMLForBundleWithRequestBuilder(bundleIds: bundleIds, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -1972,7 +2365,7 @@ open class MediaLibraryAPI {
         let bundleIdsPreEscape = "\(APIHelper.mapValueToPathItem(bundleIds))"
         let bundleIdsPostEscape = bundleIdsPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{bundle_ids}", with: bundleIdsPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -1988,7 +2381,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -1999,9 +2392,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func editorExportXMLForProject( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func editorExportXMLForProject( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        editorExportXMLForProjectWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        editorExportXMLForProjectWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -2026,7 +2419,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2037,7 +2430,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2052,9 +2445,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func exportCommentsForAvid( assetId: String,  exportFormat: String,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func exportCommentsForAvid( assetId: String,  exportFormat: String,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        exportCommentsForAvidWithRequestBuilder(assetId: assetId, exportFormat: exportFormat, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        exportCommentsForAvidWithRequestBuilder(assetId: assetId, exportFormat: exportFormat, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -2086,7 +2479,7 @@ open class MediaLibraryAPI {
         let exportFormatPreEscape = "\(APIHelper.mapValueToPathItem(exportFormat))"
         let exportFormatPostEscape = exportFormatPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{export_format}", with: exportFormatPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2102,7 +2495,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2113,9 +2506,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func exportEditorTimeline( timelineExportRequest: TimelineExportRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func exportEditorTimeline( timelineExportRequest: TimelineExportRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        exportEditorTimelineWithRequestBuilder(timelineExportRequest: timelineExportRequest).execute(apiResponseQueue) { result -> Void in
+        exportEditorTimelineWithRequestBuilder(timelineExportRequest: timelineExportRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -2137,7 +2530,7 @@ open class MediaLibraryAPI {
      */
     open class func exportEditorTimelineWithRequestBuilder(timelineExportRequest: TimelineExportRequest) -> RequestBuilder<Void> {
         let localVariablePath = "/api/2/media/editor/timeline-export"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: timelineExportRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2148,7 +2541,58 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this Asset. 
+     - parameter extractRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<TaskInfo>
+     */
+    open class func extractStream( id: Int,  extractRequest: ExtractRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TaskInfo> {
+        let deferred = Promise<TaskInfo>.pending()
+        extractStreamWithRequestBuilder(id: id, extractRequest: extractRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - POST /api/2/media/assets/{id}/extract-stream
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this Asset. 
+     - parameter extractRequest: (body)  
+     - returns: RequestBuilder<TaskInfo> 
+     */
+    open class func extractStreamWithRequestBuilder(id: Int, extractRequest: ExtractRequest) -> RequestBuilder<TaskInfo> {
+        var localVariablePath = "/api/2/media/assets/{id}/extract-stream"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: extractRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<TaskInfo>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2159,9 +2603,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func forgetDeletedMediaFiles( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func forgetDeletedMediaFiles( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        forgetDeletedMediaFilesWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        forgetDeletedMediaFilesWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -2186,7 +2630,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2197,7 +2641,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2208,12 +2652,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[TaskInfo]>
      */
-    open class func generateProxies( generateProxiesRequest: GenerateProxiesRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[TaskInfo]> {
+    open class func generateProxies( generateProxiesRequest: GenerateProxiesRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[TaskInfo]> {
         let deferred = Promise<[TaskInfo]>.pending()
-        generateProxiesWithRequestBuilder(generateProxiesRequest: generateProxiesRequest).execute(apiResponseQueue) { result -> Void in
+        generateProxiesWithRequestBuilder(generateProxiesRequest: generateProxiesRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -2232,7 +2676,7 @@ open class MediaLibraryAPI {
      */
     open class func generateProxiesWithRequestBuilder(generateProxiesRequest: GenerateProxiesRequest) -> RequestBuilder<[TaskInfo]> {
         let localVariablePath = "/api/2/media/proxies"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: generateProxiesRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2243,7 +2687,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TaskInfo]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TaskInfo]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2258,12 +2702,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[AssetProjectLink]>
      */
-    open class func getAllAssetProjectLinks( asset: String? = nil,  project: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[AssetProjectLink]> {
+    open class func getAllAssetProjectLinks( asset: Double? = nil,  project: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[AssetProjectLink]> {
         let deferred = Promise<[AssetProjectLink]>.pending()
-        getAllAssetProjectLinksWithRequestBuilder(asset: asset, project: project, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllAssetProjectLinksWithRequestBuilder(asset: asset, project: project, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -2284,9 +2728,9 @@ open class MediaLibraryAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<[AssetProjectLink]> 
      */
-    open class func getAllAssetProjectLinksWithRequestBuilder(asset: String? = nil, project: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[AssetProjectLink]> {
+    open class func getAllAssetProjectLinksWithRequestBuilder(asset: Double? = nil, project: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[AssetProjectLink]> {
         let localVariablePath = "/api/2/media/assets/project-links"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2304,7 +2748,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[AssetProjectLink]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[AssetProjectLink]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2319,12 +2763,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[AssetRating]>
      */
-    open class func getAllAssetRatings( user: String? = nil,  asset: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[AssetRating]> {
+    open class func getAllAssetRatings( user: Double? = nil,  asset: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[AssetRating]> {
         let deferred = Promise<[AssetRating]>.pending()
-        getAllAssetRatingsWithRequestBuilder(user: user, asset: asset, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllAssetRatingsWithRequestBuilder(user: user, asset: asset, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -2345,9 +2789,9 @@ open class MediaLibraryAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<[AssetRating]> 
      */
-    open class func getAllAssetRatingsWithRequestBuilder(user: String? = nil, asset: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[AssetRating]> {
+    open class func getAllAssetRatingsWithRequestBuilder(user: Double? = nil, asset: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[AssetRating]> {
         let localVariablePath = "/api/2/media/ratings"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2365,7 +2809,68 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[AssetRating]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[AssetRating]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter asset: (query) Filter the returned list by &#x60;asset&#x60;. (optional)
+     - parameter subtitle: (query) Filter the returned list by &#x60;subtitle&#x60;. (optional)
+     - parameter ordering: (query) Which field to use when ordering the results. (optional)
+     - parameter limit: (query) Number of results to return per page. (optional)
+     - parameter offset: (query) The initial index from which to return the results. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<[AssetSubtitleLink]>
+     */
+    open class func getAllAssetSubtitleLinks( asset: Double? = nil,  subtitle: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[AssetSubtitleLink]> {
+        let deferred = Promise<[AssetSubtitleLink]>.pending()
+        getAllAssetSubtitleLinksWithRequestBuilder(asset: asset, subtitle: subtitle, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/media/assets/subtitle-links
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter asset: (query) Filter the returned list by &#x60;asset&#x60;. (optional)
+     - parameter subtitle: (query) Filter the returned list by &#x60;subtitle&#x60;. (optional)
+     - parameter ordering: (query) Which field to use when ordering the results. (optional)
+     - parameter limit: (query) Number of results to return per page. (optional)
+     - parameter offset: (query) The initial index from which to return the results. (optional)
+     - returns: RequestBuilder<[AssetSubtitleLink]> 
+     */
+    open class func getAllAssetSubtitleLinksWithRequestBuilder(asset: Double? = nil, subtitle: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[AssetSubtitleLink]> {
+        let localVariablePath = "/api/2/media/assets/subtitle-links"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "asset": asset?.encodeToJSON(),
+            "subtitle": subtitle?.encodeToJSON(),
+            "ordering": ordering?.encodeToJSON(),
+            "limit": limit?.encodeToJSON(),
+            "offset": offset?.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[AssetSubtitleLink]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2381,12 +2886,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[AssetBackup]>
      */
-    open class func getAllAssetTapeBackups( asset: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  includeAsset: Bool? = nil,  advancedSearch: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[AssetBackup]> {
+    open class func getAllAssetTapeBackups( asset: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  includeAsset: Bool? = nil,  advancedSearch: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[AssetBackup]> {
         let deferred = Promise<[AssetBackup]>.pending()
-        getAllAssetTapeBackupsWithRequestBuilder(asset: asset, ordering: ordering, limit: limit, offset: offset, includeAsset: includeAsset, advancedSearch: advancedSearch).execute(apiResponseQueue) { result -> Void in
+        getAllAssetTapeBackupsWithRequestBuilder(asset: asset, ordering: ordering, limit: limit, offset: offset, includeAsset: includeAsset, advancedSearch: advancedSearch).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -2408,9 +2913,9 @@ open class MediaLibraryAPI {
      - parameter advancedSearch: (query)  (optional)
      - returns: RequestBuilder<[AssetBackup]> 
      */
-    open class func getAllAssetTapeBackupsWithRequestBuilder(asset: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil, includeAsset: Bool? = nil, advancedSearch: String? = nil) -> RequestBuilder<[AssetBackup]> {
+    open class func getAllAssetTapeBackupsWithRequestBuilder(asset: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil, includeAsset: Bool? = nil, advancedSearch: String? = nil) -> RequestBuilder<[AssetBackup]> {
         let localVariablePath = "/api/2/media/backups"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2429,7 +2934,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[AssetBackup]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[AssetBackup]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2449,12 +2954,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[Asset]>
      */
-    open class func getAllAssets( syncId: String? = nil,  displayName: String? = nil,  _set: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  includeProxies: Bool? = nil,  includeModifiedBy: Bool? = nil,  resolveAssetPermission: Bool? = nil,  forRoot: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[Asset]> {
+    open class func getAllAssets( syncId: String? = nil,  displayName: String? = nil,  _set: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  includeProxies: Bool? = nil,  includeModifiedBy: Bool? = nil,  resolveAssetPermission: Bool? = nil,  forRoot: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[Asset]> {
         let deferred = Promise<[Asset]>.pending()
-        getAllAssetsWithRequestBuilder(syncId: syncId, displayName: displayName, _set: _set, ordering: ordering, limit: limit, offset: offset, includeProxies: includeProxies, includeModifiedBy: includeModifiedBy, resolveAssetPermission: resolveAssetPermission, forRoot: forRoot).execute(apiResponseQueue) { result -> Void in
+        getAllAssetsWithRequestBuilder(syncId: syncId, displayName: displayName, _set: _set, ordering: ordering, limit: limit, offset: offset, includeProxies: includeProxies, includeModifiedBy: includeModifiedBy, resolveAssetPermission: resolveAssetPermission, forRoot: forRoot).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -2480,9 +2985,9 @@ open class MediaLibraryAPI {
      - parameter forRoot: (query)  (optional)
      - returns: RequestBuilder<[Asset]> 
      */
-    open class func getAllAssetsWithRequestBuilder(syncId: String? = nil, displayName: String? = nil, _set: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil, includeProxies: Bool? = nil, includeModifiedBy: Bool? = nil, resolveAssetPermission: Bool? = nil, forRoot: Int? = nil) -> RequestBuilder<[Asset]> {
+    open class func getAllAssetsWithRequestBuilder(syncId: String? = nil, displayName: String? = nil, _set: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil, includeProxies: Bool? = nil, includeModifiedBy: Bool? = nil, resolveAssetPermission: Bool? = nil, forRoot: Int? = nil) -> RequestBuilder<[Asset]> {
         let localVariablePath = "/api/2/media/assets"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2505,7 +3010,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[Asset]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[Asset]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2524,12 +3029,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[MediaFileBundle]>
      */
-    open class func getAllBundlesForMediaRoot( root: String,  asset: String? = nil,  location: String? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[MediaFileBundle]> {
+    open class func getAllBundlesForMediaRoot( root: String,  asset: Double? = nil,  location: Double? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaFileBundle]> {
         let deferred = Promise<[MediaFileBundle]>.pending()
-        getAllBundlesForMediaRootWithRequestBuilder(root: root, asset: asset, location: location, sharedViaTokens: sharedViaTokens, sharedViaTokensToken: sharedViaTokensToken, name: name, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllBundlesForMediaRootWithRequestBuilder(root: root, asset: asset, location: location, sharedViaTokens: sharedViaTokens, sharedViaTokensToken: sharedViaTokensToken, name: name, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -2554,12 +3059,12 @@ open class MediaLibraryAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<[MediaFileBundle]> 
      */
-    open class func getAllBundlesForMediaRootWithRequestBuilder(root: String, asset: String? = nil, location: String? = nil, sharedViaTokens: String? = nil, sharedViaTokensToken: String? = nil, name: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaFileBundle]> {
+    open class func getAllBundlesForMediaRootWithRequestBuilder(root: String, asset: Double? = nil, location: Double? = nil, sharedViaTokens: String? = nil, sharedViaTokensToken: String? = nil, name: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaFileBundle]> {
         var localVariablePath = "/api/2/media/bundles/flat/{root}"
         let rootPreEscape = "\(APIHelper.mapValueToPathItem(root))"
         let rootPostEscape = rootPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{root}", with: rootPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2580,7 +3085,82 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[MediaFileBundle]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[MediaFileBundle]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter file: (path)  
+     - parameter asset: (query) Filter the returned list by &#x60;asset&#x60;. (optional)
+     - parameter location: (query) Filter the returned list by &#x60;location&#x60;. (optional)
+     - parameter sharedViaTokens: (query) Filter the returned list by &#x60;shared_via_tokens&#x60;. (optional)
+     - parameter sharedViaTokensToken: (query) Filter the returned list by &#x60;shared_via_tokens__token&#x60;. (optional)
+     - parameter name: (query) Filter the returned list by &#x60;name&#x60;. (optional)
+     - parameter ordering: (query) Which field to use when ordering the results. (optional)
+     - parameter limit: (query) Number of results to return per page. (optional)
+     - parameter offset: (query) The initial index from which to return the results. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<[MediaFileBundle]>
+     */
+    open class func getAllBundlesInSubtree( file: String,  asset: Double? = nil,  location: Double? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaFileBundle]> {
+        let deferred = Promise<[MediaFileBundle]>.pending()
+        getAllBundlesInSubtreeWithRequestBuilder(file: file, asset: asset, location: location, sharedViaTokens: sharedViaTokens, sharedViaTokensToken: sharedViaTokensToken, name: name, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/media/bundles/flat/subtree/{file}
+     - ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter file: (path)  
+     - parameter asset: (query) Filter the returned list by &#x60;asset&#x60;. (optional)
+     - parameter location: (query) Filter the returned list by &#x60;location&#x60;. (optional)
+     - parameter sharedViaTokens: (query) Filter the returned list by &#x60;shared_via_tokens&#x60;. (optional)
+     - parameter sharedViaTokensToken: (query) Filter the returned list by &#x60;shared_via_tokens__token&#x60;. (optional)
+     - parameter name: (query) Filter the returned list by &#x60;name&#x60;. (optional)
+     - parameter ordering: (query) Which field to use when ordering the results. (optional)
+     - parameter limit: (query) Number of results to return per page. (optional)
+     - parameter offset: (query) The initial index from which to return the results. (optional)
+     - returns: RequestBuilder<[MediaFileBundle]> 
+     */
+    open class func getAllBundlesInSubtreeWithRequestBuilder(file: String, asset: Double? = nil, location: Double? = nil, sharedViaTokens: String? = nil, sharedViaTokensToken: String? = nil, name: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaFileBundle]> {
+        var localVariablePath = "/api/2/media/bundles/flat/subtree/{file}"
+        let filePreEscape = "\(APIHelper.mapValueToPathItem(file))"
+        let filePostEscape = filePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{file}", with: filePostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "asset": asset?.encodeToJSON(),
+            "location": location?.encodeToJSON(),
+            "shared_via_tokens": sharedViaTokens?.encodeToJSON(),
+            "shared_via_tokens__token": sharedViaTokensToken?.encodeToJSON(),
+            "name": name?.encodeToJSON(),
+            "ordering": ordering?.encodeToJSON(),
+            "limit": limit?.encodeToJSON(),
+            "offset": offset?.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[MediaFileBundle]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2595,12 +3175,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[AssetCloudLink]>
      */
-    open class func getAllClickLinks( asset: String? = nil,  connection: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[AssetCloudLink]> {
+    open class func getAllClickLinks( asset: Double? = nil,  connection: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[AssetCloudLink]> {
         let deferred = Promise<[AssetCloudLink]>.pending()
-        getAllClickLinksWithRequestBuilder(asset: asset, connection: connection, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllClickLinksWithRequestBuilder(asset: asset, connection: connection, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -2621,9 +3201,9 @@ open class MediaLibraryAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<[AssetCloudLink]> 
      */
-    open class func getAllClickLinksWithRequestBuilder(asset: String? = nil, connection: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[AssetCloudLink]> {
+    open class func getAllClickLinksWithRequestBuilder(asset: Double? = nil, connection: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[AssetCloudLink]> {
         let localVariablePath = "/api/2/media/assets/click-links"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2641,7 +3221,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[AssetCloudLink]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[AssetCloudLink]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2661,12 +3241,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[Comment]>
      */
-    open class func getAllComments( asset: String? = nil,  root: String? = nil,  user: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  forRoot: Int? = nil,  tasksForUser: Int? = nil,  includeFullAsset: Bool? = nil,  advancedSearch: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[Comment]> {
+    open class func getAllComments( asset: Double? = nil,  root: Double? = nil,  user: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  forRoot: Int? = nil,  tasksForUser: Int? = nil,  includeFullAsset: Bool? = nil,  advancedSearch: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[Comment]> {
         let deferred = Promise<[Comment]>.pending()
-        getAllCommentsWithRequestBuilder(asset: asset, root: root, user: user, ordering: ordering, limit: limit, offset: offset, forRoot: forRoot, tasksForUser: tasksForUser, includeFullAsset: includeFullAsset, advancedSearch: advancedSearch).execute(apiResponseQueue) { result -> Void in
+        getAllCommentsWithRequestBuilder(asset: asset, root: root, user: user, ordering: ordering, limit: limit, offset: offset, forRoot: forRoot, tasksForUser: tasksForUser, includeFullAsset: includeFullAsset, advancedSearch: advancedSearch).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -2692,9 +3272,9 @@ open class MediaLibraryAPI {
      - parameter advancedSearch: (query)  (optional)
      - returns: RequestBuilder<[Comment]> 
      */
-    open class func getAllCommentsWithRequestBuilder(asset: String? = nil, root: String? = nil, user: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil, forRoot: Int? = nil, tasksForUser: Int? = nil, includeFullAsset: Bool? = nil, advancedSearch: String? = nil) -> RequestBuilder<[Comment]> {
+    open class func getAllCommentsWithRequestBuilder(asset: Double? = nil, root: Double? = nil, user: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil, forRoot: Int? = nil, tasksForUser: Int? = nil, includeFullAsset: Bool? = nil, advancedSearch: String? = nil) -> RequestBuilder<[Comment]> {
         let localVariablePath = "/api/2/media/comments"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2717,7 +3297,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[Comment]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[Comment]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2730,12 +3310,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[CustomField]>
      */
-    open class func getAllCustomFields( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[CustomField]> {
+    open class func getAllCustomFields( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[CustomField]> {
         let deferred = Promise<[CustomField]>.pending()
-        getAllCustomFieldsWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllCustomFieldsWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -2756,7 +3336,7 @@ open class MediaLibraryAPI {
      */
     open class func getAllCustomFieldsWithRequestBuilder(ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[CustomField]> {
         let localVariablePath = "/api/2/media/custom-fields"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2772,7 +3352,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[CustomField]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[CustomField]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2787,12 +3367,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[ExternalTranscoder]>
      */
-    open class func getAllExternalTranscoders( name: String? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[ExternalTranscoder]> {
+    open class func getAllExternalTranscoders( name: String? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[ExternalTranscoder]> {
         let deferred = Promise<[ExternalTranscoder]>.pending()
-        getAllExternalTranscodersWithRequestBuilder(name: name, id: id, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllExternalTranscodersWithRequestBuilder(name: name, id: id, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -2815,7 +3395,7 @@ open class MediaLibraryAPI {
      */
     open class func getAllExternalTranscodersWithRequestBuilder(name: String? = nil, id: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[ExternalTranscoder]> {
         let localVariablePath = "/api/2/media/external-transcoders"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2833,7 +3413,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[ExternalTranscoder]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ExternalTranscoder]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2848,12 +3428,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[Marker]>
      */
-    open class func getAllMarkers( asset: String? = nil,  user: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[Marker]> {
+    open class func getAllMarkers( asset: Double? = nil,  user: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[Marker]> {
         let deferred = Promise<[Marker]>.pending()
-        getAllMarkersWithRequestBuilder(asset: asset, user: user, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllMarkersWithRequestBuilder(asset: asset, user: user, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -2874,9 +3454,9 @@ open class MediaLibraryAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<[Marker]> 
      */
-    open class func getAllMarkersWithRequestBuilder(asset: String? = nil, user: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[Marker]> {
+    open class func getAllMarkersWithRequestBuilder(asset: Double? = nil, user: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[Marker]> {
         let localVariablePath = "/api/2/media/markers"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2894,7 +3474,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[Marker]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[Marker]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2917,12 +3497,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[MediaFileBundle]>
      */
-    open class func getAllMediaFileBundles( asset: String? = nil,  location: String? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  excludeDeleted: Bool? = nil,  excludeUnrecognized: Bool? = nil,  includeProxies: Bool? = nil,  includeParents: Bool? = nil,  advancedSearch: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[MediaFileBundle]> {
+    open class func getAllMediaFileBundles( asset: Double? = nil,  location: Double? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  excludeDeleted: Bool? = nil,  excludeUnrecognized: Bool? = nil,  includeProxies: Bool? = nil,  includeParents: Bool? = nil,  advancedSearch: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaFileBundle]> {
         let deferred = Promise<[MediaFileBundle]>.pending()
-        getAllMediaFileBundlesWithRequestBuilder(asset: asset, location: location, sharedViaTokens: sharedViaTokens, sharedViaTokensToken: sharedViaTokensToken, name: name, ordering: ordering, limit: limit, offset: offset, excludeDeleted: excludeDeleted, excludeUnrecognized: excludeUnrecognized, includeProxies: includeProxies, includeParents: includeParents, advancedSearch: advancedSearch).execute(apiResponseQueue) { result -> Void in
+        getAllMediaFileBundlesWithRequestBuilder(asset: asset, location: location, sharedViaTokens: sharedViaTokens, sharedViaTokensToken: sharedViaTokensToken, name: name, ordering: ordering, limit: limit, offset: offset, excludeDeleted: excludeDeleted, excludeUnrecognized: excludeUnrecognized, includeProxies: includeProxies, includeParents: includeParents, advancedSearch: advancedSearch).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -2951,9 +3531,9 @@ open class MediaLibraryAPI {
      - parameter advancedSearch: (query)  (optional)
      - returns: RequestBuilder<[MediaFileBundle]> 
      */
-    open class func getAllMediaFileBundlesWithRequestBuilder(asset: String? = nil, location: String? = nil, sharedViaTokens: String? = nil, sharedViaTokensToken: String? = nil, name: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil, excludeDeleted: Bool? = nil, excludeUnrecognized: Bool? = nil, includeProxies: Bool? = nil, includeParents: Bool? = nil, advancedSearch: String? = nil) -> RequestBuilder<[MediaFileBundle]> {
+    open class func getAllMediaFileBundlesWithRequestBuilder(asset: Double? = nil, location: Double? = nil, sharedViaTokens: String? = nil, sharedViaTokensToken: String? = nil, name: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil, excludeDeleted: Bool? = nil, excludeUnrecognized: Bool? = nil, includeProxies: Bool? = nil, includeParents: Bool? = nil, advancedSearch: String? = nil) -> RequestBuilder<[MediaFileBundle]> {
         let localVariablePath = "/api/2/media/bundles"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -2979,7 +3559,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[MediaFileBundle]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[MediaFileBundle]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -2992,12 +3572,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[MediaFileTemplate]>
      */
-    open class func getAllMediaFileTemplates( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[MediaFileTemplate]> {
+    open class func getAllMediaFileTemplates( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaFileTemplate]> {
         let deferred = Promise<[MediaFileTemplate]>.pending()
-        getAllMediaFileTemplatesWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllMediaFileTemplatesWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3018,7 +3598,7 @@ open class MediaLibraryAPI {
      */
     open class func getAllMediaFileTemplatesWithRequestBuilder(ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaFileTemplate]> {
         let localVariablePath = "/api/2/media/files/templates"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3034,7 +3614,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[MediaFileTemplate]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[MediaFileTemplate]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3063,12 +3643,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[MediaFile]>
      */
-    open class func getAllMediaFiles( bundle: String? = nil,  bundleIn: String? = nil,  parent: String? = nil,  name: String? = nil,  isDir: String? = nil,  isShowroom: String? = nil,  present: String? = nil,  volume: String? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  resolveFilePermission: Bool? = nil,  includeModifiedBy: Bool? = nil,  includeEffectiveCustomFields: Bool? = nil,  includeRoot: Bool? = nil,  includeParents: Bool? = nil,  advancedSearch: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[MediaFile]> {
+    open class func getAllMediaFiles( bundle: Double? = nil,  bundleIn: String? = nil,  parent: Double? = nil,  name: String? = nil,  isDir: String? = nil,  isShowroom: String? = nil,  present: String? = nil,  volume: Double? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  resolveFilePermission: Bool? = nil,  includeModifiedBy: Bool? = nil,  includeEffectiveCustomFields: Bool? = nil,  includeRoot: Bool? = nil,  includeParents: Bool? = nil,  advancedSearch: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaFile]> {
         let deferred = Promise<[MediaFile]>.pending()
-        getAllMediaFilesWithRequestBuilder(bundle: bundle, bundleIn: bundleIn, parent: parent, name: name, isDir: isDir, isShowroom: isShowroom, present: present, volume: volume, sharedViaTokens: sharedViaTokens, sharedViaTokensToken: sharedViaTokensToken, ordering: ordering, limit: limit, offset: offset, resolveFilePermission: resolveFilePermission, includeModifiedBy: includeModifiedBy, includeEffectiveCustomFields: includeEffectiveCustomFields, includeRoot: includeRoot, includeParents: includeParents, advancedSearch: advancedSearch).execute(apiResponseQueue) { result -> Void in
+        getAllMediaFilesWithRequestBuilder(bundle: bundle, bundleIn: bundleIn, parent: parent, name: name, isDir: isDir, isShowroom: isShowroom, present: present, volume: volume, sharedViaTokens: sharedViaTokens, sharedViaTokensToken: sharedViaTokensToken, ordering: ordering, limit: limit, offset: offset, resolveFilePermission: resolveFilePermission, includeModifiedBy: includeModifiedBy, includeEffectiveCustomFields: includeEffectiveCustomFields, includeRoot: includeRoot, includeParents: includeParents, advancedSearch: advancedSearch).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3103,9 +3683,9 @@ open class MediaLibraryAPI {
      - parameter advancedSearch: (query)  (optional)
      - returns: RequestBuilder<[MediaFile]> 
      */
-    open class func getAllMediaFilesWithRequestBuilder(bundle: String? = nil, bundleIn: String? = nil, parent: String? = nil, name: String? = nil, isDir: String? = nil, isShowroom: String? = nil, present: String? = nil, volume: String? = nil, sharedViaTokens: String? = nil, sharedViaTokensToken: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil, resolveFilePermission: Bool? = nil, includeModifiedBy: Bool? = nil, includeEffectiveCustomFields: Bool? = nil, includeRoot: Bool? = nil, includeParents: Bool? = nil, advancedSearch: String? = nil) -> RequestBuilder<[MediaFile]> {
+    open class func getAllMediaFilesWithRequestBuilder(bundle: Double? = nil, bundleIn: String? = nil, parent: Double? = nil, name: String? = nil, isDir: String? = nil, isShowroom: String? = nil, present: String? = nil, volume: Double? = nil, sharedViaTokens: String? = nil, sharedViaTokensToken: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil, resolveFilePermission: Bool? = nil, includeModifiedBy: Bool? = nil, includeEffectiveCustomFields: Bool? = nil, includeRoot: Bool? = nil, includeParents: Bool? = nil, advancedSearch: String? = nil) -> RequestBuilder<[MediaFile]> {
         let localVariablePath = "/api/2/media/files"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3137,7 +3717,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[MediaFile]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[MediaFile]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3148,12 +3728,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[MediaFile]>
      */
-    open class func getAllMediaFilesForBundles( allMediaFilesForBundlesRequest: AllMediaFilesForBundlesRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[MediaFile]> {
+    open class func getAllMediaFilesForBundles( allMediaFilesForBundlesRequest: AllMediaFilesForBundlesRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaFile]> {
         let deferred = Promise<[MediaFile]>.pending()
-        getAllMediaFilesForBundlesWithRequestBuilder(allMediaFilesForBundlesRequest: allMediaFilesForBundlesRequest).execute(apiResponseQueue) { result -> Void in
+        getAllMediaFilesForBundlesWithRequestBuilder(allMediaFilesForBundlesRequest: allMediaFilesForBundlesRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3172,7 +3752,7 @@ open class MediaLibraryAPI {
      */
     open class func getAllMediaFilesForBundlesWithRequestBuilder(allMediaFilesForBundlesRequest: AllMediaFilesForBundlesRequest) -> RequestBuilder<[MediaFile]> {
         let localVariablePath = "/api/2/media/files/for-bundles"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: allMediaFilesForBundlesRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3183,7 +3763,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[MediaFile]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[MediaFile]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3207,12 +3787,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[MediaFile]>
      */
-    open class func getAllMediaFilesForMediaRoot( root: String,  bundle: String? = nil,  bundleIn: String? = nil,  parent: String? = nil,  name: String? = nil,  isDir: String? = nil,  isShowroom: String? = nil,  present: String? = nil,  volume: String? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[MediaFile]> {
+    open class func getAllMediaFilesForMediaRoot( root: String,  bundle: Double? = nil,  bundleIn: String? = nil,  parent: Double? = nil,  name: String? = nil,  isDir: String? = nil,  isShowroom: String? = nil,  present: String? = nil,  volume: Double? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaFile]> {
         let deferred = Promise<[MediaFile]>.pending()
-        getAllMediaFilesForMediaRootWithRequestBuilder(root: root, bundle: bundle, bundleIn: bundleIn, parent: parent, name: name, isDir: isDir, isShowroom: isShowroom, present: present, volume: volume, sharedViaTokens: sharedViaTokens, sharedViaTokensToken: sharedViaTokensToken, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllMediaFilesForMediaRootWithRequestBuilder(root: root, bundle: bundle, bundleIn: bundleIn, parent: parent, name: name, isDir: isDir, isShowroom: isShowroom, present: present, volume: volume, sharedViaTokens: sharedViaTokens, sharedViaTokensToken: sharedViaTokensToken, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3242,12 +3822,12 @@ open class MediaLibraryAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<[MediaFile]> 
      */
-    open class func getAllMediaFilesForMediaRootWithRequestBuilder(root: String, bundle: String? = nil, bundleIn: String? = nil, parent: String? = nil, name: String? = nil, isDir: String? = nil, isShowroom: String? = nil, present: String? = nil, volume: String? = nil, sharedViaTokens: String? = nil, sharedViaTokensToken: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaFile]> {
+    open class func getAllMediaFilesForMediaRootWithRequestBuilder(root: String, bundle: Double? = nil, bundleIn: String? = nil, parent: Double? = nil, name: String? = nil, isDir: String? = nil, isShowroom: String? = nil, present: String? = nil, volume: Double? = nil, sharedViaTokens: String? = nil, sharedViaTokensToken: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaFile]> {
         var localVariablePath = "/api/2/media/files/flat/{root}"
         let rootPreEscape = "\(APIHelper.mapValueToPathItem(root))"
         let rootPostEscape = rootPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{root}", with: rootPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3273,7 +3853,100 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[MediaFile]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[MediaFile]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter file: (path)  
+     - parameter bundle: (query) Filter the returned list by &#x60;bundle&#x60;. (optional)
+     - parameter bundleIn: (query) Multiple values may be separated by commas. (optional)
+     - parameter parent: (query) Filter the returned list by &#x60;parent&#x60;. (optional)
+     - parameter path: (query) Filter the returned list by &#x60;path&#x60;. (optional)
+     - parameter name: (query) Filter the returned list by &#x60;name&#x60;. (optional)
+     - parameter isDir: (query) Filter the returned list by &#x60;is_dir&#x60;. (optional)
+     - parameter isShowroom: (query) Filter the returned list by &#x60;is_showroom&#x60;. (optional)
+     - parameter present: (query) Filter the returned list by &#x60;present&#x60;. (optional)
+     - parameter volume: (query) Filter the returned list by &#x60;volume&#x60;. (optional)
+     - parameter sharedViaTokens: (query) Filter the returned list by &#x60;shared_via_tokens&#x60;. (optional)
+     - parameter sharedViaTokensToken: (query) Filter the returned list by &#x60;shared_via_tokens__token&#x60;. (optional)
+     - parameter ordering: (query) Which field to use when ordering the results. (optional)
+     - parameter limit: (query) Number of results to return per page. (optional)
+     - parameter offset: (query) The initial index from which to return the results. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<[MediaFile]>
+     */
+    open class func getAllMediaFilesInSubtree( file: String,  bundle: Double? = nil,  bundleIn: String? = nil,  parent: Double? = nil,  path: String? = nil,  name: String? = nil,  isDir: String? = nil,  isShowroom: String? = nil,  present: String? = nil,  volume: Double? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaFile]> {
+        let deferred = Promise<[MediaFile]>.pending()
+        getAllMediaFilesInSubtreeWithRequestBuilder(file: file, bundle: bundle, bundleIn: bundleIn, parent: parent, path: path, name: name, isDir: isDir, isShowroom: isShowroom, present: present, volume: volume, sharedViaTokens: sharedViaTokens, sharedViaTokensToken: sharedViaTokensToken, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/media/files/flat/subtree/{file}
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter file: (path)  
+     - parameter bundle: (query) Filter the returned list by &#x60;bundle&#x60;. (optional)
+     - parameter bundleIn: (query) Multiple values may be separated by commas. (optional)
+     - parameter parent: (query) Filter the returned list by &#x60;parent&#x60;. (optional)
+     - parameter path: (query) Filter the returned list by &#x60;path&#x60;. (optional)
+     - parameter name: (query) Filter the returned list by &#x60;name&#x60;. (optional)
+     - parameter isDir: (query) Filter the returned list by &#x60;is_dir&#x60;. (optional)
+     - parameter isShowroom: (query) Filter the returned list by &#x60;is_showroom&#x60;. (optional)
+     - parameter present: (query) Filter the returned list by &#x60;present&#x60;. (optional)
+     - parameter volume: (query) Filter the returned list by &#x60;volume&#x60;. (optional)
+     - parameter sharedViaTokens: (query) Filter the returned list by &#x60;shared_via_tokens&#x60;. (optional)
+     - parameter sharedViaTokensToken: (query) Filter the returned list by &#x60;shared_via_tokens__token&#x60;. (optional)
+     - parameter ordering: (query) Which field to use when ordering the results. (optional)
+     - parameter limit: (query) Number of results to return per page. (optional)
+     - parameter offset: (query) The initial index from which to return the results. (optional)
+     - returns: RequestBuilder<[MediaFile]> 
+     */
+    open class func getAllMediaFilesInSubtreeWithRequestBuilder(file: String, bundle: Double? = nil, bundleIn: String? = nil, parent: Double? = nil, path: String? = nil, name: String? = nil, isDir: String? = nil, isShowroom: String? = nil, present: String? = nil, volume: Double? = nil, sharedViaTokens: String? = nil, sharedViaTokensToken: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaFile]> {
+        var localVariablePath = "/api/2/media/files/flat/subtree/{file}"
+        let filePreEscape = "\(APIHelper.mapValueToPathItem(file))"
+        let filePostEscape = filePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{file}", with: filePostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "bundle": bundle?.encodeToJSON(),
+            "bundle__in": bundleIn?.encodeToJSON(),
+            "parent": parent?.encodeToJSON(),
+            "path": path?.encodeToJSON(),
+            "name": name?.encodeToJSON(),
+            "is_dir": isDir?.encodeToJSON(),
+            "is_showroom": isShowroom?.encodeToJSON(),
+            "present": present?.encodeToJSON(),
+            "volume": volume?.encodeToJSON(),
+            "shared_via_tokens": sharedViaTokens?.encodeToJSON(),
+            "shared_via_tokens__token": sharedViaTokensToken?.encodeToJSON(),
+            "ordering": ordering?.encodeToJSON(),
+            "limit": limit?.encodeToJSON(),
+            "offset": offset?.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[MediaFile]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3288,12 +3961,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[MediaRootPermission]>
      */
-    open class func getAllMediaRootPermissions( root: String? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[MediaRootPermission]> {
+    open class func getAllMediaRootPermissions( root: Double? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaRootPermission]> {
         let deferred = Promise<[MediaRootPermission]>.pending()
-        getAllMediaRootPermissionsWithRequestBuilder(root: root, id: id, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllMediaRootPermissionsWithRequestBuilder(root: root, id: id, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3314,9 +3987,9 @@ open class MediaLibraryAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<[MediaRootPermission]> 
      */
-    open class func getAllMediaRootPermissionsWithRequestBuilder(root: String? = nil, id: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaRootPermission]> {
+    open class func getAllMediaRootPermissionsWithRequestBuilder(root: Double? = nil, id: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaRootPermission]> {
         let localVariablePath = "/api/2/media/root-permissions"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3334,7 +4007,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[MediaRootPermission]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[MediaRootPermission]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3346,15 +4019,16 @@ open class MediaLibraryAPI {
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
      - parameter limit: (query) Number of results to return per page. (optional)
      - parameter offset: (query) The initial index from which to return the results. (optional)
+     - parameter resolvePermissions: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[MediaRoot]>
      */
-    open class func getAllMediaRoots( volume: String? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[MediaRoot]> {
+    open class func getAllMediaRoots( volume: Double? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  resolvePermissions: Bool? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaRoot]> {
         let deferred = Promise<[MediaRoot]>.pending()
-        getAllMediaRootsWithRequestBuilder(volume: volume, name: name, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllMediaRootsWithRequestBuilder(volume: volume, name: name, ordering: ordering, limit: limit, offset: offset, resolvePermissions: resolvePermissions).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3373,11 +4047,12 @@ open class MediaLibraryAPI {
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
      - parameter limit: (query) Number of results to return per page. (optional)
      - parameter offset: (query) The initial index from which to return the results. (optional)
+     - parameter resolvePermissions: (query)  (optional)
      - returns: RequestBuilder<[MediaRoot]> 
      */
-    open class func getAllMediaRootsWithRequestBuilder(volume: String? = nil, name: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaRoot]> {
+    open class func getAllMediaRootsWithRequestBuilder(volume: Double? = nil, name: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil, resolvePermissions: Bool? = nil) -> RequestBuilder<[MediaRoot]> {
         let localVariablePath = "/api/2/media/roots"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3387,6 +4062,7 @@ open class MediaLibraryAPI {
             "ordering": ordering?.encodeToJSON(),
             "limit": limit?.encodeToJSON(),
             "offset": offset?.encodeToJSON(),
+            "resolve_permissions": resolvePermissions?.encodeToJSON(),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -3395,7 +4071,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[MediaRoot]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[MediaRoot]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3414,12 +4090,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[UnfilteredTag]>
      */
-    open class func getAllMediaTags( name: String? = nil,  nameIcontains: String? = nil,  roots: String? = nil,  rootsIsnull: String? = nil,  shared: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  forRoot: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[UnfilteredTag]> {
+    open class func getAllMediaTags( name: String? = nil,  nameIcontains: String? = nil,  roots: String? = nil,  rootsIsnull: String? = nil,  shared: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  forRoot: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[UnfilteredTag]> {
         let deferred = Promise<[UnfilteredTag]>.pending()
-        getAllMediaTagsWithRequestBuilder(name: name, nameIcontains: nameIcontains, roots: roots, rootsIsnull: rootsIsnull, shared: shared, ordering: ordering, limit: limit, offset: offset, forRoot: forRoot).execute(apiResponseQueue) { result -> Void in
+        getAllMediaTagsWithRequestBuilder(name: name, nameIcontains: nameIcontains, roots: roots, rootsIsnull: rootsIsnull, shared: shared, ordering: ordering, limit: limit, offset: offset, forRoot: forRoot).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3446,7 +4122,7 @@ open class MediaLibraryAPI {
      */
     open class func getAllMediaTagsWithRequestBuilder(name: String? = nil, nameIcontains: String? = nil, roots: String? = nil, rootsIsnull: String? = nil, shared: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil, forRoot: Int? = nil) -> RequestBuilder<[UnfilteredTag]> {
         let localVariablePath = "/api/2/media/tags"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3468,7 +4144,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[UnfilteredTag]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[UnfilteredTag]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3484,12 +4160,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[MediaUpdate]>
      */
-    open class func getAllMediaUpdates( asset: String? = nil,  user: String? = nil,  root: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[MediaUpdate]> {
+    open class func getAllMediaUpdates( asset: Double? = nil,  user: Double? = nil,  root: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaUpdate]> {
         let deferred = Promise<[MediaUpdate]>.pending()
-        getAllMediaUpdatesWithRequestBuilder(asset: asset, user: user, root: root, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllMediaUpdatesWithRequestBuilder(asset: asset, user: user, root: root, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3511,9 +4187,9 @@ open class MediaLibraryAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<[MediaUpdate]> 
      */
-    open class func getAllMediaUpdatesWithRequestBuilder(asset: String? = nil, user: String? = nil, root: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaUpdate]> {
+    open class func getAllMediaUpdatesWithRequestBuilder(asset: Double? = nil, user: Double? = nil, root: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaUpdate]> {
         let localVariablePath = "/api/2/media/updates"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3532,7 +4208,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[MediaUpdate]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[MediaUpdate]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3545,12 +4221,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[ProxyGenerator]>
      */
-    open class func getAllProxyGenerators( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[ProxyGenerator]> {
+    open class func getAllProxyGenerators( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[ProxyGenerator]> {
         let deferred = Promise<[ProxyGenerator]>.pending()
-        getAllProxyGeneratorsWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllProxyGeneratorsWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3571,7 +4247,7 @@ open class MediaLibraryAPI {
      */
     open class func getAllProxyGeneratorsWithRequestBuilder(ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[ProxyGenerator]> {
         let localVariablePath = "/api/2/media/proxy-generators"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3587,7 +4263,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[ProxyGenerator]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ProxyGenerator]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3602,12 +4278,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[ProxyProfile]>
      */
-    open class func getAllProxyProfiles( name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  forRoot: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[ProxyProfile]> {
+    open class func getAllProxyProfiles( name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  forRoot: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[ProxyProfile]> {
         let deferred = Promise<[ProxyProfile]>.pending()
-        getAllProxyProfilesWithRequestBuilder(name: name, ordering: ordering, limit: limit, offset: offset, forRoot: forRoot).execute(apiResponseQueue) { result -> Void in
+        getAllProxyProfilesWithRequestBuilder(name: name, ordering: ordering, limit: limit, offset: offset, forRoot: forRoot).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3630,7 +4306,7 @@ open class MediaLibraryAPI {
      */
     open class func getAllProxyProfilesWithRequestBuilder(name: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil, forRoot: Int? = nil) -> RequestBuilder<[ProxyProfile]> {
         let localVariablePath = "/api/2/media/proxy-profiles"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3648,7 +4324,74 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[ProxyProfile]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ProxyProfile]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter shared: (query) Filter the returned list by &#x60;shared&#x60;. (optional)
+     - parameter name: (query) Filter the returned list by &#x60;name&#x60;. (optional)
+     - parameter root: (query) Filter the returned list by &#x60;root&#x60;. (optional)
+     - parameter user: (query) Filter the returned list by &#x60;user&#x60;. (optional)
+     - parameter ordering: (query) Which field to use when ordering the results. (optional)
+     - parameter limit: (query) Number of results to return per page. (optional)
+     - parameter offset: (query) The initial index from which to return the results. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<[SavedSearch]>
+     */
+    open class func getAllSavedSearches( shared: String? = nil,  name: String? = nil,  root: Double? = nil,  user: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[SavedSearch]> {
+        let deferred = Promise<[SavedSearch]>.pending()
+        getAllSavedSearchesWithRequestBuilder(shared: shared, name: name, root: root, user: user, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/media/saved-searches
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter shared: (query) Filter the returned list by &#x60;shared&#x60;. (optional)
+     - parameter name: (query) Filter the returned list by &#x60;name&#x60;. (optional)
+     - parameter root: (query) Filter the returned list by &#x60;root&#x60;. (optional)
+     - parameter user: (query) Filter the returned list by &#x60;user&#x60;. (optional)
+     - parameter ordering: (query) Which field to use when ordering the results. (optional)
+     - parameter limit: (query) Number of results to return per page. (optional)
+     - parameter offset: (query) The initial index from which to return the results. (optional)
+     - returns: RequestBuilder<[SavedSearch]> 
+     */
+    open class func getAllSavedSearchesWithRequestBuilder(shared: String? = nil, name: String? = nil, root: Double? = nil, user: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[SavedSearch]> {
+        let localVariablePath = "/api/2/media/saved-searches"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "shared": shared?.encodeToJSON(),
+            "name": name?.encodeToJSON(),
+            "root": root?.encodeToJSON(),
+            "user": user?.encodeToJSON(),
+            "ordering": ordering?.encodeToJSON(),
+            "limit": limit?.encodeToJSON(),
+            "offset": offset?.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[SavedSearch]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3662,12 +4405,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[SubclipClipboardEntry]>
      */
-    open class func getAllSubclipClipboardEntries( cut: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[SubclipClipboardEntry]> {
+    open class func getAllSubclipClipboardEntries( cut: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[SubclipClipboardEntry]> {
         let deferred = Promise<[SubclipClipboardEntry]>.pending()
-        getAllSubclipClipboardEntriesWithRequestBuilder(cut: cut, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllSubclipClipboardEntriesWithRequestBuilder(cut: cut, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3687,9 +4430,9 @@ open class MediaLibraryAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<[SubclipClipboardEntry]> 
      */
-    open class func getAllSubclipClipboardEntriesWithRequestBuilder(cut: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[SubclipClipboardEntry]> {
+    open class func getAllSubclipClipboardEntriesWithRequestBuilder(cut: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[SubclipClipboardEntry]> {
         let localVariablePath = "/api/2/media/subclips/clipboard"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3706,7 +4449,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[SubclipClipboardEntry]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[SubclipClipboardEntry]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3723,12 +4466,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[Subclip]>
      */
-    open class func getAllSubclips( asset: String? = nil,  assetIn: String? = nil,  root: String? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[Subclip]> {
+    open class func getAllSubclips( asset: Double? = nil,  assetIn: String? = nil,  root: Double? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[Subclip]> {
         let deferred = Promise<[Subclip]>.pending()
-        getAllSubclipsWithRequestBuilder(asset: asset, assetIn: assetIn, root: root, name: name, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllSubclipsWithRequestBuilder(asset: asset, assetIn: assetIn, root: root, name: name, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3751,9 +4494,9 @@ open class MediaLibraryAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<[Subclip]> 
      */
-    open class func getAllSubclipsWithRequestBuilder(asset: String? = nil, assetIn: String? = nil, root: String? = nil, name: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[Subclip]> {
+    open class func getAllSubclipsWithRequestBuilder(asset: Double? = nil, assetIn: String? = nil, root: Double? = nil, name: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[Subclip]> {
         let localVariablePath = "/api/2/media/subclips"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3773,7 +4516,65 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[Subclip]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[Subclip]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter subtitle: (query) Filter the returned list by &#x60;subtitle&#x60;. (optional)
+     - parameter ordering: (query) Which field to use when ordering the results. (optional)
+     - parameter limit: (query) Number of results to return per page. (optional)
+     - parameter offset: (query) The initial index from which to return the results. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<[SubtitleClipboardEntry]>
+     */
+    open class func getAllSubtitleClipboardEntries( subtitle: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[SubtitleClipboardEntry]> {
+        let deferred = Promise<[SubtitleClipboardEntry]>.pending()
+        getAllSubtitleClipboardEntriesWithRequestBuilder(subtitle: subtitle, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/media/subtitles/clipboard
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter subtitle: (query) Filter the returned list by &#x60;subtitle&#x60;. (optional)
+     - parameter ordering: (query) Which field to use when ordering the results. (optional)
+     - parameter limit: (query) Number of results to return per page. (optional)
+     - parameter offset: (query) The initial index from which to return the results. (optional)
+     - returns: RequestBuilder<[SubtitleClipboardEntry]> 
+     */
+    open class func getAllSubtitleClipboardEntriesWithRequestBuilder(subtitle: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[SubtitleClipboardEntry]> {
+        let localVariablePath = "/api/2/media/subtitles/clipboard"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "subtitle": subtitle?.encodeToJSON(),
+            "ordering": ordering?.encodeToJSON(),
+            "limit": limit?.encodeToJSON(),
+            "offset": offset?.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[SubtitleClipboardEntry]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3786,12 +4587,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[TranscoderProfile]>
      */
-    open class func getAllTranscoderProfiles( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[TranscoderProfile]> {
+    open class func getAllTranscoderProfiles( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[TranscoderProfile]> {
         let deferred = Promise<[TranscoderProfile]>.pending()
-        getAllTranscoderProfilesWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllTranscoderProfilesWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3812,7 +4613,7 @@ open class MediaLibraryAPI {
      */
     open class func getAllTranscoderProfilesWithRequestBuilder(ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[TranscoderProfile]> {
         let localVariablePath = "/api/2/transcoder-profiles"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3828,7 +4629,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[TranscoderProfile]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[TranscoderProfile]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3843,12 +4644,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Asset>
      */
-    open class func getAsset( id: Int,  includeProxies: Bool? = nil,  includeModifiedBy: Bool? = nil,  resolveAssetPermission: Bool? = nil,  forRoot: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Asset> {
+    open class func getAsset( id: Int,  includeProxies: Bool? = nil,  includeModifiedBy: Bool? = nil,  resolveAssetPermission: Bool? = nil,  forRoot: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Asset> {
         let deferred = Promise<Asset>.pending()
-        getAssetWithRequestBuilder(id: id, includeProxies: includeProxies, includeModifiedBy: includeModifiedBy, resolveAssetPermission: resolveAssetPermission, forRoot: forRoot).execute(apiResponseQueue) { result -> Void in
+        getAssetWithRequestBuilder(id: id, includeProxies: includeProxies, includeModifiedBy: includeModifiedBy, resolveAssetPermission: resolveAssetPermission, forRoot: forRoot).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3874,7 +4675,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3891,7 +4692,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Asset>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Asset>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3902,12 +4703,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<AssetRating>
      */
-    open class func getAssetRating( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<AssetRating> {
+    open class func getAssetRating( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<AssetRating> {
         let deferred = Promise<AssetRating>.pending()
-        getAssetRatingWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getAssetRatingWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3929,7 +4730,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -3940,7 +4741,56 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AssetRating>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AssetRating>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this Asset subtitle file link. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<AssetSubtitleLink>
+     */
+    open class func getAssetSubtitleLink( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<AssetSubtitleLink> {
+        let deferred = Promise<AssetSubtitleLink>.pending()
+        getAssetSubtitleLinkWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/media/assets/subtitle-links/{id}
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this Asset subtitle file link. 
+     - returns: RequestBuilder<AssetSubtitleLink> 
+     */
+    open class func getAssetSubtitleLinkWithRequestBuilder(id: Int) -> RequestBuilder<AssetSubtitleLink> {
+        var localVariablePath = "/api/2/media/assets/subtitle-links/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<AssetSubtitleLink>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -3963,12 +4813,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[MediaFile]>
      */
-    open class func getBookmarkedMediaFilesDirectories( bundle: String? = nil,  bundleIn: String? = nil,  parent: String? = nil,  name: String? = nil,  isDir: String? = nil,  isShowroom: String? = nil,  present: String? = nil,  volume: String? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[MediaFile]> {
+    open class func getBookmarkedMediaFilesDirectories( bundle: Double? = nil,  bundleIn: String? = nil,  parent: Double? = nil,  name: String? = nil,  isDir: String? = nil,  isShowroom: String? = nil,  present: String? = nil,  volume: Double? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaFile]> {
         let deferred = Promise<[MediaFile]>.pending()
-        getBookmarkedMediaFilesDirectoriesWithRequestBuilder(bundle: bundle, bundleIn: bundleIn, parent: parent, name: name, isDir: isDir, isShowroom: isShowroom, present: present, volume: volume, sharedViaTokens: sharedViaTokens, sharedViaTokensToken: sharedViaTokensToken, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getBookmarkedMediaFilesDirectoriesWithRequestBuilder(bundle: bundle, bundleIn: bundleIn, parent: parent, name: name, isDir: isDir, isShowroom: isShowroom, present: present, volume: volume, sharedViaTokens: sharedViaTokens, sharedViaTokensToken: sharedViaTokensToken, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -3997,9 +4847,9 @@ open class MediaLibraryAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<[MediaFile]> 
      */
-    open class func getBookmarkedMediaFilesDirectoriesWithRequestBuilder(bundle: String? = nil, bundleIn: String? = nil, parent: String? = nil, name: String? = nil, isDir: String? = nil, isShowroom: String? = nil, present: String? = nil, volume: String? = nil, sharedViaTokens: String? = nil, sharedViaTokensToken: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaFile]> {
+    open class func getBookmarkedMediaFilesDirectoriesWithRequestBuilder(bundle: Double? = nil, bundleIn: String? = nil, parent: Double? = nil, name: String? = nil, isDir: String? = nil, isShowroom: String? = nil, present: String? = nil, volume: Double? = nil, sharedViaTokens: String? = nil, sharedViaTokensToken: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaFile]> {
         let localVariablePath = "/api/2/media/files/bookmarks"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4025,7 +4875,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[MediaFile]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[MediaFile]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4040,12 +4890,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Comment>
      */
-    open class func getComment( id: Int,  forRoot: Int? = nil,  tasksForUser: Int? = nil,  includeFullAsset: Bool? = nil,  advancedSearch: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Comment> {
+    open class func getComment( id: Int,  forRoot: Int? = nil,  tasksForUser: Int? = nil,  includeFullAsset: Bool? = nil,  advancedSearch: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Comment> {
         let deferred = Promise<Comment>.pending()
-        getCommentWithRequestBuilder(id: id, forRoot: forRoot, tasksForUser: tasksForUser, includeFullAsset: includeFullAsset, advancedSearch: advancedSearch).execute(apiResponseQueue) { result -> Void in
+        getCommentWithRequestBuilder(id: id, forRoot: forRoot, tasksForUser: tasksForUser, includeFullAsset: includeFullAsset, advancedSearch: advancedSearch).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4071,7 +4921,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4088,7 +4938,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Comment>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Comment>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4099,12 +4949,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<CustomField>
      */
-    open class func getCustomField( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<CustomField> {
+    open class func getCustomField( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<CustomField> {
         let deferred = Promise<CustomField>.pending()
-        getCustomFieldWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getCustomFieldWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4126,7 +4976,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4137,7 +4987,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<CustomField>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CustomField>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4148,12 +4998,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<OneTimeAccessToken>
      */
-    open class func getEasySharingTokenForBundle( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<OneTimeAccessToken> {
+    open class func getEasySharingTokenForBundle( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<OneTimeAccessToken> {
         let deferred = Promise<OneTimeAccessToken>.pending()
-        getEasySharingTokenForBundleWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getEasySharingTokenForBundleWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4175,7 +5025,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4186,7 +5036,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<OneTimeAccessToken>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<OneTimeAccessToken>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4197,12 +5047,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<OneTimeAccessToken>
      */
-    open class func getEasySharingTokenForDirectory( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<OneTimeAccessToken> {
+    open class func getEasySharingTokenForDirectory( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<OneTimeAccessToken> {
         let deferred = Promise<OneTimeAccessToken>.pending()
-        getEasySharingTokenForDirectoryWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getEasySharingTokenForDirectoryWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4224,7 +5074,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4235,7 +5085,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<OneTimeAccessToken>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<OneTimeAccessToken>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4246,12 +5096,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<EditorProject>
      */
-    open class func getEditorProject( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<EditorProject> {
+    open class func getEditorProject( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<EditorProject> {
         let deferred = Promise<EditorProject>.pending()
-        getEditorProjectWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getEditorProjectWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4273,7 +5123,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4284,7 +5134,56 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<EditorProject>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<EditorProject>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this File. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<EditorSubtitle>
+     */
+    open class func getEditorSubtitle( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<EditorSubtitle> {
+        let deferred = Promise<EditorSubtitle>.pending()
+        getEditorSubtitleWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/media/subtitles/{id}
+     - ### Required permissions    * User account permission: `media:access` 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this File. 
+     - returns: RequestBuilder<EditorSubtitle> 
+     */
+    open class func getEditorSubtitleWithRequestBuilder(id: Int) -> RequestBuilder<EditorSubtitle> {
+        var localVariablePath = "/api/2/media/subtitles/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EditorSubtitle>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4295,12 +5194,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ExternalTranscoder>
      */
-    open class func getExternalTranscoder( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ExternalTranscoder> {
+    open class func getExternalTranscoder( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ExternalTranscoder> {
         let deferred = Promise<ExternalTranscoder>.pending()
-        getExternalTranscoderWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getExternalTranscoderWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4322,7 +5221,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4333,7 +5232,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ExternalTranscoder>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ExternalTranscoder>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4343,14 +5242,14 @@ open class MediaLibraryAPI {
      - parameter frame: (path)  
      - parameter id: (path) A unique integer value identifying this Asset. 
      - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<Void>
+     - returns: Promise<URL>
      */
-    open class func getFrame( frame: String,  id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
-        let deferred = Promise<Void>.pending()
-        getFrameWithRequestBuilder(frame: frame, id: id).execute(apiResponseQueue) { result -> Void in
+    open class func getFrame( frame: String,  id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<URL> {
+        let deferred = Promise<URL>.pending()
+        getFrameWithRequestBuilder(frame: frame, id: id).execute(apiResponseQueue) { result in
             switch result {
-            case .success:
-                deferred.resolver.fulfill(())
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4366,9 +5265,9 @@ open class MediaLibraryAPI {
        - name: Bearer
      - parameter frame: (path)  
      - parameter id: (path) A unique integer value identifying this Asset. 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<URL> 
      */
-    open class func getFrameWithRequestBuilder(frame: String, id: Int) -> RequestBuilder<Void> {
+    open class func getFrameWithRequestBuilder(frame: String, id: Int) -> RequestBuilder<URL> {
         var localVariablePath = "/api/2/media/assets/{id}/frames/{frame}"
         let framePreEscape = "\(APIHelper.mapValueToPathItem(frame))"
         let framePostEscape = framePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -4376,7 +5275,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4387,7 +5286,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<URL>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4403,12 +5302,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaUpdate>
      */
-    open class func getLatestMediaUpdate( asset: String? = nil,  user: String? = nil,  root: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaUpdate> {
+    open class func getLatestMediaUpdate( asset: Double? = nil,  user: Double? = nil,  root: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaUpdate> {
         let deferred = Promise<MediaUpdate>.pending()
-        getLatestMediaUpdateWithRequestBuilder(asset: asset, user: user, root: root, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getLatestMediaUpdateWithRequestBuilder(asset: asset, user: user, root: root, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4430,9 +5329,9 @@ open class MediaLibraryAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<MediaUpdate> 
      */
-    open class func getLatestMediaUpdateWithRequestBuilder(asset: String? = nil, user: String? = nil, root: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<MediaUpdate> {
+    open class func getLatestMediaUpdateWithRequestBuilder(asset: Double? = nil, user: Double? = nil, root: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<MediaUpdate> {
         let localVariablePath = "/api/2/media/updates/latest"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4451,7 +5350,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaUpdate>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaUpdate>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4462,12 +5361,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Marker>
      */
-    open class func getMarker( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Marker> {
+    open class func getMarker( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Marker> {
         let deferred = Promise<Marker>.pending()
-        getMarkerWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getMarkerWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4489,7 +5388,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4500,7 +5399,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Marker>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Marker>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4517,12 +5416,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaFile>
      */
-    open class func getMediaFile( id: Int,  resolveFilePermission: Bool? = nil,  includeModifiedBy: Bool? = nil,  includeEffectiveCustomFields: Bool? = nil,  includeRoot: Bool? = nil,  includeParents: Bool? = nil,  advancedSearch: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaFile> {
+    open class func getMediaFile( id: Int,  resolveFilePermission: Bool? = nil,  includeModifiedBy: Bool? = nil,  includeEffectiveCustomFields: Bool? = nil,  includeRoot: Bool? = nil,  includeParents: Bool? = nil,  advancedSearch: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaFile> {
         let deferred = Promise<MediaFile>.pending()
-        getMediaFileWithRequestBuilder(id: id, resolveFilePermission: resolveFilePermission, includeModifiedBy: includeModifiedBy, includeEffectiveCustomFields: includeEffectiveCustomFields, includeRoot: includeRoot, includeParents: includeParents, advancedSearch: advancedSearch).execute(apiResponseQueue) { result -> Void in
+        getMediaFileWithRequestBuilder(id: id, resolveFilePermission: resolveFilePermission, includeModifiedBy: includeModifiedBy, includeEffectiveCustomFields: includeEffectiveCustomFields, includeRoot: includeRoot, includeParents: includeParents, advancedSearch: advancedSearch).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4550,7 +5449,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4569,7 +5468,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaFile>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaFile>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4587,12 +5486,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaFileBundle>
      */
-    open class func getMediaFileBundle( id: Int,  excludeDeleted: Bool? = nil,  excludeUnrecognized: Bool? = nil,  includeProxies: Bool? = nil,  includeParents: Bool? = nil,  offset: Int? = nil,  limit: Int? = nil,  advancedSearch: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaFileBundle> {
+    open class func getMediaFileBundle( id: Int,  excludeDeleted: Bool? = nil,  excludeUnrecognized: Bool? = nil,  includeProxies: Bool? = nil,  includeParents: Bool? = nil,  offset: Int? = nil,  limit: Int? = nil,  advancedSearch: String? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaFileBundle> {
         let deferred = Promise<MediaFileBundle>.pending()
-        getMediaFileBundleWithRequestBuilder(id: id, excludeDeleted: excludeDeleted, excludeUnrecognized: excludeUnrecognized, includeProxies: includeProxies, includeParents: includeParents, offset: offset, limit: limit, advancedSearch: advancedSearch).execute(apiResponseQueue) { result -> Void in
+        getMediaFileBundleWithRequestBuilder(id: id, excludeDeleted: excludeDeleted, excludeUnrecognized: excludeUnrecognized, includeProxies: includeProxies, includeParents: includeParents, offset: offset, limit: limit, advancedSearch: advancedSearch).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4621,7 +5520,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4641,7 +5540,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaFileBundle>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaFileBundle>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4656,12 +5555,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaFileContents>
      */
-    open class func getMediaFileContents( id: Int,  excludeDeleted: Bool? = nil,  excludeUnrecognized: Bool? = nil,  offset: Int? = nil,  limit: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaFileContents> {
+    open class func getMediaFileContents( id: Int,  excludeDeleted: Bool? = nil,  excludeUnrecognized: Bool? = nil,  offset: Int? = nil,  limit: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaFileContents> {
         let deferred = Promise<MediaFileContents>.pending()
-        getMediaFileContentsWithRequestBuilder(id: id, excludeDeleted: excludeDeleted, excludeUnrecognized: excludeUnrecognized, offset: offset, limit: limit).execute(apiResponseQueue) { result -> Void in
+        getMediaFileContentsWithRequestBuilder(id: id, excludeDeleted: excludeDeleted, excludeUnrecognized: excludeUnrecognized, offset: offset, limit: limit).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4687,7 +5586,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4704,7 +5603,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaFileContents>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaFileContents>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4715,12 +5614,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaFileTemplate>
      */
-    open class func getMediaFileTemplate( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaFileTemplate> {
+    open class func getMediaFileTemplate( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaFileTemplate> {
         let deferred = Promise<MediaFileTemplate>.pending()
-        getMediaFileTemplateWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getMediaFileTemplateWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4742,7 +5641,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4753,7 +5652,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaFileTemplate>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaFileTemplate>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4761,15 +5660,16 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this media root. 
+     - parameter resolvePermissions: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<MediaRoot>
+     - returns: Promise<MediaRootDetail>
      */
-    open class func getMediaRoot( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaRoot> {
-        let deferred = Promise<MediaRoot>.pending()
-        getMediaRootWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+    open class func getMediaRoot( id: Int,  resolvePermissions: Bool? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaRootDetail> {
+        let deferred = Promise<MediaRootDetail>.pending()
+        getMediaRootWithRequestBuilder(id: id, resolvePermissions: resolvePermissions).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4784,17 +5684,21 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this media root. 
-     - returns: RequestBuilder<MediaRoot> 
+     - parameter resolvePermissions: (query)  (optional)
+     - returns: RequestBuilder<MediaRootDetail> 
      */
-    open class func getMediaRootWithRequestBuilder(id: Int) -> RequestBuilder<MediaRoot> {
+    open class func getMediaRootWithRequestBuilder(id: Int, resolvePermissions: Bool? = nil) -> RequestBuilder<MediaRootDetail> {
         var localVariablePath = "/api/2/media/roots/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "resolve_permissions": resolvePermissions?.encodeToJSON(),
+        ])
 
         let localVariableNillableHeaders: [String: Any?] = [
             :
@@ -4802,7 +5706,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaRoot>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaRootDetail>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4813,12 +5717,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaRootPermission>
      */
-    open class func getMediaRootPermission( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaRootPermission> {
+    open class func getMediaRootPermission( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaRootPermission> {
         let deferred = Promise<MediaRootPermission>.pending()
-        getMediaRootPermissionWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getMediaRootPermissionWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4840,7 +5744,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4851,7 +5755,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaRootPermission>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaRootPermission>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4863,12 +5767,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<UnfilteredTag>
      */
-    open class func getMediaTag( id: Int,  forRoot: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<UnfilteredTag> {
+    open class func getMediaTag( id: Int,  forRoot: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<UnfilteredTag> {
         let deferred = Promise<UnfilteredTag>.pending()
-        getMediaTagWithRequestBuilder(id: id, forRoot: forRoot).execute(apiResponseQueue) { result -> Void in
+        getMediaTagWithRequestBuilder(id: id, forRoot: forRoot).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4891,7 +5795,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4905,7 +5809,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<UnfilteredTag>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<UnfilteredTag>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4916,12 +5820,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[Asset]>
      */
-    open class func getMultipleAssets( multipleAssetsRequest: MultipleAssetsRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[Asset]> {
+    open class func getMultipleAssets( multipleAssetsRequest: MultipleAssetsRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[Asset]> {
         let deferred = Promise<[Asset]>.pending()
-        getMultipleAssetsWithRequestBuilder(multipleAssetsRequest: multipleAssetsRequest).execute(apiResponseQueue) { result -> Void in
+        getMultipleAssetsWithRequestBuilder(multipleAssetsRequest: multipleAssetsRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4940,7 +5844,7 @@ open class MediaLibraryAPI {
      */
     open class func getMultipleAssetsWithRequestBuilder(multipleAssetsRequest: MultipleAssetsRequest) -> RequestBuilder<[Asset]> {
         let localVariablePath = "/api/2/media/assets/multiple"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: multipleAssetsRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4951,7 +5855,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[Asset]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[Asset]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -4962,12 +5866,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[MediaFileBundle]>
      */
-    open class func getMultipleBundles( getMultipleBundlesRequest: GetMultipleBundlesRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[MediaFileBundle]> {
+    open class func getMultipleBundles( getMultipleBundlesRequest: GetMultipleBundlesRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaFileBundle]> {
         let deferred = Promise<[MediaFileBundle]>.pending()
-        getMultipleBundlesWithRequestBuilder(getMultipleBundlesRequest: getMultipleBundlesRequest).execute(apiResponseQueue) { result -> Void in
+        getMultipleBundlesWithRequestBuilder(getMultipleBundlesRequest: getMultipleBundlesRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -4986,7 +5890,7 @@ open class MediaLibraryAPI {
      */
     open class func getMultipleBundlesWithRequestBuilder(getMultipleBundlesRequest: GetMultipleBundlesRequest) -> RequestBuilder<[MediaFileBundle]> {
         let localVariablePath = "/api/2/media/bundles/multiple"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: getMultipleBundlesRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -4997,7 +5901,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[MediaFileBundle]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[MediaFileBundle]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5008,12 +5912,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[MediaFile]>
      */
-    open class func getMultipleFiles( getMultipleFilesRequest: GetMultipleFilesRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[MediaFile]> {
+    open class func getMultipleFiles( getMultipleFilesRequest: GetMultipleFilesRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaFile]> {
         let deferred = Promise<[MediaFile]>.pending()
-        getMultipleFilesWithRequestBuilder(getMultipleFilesRequest: getMultipleFilesRequest).execute(apiResponseQueue) { result -> Void in
+        getMultipleFilesWithRequestBuilder(getMultipleFilesRequest: getMultipleFilesRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5032,7 +5936,7 @@ open class MediaLibraryAPI {
      */
     open class func getMultipleFilesWithRequestBuilder(getMultipleFilesRequest: GetMultipleFilesRequest) -> RequestBuilder<[MediaFile]> {
         let localVariablePath = "/api/2/media/files/multiple"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: getMultipleFilesRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5043,7 +5947,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[MediaFile]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[MediaFile]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5058,12 +5962,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[MediaRootPermission]>
      */
-    open class func getMyMediaRootPermissions( root: String? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[MediaRootPermission]> {
+    open class func getMyMediaRootPermissions( root: Double? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaRootPermission]> {
         let deferred = Promise<[MediaRootPermission]>.pending()
-        getMyMediaRootPermissionsWithRequestBuilder(root: root, id: id, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getMyMediaRootPermissionsWithRequestBuilder(root: root, id: id, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5084,9 +5988,9 @@ open class MediaLibraryAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<[MediaRootPermission]> 
      */
-    open class func getMyMediaRootPermissionsWithRequestBuilder(root: String? = nil, id: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaRootPermission]> {
+    open class func getMyMediaRootPermissionsWithRequestBuilder(root: Double? = nil, id: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaRootPermission]> {
         let localVariablePath = "/api/2/media/root-permissions/mine"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5104,7 +6008,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[MediaRootPermission]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[MediaRootPermission]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5119,12 +6023,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[MediaRootPermission]>
      */
-    open class func getMyResolvedMediaRootPermissions( root: String? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[MediaRootPermission]> {
+    open class func getMyResolvedMediaRootPermissions( root: Double? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaRootPermission]> {
         let deferred = Promise<[MediaRootPermission]>.pending()
-        getMyResolvedMediaRootPermissionsWithRequestBuilder(root: root, id: id, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getMyResolvedMediaRootPermissionsWithRequestBuilder(root: root, id: id, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5145,9 +6049,9 @@ open class MediaLibraryAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<[MediaRootPermission]> 
      */
-    open class func getMyResolvedMediaRootPermissionsWithRequestBuilder(root: String? = nil, id: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaRootPermission]> {
+    open class func getMyResolvedMediaRootPermissionsWithRequestBuilder(root: Double? = nil, id: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[MediaRootPermission]> {
         let localVariablePath = "/api/2/media/root-permissions/mine/resolved"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5165,7 +6069,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[MediaRootPermission]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[MediaRootPermission]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5176,12 +6080,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Proxy>
      */
-    open class func getProxy( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Proxy> {
+    open class func getProxy( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Proxy> {
         let deferred = Promise<Proxy>.pending()
-        getProxyWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getProxyWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5203,7 +6107,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5214,7 +6118,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Proxy>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Proxy>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5225,12 +6129,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ProxyGenerator>
      */
-    open class func getProxyGenerator( id: String, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ProxyGenerator> {
+    open class func getProxyGenerator( id: String, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ProxyGenerator> {
         let deferred = Promise<ProxyGenerator>.pending()
-        getProxyGeneratorWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getProxyGeneratorWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5252,7 +6156,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5263,7 +6167,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ProxyGenerator>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ProxyGenerator>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5275,12 +6179,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ProxyProfile>
      */
-    open class func getProxyProfile( id: Int,  forRoot: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ProxyProfile> {
+    open class func getProxyProfile( id: Int,  forRoot: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ProxyProfile> {
         let deferred = Promise<ProxyProfile>.pending()
-        getProxyProfileWithRequestBuilder(id: id, forRoot: forRoot).execute(apiResponseQueue) { result -> Void in
+        getProxyProfileWithRequestBuilder(id: id, forRoot: forRoot).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5303,7 +6207,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5317,7 +6221,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ProxyProfile>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ProxyProfile>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5328,12 +6232,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ProxyCount>
      */
-    open class func getProxyProfileProxyCount( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ProxyCount> {
+    open class func getProxyProfileProxyCount( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ProxyCount> {
         let deferred = Promise<ProxyCount>.pending()
-        getProxyProfileProxyCountWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getProxyProfileProxyCountWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5355,7 +6259,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5366,7 +6270,56 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ProxyCount>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ProxyCount>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this saved search. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<SavedSearch>
+     */
+    open class func getSavedSearch( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<SavedSearch> {
+        let deferred = Promise<SavedSearch>.pending()
+        getSavedSearchWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/media/saved-searches/{id}
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this saved search. 
+     - returns: RequestBuilder<SavedSearch> 
+     */
+    open class func getSavedSearchWithRequestBuilder(id: Int) -> RequestBuilder<SavedSearch> {
+        var localVariablePath = "/api/2/media/saved-searches/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SavedSearch>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5377,12 +6330,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Subclip>
      */
-    open class func getSubclip( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Subclip> {
+    open class func getSubclip( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Subclip> {
         let deferred = Promise<Subclip>.pending()
-        getSubclipWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getSubclipWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5404,7 +6357,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5415,7 +6368,61 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Subclip>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Subclip>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this Asset. 
+     - parameter title: (path)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<URL>
+     */
+    open class func getSubtitles( id: Int,  title: String, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<URL> {
+        let deferred = Promise<URL>.pending()
+        getSubtitlesWithRequestBuilder(id: id, title: title).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/media/assets/{id}/subtitle/{title}
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this Asset. 
+     - parameter title: (path)  
+     - returns: RequestBuilder<URL> 
+     */
+    open class func getSubtitlesWithRequestBuilder(id: Int, title: String) -> RequestBuilder<URL> {
+        var localVariablePath = "/api/2/media/assets/{id}/subtitle/{title}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let titlePreEscape = "\(APIHelper.mapValueToPathItem(title))"
+        let titlePostEscape = titlePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{title}", with: titlePostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<URL>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5426,12 +6433,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TranscoderProfile>
      */
-    open class func getTranscoderProfile( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TranscoderProfile> {
+    open class func getTranscoderProfile( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TranscoderProfile> {
         let deferred = Promise<TranscoderProfile>.pending()
-        getTranscoderProfileWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getTranscoderProfileWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5453,7 +6460,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5464,7 +6471,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TranscoderProfile>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TranscoderProfile>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5475,12 +6482,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<VantageWorkflows>
      */
-    open class func getVantageWorkflows( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<VantageWorkflows> {
+    open class func getVantageWorkflows( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<VantageWorkflows> {
         let deferred = Promise<VantageWorkflows>.pending()
-        getVantageWorkflowsWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getVantageWorkflowsWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5502,7 +6509,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5513,7 +6520,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<VantageWorkflows>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<VantageWorkflows>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5525,9 +6532,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func instantiateMediaFileTemplate( id: Int,  instantiateFileTemplateRequest: InstantiateFileTemplateRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func instantiateMediaFileTemplate( id: Int,  instantiateFileTemplateRequest: InstantiateFileTemplateRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        instantiateMediaFileTemplateWithRequestBuilder(id: id, instantiateFileTemplateRequest: instantiateFileTemplateRequest).execute(apiResponseQueue) { result -> Void in
+        instantiateMediaFileTemplateWithRequestBuilder(id: id, instantiateFileTemplateRequest: instantiateFileTemplateRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -5553,7 +6560,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: instantiateFileTemplateRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5564,7 +6571,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5575,12 +6582,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[LocateResult]>
      */
-    open class func locateEditorProjectPaths( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[LocateResult]> {
+    open class func locateEditorProjectPaths( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[LocateResult]> {
         let deferred = Promise<[LocateResult]>.pending()
-        locateEditorProjectPathsWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        locateEditorProjectPathsWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5602,7 +6609,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5613,9 +6620,55 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[LocateResult]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[LocateResult]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter mediaFilesLookupRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<[MediaFile]>
+     */
+    open class func lookupMediaFiles( mediaFilesLookupRequest: MediaFilesLookupRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[MediaFile]> {
+        let deferred = Promise<[MediaFile]>.pending()
+        lookupMediaFilesWithRequestBuilder(mediaFilesLookupRequest: mediaFilesLookupRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - POST /api/2/media/files/lookup
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter mediaFilesLookupRequest: (body)  
+     - returns: RequestBuilder<[MediaFile]> 
+     */
+    open class func lookupMediaFilesWithRequestBuilder(mediaFilesLookupRequest: MediaFilesLookupRequest) -> RequestBuilder<[MediaFile]> {
+        let localVariablePath = "/api/2/media/files/lookup"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaFilesLookupRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[MediaFile]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -5624,9 +6677,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func markMediaDirectoryAsShowroom( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func markMediaDirectoryAsShowroom( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        markMediaDirectoryAsShowroomWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        markMediaDirectoryAsShowroomWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -5651,7 +6704,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5662,7 +6715,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5671,15 +6724,16 @@ open class MediaLibraryAPI {
 
      - parameter id: (path) A unique integer value identifying this Asset. 
      - parameter assetPartialUpdate: (body)  
+     - parameter root: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Asset>
      */
-    open class func patchAsset( id: Int,  assetPartialUpdate: AssetPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Asset> {
+    open class func patchAsset( id: Int,  assetPartialUpdate: AssetPartialUpdate,  root: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Asset> {
         let deferred = Promise<Asset>.pending()
-        patchAssetWithRequestBuilder(id: id, assetPartialUpdate: assetPartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchAssetWithRequestBuilder(id: id, assetPartialUpdate: assetPartialUpdate, root: root).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5695,17 +6749,21 @@ open class MediaLibraryAPI {
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this Asset. 
      - parameter assetPartialUpdate: (body)  
+     - parameter root: (query)  (optional)
      - returns: RequestBuilder<Asset> 
      */
-    open class func patchAssetWithRequestBuilder(id: Int, assetPartialUpdate: AssetPartialUpdate) -> RequestBuilder<Asset> {
+    open class func patchAssetWithRequestBuilder(id: Int, assetPartialUpdate: AssetPartialUpdate, root: Int? = nil) -> RequestBuilder<Asset> {
         var localVariablePath = "/api/2/media/assets/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetPartialUpdate)
 
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "root": root?.encodeToJSON(),
+        ])
 
         let localVariableNillableHeaders: [String: Any?] = [
             :
@@ -5713,7 +6771,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Asset>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Asset>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5725,12 +6783,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<AssetRating>
      */
-    open class func patchAssetRating( id: Int,  assetRatingPartialUpdate: AssetRatingPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<AssetRating> {
+    open class func patchAssetRating( id: Int,  assetRatingPartialUpdate: AssetRatingPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<AssetRating> {
         let deferred = Promise<AssetRating>.pending()
-        patchAssetRatingWithRequestBuilder(id: id, assetRatingPartialUpdate: assetRatingPartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchAssetRatingWithRequestBuilder(id: id, assetRatingPartialUpdate: assetRatingPartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5753,7 +6811,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetRatingPartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5764,7 +6822,58 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AssetRating>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AssetRating>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this Asset subtitle file link. 
+     - parameter assetSubtitleLinkPartialUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<AssetSubtitleLink>
+     */
+    open class func patchAssetSubtitleLink( id: Int,  assetSubtitleLinkPartialUpdate: AssetSubtitleLinkPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<AssetSubtitleLink> {
+        let deferred = Promise<AssetSubtitleLink>.pending()
+        patchAssetSubtitleLinkWithRequestBuilder(id: id, assetSubtitleLinkPartialUpdate: assetSubtitleLinkPartialUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - PATCH /api/2/media/assets/subtitle-links/{id}
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this Asset subtitle file link. 
+     - parameter assetSubtitleLinkPartialUpdate: (body)  
+     - returns: RequestBuilder<AssetSubtitleLink> 
+     */
+    open class func patchAssetSubtitleLinkWithRequestBuilder(id: Int, assetSubtitleLinkPartialUpdate: AssetSubtitleLinkPartialUpdate) -> RequestBuilder<AssetSubtitleLink> {
+        var localVariablePath = "/api/2/media/assets/subtitle-links/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetSubtitleLinkPartialUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<AssetSubtitleLink>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5776,12 +6885,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Comment>
      */
-    open class func patchComment( id: Int,  commentPartialUpdate: CommentPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Comment> {
+    open class func patchComment( id: Int,  commentPartialUpdate: CommentPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Comment> {
         let deferred = Promise<Comment>.pending()
-        patchCommentWithRequestBuilder(id: id, commentPartialUpdate: commentPartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchCommentWithRequestBuilder(id: id, commentPartialUpdate: commentPartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5804,7 +6913,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: commentPartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5815,7 +6924,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Comment>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Comment>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5827,12 +6936,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<CustomField>
      */
-    open class func patchCustomField( id: Int,  customFieldPartialUpdate: CustomFieldPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<CustomField> {
+    open class func patchCustomField( id: Int,  customFieldPartialUpdate: CustomFieldPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<CustomField> {
         let deferred = Promise<CustomField>.pending()
-        patchCustomFieldWithRequestBuilder(id: id, customFieldPartialUpdate: customFieldPartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchCustomFieldWithRequestBuilder(id: id, customFieldPartialUpdate: customFieldPartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5855,7 +6964,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: customFieldPartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5866,7 +6975,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<CustomField>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CustomField>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5878,12 +6987,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<EditorProject>
      */
-    open class func patchEditorProject( id: Int,  editorProjectPartialUpdate: EditorProjectPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<EditorProject> {
+    open class func patchEditorProject( id: Int,  editorProjectPartialUpdate: EditorProjectPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<EditorProject> {
         let deferred = Promise<EditorProject>.pending()
-        patchEditorProjectWithRequestBuilder(id: id, editorProjectPartialUpdate: editorProjectPartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchEditorProjectWithRequestBuilder(id: id, editorProjectPartialUpdate: editorProjectPartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5906,7 +7015,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: editorProjectPartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5917,7 +7026,58 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<EditorProject>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<EditorProject>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this File. 
+     - parameter editorSubtitlePartialUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<EditorSubtitle>
+     */
+    open class func patchEditorSubtitle( id: Int,  editorSubtitlePartialUpdate: EditorSubtitlePartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<EditorSubtitle> {
+        let deferred = Promise<EditorSubtitle>.pending()
+        patchEditorSubtitleWithRequestBuilder(id: id, editorSubtitlePartialUpdate: editorSubtitlePartialUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - PATCH /api/2/media/subtitles/{id}
+     - ### Required permissions    * User account permission: `media:access` 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this File. 
+     - parameter editorSubtitlePartialUpdate: (body)  
+     - returns: RequestBuilder<EditorSubtitle> 
+     */
+    open class func patchEditorSubtitleWithRequestBuilder(id: Int, editorSubtitlePartialUpdate: EditorSubtitlePartialUpdate) -> RequestBuilder<EditorSubtitle> {
+        var localVariablePath = "/api/2/media/subtitles/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: editorSubtitlePartialUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EditorSubtitle>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5929,12 +7089,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ExternalTranscoder>
      */
-    open class func patchExternalTranscoder( id: Int,  externalTranscoderPartialUpdate: ExternalTranscoderPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ExternalTranscoder> {
+    open class func patchExternalTranscoder( id: Int,  externalTranscoderPartialUpdate: ExternalTranscoderPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ExternalTranscoder> {
         let deferred = Promise<ExternalTranscoder>.pending()
-        patchExternalTranscoderWithRequestBuilder(id: id, externalTranscoderPartialUpdate: externalTranscoderPartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchExternalTranscoderWithRequestBuilder(id: id, externalTranscoderPartialUpdate: externalTranscoderPartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -5957,7 +7117,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: externalTranscoderPartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -5968,7 +7128,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ExternalTranscoder>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ExternalTranscoder>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -5980,12 +7140,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Marker>
      */
-    open class func patchMarker( id: Int,  markerPartialUpdate: MarkerPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Marker> {
+    open class func patchMarker( id: Int,  markerPartialUpdate: MarkerPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Marker> {
         let deferred = Promise<Marker>.pending()
-        patchMarkerWithRequestBuilder(id: id, markerPartialUpdate: markerPartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchMarkerWithRequestBuilder(id: id, markerPartialUpdate: markerPartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6008,7 +7168,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: markerPartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6019,7 +7179,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Marker>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Marker>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6028,15 +7188,16 @@ open class MediaLibraryAPI {
 
      - parameter id: (path) A unique integer value identifying this File. 
      - parameter mediaFilePartialUpdate: (body)  
+     - parameter root: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaFile>
      */
-    open class func patchMediaFile( id: Int,  mediaFilePartialUpdate: MediaFilePartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaFile> {
+    open class func patchMediaFile( id: Int,  mediaFilePartialUpdate: MediaFilePartialUpdate,  root: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaFile> {
         let deferred = Promise<MediaFile>.pending()
-        patchMediaFileWithRequestBuilder(id: id, mediaFilePartialUpdate: mediaFilePartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchMediaFileWithRequestBuilder(id: id, mediaFilePartialUpdate: mediaFilePartialUpdate, root: root).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6052,17 +7213,21 @@ open class MediaLibraryAPI {
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this File. 
      - parameter mediaFilePartialUpdate: (body)  
+     - parameter root: (query)  (optional)
      - returns: RequestBuilder<MediaFile> 
      */
-    open class func patchMediaFileWithRequestBuilder(id: Int, mediaFilePartialUpdate: MediaFilePartialUpdate) -> RequestBuilder<MediaFile> {
+    open class func patchMediaFileWithRequestBuilder(id: Int, mediaFilePartialUpdate: MediaFilePartialUpdate, root: Int? = nil) -> RequestBuilder<MediaFile> {
         var localVariablePath = "/api/2/media/files/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaFilePartialUpdate)
 
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "root": root?.encodeToJSON(),
+        ])
 
         let localVariableNillableHeaders: [String: Any?] = [
             :
@@ -6070,7 +7235,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaFile>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaFile>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6082,12 +7247,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaFileTemplate>
      */
-    open class func patchMediaFileTemplate( id: Int,  mediaFileTemplatePartialUpdate: MediaFileTemplatePartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaFileTemplate> {
+    open class func patchMediaFileTemplate( id: Int,  mediaFileTemplatePartialUpdate: MediaFileTemplatePartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaFileTemplate> {
         let deferred = Promise<MediaFileTemplate>.pending()
-        patchMediaFileTemplateWithRequestBuilder(id: id, mediaFileTemplatePartialUpdate: mediaFileTemplatePartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchMediaFileTemplateWithRequestBuilder(id: id, mediaFileTemplatePartialUpdate: mediaFileTemplatePartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6110,7 +7275,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaFileTemplatePartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6121,7 +7286,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaFileTemplate>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaFileTemplate>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6129,16 +7294,16 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this media root. 
-     - parameter mediaRootPartialUpdate: (body)  
+     - parameter mediaRootDetailPartialUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<MediaRoot>
+     - returns: Promise<MediaRootDetail>
      */
-    open class func patchMediaRoot( id: Int,  mediaRootPartialUpdate: MediaRootPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaRoot> {
-        let deferred = Promise<MediaRoot>.pending()
-        patchMediaRootWithRequestBuilder(id: id, mediaRootPartialUpdate: mediaRootPartialUpdate).execute(apiResponseQueue) { result -> Void in
+    open class func patchMediaRoot( id: Int,  mediaRootDetailPartialUpdate: MediaRootDetailPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaRootDetail> {
+        let deferred = Promise<MediaRootDetail>.pending()
+        patchMediaRootWithRequestBuilder(id: id, mediaRootDetailPartialUpdate: mediaRootDetailPartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6153,16 +7318,16 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this media root. 
-     - parameter mediaRootPartialUpdate: (body)  
-     - returns: RequestBuilder<MediaRoot> 
+     - parameter mediaRootDetailPartialUpdate: (body)  
+     - returns: RequestBuilder<MediaRootDetail> 
      */
-    open class func patchMediaRootWithRequestBuilder(id: Int, mediaRootPartialUpdate: MediaRootPartialUpdate) -> RequestBuilder<MediaRoot> {
+    open class func patchMediaRootWithRequestBuilder(id: Int, mediaRootDetailPartialUpdate: MediaRootDetailPartialUpdate) -> RequestBuilder<MediaRootDetail> {
         var localVariablePath = "/api/2/media/roots/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaRootPartialUpdate)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaRootDetailPartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -6172,7 +7337,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaRoot>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaRootDetail>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6184,12 +7349,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaRootPermission>
      */
-    open class func patchMediaRootPermission( id: Int,  mediaRootPermissionPartialUpdate: MediaRootPermissionPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaRootPermission> {
+    open class func patchMediaRootPermission( id: Int,  mediaRootPermissionPartialUpdate: MediaRootPermissionPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaRootPermission> {
         let deferred = Promise<MediaRootPermission>.pending()
-        patchMediaRootPermissionWithRequestBuilder(id: id, mediaRootPermissionPartialUpdate: mediaRootPermissionPartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchMediaRootPermissionWithRequestBuilder(id: id, mediaRootPermissionPartialUpdate: mediaRootPermissionPartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6212,7 +7377,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaRootPermissionPartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6223,7 +7388,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaRootPermission>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaRootPermission>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6235,12 +7400,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<UnfilteredTag>
      */
-    open class func patchMediaTag( id: Int,  unfilteredTagPartialUpdate: UnfilteredTagPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<UnfilteredTag> {
+    open class func patchMediaTag( id: Int,  unfilteredTagPartialUpdate: UnfilteredTagPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<UnfilteredTag> {
         let deferred = Promise<UnfilteredTag>.pending()
-        patchMediaTagWithRequestBuilder(id: id, unfilteredTagPartialUpdate: unfilteredTagPartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchMediaTagWithRequestBuilder(id: id, unfilteredTagPartialUpdate: unfilteredTagPartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6263,7 +7428,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: unfilteredTagPartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6274,7 +7439,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<UnfilteredTag>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<UnfilteredTag>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6286,12 +7451,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ProxyProfile>
      */
-    open class func patchProxyProfile( id: Int,  proxyProfilePartialUpdate: ProxyProfilePartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ProxyProfile> {
+    open class func patchProxyProfile( id: Int,  proxyProfilePartialUpdate: ProxyProfilePartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ProxyProfile> {
         let deferred = Promise<ProxyProfile>.pending()
-        patchProxyProfileWithRequestBuilder(id: id, proxyProfilePartialUpdate: proxyProfilePartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchProxyProfileWithRequestBuilder(id: id, proxyProfilePartialUpdate: proxyProfilePartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6314,7 +7479,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: proxyProfilePartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6325,7 +7490,58 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ProxyProfile>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ProxyProfile>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this saved search. 
+     - parameter savedSearchPartialUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<SavedSearch>
+     */
+    open class func patchSavedSearch( id: Int,  savedSearchPartialUpdate: SavedSearchPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<SavedSearch> {
+        let deferred = Promise<SavedSearch>.pending()
+        patchSavedSearchWithRequestBuilder(id: id, savedSearchPartialUpdate: savedSearchPartialUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - PATCH /api/2/media/saved-searches/{id}
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this saved search. 
+     - parameter savedSearchPartialUpdate: (body)  
+     - returns: RequestBuilder<SavedSearch> 
+     */
+    open class func patchSavedSearchWithRequestBuilder(id: Int, savedSearchPartialUpdate: SavedSearchPartialUpdate) -> RequestBuilder<SavedSearch> {
+        var localVariablePath = "/api/2/media/saved-searches/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: savedSearchPartialUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SavedSearch>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6337,12 +7553,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Subclip>
      */
-    open class func patchSubclip( id: Int,  subclipPartialUpdate: SubclipPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Subclip> {
+    open class func patchSubclip( id: Int,  subclipPartialUpdate: SubclipPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Subclip> {
         let deferred = Promise<Subclip>.pending()
-        patchSubclipWithRequestBuilder(id: id, subclipPartialUpdate: subclipPartialUpdate).execute(apiResponseQueue) { result -> Void in
+        patchSubclipWithRequestBuilder(id: id, subclipPartialUpdate: subclipPartialUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6365,7 +7581,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: subclipPartialUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6376,7 +7592,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Subclip>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Subclip>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6388,9 +7604,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func recursivelyTagMediaDirectory( id: Int,  tagMediaDirectoryRequest: TagMediaDirectoryRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func recursivelyTagMediaDirectory( id: Int,  tagMediaDirectoryRequest: TagMediaDirectoryRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        recursivelyTagMediaDirectoryWithRequestBuilder(id: id, tagMediaDirectoryRequest: tagMediaDirectoryRequest).execute(apiResponseQueue) { result -> Void in
+        recursivelyTagMediaDirectoryWithRequestBuilder(id: id, tagMediaDirectoryRequest: tagMediaDirectoryRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -6416,7 +7632,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: tagMediaDirectoryRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6427,7 +7643,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6438,9 +7654,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func reindexMediaDirectory( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func reindexMediaDirectory( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        reindexMediaDirectoryWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        reindexMediaDirectoryWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -6465,7 +7681,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6476,7 +7692,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6488,12 +7704,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TaskInfo>
      */
-    open class func renameCustomField( id: Int,  renameCustomFieldRequest: RenameCustomFieldRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TaskInfo> {
+    open class func renameCustomField( id: Int,  renameCustomFieldRequest: RenameCustomFieldRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TaskInfo> {
         let deferred = Promise<TaskInfo>.pending()
-        renameCustomFieldWithRequestBuilder(id: id, renameCustomFieldRequest: renameCustomFieldRequest).execute(apiResponseQueue) { result -> Void in
+        renameCustomFieldWithRequestBuilder(id: id, renameCustomFieldRequest: renameCustomFieldRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6516,7 +7732,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: renameCustomFieldRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6527,7 +7743,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TaskInfo>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TaskInfo>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6538,12 +7754,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TaskInfo>
      */
-    open class func renderSequence( renderEndpointRequest: RenderEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TaskInfo> {
+    open class func renderSequence( renderEndpointRequest: RenderEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TaskInfo> {
         let deferred = Promise<TaskInfo>.pending()
-        renderSequenceWithRequestBuilder(renderEndpointRequest: renderEndpointRequest).execute(apiResponseQueue) { result -> Void in
+        renderSequenceWithRequestBuilder(renderEndpointRequest: renderEndpointRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6562,7 +7778,7 @@ open class MediaLibraryAPI {
      */
     open class func renderSequenceWithRequestBuilder(renderEndpointRequest: RenderEndpointRequest) -> RequestBuilder<TaskInfo> {
         let localVariablePath = "/api/2/media/editor/render"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: renderEndpointRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6573,7 +7789,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TaskInfo>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TaskInfo>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6585,12 +7801,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TaskInfo>
      */
-    open class func renderSubclip( id: Int,  renderRequest: RenderRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TaskInfo> {
+    open class func renderSubclip( id: Int,  renderRequest: RenderRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TaskInfo> {
         let deferred = Promise<TaskInfo>.pending()
-        renderSubclipWithRequestBuilder(id: id, renderRequest: renderRequest).execute(apiResponseQueue) { result -> Void in
+        renderSubclipWithRequestBuilder(id: id, renderRequest: renderRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6613,7 +7829,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: renderRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6624,7 +7840,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TaskInfo>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TaskInfo>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6635,9 +7851,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func requestMediaScan( scannerScanEndpointRequest: ScannerScanEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func requestMediaScan( scannerScanEndpointRequest: ScannerScanEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        requestMediaScanWithRequestBuilder(scannerScanEndpointRequest: scannerScanEndpointRequest).execute(apiResponseQueue) { result -> Void in
+        requestMediaScanWithRequestBuilder(scannerScanEndpointRequest: scannerScanEndpointRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -6659,7 +7875,7 @@ open class MediaLibraryAPI {
      */
     open class func requestMediaScanWithRequestBuilder(scannerScanEndpointRequest: ScannerScanEndpointRequest) -> RequestBuilder<Void> {
         let localVariablePath = "/api/2/scanner/scan"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: scannerScanEndpointRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6670,7 +7886,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6681,12 +7897,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Comment>
      */
-    open class func resolveComment( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Comment> {
+    open class func resolveComment( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Comment> {
         let deferred = Promise<Comment>.pending()
-        resolveCommentWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        resolveCommentWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6708,7 +7924,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6719,7 +7935,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Comment>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Comment>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6730,12 +7946,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<OneTimeAccessToken>
      */
-    open class func shareMediaLibraryObjects( mediaLibraryShareRequest: MediaLibraryShareRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<OneTimeAccessToken> {
+    open class func shareMediaLibraryObjects( mediaLibraryShareRequest: MediaLibraryShareRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<OneTimeAccessToken> {
         let deferred = Promise<OneTimeAccessToken>.pending()
-        shareMediaLibraryObjectsWithRequestBuilder(mediaLibraryShareRequest: mediaLibraryShareRequest).execute(apiResponseQueue) { result -> Void in
+        shareMediaLibraryObjectsWithRequestBuilder(mediaLibraryShareRequest: mediaLibraryShareRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6754,7 +7970,7 @@ open class MediaLibraryAPI {
      */
     open class func shareMediaLibraryObjectsWithRequestBuilder(mediaLibraryShareRequest: MediaLibraryShareRequest) -> RequestBuilder<OneTimeAccessToken> {
         let localVariablePath = "/api/2/media/share"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaLibraryShareRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6765,7 +7981,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<OneTimeAccessToken>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<OneTimeAccessToken>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6776,12 +7992,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TestExternalTranscoderConnectionResponse>
      */
-    open class func testExternalTranscoderConnection( testExternalTranscoderConnectionRequest: TestExternalTranscoderConnectionRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TestExternalTranscoderConnectionResponse> {
+    open class func testExternalTranscoderConnection( testExternalTranscoderConnectionRequest: TestExternalTranscoderConnectionRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TestExternalTranscoderConnectionResponse> {
         let deferred = Promise<TestExternalTranscoderConnectionResponse>.pending()
-        testExternalTranscoderConnectionWithRequestBuilder(testExternalTranscoderConnectionRequest: testExternalTranscoderConnectionRequest).execute(apiResponseQueue) { result -> Void in
+        testExternalTranscoderConnectionWithRequestBuilder(testExternalTranscoderConnectionRequest: testExternalTranscoderConnectionRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6800,7 +8016,7 @@ open class MediaLibraryAPI {
      */
     open class func testExternalTranscoderConnectionWithRequestBuilder(testExternalTranscoderConnectionRequest: TestExternalTranscoderConnectionRequest) -> RequestBuilder<TestExternalTranscoderConnectionResponse> {
         let localVariablePath = "/api/2/media/external-transcoders/test-connection"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: testExternalTranscoderConnectionRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6811,7 +8027,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TestExternalTranscoderConnectionResponse>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TestExternalTranscoderConnectionResponse>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6822,12 +8038,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<WorkflowTransitionResponse>
      */
-    open class func transitionWorkflow( workflowTransitionRequest: WorkflowTransitionRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<WorkflowTransitionResponse> {
+    open class func transitionWorkflow( workflowTransitionRequest: WorkflowTransitionRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<WorkflowTransitionResponse> {
         let deferred = Promise<WorkflowTransitionResponse>.pending()
-        transitionWorkflowWithRequestBuilder(workflowTransitionRequest: workflowTransitionRequest).execute(apiResponseQueue) { result -> Void in
+        transitionWorkflowWithRequestBuilder(workflowTransitionRequest: workflowTransitionRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6846,7 +8062,7 @@ open class MediaLibraryAPI {
      */
     open class func transitionWorkflowWithRequestBuilder(workflowTransitionRequest: WorkflowTransitionRequest) -> RequestBuilder<WorkflowTransitionResponse> {
         let localVariablePath = "/api/2/media/workflow/transition"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: workflowTransitionRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6857,7 +8073,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<WorkflowTransitionResponse>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<WorkflowTransitionResponse>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6868,9 +8084,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func unbookmarkMediaDirectory( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func unbookmarkMediaDirectory( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        unbookmarkMediaDirectoryWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        unbookmarkMediaDirectoryWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -6895,7 +8111,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6906,7 +8122,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6917,9 +8133,9 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func unmarkMediaDirectoryAsShowroom( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func unmarkMediaDirectoryAsShowroom( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        unmarkMediaDirectoryAsShowroomWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        unmarkMediaDirectoryAsShowroomWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -6944,7 +8160,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -6955,7 +8171,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -6966,12 +8182,12 @@ open class MediaLibraryAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Comment>
      */
-    open class func unresolveComment( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Comment> {
+    open class func unresolveComment( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Comment> {
         let deferred = Promise<Comment>.pending()
-        unresolveCommentWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        unresolveCommentWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -6993,7 +8209,7 @@ open class MediaLibraryAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -7004,7 +8220,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Comment>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Comment>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -7012,16 +8228,17 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this Asset. 
-     - parameter asset: (body)  
+     - parameter assetUpdate: (body)  
+     - parameter root: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Asset>
      */
-    open class func updateAsset( id: Int,  asset: Asset, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Asset> {
+    open class func updateAsset( id: Int,  assetUpdate: AssetUpdate,  root: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Asset> {
         let deferred = Promise<Asset>.pending()
-        updateAssetWithRequestBuilder(id: id, asset: asset).execute(apiResponseQueue) { result -> Void in
+        updateAssetWithRequestBuilder(id: id, assetUpdate: assetUpdate, root: root).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -7036,18 +8253,22 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this Asset. 
-     - parameter asset: (body)  
+     - parameter assetUpdate: (body)  
+     - parameter root: (query)  (optional)
      - returns: RequestBuilder<Asset> 
      */
-    open class func updateAssetWithRequestBuilder(id: Int, asset: Asset) -> RequestBuilder<Asset> {
+    open class func updateAssetWithRequestBuilder(id: Int, assetUpdate: AssetUpdate, root: Int? = nil) -> RequestBuilder<Asset> {
         var localVariablePath = "/api/2/media/assets/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: asset)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetUpdate)
 
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "root": root?.encodeToJSON(),
+        ])
 
         let localVariableNillableHeaders: [String: Any?] = [
             :
@@ -7055,7 +8276,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Asset>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Asset>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -7063,16 +8284,16 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this Rating. 
-     - parameter assetRating: (body)  
+     - parameter assetRatingUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<AssetRating>
      */
-    open class func updateAssetRating( id: Int,  assetRating: AssetRating, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<AssetRating> {
+    open class func updateAssetRating( id: Int,  assetRatingUpdate: AssetRatingUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<AssetRating> {
         let deferred = Promise<AssetRating>.pending()
-        updateAssetRatingWithRequestBuilder(id: id, assetRating: assetRating).execute(apiResponseQueue) { result -> Void in
+        updateAssetRatingWithRequestBuilder(id: id, assetRatingUpdate: assetRatingUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -7087,16 +8308,16 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this Rating. 
-     - parameter assetRating: (body)  
+     - parameter assetRatingUpdate: (body)  
      - returns: RequestBuilder<AssetRating> 
      */
-    open class func updateAssetRatingWithRequestBuilder(id: Int, assetRating: AssetRating) -> RequestBuilder<AssetRating> {
+    open class func updateAssetRatingWithRequestBuilder(id: Int, assetRatingUpdate: AssetRatingUpdate) -> RequestBuilder<AssetRating> {
         var localVariablePath = "/api/2/media/ratings/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetRating)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetRatingUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -7106,7 +8327,58 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AssetRating>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AssetRating>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this Asset subtitle file link. 
+     - parameter assetSubtitleLinkUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<AssetSubtitleLink>
+     */
+    open class func updateAssetSubtitleLink( id: Int,  assetSubtitleLinkUpdate: AssetSubtitleLinkUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<AssetSubtitleLink> {
+        let deferred = Promise<AssetSubtitleLink>.pending()
+        updateAssetSubtitleLinkWithRequestBuilder(id: id, assetSubtitleLinkUpdate: assetSubtitleLinkUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - PUT /api/2/media/assets/subtitle-links/{id}
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this Asset subtitle file link. 
+     - parameter assetSubtitleLinkUpdate: (body)  
+     - returns: RequestBuilder<AssetSubtitleLink> 
+     */
+    open class func updateAssetSubtitleLinkWithRequestBuilder(id: Int, assetSubtitleLinkUpdate: AssetSubtitleLinkUpdate) -> RequestBuilder<AssetSubtitleLink> {
+        var localVariablePath = "/api/2/media/assets/subtitle-links/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: assetSubtitleLinkUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<AssetSubtitleLink>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -7114,16 +8386,16 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this Comment. 
-     - parameter comment: (body)  
+     - parameter commentUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Comment>
      */
-    open class func updateComment( id: Int,  comment: Comment, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Comment> {
+    open class func updateComment( id: Int,  commentUpdate: CommentUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Comment> {
         let deferred = Promise<Comment>.pending()
-        updateCommentWithRequestBuilder(id: id, comment: comment).execute(apiResponseQueue) { result -> Void in
+        updateCommentWithRequestBuilder(id: id, commentUpdate: commentUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -7138,16 +8410,16 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this Comment. 
-     - parameter comment: (body)  
+     - parameter commentUpdate: (body)  
      - returns: RequestBuilder<Comment> 
      */
-    open class func updateCommentWithRequestBuilder(id: Int, comment: Comment) -> RequestBuilder<Comment> {
+    open class func updateCommentWithRequestBuilder(id: Int, commentUpdate: CommentUpdate) -> RequestBuilder<Comment> {
         var localVariablePath = "/api/2/media/comments/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: comment)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: commentUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -7157,7 +8429,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Comment>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Comment>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -7165,16 +8437,16 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this Custom field. 
-     - parameter customField: (body)  
+     - parameter customFieldUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<CustomField>
      */
-    open class func updateCustomField( id: Int,  customField: CustomField, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<CustomField> {
+    open class func updateCustomField( id: Int,  customFieldUpdate: CustomFieldUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<CustomField> {
         let deferred = Promise<CustomField>.pending()
-        updateCustomFieldWithRequestBuilder(id: id, customField: customField).execute(apiResponseQueue) { result -> Void in
+        updateCustomFieldWithRequestBuilder(id: id, customFieldUpdate: customFieldUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -7189,16 +8461,16 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this Custom field. 
-     - parameter customField: (body)  
+     - parameter customFieldUpdate: (body)  
      - returns: RequestBuilder<CustomField> 
      */
-    open class func updateCustomFieldWithRequestBuilder(id: Int, customField: CustomField) -> RequestBuilder<CustomField> {
+    open class func updateCustomFieldWithRequestBuilder(id: Int, customFieldUpdate: CustomFieldUpdate) -> RequestBuilder<CustomField> {
         var localVariablePath = "/api/2/media/custom-fields/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: customField)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: customFieldUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -7208,7 +8480,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<CustomField>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CustomField>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -7216,16 +8488,16 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this File. 
-     - parameter editorProject: (body)  
+     - parameter editorProjectUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<EditorProject>
      */
-    open class func updateEditorProject( id: Int,  editorProject: EditorProject, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<EditorProject> {
+    open class func updateEditorProject( id: Int,  editorProjectUpdate: EditorProjectUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<EditorProject> {
         let deferred = Promise<EditorProject>.pending()
-        updateEditorProjectWithRequestBuilder(id: id, editorProject: editorProject).execute(apiResponseQueue) { result -> Void in
+        updateEditorProjectWithRequestBuilder(id: id, editorProjectUpdate: editorProjectUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -7240,16 +8512,16 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this File. 
-     - parameter editorProject: (body)  
+     - parameter editorProjectUpdate: (body)  
      - returns: RequestBuilder<EditorProject> 
      */
-    open class func updateEditorProjectWithRequestBuilder(id: Int, editorProject: EditorProject) -> RequestBuilder<EditorProject> {
+    open class func updateEditorProjectWithRequestBuilder(id: Int, editorProjectUpdate: EditorProjectUpdate) -> RequestBuilder<EditorProject> {
         var localVariablePath = "/api/2/media/editor/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: editorProject)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: editorProjectUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -7259,7 +8531,58 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<EditorProject>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<EditorProject>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this File. 
+     - parameter editorSubtitleUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<EditorSubtitle>
+     */
+    open class func updateEditorSubtitle( id: Int,  editorSubtitleUpdate: EditorSubtitleUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<EditorSubtitle> {
+        let deferred = Promise<EditorSubtitle>.pending()
+        updateEditorSubtitleWithRequestBuilder(id: id, editorSubtitleUpdate: editorSubtitleUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - PUT /api/2/media/subtitles/{id}
+     - ### Required permissions    * User account permission: `media:access` 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this File. 
+     - parameter editorSubtitleUpdate: (body)  
+     - returns: RequestBuilder<EditorSubtitle> 
+     */
+    open class func updateEditorSubtitleWithRequestBuilder(id: Int, editorSubtitleUpdate: EditorSubtitleUpdate) -> RequestBuilder<EditorSubtitle> {
+        var localVariablePath = "/api/2/media/subtitles/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: editorSubtitleUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<EditorSubtitle>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -7267,16 +8590,16 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this external transcoder. 
-     - parameter externalTranscoder: (body)  
+     - parameter externalTranscoderUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ExternalTranscoder>
      */
-    open class func updateExternalTranscoder( id: Int,  externalTranscoder: ExternalTranscoder, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ExternalTranscoder> {
+    open class func updateExternalTranscoder( id: Int,  externalTranscoderUpdate: ExternalTranscoderUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ExternalTranscoder> {
         let deferred = Promise<ExternalTranscoder>.pending()
-        updateExternalTranscoderWithRequestBuilder(id: id, externalTranscoder: externalTranscoder).execute(apiResponseQueue) { result -> Void in
+        updateExternalTranscoderWithRequestBuilder(id: id, externalTranscoderUpdate: externalTranscoderUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -7291,16 +8614,16 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this external transcoder. 
-     - parameter externalTranscoder: (body)  
+     - parameter externalTranscoderUpdate: (body)  
      - returns: RequestBuilder<ExternalTranscoder> 
      */
-    open class func updateExternalTranscoderWithRequestBuilder(id: Int, externalTranscoder: ExternalTranscoder) -> RequestBuilder<ExternalTranscoder> {
+    open class func updateExternalTranscoderWithRequestBuilder(id: Int, externalTranscoderUpdate: ExternalTranscoderUpdate) -> RequestBuilder<ExternalTranscoder> {
         var localVariablePath = "/api/2/media/external-transcoders/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: externalTranscoder)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: externalTranscoderUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -7310,7 +8633,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ExternalTranscoder>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ExternalTranscoder>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -7318,16 +8641,16 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this marker. 
-     - parameter marker: (body)  
+     - parameter markerUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Marker>
      */
-    open class func updateMarker( id: Int,  marker: Marker, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Marker> {
+    open class func updateMarker( id: Int,  markerUpdate: MarkerUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Marker> {
         let deferred = Promise<Marker>.pending()
-        updateMarkerWithRequestBuilder(id: id, marker: marker).execute(apiResponseQueue) { result -> Void in
+        updateMarkerWithRequestBuilder(id: id, markerUpdate: markerUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -7342,16 +8665,16 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this marker. 
-     - parameter marker: (body)  
+     - parameter markerUpdate: (body)  
      - returns: RequestBuilder<Marker> 
      */
-    open class func updateMarkerWithRequestBuilder(id: Int, marker: Marker) -> RequestBuilder<Marker> {
+    open class func updateMarkerWithRequestBuilder(id: Int, markerUpdate: MarkerUpdate) -> RequestBuilder<Marker> {
         var localVariablePath = "/api/2/media/markers/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: marker)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: markerUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -7361,7 +8684,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Marker>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Marker>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -7369,16 +8692,17 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this File. 
-     - parameter mediaFile: (body)  
+     - parameter mediaFileUpdate: (body)  
+     - parameter root: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaFile>
      */
-    open class func updateMediaFile( id: Int,  mediaFile: MediaFile, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaFile> {
+    open class func updateMediaFile( id: Int,  mediaFileUpdate: MediaFileUpdate,  root: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaFile> {
         let deferred = Promise<MediaFile>.pending()
-        updateMediaFileWithRequestBuilder(id: id, mediaFile: mediaFile).execute(apiResponseQueue) { result -> Void in
+        updateMediaFileWithRequestBuilder(id: id, mediaFileUpdate: mediaFileUpdate, root: root).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -7393,18 +8717,22 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this File. 
-     - parameter mediaFile: (body)  
+     - parameter mediaFileUpdate: (body)  
+     - parameter root: (query)  (optional)
      - returns: RequestBuilder<MediaFile> 
      */
-    open class func updateMediaFileWithRequestBuilder(id: Int, mediaFile: MediaFile) -> RequestBuilder<MediaFile> {
+    open class func updateMediaFileWithRequestBuilder(id: Int, mediaFileUpdate: MediaFileUpdate, root: Int? = nil) -> RequestBuilder<MediaFile> {
         var localVariablePath = "/api/2/media/files/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaFile)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaFileUpdate)
 
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "root": root?.encodeToJSON(),
+        ])
 
         let localVariableNillableHeaders: [String: Any?] = [
             :
@@ -7412,7 +8740,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaFile>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaFile>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -7420,16 +8748,16 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this Template. 
-     - parameter mediaFileTemplate: (body)  
+     - parameter mediaFileTemplateUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaFileTemplate>
      */
-    open class func updateMediaFileTemplate( id: Int,  mediaFileTemplate: MediaFileTemplate, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaFileTemplate> {
+    open class func updateMediaFileTemplate( id: Int,  mediaFileTemplateUpdate: MediaFileTemplateUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaFileTemplate> {
         let deferred = Promise<MediaFileTemplate>.pending()
-        updateMediaFileTemplateWithRequestBuilder(id: id, mediaFileTemplate: mediaFileTemplate).execute(apiResponseQueue) { result -> Void in
+        updateMediaFileTemplateWithRequestBuilder(id: id, mediaFileTemplateUpdate: mediaFileTemplateUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -7444,16 +8772,16 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this Template. 
-     - parameter mediaFileTemplate: (body)  
+     - parameter mediaFileTemplateUpdate: (body)  
      - returns: RequestBuilder<MediaFileTemplate> 
      */
-    open class func updateMediaFileTemplateWithRequestBuilder(id: Int, mediaFileTemplate: MediaFileTemplate) -> RequestBuilder<MediaFileTemplate> {
+    open class func updateMediaFileTemplateWithRequestBuilder(id: Int, mediaFileTemplateUpdate: MediaFileTemplateUpdate) -> RequestBuilder<MediaFileTemplate> {
         var localVariablePath = "/api/2/media/files/templates/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaFileTemplate)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaFileTemplateUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -7463,7 +8791,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaFileTemplate>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaFileTemplate>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -7471,16 +8799,16 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this media root. 
-     - parameter mediaRoot: (body)  
+     - parameter mediaRootDetailUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<MediaRoot>
+     - returns: Promise<MediaRootDetail>
      */
-    open class func updateMediaRoot( id: Int,  mediaRoot: MediaRoot, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaRoot> {
-        let deferred = Promise<MediaRoot>.pending()
-        updateMediaRootWithRequestBuilder(id: id, mediaRoot: mediaRoot).execute(apiResponseQueue) { result -> Void in
+    open class func updateMediaRoot( id: Int,  mediaRootDetailUpdate: MediaRootDetailUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaRootDetail> {
+        let deferred = Promise<MediaRootDetail>.pending()
+        updateMediaRootWithRequestBuilder(id: id, mediaRootDetailUpdate: mediaRootDetailUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -7495,16 +8823,16 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this media root. 
-     - parameter mediaRoot: (body)  
-     - returns: RequestBuilder<MediaRoot> 
+     - parameter mediaRootDetailUpdate: (body)  
+     - returns: RequestBuilder<MediaRootDetail> 
      */
-    open class func updateMediaRootWithRequestBuilder(id: Int, mediaRoot: MediaRoot) -> RequestBuilder<MediaRoot> {
+    open class func updateMediaRootWithRequestBuilder(id: Int, mediaRootDetailUpdate: MediaRootDetailUpdate) -> RequestBuilder<MediaRootDetail> {
         var localVariablePath = "/api/2/media/roots/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaRoot)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaRootDetailUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -7514,7 +8842,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaRoot>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaRootDetail>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -7522,16 +8850,16 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this Media Root Permission. 
-     - parameter mediaRootPermission: (body)  
+     - parameter mediaRootPermissionUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<MediaRootPermission>
      */
-    open class func updateMediaRootPermission( id: Int,  mediaRootPermission: MediaRootPermission, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<MediaRootPermission> {
+    open class func updateMediaRootPermission( id: Int,  mediaRootPermissionUpdate: MediaRootPermissionUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<MediaRootPermission> {
         let deferred = Promise<MediaRootPermission>.pending()
-        updateMediaRootPermissionWithRequestBuilder(id: id, mediaRootPermission: mediaRootPermission).execute(apiResponseQueue) { result -> Void in
+        updateMediaRootPermissionWithRequestBuilder(id: id, mediaRootPermissionUpdate: mediaRootPermissionUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -7546,16 +8874,16 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this Media Root Permission. 
-     - parameter mediaRootPermission: (body)  
+     - parameter mediaRootPermissionUpdate: (body)  
      - returns: RequestBuilder<MediaRootPermission> 
      */
-    open class func updateMediaRootPermissionWithRequestBuilder(id: Int, mediaRootPermission: MediaRootPermission) -> RequestBuilder<MediaRootPermission> {
+    open class func updateMediaRootPermissionWithRequestBuilder(id: Int, mediaRootPermissionUpdate: MediaRootPermissionUpdate) -> RequestBuilder<MediaRootPermission> {
         var localVariablePath = "/api/2/media/root-permissions/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaRootPermission)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: mediaRootPermissionUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -7565,7 +8893,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<MediaRootPermission>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<MediaRootPermission>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -7573,16 +8901,16 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this Tag. 
-     - parameter unfilteredTag: (body)  
+     - parameter unfilteredTagUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<UnfilteredTag>
      */
-    open class func updateMediaTag( id: Int,  unfilteredTag: UnfilteredTag, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<UnfilteredTag> {
+    open class func updateMediaTag( id: Int,  unfilteredTagUpdate: UnfilteredTagUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<UnfilteredTag> {
         let deferred = Promise<UnfilteredTag>.pending()
-        updateMediaTagWithRequestBuilder(id: id, unfilteredTag: unfilteredTag).execute(apiResponseQueue) { result -> Void in
+        updateMediaTagWithRequestBuilder(id: id, unfilteredTagUpdate: unfilteredTagUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -7597,16 +8925,16 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this Tag. 
-     - parameter unfilteredTag: (body)  
+     - parameter unfilteredTagUpdate: (body)  
      - returns: RequestBuilder<UnfilteredTag> 
      */
-    open class func updateMediaTagWithRequestBuilder(id: Int, unfilteredTag: UnfilteredTag) -> RequestBuilder<UnfilteredTag> {
+    open class func updateMediaTagWithRequestBuilder(id: Int, unfilteredTagUpdate: UnfilteredTagUpdate) -> RequestBuilder<UnfilteredTag> {
         var localVariablePath = "/api/2/media/tags/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: unfilteredTag)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: unfilteredTagUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -7616,7 +8944,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<UnfilteredTag>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<UnfilteredTag>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -7624,16 +8952,16 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this proxy profile. 
-     - parameter proxyProfile: (body)  
+     - parameter proxyProfileUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ProxyProfile>
      */
-    open class func updateProxyProfile( id: Int,  proxyProfile: ProxyProfile, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ProxyProfile> {
+    open class func updateProxyProfile( id: Int,  proxyProfileUpdate: ProxyProfileUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ProxyProfile> {
         let deferred = Promise<ProxyProfile>.pending()
-        updateProxyProfileWithRequestBuilder(id: id, proxyProfile: proxyProfile).execute(apiResponseQueue) { result -> Void in
+        updateProxyProfileWithRequestBuilder(id: id, proxyProfileUpdate: proxyProfileUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -7648,16 +8976,16 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this proxy profile. 
-     - parameter proxyProfile: (body)  
+     - parameter proxyProfileUpdate: (body)  
      - returns: RequestBuilder<ProxyProfile> 
      */
-    open class func updateProxyProfileWithRequestBuilder(id: Int, proxyProfile: ProxyProfile) -> RequestBuilder<ProxyProfile> {
+    open class func updateProxyProfileWithRequestBuilder(id: Int, proxyProfileUpdate: ProxyProfileUpdate) -> RequestBuilder<ProxyProfile> {
         var localVariablePath = "/api/2/media/proxy-profiles/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: proxyProfile)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: proxyProfileUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -7667,7 +8995,58 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ProxyProfile>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ProxyProfile>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this saved search. 
+     - parameter savedSearchUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<SavedSearch>
+     */
+    open class func updateSavedSearch( id: Int,  savedSearchUpdate: SavedSearchUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<SavedSearch> {
+        let deferred = Promise<SavedSearch>.pending()
+        updateSavedSearchWithRequestBuilder(id: id, savedSearchUpdate: savedSearchUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - PUT /api/2/media/saved-searches/{id}
+     - ### Required permissions    * User account permission: `media:access`   * License component: media 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this saved search. 
+     - parameter savedSearchUpdate: (body)  
+     - returns: RequestBuilder<SavedSearch> 
+     */
+    open class func updateSavedSearchWithRequestBuilder(id: Int, savedSearchUpdate: SavedSearchUpdate) -> RequestBuilder<SavedSearch> {
+        var localVariablePath = "/api/2/media/saved-searches/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: savedSearchUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SavedSearch>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -7675,16 +9054,16 @@ open class MediaLibraryAPI {
     /**
 
      - parameter id: (path) A unique integer value identifying this subclip. 
-     - parameter subclip: (body)  
+     - parameter subclipUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Subclip>
      */
-    open class func updateSubclip( id: Int,  subclip: Subclip, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Subclip> {
+    open class func updateSubclip( id: Int,  subclipUpdate: SubclipUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Subclip> {
         let deferred = Promise<Subclip>.pending()
-        updateSubclipWithRequestBuilder(id: id, subclip: subclip).execute(apiResponseQueue) { result -> Void in
+        updateSubclipWithRequestBuilder(id: id, subclipUpdate: subclipUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -7699,16 +9078,16 @@ open class MediaLibraryAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter id: (path) A unique integer value identifying this subclip. 
-     - parameter subclip: (body)  
+     - parameter subclipUpdate: (body)  
      - returns: RequestBuilder<Subclip> 
      */
-    open class func updateSubclipWithRequestBuilder(id: Int, subclip: Subclip) -> RequestBuilder<Subclip> {
+    open class func updateSubclipWithRequestBuilder(id: Int, subclipUpdate: SubclipUpdate) -> RequestBuilder<Subclip> {
         var localVariablePath = "/api/2/media/subclips/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: subclip)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: subclipUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -7718,7 +9097,7 @@ open class MediaLibraryAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Subclip>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Subclip>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }

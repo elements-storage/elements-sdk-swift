@@ -10,27 +10,27 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct OneTimeAccessToken: Codable, Hashable {
+public struct OneTimeAccessToken: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var activity: [OneTimeAccessTokenActivity]?
+    public var id: Int
+    public var activity: [OneTimeAccessTokenActivity]
     public var user: ElementsUserMiniReference
-    public var createdBy: ElementsUserMini?
+    public var createdBy: ElementsUserMini
     public var mediaRootPermissions: String?
-    public var sharedBundles: [OneTimeAccessTokenSharedObject]?
-    public var sharedDirectories: [OneTimeAccessTokenSharedObject]?
-    public var fullUrl: String?
+    public var sharedBundles: [OneTimeAccessTokenSharedObject]
+    public var sharedDirectories: [OneTimeAccessTokenSharedObject]
+    public var fullUrl: String
     public var url: String
     public var token: String
-    public var createdAt: Date?
+    public var createdAt: Date
     public var viewLimitEnabled: Bool?
     public var viewLimitLeft: Int?
     public var expires: Date?
     public var requireLogin: Bool?
-    public var isEasySharingForBundle: Int?
-    public var isEasySharingForDirectory: Int?
+    public var isEasySharingForBundle: Int
+    public var isEasySharingForDirectory: Int
 
-    public init(id: Int? = nil, activity: [OneTimeAccessTokenActivity]? = nil, user: ElementsUserMiniReference, createdBy: ElementsUserMini? = nil, mediaRootPermissions: String? = nil, sharedBundles: [OneTimeAccessTokenSharedObject]? = nil, sharedDirectories: [OneTimeAccessTokenSharedObject]? = nil, fullUrl: String? = nil, url: String, token: String, createdAt: Date? = nil, viewLimitEnabled: Bool? = nil, viewLimitLeft: Int? = nil, expires: Date? = nil, requireLogin: Bool? = nil, isEasySharingForBundle: Int? = nil, isEasySharingForDirectory: Int? = nil) {
+    public init(id: Int, activity: [OneTimeAccessTokenActivity], user: ElementsUserMiniReference, createdBy: ElementsUserMini, mediaRootPermissions: String? = nil, sharedBundles: [OneTimeAccessTokenSharedObject], sharedDirectories: [OneTimeAccessTokenSharedObject], fullUrl: String, url: String, token: String, createdAt: Date, viewLimitEnabled: Bool? = nil, viewLimitLeft: Int? = nil, expires: Date? = nil, requireLogin: Bool? = nil, isEasySharingForBundle: Int, isEasySharingForDirectory: Int) {
         self.id = id
         self.activity = activity
         self.user = user
@@ -74,23 +74,23 @@ public struct OneTimeAccessToken: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(activity, forKey: .activity)
+        try container.encode(id, forKey: .id)
+        try container.encode(activity, forKey: .activity)
         try container.encode(user, forKey: .user)
-        try container.encodeIfPresent(createdBy, forKey: .createdBy)
+        try container.encode(createdBy, forKey: .createdBy)
         try container.encodeIfPresent(mediaRootPermissions, forKey: .mediaRootPermissions)
-        try container.encodeIfPresent(sharedBundles, forKey: .sharedBundles)
-        try container.encodeIfPresent(sharedDirectories, forKey: .sharedDirectories)
-        try container.encodeIfPresent(fullUrl, forKey: .fullUrl)
+        try container.encode(sharedBundles, forKey: .sharedBundles)
+        try container.encode(sharedDirectories, forKey: .sharedDirectories)
+        try container.encode(fullUrl, forKey: .fullUrl)
         try container.encode(url, forKey: .url)
         try container.encode(token, forKey: .token)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
+        try container.encode(createdAt, forKey: .createdAt)
         try container.encodeIfPresent(viewLimitEnabled, forKey: .viewLimitEnabled)
         try container.encodeIfPresent(viewLimitLeft, forKey: .viewLimitLeft)
         try container.encodeIfPresent(expires, forKey: .expires)
         try container.encodeIfPresent(requireLogin, forKey: .requireLogin)
-        try container.encodeIfPresent(isEasySharingForBundle, forKey: .isEasySharingForBundle)
-        try container.encodeIfPresent(isEasySharingForDirectory, forKey: .isEasySharingForDirectory)
+        try container.encode(isEasySharingForBundle, forKey: .isEasySharingForBundle)
+        try container.encode(isEasySharingForDirectory, forKey: .isEasySharingForDirectory)
     }
 }
 

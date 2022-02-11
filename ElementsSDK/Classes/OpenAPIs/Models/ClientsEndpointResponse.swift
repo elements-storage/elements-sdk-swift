@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ClientsEndpointResponse: Codable, Hashable {
+public struct ClientsEndpointResponse: Codable, JSONEncodable, Hashable {
 
     public var version: String
     public var fullVersion: String

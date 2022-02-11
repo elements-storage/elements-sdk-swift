@@ -4,17 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
-**asset** | [**AssetMini**](AssetMini.md) |  | [optional] 
-**comment** | [**Comment**](Comment.md) |  | [optional] 
-**directory** | [**MediaFile**](MediaFile.md) |  | [optional] 
-**root** | [**MediaRootMini**](MediaRootMini.md) |  | [optional] 
-**user** | [**ElementsUserMini**](ElementsUserMini.md) |  | [optional] 
+**id** | **Int** |  | 
+**asset** | [**AssetMini**](AssetMini.md) |  | 
+**comment** | [**Comment**](Comment.md) |  | 
+**directory** | [**MediaFile**](MediaFile.md) |  | 
+**root** | [**MediaRootMini**](MediaRootMini.md) |  | 
+**user** | [**ElementsUserMini**](ElementsUserMini.md) |  | 
 **customFieldsDiff** | **[String: String]** |  | 
-**addedTags** | [UnfilteredTag] |  | [optional] [readonly] 
-**removedTags** | [UnfilteredTag] |  | [optional] [readonly] 
+**addedTags** | [UnfilteredTag] |  | [readonly] 
+**removedTags** | [UnfilteredTag] |  | [readonly] 
 **type** | **String** |  | 
-**date** | **Date** |  | [optional] [readonly] 
+**date** | **Date** |  | [readonly] 
 **rating** | **Int** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

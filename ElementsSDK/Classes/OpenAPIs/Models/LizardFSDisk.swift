@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct LizardFSDisk: Codable, Hashable {
+public struct LizardFSDisk: Codable, JSONEncodable, Hashable {
 
     public var node: StorageNodeMini?
     public var host: String

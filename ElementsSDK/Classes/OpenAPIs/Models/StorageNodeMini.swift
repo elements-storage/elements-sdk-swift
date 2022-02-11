@@ -10,20 +10,20 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct StorageNodeMini: Codable, Hashable {
+public struct StorageNodeMini: Codable, JSONEncodable, Hashable {
 
     public enum ModelType: Int, Codable, CaseIterable {
         case _1 = 1
         case _2 = 2
         case _3 = 3
     }
-    public var id: Int?
+    public var id: Int
     public var name: String?
     /** For communication between nodes only */
     public var address: String?
     public var type: ModelType?
 
-    public init(id: Int? = nil, name: String? = nil, address: String? = nil, type: ModelType? = nil) {
+    public init(id: Int, name: String? = nil, address: String? = nil, type: ModelType? = nil) {
         self.id = id
         self.name = name
         self.address = address
@@ -41,7 +41,7 @@ public struct StorageNodeMini: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(address, forKey: .address)
         try container.encodeIfPresent(type, forKey: .type)

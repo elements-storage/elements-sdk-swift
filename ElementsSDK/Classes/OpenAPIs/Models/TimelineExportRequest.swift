@@ -10,13 +10,13 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TimelineExportRequest: Codable, Hashable {
+public struct TimelineExportRequest: Codable, JSONEncodable, Hashable {
 
     public var project: AnyCodable
-    public var sequence: String
+    public var sequence: String?
     public var format: String
 
-    public init(project: AnyCodable, sequence: String, format: String) {
+    public init(project: AnyCodable, sequence: String? = nil, format: String) {
         self.project = project
         self.sequence = sequence
         self.format = format
@@ -33,7 +33,7 @@ public struct TimelineExportRequest: Codable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(project, forKey: .project)
-        try container.encode(sequence, forKey: .sequence)
+        try container.encodeIfPresent(sequence, forKey: .sequence)
         try container.encode(format, forKey: .format)
     }
 }

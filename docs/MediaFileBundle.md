@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **asset** | [**Asset**](Asset.md) |  | [optional] 
-**mainfile** | [**MediaFileMini**](MediaFileMini.md) |  | [optional] 
-**snmAttributes** | [**StornextManagerAttributes**](StornextManagerAttributes.md) |  | [optional] 
-**isShared** | **Bool** |  | [optional] [readonly] 
+**mainfile** | [**MediaFileMini**](MediaFileMini.md) |  | 
+**snmAttributes** | [**StornextManagerAttributes**](StornextManagerAttributes.md) |  | 
+**isShared** | **Bool** |  | [readonly] 
 **name** | **String** |  | 
 **location** | **Int** |  | 
-**sharedViaTokens** | **Set<Int>** |  | [optional] 
+**sharedViaTokens** | **[Int]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

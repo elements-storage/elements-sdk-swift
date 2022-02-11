@@ -57,7 +57,7 @@ Method | HTTP request | Description
 
 ### Required permissions    * User account permission: `tasks:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -96,21 +96,21 @@ Void (empty response body)
 
 # **createJob**
 ```swift
-    open class func createJob( job: Job) -> Promise<Job>
+    open class func createJob( jobUpdate: JobUpdate) -> Promise<Job>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let job = Job(id: 123, subtasks: [SubtaskReference(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123)], schedules: [ScheduleReference(id: 123, variables: "TODO", nextRun: Date(), type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123)], allowUsers: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], allowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123])], startable: false, variableDefinitions: ["TODO"], mediaRoots: [123], webhookUrl: "webhookUrl_example", specialType: 123, name: "name_example", enabled: false, allowOthersToStart: false, allowClientToStart: false, showAsButton: false, inputType: "inputType_example", hook: "hook_example", webhookSecret: "webhookSecret_example", securityContext: 123, partOfWorkflowFor: 123) // Job | 
+let jobUpdate = JobUpdate(subtasks: [SubtaskReference(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123)], schedules: [ScheduleReference(id: 123, variables: "TODO", nextRun: Date(), type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123)], allowUsers: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], allowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ldap: 123, members: [123])], variableDefinitions: ["TODO"], mediaRoots: [123], specialType: 123, name: "name_example", enabled: false, allowOthersToStart: false, allowClientToStart: false, showAsButton: false, inputType: "inputType_example", hook: "hook_example", webhookSecret: "webhookSecret_example", securityContext: 123, partOfWorkflowFor: 123) // JobUpdate | 
 
-AutomationAPI.createJob(job: job).then {
+AutomationAPI.createJob(jobUpdate: jobUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -123,7 +123,7 @@ AutomationAPI.createJob(job: job).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job** | [**Job**](Job.md) |  | 
+ **jobUpdate** | [**JobUpdate**](JobUpdate.md) |  | 
 
 ### Return type
 
@@ -142,21 +142,21 @@ Name | Type | Description  | Notes
 
 # **createSchedule**
 ```swift
-    open class func createSchedule( schedule: Schedule) -> Promise<Schedule>
+    open class func createSchedule( scheduleUpdate: ScheduleUpdate) -> Promise<Schedule>
 ```
 
 
 
 ### Required permissions    * User account permission: `tasks:view` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let schedule = Schedule(id: 123, variables: "TODO", nextRun: Date(), type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123) // Schedule | 
+let scheduleUpdate = ScheduleUpdate(variables: "TODO", type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123) // ScheduleUpdate | 
 
-AutomationAPI.createSchedule(schedule: schedule).then {
+AutomationAPI.createSchedule(scheduleUpdate: scheduleUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -169,7 +169,7 @@ AutomationAPI.createSchedule(schedule: schedule).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **schedule** | [**Schedule**](Schedule.md) |  | 
+ **scheduleUpdate** | [**ScheduleUpdate**](ScheduleUpdate.md) |  | 
 
 ### Return type
 
@@ -188,21 +188,21 @@ Name | Type | Description  | Notes
 
 # **createSubtask**
 ```swift
-    open class func createSubtask( subtask: Subtask) -> Promise<Subtask>
+    open class func createSubtask( subtaskUpdate: SubtaskUpdate) -> Promise<Subtask>
 ```
 
 
 
 ### Required permissions    * User account permission: `tasks:view` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let subtask = Subtask(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123) // Subtask | 
+let subtaskUpdate = SubtaskUpdate(kwargs: "TODO", graphLayout: "TODO", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123) // SubtaskUpdate | 
 
-AutomationAPI.createSubtask(subtask: subtask).then {
+AutomationAPI.createSubtask(subtaskUpdate: subtaskUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -215,7 +215,7 @@ AutomationAPI.createSubtask(subtask: subtask).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subtask** | [**Subtask**](Subtask.md) |  | 
+ **subtaskUpdate** | [**SubtaskUpdate**](SubtaskUpdate.md) |  | 
 
 ### Return type
 
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -283,7 +283,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -329,7 +329,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `tasks:view` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -375,7 +375,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `tasks:view` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -421,7 +421,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -460,21 +460,21 @@ Void (empty response body)
 
 # **downloadAllTaskLogs**
 ```swift
-    open class func downloadAllTaskLogs( jobInstance: String? = nil,  jobInstanceIn: String? = nil,  subtask: String? = nil,  state: String? = nil,  stateIn: Double? = nil,  id: String? = nil,  idIn: String? = nil,  name: String? = nil,  taskName: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<Void>
+    open class func downloadAllTaskLogs( jobInstance: String? = nil,  jobInstanceIn: String? = nil,  subtask: Double? = nil,  state: String? = nil,  stateIn: Double? = nil,  id: String? = nil,  idIn: String? = nil,  name: String? = nil,  taskName: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<Void>
 ```
 
 
 
 ### Required permissions    * User account permission: `tasks:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let jobInstance = "jobInstance_example" // String | Filter the returned list by `job_instance`. (optional)
 let jobInstanceIn = "jobInstanceIn_example" // String | Multiple values may be separated by commas. (optional)
-let subtask = "subtask_example" // String | Filter the returned list by `subtask`. (optional)
+let subtask = 987 // Double | Filter the returned list by `subtask`. (optional)
 let state = "state_example" // String | Filter the returned list by `state`. (optional)
 let stateIn = 987 // Double | Multiple values may be separated by commas. (optional)
 let id = "id_example" // String | Filter the returned list by `id`. (optional)
@@ -500,7 +500,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **jobInstance** | **String** | Filter the returned list by &#x60;job_instance&#x60;. | [optional] 
  **jobInstanceIn** | **String** | Multiple values may be separated by commas. | [optional] 
- **subtask** | **String** | Filter the returned list by &#x60;subtask&#x60;. | [optional] 
+ **subtask** | **Double** | Filter the returned list by &#x60;subtask&#x60;. | [optional] 
  **state** | **String** | Filter the returned list by &#x60;state&#x60;. | [optional] 
  **stateIn** | **Double** | Multiple values may be separated by commas. | [optional] 
  **id** | **String** | Filter the returned list by &#x60;id&#x60;. | [optional] 
@@ -535,7 +535,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `tasks:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -581,7 +581,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -620,14 +620,14 @@ Void (empty response body)
 
 # **getAllEvents**
 ```swift
-    open class func getAllEvents( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<InlineResponse2002>
+    open class func getAllEvents( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Event]>
 ```
 
 
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -655,7 +655,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**[Event]**](Event.md)
 
 ### Authorization
 
@@ -677,7 +677,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -728,19 +728,19 @@ Name | Type | Description  | Notes
 
 # **getAllSchedules**
 ```swift
-    open class func getAllSchedules( job: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Schedule]>
+    open class func getAllSchedules( job: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Schedule]>
 ```
 
 
 
 ### Required permissions    * User account permission: `tasks:view` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let job = "job_example" // String | Filter the returned list by `job`. (optional)
+let job = 987 // Double | Filter the returned list by `job`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -758,7 +758,7 @@ AutomationAPI.getAllSchedules(job: job, ordering: ordering, limit: limit, offset
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **job** | **String** | Filter the returned list by &#x60;job&#x60;. | [optional] 
+ **job** | **Double** | Filter the returned list by &#x60;job&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -780,19 +780,19 @@ Name | Type | Description  | Notes
 
 # **getAllSubtasks**
 ```swift
-    open class func getAllSubtasks( parent: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Subtask]>
+    open class func getAllSubtasks( parent: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Subtask]>
 ```
 
 
 
 ### Required permissions    * User account permission: `tasks:view` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let parent = "parent_example" // String | Filter the returned list by `parent`. (optional)
+let parent = 987 // Double | Filter the returned list by `parent`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -810,7 +810,7 @@ AutomationAPI.getAllSubtasks(parent: parent, ordering: ordering, limit: limit, o
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parent** | **String** | Filter the returned list by &#x60;parent&#x60;. | [optional] 
+ **parent** | **Double** | Filter the returned list by &#x60;parent&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -832,14 +832,14 @@ Name | Type | Description  | Notes
 
 # **getAllTaskQueues**
 ```swift
-    open class func getAllTaskQueues( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<InlineResponse2003>
+    open class func getAllTaskQueues( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Queue]>
 ```
 
 
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -867,7 +867,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**[Queue]**](Queue.md)
 
 ### Authorization
 
@@ -882,14 +882,14 @@ Name | Type | Description  | Notes
 
 # **getAllTaskTypes**
 ```swift
-    open class func getAllTaskTypes( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<InlineResponse2004>
+    open class func getAllTaskTypes( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[TaskType]>
 ```
 
 
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -917,7 +917,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**[TaskType]**](TaskType.md)
 
 ### Authorization
 
@@ -932,21 +932,21 @@ Name | Type | Description  | Notes
 
 # **getAllTasks**
 ```swift
-    open class func getAllTasks( jobInstance: String? = nil,  jobInstanceIn: String? = nil,  subtask: String? = nil,  state: String? = nil,  stateIn: Double? = nil,  id: String? = nil,  idIn: String? = nil,  name: String? = nil,  taskName: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[TaskInfo]>
+    open class func getAllTasks( jobInstance: String? = nil,  jobInstanceIn: String? = nil,  subtask: Double? = nil,  state: String? = nil,  stateIn: Double? = nil,  id: String? = nil,  idIn: String? = nil,  name: String? = nil,  taskName: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[TaskInfo]>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let jobInstance = "jobInstance_example" // String | Filter the returned list by `job_instance`. (optional)
 let jobInstanceIn = "jobInstanceIn_example" // String | Multiple values may be separated by commas. (optional)
-let subtask = "subtask_example" // String | Filter the returned list by `subtask`. (optional)
+let subtask = 987 // Double | Filter the returned list by `subtask`. (optional)
 let state = "state_example" // String | Filter the returned list by `state`. (optional)
 let stateIn = 987 // Double | Multiple values may be separated by commas. (optional)
 let id = "id_example" // String | Filter the returned list by `id`. (optional)
@@ -972,7 +972,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **jobInstance** | **String** | Filter the returned list by &#x60;job_instance&#x60;. | [optional] 
  **jobInstanceIn** | **String** | Multiple values may be separated by commas. | [optional] 
- **subtask** | **String** | Filter the returned list by &#x60;subtask&#x60;. | [optional] 
+ **subtask** | **Double** | Filter the returned list by &#x60;subtask&#x60;. | [optional] 
  **state** | **String** | Filter the returned list by &#x60;state&#x60;. | [optional] 
  **stateIn** | **Double** | Multiple values may be separated by commas. | [optional] 
  **id** | **String** | Filter the returned list by &#x60;id&#x60;. | [optional] 
@@ -1007,7 +1007,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1046,21 +1046,21 @@ Name | Type | Description  | Notes
 
 # **getFinishedTasks**
 ```swift
-    open class func getFinishedTasks( jobInstance: String? = nil,  jobInstanceIn: String? = nil,  subtask: String? = nil,  state: String? = nil,  stateIn: Double? = nil,  id: String? = nil,  idIn: String? = nil,  name: String? = nil,  taskName: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[TaskInfo]>
+    open class func getFinishedTasks( jobInstance: String? = nil,  jobInstanceIn: String? = nil,  subtask: Double? = nil,  state: String? = nil,  stateIn: Double? = nil,  id: String? = nil,  idIn: String? = nil,  name: String? = nil,  taskName: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[TaskInfo]>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let jobInstance = "jobInstance_example" // String | Filter the returned list by `job_instance`. (optional)
 let jobInstanceIn = "jobInstanceIn_example" // String | Multiple values may be separated by commas. (optional)
-let subtask = "subtask_example" // String | Filter the returned list by `subtask`. (optional)
+let subtask = 987 // Double | Filter the returned list by `subtask`. (optional)
 let state = "state_example" // String | Filter the returned list by `state`. (optional)
 let stateIn = 987 // Double | Multiple values may be separated by commas. (optional)
 let id = "id_example" // String | Filter the returned list by `id`. (optional)
@@ -1086,7 +1086,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **jobInstance** | **String** | Filter the returned list by &#x60;job_instance&#x60;. | [optional] 
  **jobInstanceIn** | **String** | Multiple values may be separated by commas. | [optional] 
- **subtask** | **String** | Filter the returned list by &#x60;subtask&#x60;. | [optional] 
+ **subtask** | **Double** | Filter the returned list by &#x60;subtask&#x60;. | [optional] 
  **state** | **String** | Filter the returned list by &#x60;state&#x60;. | [optional] 
  **stateIn** | **Double** | Multiple values may be separated by commas. | [optional] 
  **id** | **String** | Filter the returned list by &#x60;id&#x60;. | [optional] 
@@ -1121,7 +1121,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1160,21 +1160,21 @@ Name | Type | Description  | Notes
 
 # **getPendingTasks**
 ```swift
-    open class func getPendingTasks( jobInstance: String? = nil,  jobInstanceIn: String? = nil,  subtask: String? = nil,  state: String? = nil,  stateIn: Double? = nil,  id: String? = nil,  idIn: String? = nil,  name: String? = nil,  taskName: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[TaskInfo]>
+    open class func getPendingTasks( jobInstance: String? = nil,  jobInstanceIn: String? = nil,  subtask: Double? = nil,  state: String? = nil,  stateIn: Double? = nil,  id: String? = nil,  idIn: String? = nil,  name: String? = nil,  taskName: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[TaskInfo]>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let jobInstance = "jobInstance_example" // String | Filter the returned list by `job_instance`. (optional)
 let jobInstanceIn = "jobInstanceIn_example" // String | Multiple values may be separated by commas. (optional)
-let subtask = "subtask_example" // String | Filter the returned list by `subtask`. (optional)
+let subtask = 987 // Double | Filter the returned list by `subtask`. (optional)
 let state = "state_example" // String | Filter the returned list by `state`. (optional)
 let stateIn = 987 // Double | Multiple values may be separated by commas. (optional)
 let id = "id_example" // String | Filter the returned list by `id`. (optional)
@@ -1200,7 +1200,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **jobInstance** | **String** | Filter the returned list by &#x60;job_instance&#x60;. | [optional] 
  **jobInstanceIn** | **String** | Multiple values may be separated by commas. | [optional] 
- **subtask** | **String** | Filter the returned list by &#x60;subtask&#x60;. | [optional] 
+ **subtask** | **Double** | Filter the returned list by &#x60;subtask&#x60;. | [optional] 
  **state** | **String** | Filter the returned list by &#x60;state&#x60;. | [optional] 
  **stateIn** | **Double** | Multiple values may be separated by commas. | [optional] 
  **id** | **String** | Filter the returned list by &#x60;id&#x60;. | [optional] 
@@ -1235,7 +1235,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1277,7 +1277,7 @@ This endpoint does not need any parameter.
 
 ### Required permissions    * User account permission: `tasks:view` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1323,7 +1323,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:view` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1369,7 +1369,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1415,7 +1415,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1461,7 +1461,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1500,21 +1500,21 @@ Name | Type | Description  | Notes
 
 # **getTasksSummary**
 ```swift
-    open class func getTasksSummary( jobInstance: String? = nil,  jobInstanceIn: String? = nil,  subtask: String? = nil,  state: String? = nil,  stateIn: Double? = nil,  id: String? = nil,  idIn: String? = nil,  name: String? = nil,  taskName: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<TasksSummary>
+    open class func getTasksSummary( jobInstance: String? = nil,  jobInstanceIn: String? = nil,  subtask: Double? = nil,  state: String? = nil,  stateIn: Double? = nil,  id: String? = nil,  idIn: String? = nil,  name: String? = nil,  taskName: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<TasksSummary>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let jobInstance = "jobInstance_example" // String | Filter the returned list by `job_instance`. (optional)
 let jobInstanceIn = "jobInstanceIn_example" // String | Multiple values may be separated by commas. (optional)
-let subtask = "subtask_example" // String | Filter the returned list by `subtask`. (optional)
+let subtask = 987 // Double | Filter the returned list by `subtask`. (optional)
 let state = "state_example" // String | Filter the returned list by `state`. (optional)
 let stateIn = 987 // Double | Multiple values may be separated by commas. (optional)
 let id = "id_example" // String | Filter the returned list by `id`. (optional)
@@ -1540,7 +1540,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **jobInstance** | **String** | Filter the returned list by &#x60;job_instance&#x60;. | [optional] 
  **jobInstanceIn** | **String** | Multiple values may be separated by commas. | [optional] 
- **subtask** | **String** | Filter the returned list by &#x60;subtask&#x60;. | [optional] 
+ **subtask** | **Double** | Filter the returned list by &#x60;subtask&#x60;. | [optional] 
  **state** | **String** | Filter the returned list by &#x60;state&#x60;. | [optional] 
  **stateIn** | **Double** | Multiple values may be separated by commas. | [optional] 
  **id** | **String** | Filter the returned list by &#x60;id&#x60;. | [optional] 
@@ -1575,7 +1575,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1621,7 +1621,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1663,7 +1663,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `tasks:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1709,13 +1709,13 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this job.
-let jobPartialUpdate = JobPartialUpdate(subtasks: [SubtaskReference(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123)], schedules: [ScheduleReference(id: 123, variables: "TODO", nextRun: Date(), type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123)], allowUsers: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], allowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123])], variableDefinitions: ["TODO"], mediaRoots: [123], specialType: 123, name: "name_example", enabled: false, allowOthersToStart: false, allowClientToStart: false, showAsButton: false, inputType: "inputType_example", hook: "hook_example", webhookSecret: "webhookSecret_example", securityContext: 123, partOfWorkflowFor: 123) // JobPartialUpdate | 
+let jobPartialUpdate = JobPartialUpdate(subtasks: [SubtaskReference(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123)], schedules: [ScheduleReference(id: 123, variables: "TODO", nextRun: Date(), type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123)], allowUsers: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], allowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ldap: 123, members: [123])], variableDefinitions: ["TODO"], mediaRoots: [123], specialType: 123, name: "name_example", enabled: false, allowOthersToStart: false, allowClientToStart: false, showAsButton: false, inputType: "inputType_example", hook: "hook_example", webhookSecret: "webhookSecret_example", securityContext: 123, partOfWorkflowFor: 123) // JobPartialUpdate | 
 
 AutomationAPI.patchJob(id: id, jobPartialUpdate: jobPartialUpdate).then {
          // when the promise is fulfilled
@@ -1757,7 +1757,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:view` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1805,7 +1805,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:view` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1853,7 +1853,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1897,7 +1897,7 @@ Name | Type | Description  | Notes
 
 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1945,7 +1945,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:manage` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1984,22 +1984,22 @@ Name | Type | Description  | Notes
 
 # **updateJob**
 ```swift
-    open class func updateJob( id: Int,  job: Job) -> Promise<Job>
+    open class func updateJob( id: Int,  jobUpdate: JobUpdate) -> Promise<Job>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this job.
-let job = Job(id: 123, subtasks: [SubtaskReference(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123)], schedules: [ScheduleReference(id: 123, variables: "TODO", nextRun: Date(), type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123)], allowUsers: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], allowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123])], startable: false, variableDefinitions: ["TODO"], mediaRoots: [123], webhookUrl: "webhookUrl_example", specialType: 123, name: "name_example", enabled: false, allowOthersToStart: false, allowClientToStart: false, showAsButton: false, inputType: "inputType_example", hook: "hook_example", webhookSecret: "webhookSecret_example", securityContext: 123, partOfWorkflowFor: 123) // Job | 
+let jobUpdate = JobUpdate(subtasks: [SubtaskReference(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123)], schedules: [ScheduleReference(id: 123, variables: "TODO", nextRun: Date(), type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123)], allowUsers: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], allowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ldap: 123, members: [123])], variableDefinitions: ["TODO"], mediaRoots: [123], specialType: 123, name: "name_example", enabled: false, allowOthersToStart: false, allowClientToStart: false, showAsButton: false, inputType: "inputType_example", hook: "hook_example", webhookSecret: "webhookSecret_example", securityContext: 123, partOfWorkflowFor: 123) // JobUpdate | 
 
-AutomationAPI.updateJob(id: id, job: job).then {
+AutomationAPI.updateJob(id: id, jobUpdate: jobUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -2013,7 +2013,7 @@ AutomationAPI.updateJob(id: id, job: job).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this job. | 
- **job** | [**Job**](Job.md) |  | 
+ **jobUpdate** | [**JobUpdate**](JobUpdate.md) |  | 
 
 ### Return type
 
@@ -2032,22 +2032,22 @@ Name | Type | Description  | Notes
 
 # **updateSchedule**
 ```swift
-    open class func updateSchedule( id: Int,  schedule: Schedule) -> Promise<Schedule>
+    open class func updateSchedule( id: Int,  scheduleUpdate: ScheduleUpdate) -> Promise<Schedule>
 ```
 
 
 
 ### Required permissions    * User account permission: `tasks:view` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this schedule.
-let schedule = Schedule(id: 123, variables: "TODO", nextRun: Date(), type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123) // Schedule | 
+let scheduleUpdate = ScheduleUpdate(variables: "TODO", type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123) // ScheduleUpdate | 
 
-AutomationAPI.updateSchedule(id: id, schedule: schedule).then {
+AutomationAPI.updateSchedule(id: id, scheduleUpdate: scheduleUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -2061,7 +2061,7 @@ AutomationAPI.updateSchedule(id: id, schedule: schedule).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this schedule. | 
- **schedule** | [**Schedule**](Schedule.md) |  | 
+ **scheduleUpdate** | [**ScheduleUpdate**](ScheduleUpdate.md) |  | 
 
 ### Return type
 
@@ -2080,22 +2080,22 @@ Name | Type | Description  | Notes
 
 # **updateSubtask**
 ```swift
-    open class func updateSubtask( id: Int,  subtask: Subtask) -> Promise<Subtask>
+    open class func updateSubtask( id: Int,  subtaskUpdate: SubtaskUpdate) -> Promise<Subtask>
 ```
 
 
 
 ### Required permissions    * User account permission: `tasks:view` (read) / `tasks:manage` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this subtask.
-let subtask = Subtask(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123) // Subtask | 
+let subtaskUpdate = SubtaskUpdate(kwargs: "TODO", graphLayout: "TODO", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123) // SubtaskUpdate | 
 
-AutomationAPI.updateSubtask(id: id, subtask: subtask).then {
+AutomationAPI.updateSubtask(id: id, subtaskUpdate: subtaskUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -2109,7 +2109,7 @@ AutomationAPI.updateSubtask(id: id, subtask: subtask).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this subtask. | 
- **subtask** | [**Subtask**](Subtask.md) |  | 
+ **subtaskUpdate** | [**SubtaskUpdate**](SubtaskUpdate.md) |  | 
 
 ### Return type
 

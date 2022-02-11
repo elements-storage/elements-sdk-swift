@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct FileZipEndpointRequest: Codable, Hashable {
+public struct FileZipEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var input: [String]
     public var path: String

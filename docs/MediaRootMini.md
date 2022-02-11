@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **name** | **String** |  | 
-**fullPath** | **String** |  | [optional] [readonly] 
-**customFields** | Set<CustomFieldReference> |  | [optional] 
+**fullPath** | **String** |  | [readonly] 
+**customFields** | [CustomFieldReference] |  | [optional] 
 **volume** | [**VolumeMiniReference**](VolumeMiniReference.md) |  | 
-**path** | **String** |  | [optional] [readonly] 
+**path** | **String** |  | [optional] 
 **prefetchThumbnailStrips** | **Bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

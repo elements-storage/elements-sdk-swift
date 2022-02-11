@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ProxyCount: Codable, Hashable {
+public struct ProxyCount: Codable, JSONEncodable, Hashable {
 
     public var count: Int
 

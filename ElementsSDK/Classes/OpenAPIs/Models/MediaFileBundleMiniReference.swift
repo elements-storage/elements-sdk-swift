@@ -10,15 +10,15 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MediaFileBundleMiniReference: Codable, Hashable {
+public struct MediaFileBundleMiniReference: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var asset: Int?
     public var name: String?
     public var location: Int?
     public var mainfile: MediaFileMini?
 
-    public init(id: Int? = nil, asset: Int? = nil, name: String? = nil, location: Int? = nil, mainfile: MediaFileMini? = nil) {
+    public init(id: Int, asset: Int? = nil, name: String? = nil, location: Int? = nil, mainfile: MediaFileMini? = nil) {
         self.id = id
         self.asset = asset
         self.name = name
@@ -38,7 +38,7 @@ public struct MediaFileBundleMiniReference: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(asset, forKey: .asset)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(location, forKey: .location)

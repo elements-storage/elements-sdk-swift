@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
-**date** | **Date** |  | [optional] [readonly] 
+**id** | **Int** |  | 
+**date** | **Date** |  | [readonly] 
 **ip** | **String** |  | 
 **token** | **Int** |  | 
 

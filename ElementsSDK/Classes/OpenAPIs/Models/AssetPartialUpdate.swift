@@ -10,13 +10,13 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct AssetPartialUpdate: Codable, Hashable {
+public struct AssetPartialUpdate: Codable, JSONEncodable, Hashable {
 
     public var customFields: [String: String]?
-    public var tags: Set<Int>?
+    public var tags: [Int]?
     public var _set: Int?
 
-    public init(customFields: [String: String]? = nil, tags: Set<Int>? = nil, _set: Int? = nil) {
+    public init(customFields: [String: String]? = nil, tags: [Int]? = nil, _set: Int? = nil) {
         self.customFields = customFields
         self.tags = tags
         self._set = _set

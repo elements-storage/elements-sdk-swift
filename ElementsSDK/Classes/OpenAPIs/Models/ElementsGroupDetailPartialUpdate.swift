@@ -10,19 +10,17 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ElementsGroupDetailPartialUpdate: Codable, Hashable {
+public struct ElementsGroupDetailPartialUpdate: Codable, JSONEncodable, Hashable {
 
     public var permissions: [String]?
-    public var members: Set<ElementsUserReference>?
-    public var ldap: LDAPServerReference?
+    public var members: [ElementsUserReference]?
+    public var ldap: AnyOfLDAPServerReferenceAnyType?
     public var name: String?
     public var ldapDn: String?
     public var unixGroupname: String?
     public var gid: Int?
-    public var ancillaryPath: String?
-    public var ancillaryPathReadOnly: Bool?
 
-    public init(permissions: [String]? = nil, members: Set<ElementsUserReference>? = nil, ldap: LDAPServerReference? = nil, name: String? = nil, ldapDn: String? = nil, unixGroupname: String? = nil, gid: Int? = nil, ancillaryPath: String? = nil, ancillaryPathReadOnly: Bool? = nil) {
+    public init(permissions: [String]? = nil, members: [ElementsUserReference]? = nil, ldap: AnyOfLDAPServerReferenceAnyType? = nil, name: String? = nil, ldapDn: String? = nil, unixGroupname: String? = nil, gid: Int? = nil) {
         self.permissions = permissions
         self.members = members
         self.ldap = ldap
@@ -30,8 +28,6 @@ public struct ElementsGroupDetailPartialUpdate: Codable, Hashable {
         self.ldapDn = ldapDn
         self.unixGroupname = unixGroupname
         self.gid = gid
-        self.ancillaryPath = ancillaryPath
-        self.ancillaryPathReadOnly = ancillaryPathReadOnly
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -42,8 +38,6 @@ public struct ElementsGroupDetailPartialUpdate: Codable, Hashable {
         case ldapDn = "ldap_dn"
         case unixGroupname = "unix_groupname"
         case gid
-        case ancillaryPath = "ancillary_path"
-        case ancillaryPathReadOnly = "ancillary_path_read_only"
     }
 
     // Encodable protocol methods
@@ -57,8 +51,6 @@ public struct ElementsGroupDetailPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(ldapDn, forKey: .ldapDn)
         try container.encodeIfPresent(unixGroupname, forKey: .unixGroupname)
         try container.encodeIfPresent(gid, forKey: .gid)
-        try container.encodeIfPresent(ancillaryPath, forKey: .ancillaryPath)
-        try container.encodeIfPresent(ancillaryPathReadOnly, forKey: .ancillaryPathReadOnly)
     }
 }
 

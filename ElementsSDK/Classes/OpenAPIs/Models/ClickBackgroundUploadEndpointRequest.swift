@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ClickBackgroundUploadEndpointRequest: Codable, Hashable {
+public struct ClickBackgroundUploadEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var gallery: Int
     public var linksToSend: [Int]

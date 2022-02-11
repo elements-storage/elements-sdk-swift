@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ElementsUserProfilePartialUpdate: Codable, Hashable {
+public struct ElementsUserProfilePartialUpdate: Codable, JSONEncodable, Hashable {
 
     public enum Language: String, Codable, CaseIterable {
         case en = "en"

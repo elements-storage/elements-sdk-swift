@@ -4,9 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
-**rdcAllowUsers** | Set<ElementsUserReference> |  | [optional] 
-**rdcAllowGroups** | Set<ElementsGroupReference> |  | [optional] 
+**rdcAllowUsers** | [ElementsUserReference] |  | [optional] 
+**rdcAllowGroups** | [ElementsGroupReference] |  | [optional] 
 **report** | **[String: String]** |  | [optional] 
 **name** | **String** |  | [optional] 
 **hostname** | **String** |  | [optional] 

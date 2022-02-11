@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct AddAssetsToClickGallery: Codable, Hashable {
+public struct AddAssetsToClickGallery: Codable, JSONEncodable, Hashable {
 
     public var assets: [String]
 

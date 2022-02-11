@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TaskLog: Codable, Hashable {
+public struct TaskLog: Codable, JSONEncodable, Hashable {
 
     public var log: String
 

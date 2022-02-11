@@ -19,12 +19,12 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ElementsUserDetail>
      */
-    open class func checkAuthTicket( ticket: Ticket, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ElementsUserDetail> {
+    open class func checkAuthTicket( ticket: Ticket, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ElementsUserDetail> {
         let deferred = Promise<ElementsUserDetail>.pending()
-        checkAuthTicketWithRequestBuilder(ticket: ticket).execute(apiResponseQueue) { result -> Void in
+        checkAuthTicketWithRequestBuilder(ticket: ticket).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -43,7 +43,7 @@ open class AuthAPI {
      */
     open class func checkAuthTicketWithRequestBuilder(ticket: Ticket) -> RequestBuilder<ElementsUserDetail> {
         let localVariablePath = "/api/2/auth/ticket/check"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: ticket)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -54,7 +54,53 @@ open class AuthAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ElementsUserDetail>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ElementsUserDetail>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter aPITokenWithSecretUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<APITokenWithSecret>
+     */
+    open class func createAPIToken( aPITokenWithSecretUpdate: APITokenWithSecretUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<APITokenWithSecret> {
+        let deferred = Promise<APITokenWithSecret>.pending()
+        createAPITokenWithRequestBuilder(aPITokenWithSecretUpdate: aPITokenWithSecretUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - POST /api/2/api-tokens
+     - ### Required permissions    * Authenticated user 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter aPITokenWithSecretUpdate: (body)  
+     - returns: RequestBuilder<APITokenWithSecret> 
+     */
+    open class func createAPITokenWithRequestBuilder(aPITokenWithSecretUpdate: APITokenWithSecretUpdate) -> RequestBuilder<APITokenWithSecret> {
+        let localVariablePath = "/api/2/api-tokens"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: aPITokenWithSecretUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<APITokenWithSecret>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -64,12 +110,12 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Ticket>
      */
-    open class func createAuthTicket(apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Ticket> {
+    open class func createAuthTicket(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Ticket> {
         let deferred = Promise<Ticket>.pending()
-        createAuthTicketWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
+        createAuthTicketWithRequestBuilder().execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -87,7 +133,7 @@ open class AuthAPI {
      */
     open class func createAuthTicketWithRequestBuilder() -> RequestBuilder<Ticket> {
         let localVariablePath = "/api/2/auth/ticket"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -98,9 +144,104 @@ open class AuthAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Ticket>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Ticket>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter sAMLProviderUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<SAMLProvider>
+     */
+    open class func createSAMLProvider( sAMLProviderUpdate: SAMLProviderUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<SAMLProvider> {
+        let deferred = Promise<SAMLProvider>.pending()
+        createSAMLProviderWithRequestBuilder(sAMLProviderUpdate: sAMLProviderUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - POST /api/2/auth/saml
+     - ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter sAMLProviderUpdate: (body)  
+     - returns: RequestBuilder<SAMLProvider> 
+     */
+    open class func createSAMLProviderWithRequestBuilder(sAMLProviderUpdate: SAMLProviderUpdate) -> RequestBuilder<SAMLProvider> {
+        let localVariablePath = "/api/2/auth/saml"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: sAMLProviderUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SAMLProvider>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this api token. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    open class func deleteAPIToken( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+        let deferred = Promise<Void>.pending()
+        deleteAPITokenWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                deferred.resolver.fulfill(())
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - DELETE /api/2/api-tokens/{id}
+     - ### Required permissions    * Authenticated user 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this api token. 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func deleteAPITokenWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/2/api-tokens/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -109,9 +250,9 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteAccessToken( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteAccessToken( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteAccessTokenWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        deleteAccessTokenWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -136,7 +277,7 @@ open class AuthAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -147,7 +288,56 @@ open class AuthAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    open class func deleteSAMLProvider( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+        let deferred = Promise<Void>.pending()
+        deleteSAMLProviderWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                deferred.resolver.fulfill(())
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - DELETE /api/2/auth/saml/{id}
+     - ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func deleteSAMLProviderWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/2/auth/saml/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -157,12 +347,12 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<GeneratePasswordEndpointResponse>
      */
-    open class func generatePassword(apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<GeneratePasswordEndpointResponse> {
+    open class func generatePassword(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<GeneratePasswordEndpointResponse> {
         let deferred = Promise<GeneratePasswordEndpointResponse>.pending()
-        generatePasswordWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
+        generatePasswordWithRequestBuilder().execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -180,7 +370,7 @@ open class AuthAPI {
      */
     open class func generatePasswordWithRequestBuilder() -> RequestBuilder<GeneratePasswordEndpointResponse> {
         let localVariablePath = "/api/2/auth/generate-password"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -191,9 +381,58 @@ open class AuthAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<GeneratePasswordEndpointResponse>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<GeneratePasswordEndpointResponse>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this api token. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<APIToken>
+     */
+    open class func getAPIToken( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<APIToken> {
+        let deferred = Promise<APIToken>.pending()
+        getAPITokenWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/api-tokens/{id}
+     - ### Required permissions    * Authenticated user 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this api token. 
+     - returns: RequestBuilder<APIToken> 
+     */
+    open class func getAPITokenWithRequestBuilder(id: Int) -> RequestBuilder<APIToken> {
+        var localVariablePath = "/api/2/api-tokens/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<APIToken>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -202,12 +441,12 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<OneTimeAccessToken>
      */
-    open class func getAccessToken( id: Int, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<OneTimeAccessToken> {
+    open class func getAccessToken( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<OneTimeAccessToken> {
         let deferred = Promise<OneTimeAccessToken>.pending()
-        getAccessTokenWithRequestBuilder(id: id).execute(apiResponseQueue) { result -> Void in
+        getAccessTokenWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -229,7 +468,7 @@ open class AuthAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -240,7 +479,65 @@ open class AuthAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<OneTimeAccessToken>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<OneTimeAccessToken>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter name: (query) Filter the returned list by &#x60;name&#x60;. (optional)
+     - parameter ordering: (query) Which field to use when ordering the results. (optional)
+     - parameter limit: (query) Number of results to return per page. (optional)
+     - parameter offset: (query) The initial index from which to return the results. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<[APIToken]>
+     */
+    open class func getAllAPITokens( name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[APIToken]> {
+        let deferred = Promise<[APIToken]>.pending()
+        getAllAPITokensWithRequestBuilder(name: name, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/api-tokens
+     - ### Required permissions    * Authenticated user 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter name: (query) Filter the returned list by &#x60;name&#x60;. (optional)
+     - parameter ordering: (query) Which field to use when ordering the results. (optional)
+     - parameter limit: (query) Number of results to return per page. (optional)
+     - parameter offset: (query) The initial index from which to return the results. (optional)
+     - returns: RequestBuilder<[APIToken]> 
+     */
+    open class func getAllAPITokensWithRequestBuilder(name: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[APIToken]> {
+        let localVariablePath = "/api/2/api-tokens"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "name": name?.encodeToJSON(),
+            "ordering": ordering?.encodeToJSON(),
+            "limit": limit?.encodeToJSON(),
+            "offset": offset?.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[APIToken]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -258,12 +555,12 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<[OneTimeAccessToken]>
      */
-    open class func getAllAccessTokens( sharedBundles: String? = nil,  sharedDirectories: String? = nil,  sharedBundlesAsset: String? = nil,  user: String? = nil,  createdBy: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<[OneTimeAccessToken]> {
+    open class func getAllAccessTokens( sharedBundles: String? = nil,  sharedDirectories: String? = nil,  sharedBundlesAsset: Double? = nil,  user: Double? = nil,  createdBy: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[OneTimeAccessToken]> {
         let deferred = Promise<[OneTimeAccessToken]>.pending()
-        getAllAccessTokensWithRequestBuilder(sharedBundles: sharedBundles, sharedDirectories: sharedDirectories, sharedBundlesAsset: sharedBundlesAsset, user: user, createdBy: createdBy, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+        getAllAccessTokensWithRequestBuilder(sharedBundles: sharedBundles, sharedDirectories: sharedDirectories, sharedBundlesAsset: sharedBundlesAsset, user: user, createdBy: createdBy, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -287,9 +584,9 @@ open class AuthAPI {
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - returns: RequestBuilder<[OneTimeAccessToken]> 
      */
-    open class func getAllAccessTokensWithRequestBuilder(sharedBundles: String? = nil, sharedDirectories: String? = nil, sharedBundlesAsset: String? = nil, user: String? = nil, createdBy: String? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[OneTimeAccessToken]> {
+    open class func getAllAccessTokensWithRequestBuilder(sharedBundles: String? = nil, sharedDirectories: String? = nil, sharedBundlesAsset: Double? = nil, user: Double? = nil, createdBy: Double? = nil, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[OneTimeAccessToken]> {
         let localVariablePath = "/api/2/auth/access-tokens"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -310,7 +607,159 @@ open class AuthAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[OneTimeAccessToken]>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[OneTimeAccessToken]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter ordering: (query) Which field to use when ordering the results. (optional)
+     - parameter limit: (query) Number of results to return per page. (optional)
+     - parameter offset: (query) The initial index from which to return the results. (optional)
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<[SAMLProvider]>
+     */
+    open class func getAllSAMLProviders( ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[SAMLProvider]> {
+        let deferred = Promise<[SAMLProvider]>.pending()
+        getAllSAMLProvidersWithRequestBuilder(ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/auth/saml
+     - ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter ordering: (query) Which field to use when ordering the results. (optional)
+     - parameter limit: (query) Number of results to return per page. (optional)
+     - parameter offset: (query) The initial index from which to return the results. (optional)
+     - returns: RequestBuilder<[SAMLProvider]> 
+     */
+    open class func getAllSAMLProvidersWithRequestBuilder(ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[SAMLProvider]> {
+        let localVariablePath = "/api/2/auth/saml"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "ordering": ordering?.encodeToJSON(),
+            "limit": limit?.encodeToJSON(),
+            "offset": offset?.encodeToJSON(),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<[SAMLProvider]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<SAMLProvider>
+     */
+    open class func getSAMLProvider( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<SAMLProvider> {
+        let deferred = Promise<SAMLProvider>.pending()
+        getSAMLProviderWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/auth/saml/{id}
+     - ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - returns: RequestBuilder<SAMLProvider> 
+     */
+    open class func getSAMLProviderWithRequestBuilder(id: Int) -> RequestBuilder<SAMLProvider> {
+        var localVariablePath = "/api/2/auth/saml/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SAMLProvider>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    open class func getSAMLServiceProviderMetadata( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+        let deferred = Promise<Void>.pending()
+        getSAMLServiceProviderMetadataWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                deferred.resolver.fulfill(())
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/auth/saml/{id}/metadata
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func getSAMLServiceProviderMetadataWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/2/auth/saml/{id}/metadata"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -321,12 +770,12 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<AuthLoginEndpointResponse>
      */
-    open class func login( authLoginEndpointRequest: AuthLoginEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<AuthLoginEndpointResponse> {
+    open class func login( authLoginEndpointRequest: AuthLoginEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<AuthLoginEndpointResponse> {
         let deferred = Promise<AuthLoginEndpointResponse>.pending()
-        loginWithRequestBuilder(authLoginEndpointRequest: authLoginEndpointRequest).execute(apiResponseQueue) { result -> Void in
+        loginWithRequestBuilder(authLoginEndpointRequest: authLoginEndpointRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -345,7 +794,7 @@ open class AuthAPI {
      */
     open class func loginWithRequestBuilder(authLoginEndpointRequest: AuthLoginEndpointRequest) -> RequestBuilder<AuthLoginEndpointResponse> {
         let localVariablePath = "/api/2/auth/login"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: authLoginEndpointRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -356,7 +805,7 @@ open class AuthAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<AuthLoginEndpointResponse>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<AuthLoginEndpointResponse>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -366,9 +815,9 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func logout(apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func logout(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        logoutWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
+        logoutWithRequestBuilder().execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -389,7 +838,7 @@ open class AuthAPI {
      */
     open class func logoutWithRequestBuilder() -> RequestBuilder<Void> {
         let localVariablePath = "/api/2/auth/logout"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -400,7 +849,298 @@ open class AuthAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    open class func logoutPage(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+        let deferred = Promise<Void>.pending()
+        logoutPageWithRequestBuilder().execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                deferred.resolver.fulfill(())
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/auth/logout
+     - ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - returns: RequestBuilder<Void> 
+     */
+    open class func logoutPageWithRequestBuilder() -> RequestBuilder<Void> {
+        let localVariablePath = "/api/2/auth/logout"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter parseSAMLIDPMetadataRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<ParsedSAMLIDPMetadata>
+     */
+    open class func parseSAMLIDPMetadata( parseSAMLIDPMetadataRequest: ParseSAMLIDPMetadataRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ParsedSAMLIDPMetadata> {
+        let deferred = Promise<ParsedSAMLIDPMetadata>.pending()
+        parseSAMLIDPMetadataWithRequestBuilder(parseSAMLIDPMetadataRequest: parseSAMLIDPMetadataRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - POST /api/2/auth/saml/parse-idp-metadata
+     - ### Required permissions    * User account permission: `system:admin-access` 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter parseSAMLIDPMetadataRequest: (body)  
+     - returns: RequestBuilder<ParsedSAMLIDPMetadata> 
+     */
+    open class func parseSAMLIDPMetadataWithRequestBuilder(parseSAMLIDPMetadataRequest: ParseSAMLIDPMetadataRequest) -> RequestBuilder<ParsedSAMLIDPMetadata> {
+        let localVariablePath = "/api/2/auth/saml/parse-idp-metadata"
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: parseSAMLIDPMetadataRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ParsedSAMLIDPMetadata>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this api token. 
+     - parameter aPITokenPartialUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<APIToken>
+     */
+    open class func patchAPIToken( id: Int,  aPITokenPartialUpdate: APITokenPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<APIToken> {
+        let deferred = Promise<APIToken>.pending()
+        patchAPITokenWithRequestBuilder(id: id, aPITokenPartialUpdate: aPITokenPartialUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - PATCH /api/2/api-tokens/{id}
+     - ### Required permissions    * Authenticated user 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this api token. 
+     - parameter aPITokenPartialUpdate: (body)  
+     - returns: RequestBuilder<APIToken> 
+     */
+    open class func patchAPITokenWithRequestBuilder(id: Int, aPITokenPartialUpdate: APITokenPartialUpdate) -> RequestBuilder<APIToken> {
+        var localVariablePath = "/api/2/api-tokens/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: aPITokenPartialUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<APIToken>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - parameter sAMLProviderPartialUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<SAMLProvider>
+     */
+    open class func patchSAMLProvider( id: Int,  sAMLProviderPartialUpdate: SAMLProviderPartialUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<SAMLProvider> {
+        let deferred = Promise<SAMLProvider>.pending()
+        patchSAMLProviderWithRequestBuilder(id: id, sAMLProviderPartialUpdate: sAMLProviderPartialUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - PATCH /api/2/auth/saml/{id}
+     - ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - parameter sAMLProviderPartialUpdate: (body)  
+     - returns: RequestBuilder<SAMLProvider> 
+     */
+    open class func patchSAMLProviderWithRequestBuilder(id: Int, sAMLProviderPartialUpdate: SAMLProviderPartialUpdate) -> RequestBuilder<SAMLProvider> {
+        var localVariablePath = "/api/2/auth/saml/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: sAMLProviderPartialUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SAMLProvider>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    open class func receiveSAMLAuthAssertion( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+        let deferred = Promise<Void>.pending()
+        receiveSAMLAuthAssertionWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                deferred.resolver.fulfill(())
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - POST /api/2/auth/saml/{id}/assertion
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func receiveSAMLAuthAssertionWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/2/auth/saml/{id}/assertion"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - parameter parseSAMLIDPMetadataRequest: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<ParsedSAMLIDPMetadata>
+     */
+    open class func refreshSAMLIDPMetadata( id: Int,  parseSAMLIDPMetadataRequest: ParseSAMLIDPMetadataRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ParsedSAMLIDPMetadata> {
+        let deferred = Promise<ParsedSAMLIDPMetadata>.pending()
+        refreshSAMLIDPMetadataWithRequestBuilder(id: id, parseSAMLIDPMetadataRequest: parseSAMLIDPMetadataRequest).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - POST /api/2/auth/saml/{id}/refresh-idp-metadata
+     - ### Required permissions    * User account permission: `system:admin-access` 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - parameter parseSAMLIDPMetadataRequest: (body)  
+     - returns: RequestBuilder<ParsedSAMLIDPMetadata> 
+     */
+    open class func refreshSAMLIDPMetadataWithRequestBuilder(id: Int, parseSAMLIDPMetadataRequest: ParseSAMLIDPMetadataRequest) -> RequestBuilder<ParsedSAMLIDPMetadata> {
+        var localVariablePath = "/api/2/auth/saml/{id}/refresh-idp-metadata"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: parseSAMLIDPMetadataRequest)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ParsedSAMLIDPMetadata>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -411,9 +1151,9 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func resetPassword( passwordResetEndpointRequest: PasswordResetEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func resetPassword( passwordResetEndpointRequest: PasswordResetEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        resetPasswordWithRequestBuilder(passwordResetEndpointRequest: passwordResetEndpointRequest).execute(apiResponseQueue) { result -> Void in
+        resetPasswordWithRequestBuilder(passwordResetEndpointRequest: passwordResetEndpointRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -435,7 +1175,7 @@ open class AuthAPI {
      */
     open class func resetPasswordWithRequestBuilder(passwordResetEndpointRequest: PasswordResetEndpointRequest) -> RequestBuilder<Void> {
         let localVariablePath = "/api/2/auth/reset-password"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: passwordResetEndpointRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -446,9 +1186,105 @@ open class AuthAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    open class func returnFromSAMLAuth( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+        let deferred = Promise<Void>.pending()
+        returnFromSAMLAuthWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                deferred.resolver.fulfill(())
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/auth/saml/{id}/sso/return
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func returnFromSAMLAuthWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/2/auth/saml/{id}/sso/return"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    open class func returnFromSAMLLogout( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+        let deferred = Promise<Void>.pending()
+        returnFromSAMLLogoutWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                deferred.resolver.fulfill(())
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/auth/saml/{id}/sls/return
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func returnFromSAMLLogoutWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/2/auth/saml/{id}/sls/return"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -458,9 +1294,9 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func sendAccessTokenEmailNotification( id: Int,  sendLinkEmailRequest: SendLinkEmailRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func sendAccessTokenEmailNotification( id: Int,  sendLinkEmailRequest: SendLinkEmailRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        sendAccessTokenEmailNotificationWithRequestBuilder(id: id, sendLinkEmailRequest: sendLinkEmailRequest).execute(apiResponseQueue) { result -> Void in
+        sendAccessTokenEmailNotificationWithRequestBuilder(id: id, sendLinkEmailRequest: sendLinkEmailRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -486,7 +1322,7 @@ open class AuthAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: sendLinkEmailRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -497,7 +1333,7 @@ open class AuthAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -508,9 +1344,9 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func startImpersonation( impersonationEndpointRequest: ImpersonationEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func startImpersonation( impersonationEndpointRequest: ImpersonationEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        startImpersonationWithRequestBuilder(impersonationEndpointRequest: impersonationEndpointRequest).execute(apiResponseQueue) { result -> Void in
+        startImpersonationWithRequestBuilder(impersonationEndpointRequest: impersonationEndpointRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -532,7 +1368,7 @@ open class AuthAPI {
      */
     open class func startImpersonationWithRequestBuilder(impersonationEndpointRequest: ImpersonationEndpointRequest) -> RequestBuilder<Void> {
         let localVariablePath = "/api/2/auth/impersonation"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: impersonationEndpointRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -543,9 +1379,105 @@ open class AuthAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    open class func startSAMLAuth( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+        let deferred = Promise<Void>.pending()
+        startSAMLAuthWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                deferred.resolver.fulfill(())
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/auth/saml/{id}/sso
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func startSAMLAuthWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/2/auth/saml/{id}/sso"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<Void>
+     */
+    open class func startSAMLLogout( id: Int, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
+        let deferred = Promise<Void>.pending()
+        startSAMLLogoutWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
+            switch result {
+            case .success:
+                deferred.resolver.fulfill(())
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - GET /api/2/auth/saml/{id}/sls
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - returns: RequestBuilder<Void> 
+     */
+    open class func startSAMLLogoutWithRequestBuilder(id: Int) -> RequestBuilder<Void> {
+        var localVariablePath = "/api/2/auth/saml/{id}/sls"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -553,9 +1485,9 @@ open class AuthAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func stopImpersonation(apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func stopImpersonation(apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        stopImpersonationWithRequestBuilder().execute(apiResponseQueue) { result -> Void in
+        stopImpersonationWithRequestBuilder().execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -576,7 +1508,7 @@ open class AuthAPI {
      */
     open class func stopImpersonationWithRequestBuilder() -> RequestBuilder<Void> {
         let localVariablePath = "/api/2/auth/impersonation/stop"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -587,8 +1519,110 @@ open class AuthAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this api token. 
+     - parameter aPITokenUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<APIToken>
+     */
+    open class func updateAPIToken( id: Int,  aPITokenUpdate: APITokenUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<APIToken> {
+        let deferred = Promise<APIToken>.pending()
+        updateAPITokenWithRequestBuilder(id: id, aPITokenUpdate: aPITokenUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - PUT /api/2/api-tokens/{id}
+     - ### Required permissions    * Authenticated user 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this api token. 
+     - parameter aPITokenUpdate: (body)  
+     - returns: RequestBuilder<APIToken> 
+     */
+    open class func updateAPITokenWithRequestBuilder(id: Int, aPITokenUpdate: APITokenUpdate) -> RequestBuilder<APIToken> {
+        var localVariablePath = "/api/2/api-tokens/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: aPITokenUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<APIToken>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - parameter sAMLProviderUpdate: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<SAMLProvider>
+     */
+    open class func updateSAMLProvider( id: Int,  sAMLProviderUpdate: SAMLProviderUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<SAMLProvider> {
+        let deferred = Promise<SAMLProvider>.pending()
+        updateSAMLProviderWithRequestBuilder(id: id, sAMLProviderUpdate: sAMLProviderUpdate).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - PUT /api/2/auth/saml/{id}
+     - ### Required permissions    * User account permission: `None` (read) / `system:admin-access` (write) 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter id: (path) A unique integer value identifying this SAML Provider. 
+     - parameter sAMLProviderUpdate: (body)  
+     - returns: RequestBuilder<SAMLProvider> 
+     */
+    open class func updateSAMLProviderWithRequestBuilder(id: Int, sAMLProviderUpdate: SAMLProviderUpdate) -> RequestBuilder<SAMLProvider> {
+        var localVariablePath = "/api/2/auth/saml/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: sAMLProviderUpdate)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<SAMLProvider>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 }

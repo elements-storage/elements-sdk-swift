@@ -10,9 +10,9 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ElementsUserMiniReference: Codable, Hashable {
+public struct ElementsUserMiniReference: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var avatar: String?
     public var displayName: String?
     public var email: String?
@@ -21,7 +21,7 @@ public struct ElementsUserMiniReference: Codable, Hashable {
     public var isCloud: Bool?
     public var username: String?
 
-    public init(id: Int? = nil, avatar: String? = nil, displayName: String? = nil, email: String? = nil, fullName: String? = nil, isExternal: Bool? = nil, isCloud: Bool? = nil, username: String? = nil) {
+    public init(id: Int, avatar: String? = nil, displayName: String? = nil, email: String? = nil, fullName: String? = nil, isExternal: Bool? = nil, isCloud: Bool? = nil, username: String? = nil) {
         self.id = id
         self.avatar = avatar
         self.displayName = displayName
@@ -47,7 +47,7 @@ public struct ElementsUserMiniReference: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(avatar, forKey: .avatar)
         try container.encodeIfPresent(displayName, forKey: .displayName)
         try container.encodeIfPresent(email, forKey: .email)

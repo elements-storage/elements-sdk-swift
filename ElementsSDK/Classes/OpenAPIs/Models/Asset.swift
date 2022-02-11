@@ -10,38 +10,39 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Asset: Codable, Hashable {
+public struct Asset: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var proxies: [Proxy]?
     public var defaultProxy: Proxy?
-    public var info: [String: String]?
-    public var proxyInfo: [String: String]?
+    public var info: [String: String]
+    public var proxyInfo: [String: String]
     public var customFields: [String: String]
-    public var tags: Set<Int>
+    public var tags: [Int]
     public var resolvedPermission: MediaRootPermission?
-    public var backups: String?
-    public var proxiesGenerated: Bool?
-    public var proxiesFailed: Bool?
+    public var backups: String
+    public var proxiesGenerated: Bool
+    public var proxiesFailed: Bool
     public var modifiedBy: ElementsUserMini?
-    public var bundles: [MediaFileBundleMini]?
-    public var syncId: UUID?
-    public var displayName: String?
-    public var hasFiles: Bool?
-    public var hasBackups: Bool?
-    public var hasCloudLinks: Bool?
-    public var checksum: String?
-    public var type: String?
-    public var thumbnailGenerated: Bool?
-    public var matchedScanner: String?
-    public var rating: Double?
-    public var workflowState: Int?
-    public var isTemporary: Bool?
-    public var created: Date?
-    public var modified: Date?
+    public var bundles: [MediaFileBundleMini]
+    public var rating: Int?
+    public var format: FormatMetadata
+    public var syncId: UUID
+    public var displayName: String
+    public var hasFiles: Bool
+    public var hasBackups: Bool
+    public var hasCloudLinks: Bool
+    public var checksum: String
+    public var type: String
+    public var thumbnailGenerated: Bool
+    public var matchedScanner: String
+    public var workflowState: Int
+    public var isTemporary: Bool
+    public var created: Date
+    public var modified: Date
     public var _set: Int?
 
-    public init(id: Int? = nil, proxies: [Proxy]? = nil, defaultProxy: Proxy? = nil, info: [String: String]? = nil, proxyInfo: [String: String]? = nil, customFields: [String: String], tags: Set<Int>, resolvedPermission: MediaRootPermission? = nil, backups: String? = nil, proxiesGenerated: Bool? = nil, proxiesFailed: Bool? = nil, modifiedBy: ElementsUserMini? = nil, bundles: [MediaFileBundleMini]? = nil, syncId: UUID? = nil, displayName: String? = nil, hasFiles: Bool? = nil, hasBackups: Bool? = nil, hasCloudLinks: Bool? = nil, checksum: String? = nil, type: String? = nil, thumbnailGenerated: Bool? = nil, matchedScanner: String? = nil, rating: Double? = nil, workflowState: Int? = nil, isTemporary: Bool? = nil, created: Date? = nil, modified: Date? = nil, _set: Int? = nil) {
+    public init(id: Int, proxies: [Proxy]? = nil, defaultProxy: Proxy? = nil, info: [String: String], proxyInfo: [String: String], customFields: [String: String], tags: [Int], resolvedPermission: MediaRootPermission? = nil, backups: String, proxiesGenerated: Bool, proxiesFailed: Bool, modifiedBy: ElementsUserMini? = nil, bundles: [MediaFileBundleMini], rating: Int? = nil, format: FormatMetadata, syncId: UUID, displayName: String, hasFiles: Bool, hasBackups: Bool, hasCloudLinks: Bool, checksum: String, type: String, thumbnailGenerated: Bool, matchedScanner: String, workflowState: Int, isTemporary: Bool, created: Date, modified: Date, _set: Int? = nil) {
         self.id = id
         self.proxies = proxies
         self.defaultProxy = defaultProxy
@@ -55,6 +56,8 @@ public struct Asset: Codable, Hashable {
         self.proxiesFailed = proxiesFailed
         self.modifiedBy = modifiedBy
         self.bundles = bundles
+        self.rating = rating
+        self.format = format
         self.syncId = syncId
         self.displayName = displayName
         self.hasFiles = hasFiles
@@ -64,7 +67,6 @@ public struct Asset: Codable, Hashable {
         self.type = type
         self.thumbnailGenerated = thumbnailGenerated
         self.matchedScanner = matchedScanner
-        self.rating = rating
         self.workflowState = workflowState
         self.isTemporary = isTemporary
         self.created = created
@@ -86,6 +88,8 @@ public struct Asset: Codable, Hashable {
         case proxiesFailed = "proxies_failed"
         case modifiedBy = "modified_by"
         case bundles
+        case rating
+        case format
         case syncId = "sync_id"
         case displayName = "display_name"
         case hasFiles = "has_files"
@@ -95,7 +99,6 @@ public struct Asset: Codable, Hashable {
         case type
         case thumbnailGenerated = "thumbnail_generated"
         case matchedScanner = "matched_scanner"
-        case rating
         case workflowState = "workflow_state"
         case isTemporary = "is_temporary"
         case created
@@ -107,33 +110,34 @@ public struct Asset: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(proxies, forKey: .proxies)
         try container.encodeIfPresent(defaultProxy, forKey: .defaultProxy)
-        try container.encodeIfPresent(info, forKey: .info)
-        try container.encodeIfPresent(proxyInfo, forKey: .proxyInfo)
+        try container.encode(info, forKey: .info)
+        try container.encode(proxyInfo, forKey: .proxyInfo)
         try container.encode(customFields, forKey: .customFields)
         try container.encode(tags, forKey: .tags)
         try container.encodeIfPresent(resolvedPermission, forKey: .resolvedPermission)
-        try container.encodeIfPresent(backups, forKey: .backups)
-        try container.encodeIfPresent(proxiesGenerated, forKey: .proxiesGenerated)
-        try container.encodeIfPresent(proxiesFailed, forKey: .proxiesFailed)
+        try container.encode(backups, forKey: .backups)
+        try container.encode(proxiesGenerated, forKey: .proxiesGenerated)
+        try container.encode(proxiesFailed, forKey: .proxiesFailed)
         try container.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
-        try container.encodeIfPresent(bundles, forKey: .bundles)
-        try container.encodeIfPresent(syncId, forKey: .syncId)
-        try container.encodeIfPresent(displayName, forKey: .displayName)
-        try container.encodeIfPresent(hasFiles, forKey: .hasFiles)
-        try container.encodeIfPresent(hasBackups, forKey: .hasBackups)
-        try container.encodeIfPresent(hasCloudLinks, forKey: .hasCloudLinks)
-        try container.encodeIfPresent(checksum, forKey: .checksum)
-        try container.encodeIfPresent(type, forKey: .type)
-        try container.encodeIfPresent(thumbnailGenerated, forKey: .thumbnailGenerated)
-        try container.encodeIfPresent(matchedScanner, forKey: .matchedScanner)
+        try container.encode(bundles, forKey: .bundles)
         try container.encodeIfPresent(rating, forKey: .rating)
-        try container.encodeIfPresent(workflowState, forKey: .workflowState)
-        try container.encodeIfPresent(isTemporary, forKey: .isTemporary)
-        try container.encodeIfPresent(created, forKey: .created)
-        try container.encodeIfPresent(modified, forKey: .modified)
+        try container.encode(format, forKey: .format)
+        try container.encode(syncId, forKey: .syncId)
+        try container.encode(displayName, forKey: .displayName)
+        try container.encode(hasFiles, forKey: .hasFiles)
+        try container.encode(hasBackups, forKey: .hasBackups)
+        try container.encode(hasCloudLinks, forKey: .hasCloudLinks)
+        try container.encode(checksum, forKey: .checksum)
+        try container.encode(type, forKey: .type)
+        try container.encode(thumbnailGenerated, forKey: .thumbnailGenerated)
+        try container.encode(matchedScanner, forKey: .matchedScanner)
+        try container.encode(workflowState, forKey: .workflowState)
+        try container.encode(isTemporary, forKey: .isTemporary)
+        try container.encode(created, forKey: .created)
+        try container.encode(modified, forKey: .modified)
         try container.encodeIfPresent(_set, forKey: ._set)
     }
 }

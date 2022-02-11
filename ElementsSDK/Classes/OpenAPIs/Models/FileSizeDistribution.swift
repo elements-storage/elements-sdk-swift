@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct FileSizeDistribution: Codable, Hashable {
+public struct FileSizeDistribution: Codable, JSONEncodable, Hashable {
 
     public var distribution: [FileSizeDistributionItem]
 

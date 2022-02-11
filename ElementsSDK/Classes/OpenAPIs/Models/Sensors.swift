@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Sensors: Codable, Hashable {
+public struct Sensors: Codable, JSONEncodable, Hashable {
 
     public var sensors: [Sensor]
 

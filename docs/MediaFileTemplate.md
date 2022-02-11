@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **file** | [**MediaFileReference**](MediaFileReference.md) |  | 
 **name** | **String** |  | 
 

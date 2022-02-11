@@ -10,22 +10,24 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct AssetMiniReference: Codable, Hashable {
+public struct AssetMiniReference: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var syncId: UUID?
     public var defaultProxy: Proxy?
     public var type: String?
     public var displayName: String?
+    public var format: FormatMetadata?
     public var info: [String: String]?
     public var thumbnailGenerated: Bool?
 
-    public init(id: Int? = nil, syncId: UUID? = nil, defaultProxy: Proxy? = nil, type: String? = nil, displayName: String? = nil, info: [String: String]? = nil, thumbnailGenerated: Bool? = nil) {
+    public init(id: Int, syncId: UUID? = nil, defaultProxy: Proxy? = nil, type: String? = nil, displayName: String? = nil, format: FormatMetadata? = nil, info: [String: String]? = nil, thumbnailGenerated: Bool? = nil) {
         self.id = id
         self.syncId = syncId
         self.defaultProxy = defaultProxy
         self.type = type
         self.displayName = displayName
+        self.format = format
         self.info = info
         self.thumbnailGenerated = thumbnailGenerated
     }
@@ -36,6 +38,7 @@ public struct AssetMiniReference: Codable, Hashable {
         case defaultProxy = "default_proxy"
         case type
         case displayName = "display_name"
+        case format
         case info
         case thumbnailGenerated = "thumbnail_generated"
     }
@@ -44,11 +47,12 @@ public struct AssetMiniReference: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(syncId, forKey: .syncId)
         try container.encodeIfPresent(defaultProxy, forKey: .defaultProxy)
         try container.encodeIfPresent(type, forKey: .type)
         try container.encodeIfPresent(displayName, forKey: .displayName)
+        try container.encodeIfPresent(format, forKey: .format)
         try container.encodeIfPresent(info, forKey: .info)
         try container.encodeIfPresent(thumbnailGenerated, forKey: .thumbnailGenerated)
     }

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sharingNfsPermissions** | **[String]** |  | [optional] 
+**sharingNfsPermissions** | [NFSPermission] |  | [optional] 
 **volume** | [**VolumeReference**](VolumeReference.md) |  | [optional] 
 **name** | **String** |  | [optional] 
 **path** | **String** |  | [optional] 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**labels** | [[String: String]] |  | [optional] 
 **options** | **[String]** |  | [optional] 
 **name** | **String** |  | [optional] 
 **order** | **Int** |  | [optional] 

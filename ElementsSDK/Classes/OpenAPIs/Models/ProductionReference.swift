@@ -10,9 +10,9 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ProductionReference: Codable, Hashable {
+public struct ProductionReference: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var isSpecial: Bool?
     public var specialType: Int?
     public var totalSize: Int?
@@ -24,7 +24,7 @@ public struct ProductionReference: Codable, Hashable {
     public var template: Int?
     public var defaultGroup: Int?
 
-    public init(id: Int? = nil, isSpecial: Bool? = nil, specialType: Int? = nil, totalSize: Int? = nil, name: String? = nil, obscureName: Bool? = nil, description: String? = nil, longDescription: String? = nil, active: Bool? = nil, template: Int? = nil, defaultGroup: Int? = nil) {
+    public init(id: Int, isSpecial: Bool? = nil, specialType: Int? = nil, totalSize: Int? = nil, name: String? = nil, obscureName: Bool? = nil, description: String? = nil, longDescription: String? = nil, active: Bool? = nil, template: Int? = nil, defaultGroup: Int? = nil) {
         self.id = id
         self.isSpecial = isSpecial
         self.specialType = specialType
@@ -56,7 +56,7 @@ public struct ProductionReference: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(isSpecial, forKey: .isSpecial)
         try container.encodeIfPresent(specialType, forKey: .specialType)
         try container.encodeIfPresent(totalSize, forKey: .totalSize)

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Int** |  | [optional] [readonly] 
-**labels** | **[String]** |  | [optional] [readonly] 
+**labels** | [[String: String]] |  | 
 **options** | **[String]** |  | 
 **name** | **String** |  | 
 **order** | **Int** |  | [optional] 

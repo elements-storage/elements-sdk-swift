@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ProxyProfile: Codable, Hashable {
+public struct ProxyProfile: Codable, JSONEncodable, Hashable {
 
     public enum ProxyGenerator: String, Codable, CaseIterable {
         case ffmpeg = "ffmpeg"
@@ -19,26 +19,26 @@ public struct ProxyProfile: Codable, Hashable {
         case vantage = "vantage"
         case noop = "noop"
     }
-    public enum RateControl: Int, Codable, CaseIterable {
-        case _0 = 0
-        case _1 = 1
-        case _2 = 2
+    public enum RateControl: String, Codable, CaseIterable {
+        case crf = "CRF"
+        case cbr = "CBR"
+        case vbr = "VBR"
     }
-    public enum WatermarkPosition: Int, Codable, CaseIterable {
-        case _1 = 1
-        case _2 = 2
-        case _3 = 3
-        case _4 = 4
-        case _5 = 5
+    public enum WatermarkPosition: String, Codable, CaseIterable {
+        case tl = "TL"
+        case tr = "TR"
+        case br = "BR"
+        case bl = "BL"
+        case c = "C"
     }
-    public enum TimecodePosition: Int, Codable, CaseIterable {
-        case _1 = 1
-        case _2 = 2
-        case _3 = 3
-        case _4 = 4
-        case _5 = 5
+    public enum TimecodePosition: String, Codable, CaseIterable {
+        case tl = "TL"
+        case tr = "TR"
+        case br = "BR"
+        case bl = "BL"
+        case c = "C"
     }
-    public var id: Int?
+    public var id: Int
     public var name: String
     public var proxyGenerator: ProxyGenerator?
     public var resolution: String?
@@ -66,7 +66,7 @@ public struct ProxyProfile: Codable, Hashable {
     public var externalTranscoderStagingPath: String?
     public var externalTranscoder: Int?
 
-    public init(id: Int? = nil, name: String, proxyGenerator: ProxyGenerator? = nil, resolution: String? = nil, rateControl: RateControl? = nil, crf: Int? = nil, bitrate: Int? = nil, audioBitrate: Int? = nil, variantsLimit: Int? = nil, enableDenseFilmstrip: Bool? = nil, enableWatermark: Bool? = nil, watermarkImage: String? = nil, watermarkPosition: WatermarkPosition? = nil, watermarkOpacity: Double? = nil, watermarkSize: Double? = nil, enableTimecode: Bool? = nil, timecodePosition: TimecodePosition? = nil, timecodeOpacity: Double? = nil, timecodeSize: Double? = nil, lut: String? = nil, hotfolderCopyTo: String? = nil, hotfolderReadFrom: String? = nil, hotfolderQueueTimeout: Int? = nil, hotfolderEncodeTimeout: Int? = nil, vantageWorkflowId: String? = nil, externalTranscoderStagingPath: String? = nil, externalTranscoder: Int? = nil) {
+    public init(id: Int, name: String, proxyGenerator: ProxyGenerator? = nil, resolution: String? = nil, rateControl: RateControl? = nil, crf: Int? = nil, bitrate: Int? = nil, audioBitrate: Int? = nil, variantsLimit: Int? = nil, enableDenseFilmstrip: Bool? = nil, enableWatermark: Bool? = nil, watermarkImage: String? = nil, watermarkPosition: WatermarkPosition? = nil, watermarkOpacity: Double? = nil, watermarkSize: Double? = nil, enableTimecode: Bool? = nil, timecodePosition: TimecodePosition? = nil, timecodeOpacity: Double? = nil, timecodeSize: Double? = nil, lut: String? = nil, hotfolderCopyTo: String? = nil, hotfolderReadFrom: String? = nil, hotfolderQueueTimeout: Int? = nil, hotfolderEncodeTimeout: Int? = nil, vantageWorkflowId: String? = nil, externalTranscoderStagingPath: String? = nil, externalTranscoder: Int? = nil) {
         self.id = id
         self.name = name
         self.proxyGenerator = proxyGenerator
@@ -130,7 +130,7 @@ public struct ProxyProfile: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(proxyGenerator, forKey: .proxyGenerator)
         try container.encodeIfPresent(resolution, forKey: .resolution)

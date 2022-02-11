@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TapeJobSource: Codable, Hashable {
+public struct TapeJobSource: Codable, JSONEncodable, Hashable {
 
     public var path: String
     public var options: [String: String]?

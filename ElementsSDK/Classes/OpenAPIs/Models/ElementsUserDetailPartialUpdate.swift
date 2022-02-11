@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ElementsUserDetailPartialUpdate: Codable, Hashable {
+public struct ElementsUserDetailPartialUpdate: Codable, JSONEncodable, Hashable {
 
     public enum Language: String, Codable, CaseIterable {
         case en = "en"
@@ -24,8 +24,6 @@ public struct ElementsUserDetailPartialUpdate: Codable, Hashable {
     public var defaultPage: String?
     public var email: String?
     public var expiry: Date?
-    public var ancillaryPathReadOnly: Bool?
-    public var ancillaryPath: String?
     public var fmBookmarks: [String]?
     public var fullName: String?
     public var gid: Int?
@@ -36,7 +34,7 @@ public struct ElementsUserDetailPartialUpdate: Codable, Hashable {
     public var isEnabled: Bool?
     public var language: Language?
     public var lastSeen: Date?
-    public var ldap: LDAPServerReference?
+    public var ldap: AnyOfLDAPServerReferenceAnyType?
     public var ldapDn: String?
     public var passwordChangeRequired: Bool?
     public var permissions: [String]?
@@ -46,17 +44,15 @@ public struct ElementsUserDetailPartialUpdate: Codable, Hashable {
     public var uid: Int?
     public var unixUsername: String?
     public var username: String?
-    public var groups: Set<Int>?
+    public var groups: [Int]?
 
-    public init(allowChangingPassword: Bool? = nil, allowWanLogin: Bool? = nil, avatar: String? = nil, defaultPage: String? = nil, email: String? = nil, expiry: Date? = nil, ancillaryPathReadOnly: Bool? = nil, ancillaryPath: String? = nil, fmBookmarks: [String]? = nil, fullName: String? = nil, gid: Int? = nil, home: Int? = nil, isExternal: Bool? = nil, isCloud: Bool? = nil, isCloudDefault: Bool? = nil, isEnabled: Bool? = nil, language: Language? = nil, lastSeen: Date? = nil, ldap: LDAPServerReference? = nil, ldapDn: String? = nil, passwordChangeRequired: Bool? = nil, permissions: [String]? = nil, shaperCeiling: Int? = nil, shaperRate: Int? = nil, totpEnabled: Bool? = nil, uid: Int? = nil, unixUsername: String? = nil, username: String? = nil, groups: Set<Int>? = nil) {
+    public init(allowChangingPassword: Bool? = nil, allowWanLogin: Bool? = nil, avatar: String? = nil, defaultPage: String? = nil, email: String? = nil, expiry: Date? = nil, fmBookmarks: [String]? = nil, fullName: String? = nil, gid: Int? = nil, home: Int? = nil, isExternal: Bool? = nil, isCloud: Bool? = nil, isCloudDefault: Bool? = nil, isEnabled: Bool? = nil, language: Language? = nil, lastSeen: Date? = nil, ldap: AnyOfLDAPServerReferenceAnyType? = nil, ldapDn: String? = nil, passwordChangeRequired: Bool? = nil, permissions: [String]? = nil, shaperCeiling: Int? = nil, shaperRate: Int? = nil, totpEnabled: Bool? = nil, uid: Int? = nil, unixUsername: String? = nil, username: String? = nil, groups: [Int]? = nil) {
         self.allowChangingPassword = allowChangingPassword
         self.allowWanLogin = allowWanLogin
         self.avatar = avatar
         self.defaultPage = defaultPage
         self.email = email
         self.expiry = expiry
-        self.ancillaryPathReadOnly = ancillaryPathReadOnly
-        self.ancillaryPath = ancillaryPath
         self.fmBookmarks = fmBookmarks
         self.fullName = fullName
         self.gid = gid
@@ -87,8 +83,6 @@ public struct ElementsUserDetailPartialUpdate: Codable, Hashable {
         case defaultPage = "default_page"
         case email
         case expiry
-        case ancillaryPathReadOnly = "ancillary_path_read_only"
-        case ancillaryPath = "ancillary_path"
         case fmBookmarks = "fm_bookmarks"
         case fullName = "full_name"
         case gid
@@ -122,8 +116,6 @@ public struct ElementsUserDetailPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(defaultPage, forKey: .defaultPage)
         try container.encodeIfPresent(email, forKey: .email)
         try container.encodeIfPresent(expiry, forKey: .expiry)
-        try container.encodeIfPresent(ancillaryPathReadOnly, forKey: .ancillaryPathReadOnly)
-        try container.encodeIfPresent(ancillaryPath, forKey: .ancillaryPath)
         try container.encodeIfPresent(fmBookmarks, forKey: .fmBookmarks)
         try container.encodeIfPresent(fullName, forKey: .fullName)
         try container.encodeIfPresent(gid, forKey: .gid)

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **device** | **String** |  | 
-**addresses** | [Address] |  | [optional] [readonly] 
+**addresses** | [Address] |  | [readonly] 
 **speed** | **Int** |  | [optional] 
 **mtu** | **Int** |  | [optional] 
 **useForMounts** | **Bool** |  | [optional] 

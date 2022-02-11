@@ -10,15 +10,15 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct AssetRating: Codable, Hashable {
+public struct AssetRating: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var user: ElementsUserMiniReference
     public var rating: Int?
-    public var date: Date?
+    public var date: Date
     public var asset: Int
 
-    public init(id: Int? = nil, user: ElementsUserMiniReference, rating: Int? = nil, date: Date? = nil, asset: Int) {
+    public init(id: Int, user: ElementsUserMiniReference, rating: Int? = nil, date: Date, asset: Int) {
         self.id = id
         self.user = user
         self.rating = rating
@@ -38,10 +38,10 @@ public struct AssetRating: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(user, forKey: .user)
         try container.encodeIfPresent(rating, forKey: .rating)
-        try container.encodeIfPresent(date, forKey: .date)
+        try container.encode(date, forKey: .date)
         try container.encode(asset, forKey: .asset)
     }
 }

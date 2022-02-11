@@ -10,12 +10,12 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ClickStartUploadEndpointRequest: Codable, Hashable {
+public struct ClickStartUploadEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var connection: Int
-    public var assets: Set<Int>
+    public var assets: [Int]
 
-    public init(connection: Int, assets: Set<Int>) {
+    public init(connection: Int, assets: [Int]) {
         self.connection = connection
         self.assets = assets
     }

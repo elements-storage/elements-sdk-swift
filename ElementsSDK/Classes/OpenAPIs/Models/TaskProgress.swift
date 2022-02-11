@@ -10,22 +10,25 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TaskProgress: Codable, Hashable {
+public struct TaskProgress: Codable, JSONEncodable, Hashable {
 
     public var message: String?
     public var current: Int?
     public var max: Int?
+    public var bar: Bool?
 
-    public init(message: String? = nil, current: Int? = nil, max: Int? = nil) {
+    public init(message: String? = nil, current: Int? = nil, max: Int? = nil, bar: Bool? = nil) {
         self.message = message
         self.current = current
         self.max = max
+        self.bar = bar
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case message
         case current
         case max
+        case bar
     }
 
     // Encodable protocol methods
@@ -35,6 +38,7 @@ public struct TaskProgress: Codable, Hashable {
         try container.encodeIfPresent(message, forKey: .message)
         try container.encodeIfPresent(current, forKey: .current)
         try container.encodeIfPresent(max, forKey: .max)
+        try container.encodeIfPresent(bar, forKey: .bar)
     }
 }
 

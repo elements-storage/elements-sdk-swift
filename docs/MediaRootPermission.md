@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
-**user** | [**ElementsUserMiniReference**](ElementsUserMiniReference.md) |  | [optional] 
-**group** | [**ElementsGroupReference**](ElementsGroupReference.md) |  | [optional] 
-**fullPath** | **String** |  | [optional] [readonly] 
+**id** | **Int** |  | 
+**user** | [**AnyOfElementsUserMiniReferenceAnyType**](AnyOfElementsUserMiniReferenceAnyType.md) |  | [optional] 
+**group** | [**AnyOfElementsGroupReferenceAnyType**](AnyOfElementsGroupReferenceAnyType.md) |  | [optional] 
+**fullPath** | **String** |  | [readonly] 
 **path** | **String** |  | [optional] 
+**allowRead** | **Bool** |  | [optional] 
 **allowCreate** | **Bool** |  | [optional] 
 **allowWriteFs** | **Bool** |  | [optional] 
 **allowWriteDb** | **Bool** |  | [optional] 
@@ -24,6 +25,7 @@ Name | Type | Description | Notes
 **showCustomFields** | **Bool** |  | [optional] 
 **showRatings** | **Bool** |  | [optional] 
 **showSubclips** | **Bool** |  | [optional] 
+**showSubtitles** | **Bool** |  | [optional] 
 **showAiMetadata** | **Bool** |  | [optional] 
 **showMarkers** | **Bool** |  | [optional] 
 **showHistory** | **Bool** |  | [optional] 

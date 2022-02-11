@@ -10,18 +10,18 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct FilesystemFile: Codable, Hashable {
+public struct FilesystemFile: Codable, JSONEncodable, Hashable {
 
-    public var path: String?
+    public var path: String
     public var name: String
-    public var size: Int?
-    public var totalSize: Int?
-    public var isDir: Bool?
+    public var size: Int
+    public var modificationTime: Date
+    public var totalSize: Int
+    public var isDir: Bool
     public var files: [BasicFile]?
     public var parent: String
-    public var modificationTime: Date?
-    public var accessTime: Date?
-    public var creationTime: Date?
+    public var accessTime: Date
+    public var creationTime: Date
     public var mode: String?
     public var uid: Int?
     public var gid: Int?
@@ -42,15 +42,15 @@ public struct FilesystemFile: Codable, Hashable {
     public var modeOthersWrite: Bool?
     public var modeOthersExecute: Bool?
 
-    public init(path: String? = nil, name: String, size: Int? = nil, totalSize: Int? = nil, isDir: Bool? = nil, files: [BasicFile]? = nil, parent: String, modificationTime: Date? = nil, accessTime: Date? = nil, creationTime: Date? = nil, mode: String? = nil, uid: Int? = nil, gid: Int? = nil, user: String? = nil, group: String? = nil, recursive: Bool? = nil, affinity: String? = nil, modeSetuid: Bool? = nil, modeSetgid: Bool? = nil, modeSetvfx: Bool? = nil, modeUserRead: Bool? = nil, modeUserWrite: Bool? = nil, modeUserExecute: Bool? = nil, modeGroupRead: Bool? = nil, modeGroupWrite: Bool? = nil, modeGroupExecute: Bool? = nil, modeOthersRead: Bool? = nil, modeOthersWrite: Bool? = nil, modeOthersExecute: Bool? = nil) {
+    public init(path: String, name: String, size: Int, modificationTime: Date, totalSize: Int, isDir: Bool, files: [BasicFile]? = nil, parent: String, accessTime: Date, creationTime: Date, mode: String? = nil, uid: Int? = nil, gid: Int? = nil, user: String? = nil, group: String? = nil, recursive: Bool? = nil, affinity: String? = nil, modeSetuid: Bool? = nil, modeSetgid: Bool? = nil, modeSetvfx: Bool? = nil, modeUserRead: Bool? = nil, modeUserWrite: Bool? = nil, modeUserExecute: Bool? = nil, modeGroupRead: Bool? = nil, modeGroupWrite: Bool? = nil, modeGroupExecute: Bool? = nil, modeOthersRead: Bool? = nil, modeOthersWrite: Bool? = nil, modeOthersExecute: Bool? = nil) {
         self.path = path
         self.name = name
         self.size = size
+        self.modificationTime = modificationTime
         self.totalSize = totalSize
         self.isDir = isDir
         self.files = files
         self.parent = parent
-        self.modificationTime = modificationTime
         self.accessTime = accessTime
         self.creationTime = creationTime
         self.mode = mode
@@ -78,11 +78,11 @@ public struct FilesystemFile: Codable, Hashable {
         case path
         case name
         case size
+        case modificationTime = "modification_time"
         case totalSize = "total_size"
         case isDir = "is_dir"
         case files
         case parent
-        case modificationTime = "modification_time"
         case accessTime = "access_time"
         case creationTime = "creation_time"
         case mode
@@ -110,16 +110,16 @@ public struct FilesystemFile: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(path, forKey: .path)
+        try container.encode(path, forKey: .path)
         try container.encode(name, forKey: .name)
-        try container.encodeIfPresent(size, forKey: .size)
-        try container.encodeIfPresent(totalSize, forKey: .totalSize)
-        try container.encodeIfPresent(isDir, forKey: .isDir)
+        try container.encode(size, forKey: .size)
+        try container.encode(modificationTime, forKey: .modificationTime)
+        try container.encode(totalSize, forKey: .totalSize)
+        try container.encode(isDir, forKey: .isDir)
         try container.encodeIfPresent(files, forKey: .files)
         try container.encode(parent, forKey: .parent)
-        try container.encodeIfPresent(modificationTime, forKey: .modificationTime)
-        try container.encodeIfPresent(accessTime, forKey: .accessTime)
-        try container.encodeIfPresent(creationTime, forKey: .creationTime)
+        try container.encode(accessTime, forKey: .accessTime)
+        try container.encode(creationTime, forKey: .creationTime)
         try container.encodeIfPresent(mode, forKey: .mode)
         try container.encodeIfPresent(uid, forKey: .uid)
         try container.encodeIfPresent(gid, forKey: .gid)

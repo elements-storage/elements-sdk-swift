@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct StorNextLicenseEndpointResponse: Codable, Hashable {
+public struct StorNextLicenseEndpointResponse: Codable, JSONEncodable, Hashable {
 
     public var status: String
     public var expiry: String

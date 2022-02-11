@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct FileDeleteEndpointRequest: Codable, Hashable {
+public struct FileDeleteEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var input: [String]
     public var sync: Bool?

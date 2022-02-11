@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TapeLibrarySlot: Codable, Hashable {
+public struct TapeLibrarySlot: Codable, JSONEncodable, Hashable {
 
     public var drive: Int?
     public var status: String?

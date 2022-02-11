@@ -10,15 +10,15 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MediaFilePartialUpdate: Codable, Hashable {
+public struct MediaFilePartialUpdate: Codable, JSONEncodable, Hashable {
 
     public var info: [String: String]?
     public var customFields: [String: String]?
     public var totalFiles: Int?
     public var needsRescan: Bool?
-    public var bookmarkedBy: Set<Int>?
+    public var bookmarkedBy: [Int]?
 
-    public init(info: [String: String]? = nil, customFields: [String: String]? = nil, totalFiles: Int? = nil, needsRescan: Bool? = nil, bookmarkedBy: Set<Int>? = nil) {
+    public init(info: [String: String]? = nil, customFields: [String: String]? = nil, totalFiles: Int? = nil, needsRescan: Bool? = nil, bookmarkedBy: [Int]? = nil) {
         self.info = info
         self.customFields = customFields
         self.totalFiles = totalFiles

@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **kwargs** | **[String: String]** |  | 
 **graphLayout** | **[String: String]** |  | [optional] 
-**validationError** | **String** |  | [optional] [readonly] 
+**validationError** | **String** |  | [readonly] 
 **trigger** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **noopDontSave** | **Bool** |  | [optional] 

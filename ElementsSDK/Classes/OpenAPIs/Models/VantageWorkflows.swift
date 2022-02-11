@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct VantageWorkflows: Codable, Hashable {
+public struct VantageWorkflows: Codable, JSONEncodable, Hashable {
 
     public var workflows: [VantageWorkflow]
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **name** | **String** |  | 
 **iconPath** | **String** |  | [optional] 
 **faIcon** | **String** |  | [optional] 

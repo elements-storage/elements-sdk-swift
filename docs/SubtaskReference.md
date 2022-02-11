@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] 
+**id** | **Int** |  | 
 **kwargs** | **[String: String]** |  | [optional] [readonly] 
 **graphLayout** | **[String: String]** |  | [optional] [readonly] 
 **validationError** | **String** |  | [optional] [readonly] 

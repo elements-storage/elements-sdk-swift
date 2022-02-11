@@ -10,14 +10,14 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ClickGallery: Codable, Hashable {
+public struct ClickGallery: Codable, JSONEncodable, Hashable {
 
     public var id: Int
     public var name: String
     public var description: String?
-    public var presignedLoginUrl: String?
+    public var presignedLoginUrl: String
 
-    public init(id: Int, name: String, description: String? = nil, presignedLoginUrl: String? = nil) {
+    public init(id: Int, name: String, description: String? = nil, presignedLoginUrl: String) {
         self.id = id
         self.name = name
         self.description = description
@@ -38,7 +38,7 @@ public struct ClickGallery: Codable, Hashable {
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(presignedLoginUrl, forKey: .presignedLoginUrl)
+        try container.encode(presignedLoginUrl, forKey: .presignedLoginUrl)
     }
 }
 

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Parameters: Codable, Hashable {
+public struct Parameters: Codable, JSONEncodable, Hashable {
 
     public enum HttpsRedirect: String, Codable, CaseIterable {
         case domain = "domain"
@@ -39,6 +39,7 @@ public struct Parameters: Codable, Hashable {
     public var analytics: Bool?
     public var brandingCss: String?
     public var brandingLogo: String?
+    public var clientOfferFileSearch: Bool?
     /** http://host/ */
     public var externalUrl: String?
     /** Recycle bins are usually either in Workspace/Share or Volume folder */
@@ -68,10 +69,11 @@ public struct Parameters: Codable, Hashable {
     public var workspacesFolderTemplatePath: String?
     public var workspacesPath: String?
 
-    public init(analytics: Bool? = nil, brandingCss: String? = nil, brandingLogo: String? = nil, externalUrl: String? = nil, fileManagerRecycleBin: Bool? = nil, httpsRedirect: HttpsRedirect? = nil, language: Language? = nil, ltfsDefaultRestoreToOriginalLocation: Bool? = nil, ltfsDefaultSearchDirectories: Bool? = nil, ltfsLibraryAddress: String? = nil, mailStyling: [String: String]? = nil, mediaAutoPlay: Bool? = nil, mediaAutoProxy: Bool? = nil, mediaAutoScan: Bool? = nil, mediaAutoTransport: Bool? = nil, mediaAutoVeritoneUpload: Bool? = nil, mediaDefaultCustomFieldType: MediaDefaultCustomFieldType? = nil, mediaDefaultDeleteBehaviour: MediaDefaultDeleteBehaviour? = nil, mediaForceShowDeleted: Bool? = nil, mediaKeepSelectionWhenBrowsing: Bool? = nil, mediaRecycleBin: Bool? = nil, ntpOfferSync: Bool? = nil, otpPolicy: OtpPolicy? = nil, tasksRunScheduled: Bool? = nil, usersDefaultPermissions: String? = nil, workspacesFolderTemplatePath: String? = nil, workspacesPath: String? = nil) {
+    public init(analytics: Bool? = nil, brandingCss: String? = nil, brandingLogo: String? = nil, clientOfferFileSearch: Bool? = nil, externalUrl: String? = nil, fileManagerRecycleBin: Bool? = nil, httpsRedirect: HttpsRedirect? = nil, language: Language? = nil, ltfsDefaultRestoreToOriginalLocation: Bool? = nil, ltfsDefaultSearchDirectories: Bool? = nil, ltfsLibraryAddress: String? = nil, mailStyling: [String: String]? = nil, mediaAutoPlay: Bool? = nil, mediaAutoProxy: Bool? = nil, mediaAutoScan: Bool? = nil, mediaAutoTransport: Bool? = nil, mediaAutoVeritoneUpload: Bool? = nil, mediaDefaultCustomFieldType: MediaDefaultCustomFieldType? = nil, mediaDefaultDeleteBehaviour: MediaDefaultDeleteBehaviour? = nil, mediaForceShowDeleted: Bool? = nil, mediaKeepSelectionWhenBrowsing: Bool? = nil, mediaRecycleBin: Bool? = nil, ntpOfferSync: Bool? = nil, otpPolicy: OtpPolicy? = nil, tasksRunScheduled: Bool? = nil, usersDefaultPermissions: String? = nil, workspacesFolderTemplatePath: String? = nil, workspacesPath: String? = nil) {
         self.analytics = analytics
         self.brandingCss = brandingCss
         self.brandingLogo = brandingLogo
+        self.clientOfferFileSearch = clientOfferFileSearch
         self.externalUrl = externalUrl
         self.fileManagerRecycleBin = fileManagerRecycleBin
         self.httpsRedirect = httpsRedirect
@@ -102,6 +104,7 @@ public struct Parameters: Codable, Hashable {
         case analytics
         case brandingCss = "branding_css"
         case brandingLogo = "branding_logo"
+        case clientOfferFileSearch = "client_offer_file_search"
         case externalUrl = "external_url"
         case fileManagerRecycleBin = "file_manager_recycle_bin"
         case httpsRedirect = "https_redirect"
@@ -135,6 +138,7 @@ public struct Parameters: Codable, Hashable {
         try container.encodeIfPresent(analytics, forKey: .analytics)
         try container.encodeIfPresent(brandingCss, forKey: .brandingCss)
         try container.encodeIfPresent(brandingLogo, forKey: .brandingLogo)
+        try container.encodeIfPresent(clientOfferFileSearch, forKey: .clientOfferFileSearch)
         try container.encodeIfPresent(externalUrl, forKey: .externalUrl)
         try container.encodeIfPresent(fileManagerRecycleBin, forKey: .fileManagerRecycleBin)
         try container.encodeIfPresent(httpsRedirect, forKey: .httpsRedirect)

@@ -10,8 +10,6 @@ Name | Type | Description | Notes
 **defaultPage** | **String** |  | [optional] 
 **email** | **String** |  | [optional] 
 **expiry** | **Date** |  | [optional] 
-**ancillaryPathReadOnly** | **Bool** |  | [optional] 
-**ancillaryPath** | **String** |  | [optional] 
 **fmBookmarks** | **[String]** |  | [optional] 
 **fullName** | **String** |  | [optional] 
 **gid** | **Int** |  | [optional] 
@@ -22,7 +20,7 @@ Name | Type | Description | Notes
 **isEnabled** | **Bool** |  | [optional] 
 **language** | **String** |  | [optional] 
 **lastSeen** | **Date** |  | [optional] 
-**ldap** | [**LDAPServerReference**](LDAPServerReference.md) |  | [optional] 
+**ldap** | [**AnyOfLDAPServerReferenceAnyType**](AnyOfLDAPServerReferenceAnyType.md) |  | [optional] 
 **ldapDn** | **String** |  | [optional] 
 **passwordChangeRequired** | **Bool** |  | [optional] 
 **permissions** | **[String]** |  | [optional] 
@@ -32,7 +30,7 @@ Name | Type | Description | Notes
 **uid** | **Int** |  | [optional] 
 **unixUsername** | **String** |  | [optional] 
 **username** | **String** |  | [optional] 
-**groups** | **Set<Int>** |  | [optional] 
+**groups** | **[Int]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] 
+**id** | **Int** |  | 
 **volume** | [**VolumeMini**](VolumeMini.md) |  | [optional] 
 **info** | **[String: String]** |  | [optional] [readonly] 
 **customFields** | **[String: String]** |  | [optional] [readonly] 
@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 **modified** | **Date** |  | [optional] [readonly] 
 **parent** | **Int** |  | [optional] [readonly] 
 **bundle** | **Int** |  | [optional] [readonly] 
-**bookmarkedBy** | **Set<Int>** |  | [optional] [readonly] 
+**bookmarkedBy** | **[Int]** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

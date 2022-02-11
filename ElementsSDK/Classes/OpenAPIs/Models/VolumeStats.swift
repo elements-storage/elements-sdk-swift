@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct VolumeStats: Codable, Hashable {
+public struct VolumeStats: Codable, JSONEncodable, Hashable {
 
     public var usage: [VolumeStat]
 

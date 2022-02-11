@@ -10,22 +10,24 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SystemInfoEndpointResponse: Codable, Hashable {
+public struct SystemInfoEndpointResponse: Codable, JSONEncodable, Hashable {
 
     public var license: License
     public var clientApiVersion: Int
     public var ntHostname: String
     public var offersNtpSync: Bool
+    public var offersFileSearch: Bool
     public var language: String
-    public var samlProviders: [SAMLProviderMini]?
+    public var samlProviders: [SAMLProviderMini]
     public var version: ElementsVersion
     public var globalAlerts: [GlobalAlert]
 
-    public init(license: License, clientApiVersion: Int, ntHostname: String, offersNtpSync: Bool, language: String, samlProviders: [SAMLProviderMini]? = nil, version: ElementsVersion, globalAlerts: [GlobalAlert]) {
+    public init(license: License, clientApiVersion: Int, ntHostname: String, offersNtpSync: Bool, offersFileSearch: Bool, language: String, samlProviders: [SAMLProviderMini], version: ElementsVersion, globalAlerts: [GlobalAlert]) {
         self.license = license
         self.clientApiVersion = clientApiVersion
         self.ntHostname = ntHostname
         self.offersNtpSync = offersNtpSync
+        self.offersFileSearch = offersFileSearch
         self.language = language
         self.samlProviders = samlProviders
         self.version = version
@@ -37,6 +39,7 @@ public struct SystemInfoEndpointResponse: Codable, Hashable {
         case clientApiVersion = "client_api_version"
         case ntHostname = "nt_hostname"
         case offersNtpSync = "offers_ntp_sync"
+        case offersFileSearch = "offers_file_search"
         case language
         case samlProviders = "saml_providers"
         case version
@@ -51,8 +54,9 @@ public struct SystemInfoEndpointResponse: Codable, Hashable {
         try container.encode(clientApiVersion, forKey: .clientApiVersion)
         try container.encode(ntHostname, forKey: .ntHostname)
         try container.encode(offersNtpSync, forKey: .offersNtpSync)
+        try container.encode(offersFileSearch, forKey: .offersFileSearch)
         try container.encode(language, forKey: .language)
-        try container.encodeIfPresent(samlProviders, forKey: .samlProviders)
+        try container.encode(samlProviders, forKey: .samlProviders)
         try container.encode(version, forKey: .version)
         try container.encode(globalAlerts, forKey: .globalAlerts)
     }

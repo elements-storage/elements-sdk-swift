@@ -10,12 +10,12 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TapeFile: Codable, Hashable {
+public struct TapeFile: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var tape: Tape?
+    public var id: Int
+    public var tape: Tape
     public var path: String
-    public var searchHighlight: String?
+    public var searchHighlight: String
     public var uid: Int
     public var name: String
     public var isDir: Bool?
@@ -25,7 +25,7 @@ public struct TapeFile: Codable, Hashable {
     public var fullpath: String?
     public var parent: Int?
 
-    public init(id: Int? = nil, tape: Tape? = nil, path: String, searchHighlight: String? = nil, uid: Int, name: String, isDir: Bool? = nil, readOnly: Bool? = nil, length: Int? = nil, checksum: String? = nil, fullpath: String? = nil, parent: Int? = nil) {
+    public init(id: Int, tape: Tape, path: String, searchHighlight: String, uid: Int, name: String, isDir: Bool? = nil, readOnly: Bool? = nil, length: Int? = nil, checksum: String? = nil, fullpath: String? = nil, parent: Int? = nil) {
         self.id = id
         self.tape = tape
         self.path = path
@@ -59,10 +59,10 @@ public struct TapeFile: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(tape, forKey: .tape)
+        try container.encode(id, forKey: .id)
+        try container.encode(tape, forKey: .tape)
         try container.encode(path, forKey: .path)
-        try container.encodeIfPresent(searchHighlight, forKey: .searchHighlight)
+        try container.encode(searchHighlight, forKey: .searchHighlight)
         try container.encode(uid, forKey: .uid)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(isDir, forKey: .isDir)

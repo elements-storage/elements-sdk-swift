@@ -10,17 +10,17 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SubclipPartialUpdate: Codable, Hashable {
+public struct SubclipPartialUpdate: Codable, JSONEncodable, Hashable {
 
     public var asset: AssetMiniReference?
-    public var rendered: AssetMiniReference?
+    public var rendered: AnyOfAssetMiniReferenceAnyType?
     public var shared: Bool?
     public var name: String?
     public var tIn: Double?
     public var tOut: Double?
     public var root: MediaRootMiniReference
 
-    public init(asset: AssetMiniReference? = nil, rendered: AssetMiniReference? = nil, shared: Bool? = nil, name: String? = nil, tIn: Double? = nil, tOut: Double? = nil, root: MediaRootMiniReference) {
+    public init(asset: AssetMiniReference? = nil, rendered: AnyOfAssetMiniReferenceAnyType? = nil, shared: Bool? = nil, name: String? = nil, tIn: Double? = nil, tOut: Double? = nil, root: MediaRootMiniReference) {
         self.asset = asset
         self.rendered = rendered
         self.shared = shared

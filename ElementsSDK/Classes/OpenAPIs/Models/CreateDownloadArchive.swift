@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct CreateDownloadArchive: Codable, Hashable {
+public struct CreateDownloadArchive: Codable, JSONEncodable, Hashable {
 
     public var paths: [String]
     public var fileIds: [Int]?

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct GlobalAlert: Codable, Hashable {
+public struct GlobalAlert: Codable, JSONEncodable, Hashable {
 
     public var text: String
 

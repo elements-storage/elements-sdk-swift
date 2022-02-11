@@ -10,17 +10,17 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Queue: Codable, Hashable {
+public struct Queue: Codable, JSONEncodable, Hashable {
 
     public var id: String?
-    public var group: String?
-    public var priority: String?
+    public var group: String
+    public var priority: String
     public var inputBased: Bool
     public var isServiced: Bool?
     public var node: StorageNodeMini?
     public var volume: VolumeMini?
 
-    public init(id: String? = nil, group: String? = nil, priority: String? = nil, inputBased: Bool, isServiced: Bool? = nil, node: StorageNodeMini? = nil, volume: VolumeMini? = nil) {
+    public init(id: String? = nil, group: String, priority: String, inputBased: Bool, isServiced: Bool?, node: StorageNodeMini? = nil, volume: VolumeMini? = nil) {
         self.id = id
         self.group = group
         self.priority = priority
@@ -45,10 +45,10 @@ public struct Queue: Codable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(group, forKey: .group)
-        try container.encodeIfPresent(priority, forKey: .priority)
+        try container.encode(group, forKey: .group)
+        try container.encode(priority, forKey: .priority)
         try container.encode(inputBased, forKey: .inputBased)
-        try container.encodeIfPresent(isServiced, forKey: .isServiced)
+        try container.encode(isServiced, forKey: .isServiced)
         try container.encodeIfPresent(node, forKey: .node)
         try container.encodeIfPresent(volume, forKey: .volume)
     }

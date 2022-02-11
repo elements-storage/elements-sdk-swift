@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Stats: Codable, Hashable {
+public struct Stats: Codable, JSONEncodable, Hashable {
 
     public var cpu: [CPUStat]
     public var ram: [RAMStat]

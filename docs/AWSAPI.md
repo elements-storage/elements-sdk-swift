@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**createAWSAccount**](AWSAPI.md#createawsaccount) | **POST** /api/2/aws-accounts | 
 [**deleteAWSAccount**](AWSAPI.md#deleteawsaccount) | **DELETE** /api/2/aws-accounts/{id} | 
 [**getAWSAccount**](AWSAPI.md#getawsaccount) | **GET** /api/2/aws-accounts/{id} | 
-[**getAWSAccountBuckets**](AWSAPI.md#getawsaccountbuckets) | **GET** /api/2/aws-accounts/{id}/buckets | 
 [**getAWSAccountSNSTopics**](AWSAPI.md#getawsaccountsnstopics) | **GET** /api/2/aws-accounts/{id}/sns/topics | 
 [**getAllAWSAccounts**](AWSAPI.md#getallawsaccounts) | **GET** /api/2/aws-accounts | 
 [**patchAWSAccount**](AWSAPI.md#patchawsaccount) | **PATCH** /api/2/aws-accounts/{id} | 
@@ -17,21 +16,21 @@ Method | HTTP request | Description
 
 # **createAWSAccount**
 ```swift
-    open class func createAWSAccount( aWSAccount: AWSAccount) -> Promise<AWSAccount>
+    open class func createAWSAccount( cloudAccountMiniUpdate: CloudAccountMiniUpdate) -> Promise<CloudAccountMini>
 ```
 
 
 
 ### Required permissions    * User account permission: `tasks:manage` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let aWSAccount = AWSAccount(id: 123, name: "name_example", accessKeyId: "accessKeyId_example", secretAccessKey: "secretAccessKey_example", endpointUrl: "endpointUrl_example", defaultRegion: "defaultRegion_example") // AWSAccount | 
+let cloudAccountMiniUpdate = CloudAccountMiniUpdate(provider: "provider_example", name: "name_example") // CloudAccountMiniUpdate | 
 
-AWSAPI.createAWSAccount(aWSAccount: aWSAccount).then {
+AWSAPI.createAWSAccount(cloudAccountMiniUpdate: cloudAccountMiniUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -44,11 +43,11 @@ AWSAPI.createAWSAccount(aWSAccount: aWSAccount).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **aWSAccount** | [**AWSAccount**](AWSAccount.md) |  | 
+ **cloudAccountMiniUpdate** | [**CloudAccountMiniUpdate**](CloudAccountMiniUpdate.md) |  | 
 
 ### Return type
 
-[**AWSAccount**](AWSAccount.md)
+[**CloudAccountMini**](CloudAccountMini.md)
 
 ### Authorization
 
@@ -70,12 +69,12 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:manage` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let id = 987 // Int | A unique integer value identifying this AWS Account.
+let id = 987 // Int | A unique integer value identifying this cloud account.
 
 AWSAPI.deleteAWSAccount(id: id).then {
          // when the promise is fulfilled
@@ -90,7 +89,7 @@ AWSAPI.deleteAWSAccount(id: id).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Int** | A unique integer value identifying this AWS Account. | 
+ **id** | **Int** | A unique integer value identifying this cloud account. | 
 
 ### Return type
 
@@ -109,19 +108,19 @@ Void (empty response body)
 
 # **getAWSAccount**
 ```swift
-    open class func getAWSAccount( id: Int) -> Promise<AWSAccount>
+    open class func getAWSAccount( id: Int) -> Promise<CloudAccountMini>
 ```
 
 
 
 ### Required permissions    * User account permission: `tasks:manage` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let id = 987 // Int | A unique integer value identifying this AWS Account.
+let id = 987 // Int | A unique integer value identifying this cloud account.
 
 AWSAPI.getAWSAccount(id: id).then {
          // when the promise is fulfilled
@@ -136,57 +135,11 @@ AWSAPI.getAWSAccount(id: id).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Int** | A unique integer value identifying this AWS Account. | 
+ **id** | **Int** | A unique integer value identifying this cloud account. | 
 
 ### Return type
 
-[**AWSAccount**](AWSAccount.md)
-
-### Authorization
-
-[Bearer](../README.md#Bearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getAWSAccountBuckets**
-```swift
-    open class func getAWSAccountBuckets( id: Int) -> Promise<ListBuckets>
-```
-
-
-
-### Required permissions    * User account permission: `tasks:manage` (read) / `system:admin-access` (write) 
-
-### Example 
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import ElementsSDK
-
-let id = 987 // Int | A unique integer value identifying this AWS Account.
-
-AWSAPI.getAWSAccountBuckets(id: id).then {
-         // when the promise is fulfilled
-     }.always {
-         // regardless of whether the promise is fulfilled, or rejected
-     }.catch { errorType in
-         // when the promise is rejected
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **Int** | A unique integer value identifying this AWS Account. | 
-
-### Return type
-
-[**ListBuckets**](ListBuckets.md)
+[**CloudAccountMini**](CloudAccountMini.md)
 
 ### Authorization
 
@@ -208,12 +161,12 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:manage` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let id = 987 // Int | A unique integer value identifying this AWS Account.
+let id = 987 // Int | A unique integer value identifying this cloud account.
 
 AWSAPI.getAWSAccountSNSTopics(id: id).then {
          // when the promise is fulfilled
@@ -228,7 +181,7 @@ AWSAPI.getAWSAccountSNSTopics(id: id).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Int** | A unique integer value identifying this AWS Account. | 
+ **id** | **Int** | A unique integer value identifying this cloud account. | 
 
 ### Return type
 
@@ -247,14 +200,14 @@ Name | Type | Description  | Notes
 
 # **getAllAWSAccounts**
 ```swift
-    open class func getAllAWSAccounts( name: String? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[AWSAccount]>
+    open class func getAllAWSAccounts( name: String? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[CloudAccountMini]>
 ```
 
 
 
 ### Required permissions    * User account permission: `tasks:manage` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -286,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[AWSAccount]**](AWSAccount.md)
+[**[CloudAccountMini]**](CloudAccountMini.md)
 
 ### Authorization
 
@@ -301,22 +254,22 @@ Name | Type | Description  | Notes
 
 # **patchAWSAccount**
 ```swift
-    open class func patchAWSAccount( id: Int,  aWSAccountPartialUpdate: AWSAccountPartialUpdate) -> Promise<AWSAccount>
+    open class func patchAWSAccount( id: Int,  cloudAccountMiniPartialUpdate: CloudAccountMiniPartialUpdate) -> Promise<CloudAccountMini>
 ```
 
 
 
 ### Required permissions    * User account permission: `tasks:manage` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let id = 987 // Int | A unique integer value identifying this AWS Account.
-let aWSAccountPartialUpdate = AWSAccountPartialUpdate(name: "name_example", accessKeyId: "accessKeyId_example", secretAccessKey: "secretAccessKey_example", endpointUrl: "endpointUrl_example", defaultRegion: "defaultRegion_example") // AWSAccountPartialUpdate | 
+let id = 987 // Int | A unique integer value identifying this cloud account.
+let cloudAccountMiniPartialUpdate = CloudAccountMiniPartialUpdate(provider: "provider_example", name: "name_example") // CloudAccountMiniPartialUpdate | 
 
-AWSAPI.patchAWSAccount(id: id, aWSAccountPartialUpdate: aWSAccountPartialUpdate).then {
+AWSAPI.patchAWSAccount(id: id, cloudAccountMiniPartialUpdate: cloudAccountMiniPartialUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -329,12 +282,12 @@ AWSAPI.patchAWSAccount(id: id, aWSAccountPartialUpdate: aWSAccountPartialUpdate)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Int** | A unique integer value identifying this AWS Account. | 
- **aWSAccountPartialUpdate** | [**AWSAccountPartialUpdate**](AWSAccountPartialUpdate.md) |  | 
+ **id** | **Int** | A unique integer value identifying this cloud account. | 
+ **cloudAccountMiniPartialUpdate** | [**CloudAccountMiniPartialUpdate**](CloudAccountMiniPartialUpdate.md) |  | 
 
 ### Return type
 
-[**AWSAccount**](AWSAccount.md)
+[**CloudAccountMini**](CloudAccountMini.md)
 
 ### Authorization
 
@@ -356,7 +309,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:manage` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -395,22 +348,22 @@ Name | Type | Description  | Notes
 
 # **updateAWSAccount**
 ```swift
-    open class func updateAWSAccount( id: Int,  aWSAccount: AWSAccount) -> Promise<AWSAccount>
+    open class func updateAWSAccount( id: Int,  cloudAccountMiniUpdate: CloudAccountMiniUpdate) -> Promise<CloudAccountMini>
 ```
 
 
 
 ### Required permissions    * User account permission: `tasks:manage` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let id = 987 // Int | A unique integer value identifying this AWS Account.
-let aWSAccount = AWSAccount(id: 123, name: "name_example", accessKeyId: "accessKeyId_example", secretAccessKey: "secretAccessKey_example", endpointUrl: "endpointUrl_example", defaultRegion: "defaultRegion_example") // AWSAccount | 
+let id = 987 // Int | A unique integer value identifying this cloud account.
+let cloudAccountMiniUpdate = CloudAccountMiniUpdate(provider: "provider_example", name: "name_example") // CloudAccountMiniUpdate | 
 
-AWSAPI.updateAWSAccount(id: id, aWSAccount: aWSAccount).then {
+AWSAPI.updateAWSAccount(id: id, cloudAccountMiniUpdate: cloudAccountMiniUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -423,12 +376,12 @@ AWSAPI.updateAWSAccount(id: id, aWSAccount: aWSAccount).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **Int** | A unique integer value identifying this AWS Account. | 
- **aWSAccount** | [**AWSAccount**](AWSAccount.md) |  | 
+ **id** | **Int** | A unique integer value identifying this cloud account. | 
+ **cloudAccountMiniUpdate** | [**CloudAccountMiniUpdate**](CloudAccountMiniUpdate.md) |  | 
 
 ### Return type
 
-[**AWSAccount**](AWSAccount.md)
+[**CloudAccountMini**](CloudAccountMini.md)
 
 ### Authorization
 

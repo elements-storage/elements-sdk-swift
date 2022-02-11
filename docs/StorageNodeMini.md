@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **name** | **String** |  | [optional] 
 **address** | **String** | For communication between nodes only | [optional] 
 **type** | **Int** |  | [optional] 

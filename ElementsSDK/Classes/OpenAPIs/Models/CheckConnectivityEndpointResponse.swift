@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct CheckConnectivityEndpointResponse: Codable, Hashable {
+public struct CheckConnectivityEndpointResponse: Codable, JSONEncodable, Hashable {
 
     public var success: Bool
     public var errors: [String]

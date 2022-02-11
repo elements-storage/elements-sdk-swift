@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct BeeGFSTarget: Codable, Hashable {
+public struct BeeGFSTarget: Codable, JSONEncodable, Hashable {
 
     public var node: StorageNodeMini?
     public var id: Int

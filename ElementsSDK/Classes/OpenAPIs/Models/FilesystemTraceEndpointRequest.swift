@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct FilesystemTraceEndpointRequest: Codable, Hashable {
+public struct FilesystemTraceEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var duration: Int
 

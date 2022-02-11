@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MarkerPartialUpdate: Codable, Hashable {
+public struct MarkerPartialUpdate: Codable, JSONEncodable, Hashable {
 
     public var title: String?
     public var text: String?

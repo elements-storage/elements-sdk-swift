@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct RegisterUploadEndpointRequest: Codable, Hashable {
+public struct RegisterUploadEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var uploadId: String
     public var path: String

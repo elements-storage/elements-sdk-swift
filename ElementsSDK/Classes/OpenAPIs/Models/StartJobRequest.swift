@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct StartJobRequest: Codable, Hashable {
+public struct StartJobRequest: Codable, JSONEncodable, Hashable {
 
     public var variables: [String: String]?
     /** Only required for incoming webhooks */

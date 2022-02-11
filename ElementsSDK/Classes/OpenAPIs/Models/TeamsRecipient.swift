@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TeamsRecipient: Codable, Hashable {
+public struct TeamsRecipient: Codable, JSONEncodable, Hashable {
 
     public var id: String
     public var name: String? = "General"

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Ticket: Codable, Hashable {
+public struct Ticket: Codable, JSONEncodable, Hashable {
 
     public var ticket: String
 

@@ -10,23 +10,22 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Volume: Codable, Hashable {
+public struct Volume: Codable, JSONEncodable, Hashable {
 
     public enum ModelType: String, Codable, CaseIterable {
         case generic = "generic"
         case genericMount = "generic-mount"
         case snfs = "snfs"
         case btrfs = "btrfs"
-        case s3fs = "s3fs"
         case lizardfs = "lizardfs"
         case bcachefs = "bcachefs"
-        case isilon = "isilon"
+        case onefs = "onefs"
         case beegfs = "beegfs"
+        case cloud = "cloud"
     }
-    public var id: Int?
-    public var name: String?
+    public var id: Int
     public var path: String?
-    public var nodes: Set<Int>
+    public var nodes: [Int]
     public var displayName: String?
     public var visualTag: String?
     public var isDefault: Bool?
@@ -37,12 +36,13 @@ public struct Volume: Codable, Hashable {
     public var snfsName: String?
     public var simulatedQuotas: Bool?
     public var fsProperties: FSProperties?
-    public var backend: Backend?
+    public var backend: Backend
     public var status: VolumeStatus?
+    public var cloudAccount: Int?
+    public var name: String?
 
-    public init(id: Int? = nil, name: String? = nil, path: String? = nil, nodes: Set<Int>, displayName: String? = nil, visualTag: String? = nil, isDefault: Bool? = nil, useForHomes: Bool? = nil, useForWorkspaces: Bool? = nil, type: ModelType? = nil, snmEnabled: Bool? = nil, snfsName: String? = nil, simulatedQuotas: Bool? = nil, fsProperties: FSProperties? = nil, backend: Backend? = nil, status: VolumeStatus? = nil) {
+    public init(id: Int, path: String? = nil, nodes: [Int], displayName: String? = nil, visualTag: String? = nil, isDefault: Bool? = nil, useForHomes: Bool? = nil, useForWorkspaces: Bool? = nil, type: ModelType? = nil, snmEnabled: Bool? = nil, snfsName: String? = nil, simulatedQuotas: Bool? = nil, fsProperties: FSProperties? = nil, backend: Backend, status: VolumeStatus? = nil, cloudAccount: Int? = nil, name: String? = nil) {
         self.id = id
-        self.name = name
         self.path = path
         self.nodes = nodes
         self.displayName = displayName
@@ -57,11 +57,12 @@ public struct Volume: Codable, Hashable {
         self.fsProperties = fsProperties
         self.backend = backend
         self.status = status
+        self.cloudAccount = cloudAccount
+        self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
-        case name
         case path
         case nodes
         case displayName = "display_name"
@@ -76,14 +77,15 @@ public struct Volume: Codable, Hashable {
         case fsProperties = "fs_properties"
         case backend
         case status
+        case cloudAccount = "cloud_account"
+        case name
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(name, forKey: .name)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(path, forKey: .path)
         try container.encode(nodes, forKey: .nodes)
         try container.encodeIfPresent(displayName, forKey: .displayName)
@@ -96,8 +98,10 @@ public struct Volume: Codable, Hashable {
         try container.encodeIfPresent(snfsName, forKey: .snfsName)
         try container.encodeIfPresent(simulatedQuotas, forKey: .simulatedQuotas)
         try container.encodeIfPresent(fsProperties, forKey: .fsProperties)
-        try container.encodeIfPresent(backend, forKey: .backend)
+        try container.encode(backend, forKey: .backend)
         try container.encodeIfPresent(status, forKey: .status)
+        try container.encodeIfPresent(cloudAccount, forKey: .cloudAccount)
+        try container.encodeIfPresent(name, forKey: .name)
     }
 }
 

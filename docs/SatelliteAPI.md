@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 ### Required permissions    * User account permission: `rdc:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -109,7 +109,7 @@ This endpoint does not need any parameter.
 
 ### Required permissions    * License component: rdc 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * License component: rdc 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -201,7 +201,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `rdc:access`   * License component: rdc 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -251,7 +251,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * License component: rdc 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `rdc:access`   * License component: rdc 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * License component: rdc 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK

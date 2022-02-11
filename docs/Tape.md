@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
-**rootEntry** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
+**rootEntry** | **Int** |  | [readonly] 
 **name** | **String** |  | 
 **uuid** | **String** |  | [optional] 
 **generation** | **Int** |  | [optional] 

@@ -10,14 +10,14 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct AssetProjectLink: Codable, Hashable {
+public struct AssetProjectLink: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var project: Asset?
+    public var id: Int
+    public var project: Asset
     public var sequenceName: String
     public var asset: Int
 
-    public init(id: Int? = nil, project: Asset? = nil, sequenceName: String, asset: Int) {
+    public init(id: Int, project: Asset, sequenceName: String, asset: Int) {
         self.id = id
         self.project = project
         self.sequenceName = sequenceName
@@ -35,8 +35,8 @@ public struct AssetProjectLink: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(project, forKey: .project)
+        try container.encode(id, forKey: .id)
+        try container.encode(project, forKey: .project)
         try container.encode(sequenceName, forKey: .sequenceName)
         try container.encode(asset, forKey: .asset)
     }

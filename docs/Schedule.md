@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **variables** | **[String: String]** |  | [optional] 
-**nextRun** | **Date** |  | [optional] [readonly] 
+**nextRun** | **Date** |  | [readonly] 
 **type** | **Int** |  | [optional] 
 **enabled** | **Bool** |  | [optional] 
 **lastRun** | **Date** |  | [optional] 

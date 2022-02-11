@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
-**user** | [**ElementsUserReference**](ElementsUserReference.md) |  | [optional] 
-**group** | [**ElementsGroupReference**](ElementsGroupReference.md) |  | [optional] 
+**id** | **Int** |  | 
+**user** | [**AnyOfElementsUserReferenceAnyType**](AnyOfElementsUserReferenceAnyType.md) |  | [optional] 
+**group** | [**AnyOfElementsGroupReferenceAnyType**](AnyOfElementsGroupReferenceAnyType.md) |  | [optional] 
 **readOnly** | **Bool** |  | [optional] 
 **workspace** | **Int** |  | 
 

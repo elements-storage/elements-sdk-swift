@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ServiceStatus: Codable, Hashable {
+public struct ServiceStatus: Codable, JSONEncodable, Hashable {
 
     public var running: Bool
 

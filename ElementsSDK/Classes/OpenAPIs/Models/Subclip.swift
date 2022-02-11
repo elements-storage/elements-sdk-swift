@@ -10,20 +10,20 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Subclip: Codable, Hashable {
+public struct Subclip: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var asset: AssetMiniReference
-    public var rendered: AssetMiniReference?
+    public var rendered: AnyOfAssetMiniReferenceAnyType?
     public var shared: Bool?
-    public var date: Date?
+    public var date: Date
     public var name: String?
     public var tIn: Double
     public var tOut: Double
-    public var user: Int?
+    public var user: Int
     public var root: MediaRootMiniReference
 
-    public init(id: Int? = nil, asset: AssetMiniReference, rendered: AssetMiniReference? = nil, shared: Bool? = nil, date: Date? = nil, name: String? = nil, tIn: Double, tOut: Double, user: Int? = nil, root: MediaRootMiniReference) {
+    public init(id: Int, asset: AssetMiniReference, rendered: AnyOfAssetMiniReferenceAnyType? = nil, shared: Bool? = nil, date: Date, name: String? = nil, tIn: Double, tOut: Double, user: Int, root: MediaRootMiniReference) {
         self.id = id
         self.asset = asset
         self.rendered = rendered
@@ -53,15 +53,15 @@ public struct Subclip: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(asset, forKey: .asset)
         try container.encodeIfPresent(rendered, forKey: .rendered)
         try container.encodeIfPresent(shared, forKey: .shared)
-        try container.encodeIfPresent(date, forKey: .date)
+        try container.encode(date, forKey: .date)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encode(tIn, forKey: .tIn)
         try container.encode(tOut, forKey: .tOut)
-        try container.encodeIfPresent(user, forKey: .user)
+        try container.encode(user, forKey: .user)
         try container.encode(root, forKey: .root)
     }
 }

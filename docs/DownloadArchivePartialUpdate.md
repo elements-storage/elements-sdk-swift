@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
 **taskInfo** | [**TaskInfo**](TaskInfo.md) |  | [optional] 
 **name** | **String** |  | [optional] 
 **path** | **String** |  | [optional] 

@@ -10,14 +10,14 @@ Name | Type | Description | Notes
 **inputType** | **String** |  | 
 **abortable** | **Bool** |  | 
 **argTemplate** | **[String: String]** |  | 
-**argTypes** | [String: ArgumentType] |  | [optional] [readonly] 
+**argTypes** | [String: ArgumentType] |  | [readonly] 
 **requiredArgs** | **[String]** |  | 
 **outputNames** | **[String: String]** |  | 
-**outputTypes** | [String: ArgumentType] |  | [optional] [readonly] 
+**outputTypes** | [String: ArgumentType] |  | [readonly] 
 **parametersEditorComponent** | **String** |  | 
 **superuserOnly** | **Bool** |  | 
 **iconClass** | **String** |  | 
-**isAvailable** | **Bool** |  | [optional] [readonly] 
+**isAvailable** | **Bool** |  | [readonly] 
 **allowInJobs** | **Bool** |  | 
 **newSinceVersion** | **String** |  | 
 

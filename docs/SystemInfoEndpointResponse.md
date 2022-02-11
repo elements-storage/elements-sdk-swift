@@ -8,8 +8,9 @@ Name | Type | Description | Notes
 **clientApiVersion** | **Int** |  | 
 **ntHostname** | **String** |  | 
 **offersNtpSync** | **Bool** |  | 
+**offersFileSearch** | **Bool** |  | 
 **language** | **String** |  | 
-**samlProviders** | [SAMLProviderMini] |  | [optional] [readonly] 
+**samlProviders** | [SAMLProviderMini] |  | [readonly] 
 **version** | [**ElementsVersion**](ElementsVersion.md) |  | 
 **globalAlerts** | [GlobalAlert] |  | 
 

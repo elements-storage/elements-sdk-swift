@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct NTPServerPartialUpdate: Codable, Hashable {
+public struct NTPServerPartialUpdate: Codable, JSONEncodable, Hashable {
 
     public var address: String?
     public var options: String?

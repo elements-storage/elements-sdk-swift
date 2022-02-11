@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TaskInfo: Codable, Hashable {
+public struct TaskInfo: Codable, JSONEncodable, Hashable {
 
     public enum State: Int, Codable, CaseIterable {
         case _0 = 0
@@ -23,14 +23,15 @@ public struct TaskInfo: Codable, Hashable {
         case _7 = 7
     }
     public var id: String
-    public var displayName: String?
+    public var displayName: String
     public var kwargs: [String: String]
     public var subtask: Subtask?
     public var worker: StorageNodeMini?
     public var user: ElementsUserMini?
     public var workstation: Workstation?
-    public var progress: TaskProgress?
-    public var logPath: String?
+    public var progress: TaskProgress
+    public var logPath: String
+    public var finished: Date?
     public var name: String?
     public var taskName: String?
     public var workerName: String?
@@ -38,13 +39,12 @@ public struct TaskInfo: Codable, Hashable {
     public var state: State?
     public var stateText: String?
     public var jobInstance: UUID?
-    public var started: Date?
-    public var finished: Date?
+    public var started: Date
     public var exception: String?
     public var traceback: String?
     public var schedule: Int?
 
-    public init(id: String, displayName: String? = nil, kwargs: [String: String], subtask: Subtask? = nil, worker: StorageNodeMini? = nil, user: ElementsUserMini? = nil, workstation: Workstation? = nil, progress: TaskProgress? = nil, logPath: String? = nil, name: String? = nil, taskName: String? = nil, workerName: String? = nil, queue: String? = nil, state: State? = nil, stateText: String? = nil, jobInstance: UUID? = nil, started: Date? = nil, finished: Date? = nil, exception: String? = nil, traceback: String? = nil, schedule: Int? = nil) {
+    public init(id: String, displayName: String, kwargs: [String: String], subtask: Subtask? = nil, worker: StorageNodeMini? = nil, user: ElementsUserMini? = nil, workstation: Workstation? = nil, progress: TaskProgress, logPath: String, finished: Date? = nil, name: String? = nil, taskName: String? = nil, workerName: String? = nil, queue: String? = nil, state: State? = nil, stateText: String? = nil, jobInstance: UUID? = nil, started: Date, exception: String? = nil, traceback: String? = nil, schedule: Int? = nil) {
         self.id = id
         self.displayName = displayName
         self.kwargs = kwargs
@@ -54,6 +54,7 @@ public struct TaskInfo: Codable, Hashable {
         self.workstation = workstation
         self.progress = progress
         self.logPath = logPath
+        self.finished = finished
         self.name = name
         self.taskName = taskName
         self.workerName = workerName
@@ -62,7 +63,6 @@ public struct TaskInfo: Codable, Hashable {
         self.stateText = stateText
         self.jobInstance = jobInstance
         self.started = started
-        self.finished = finished
         self.exception = exception
         self.traceback = traceback
         self.schedule = schedule
@@ -78,6 +78,7 @@ public struct TaskInfo: Codable, Hashable {
         case workstation
         case progress
         case logPath = "log_path"
+        case finished
         case name
         case taskName = "task_name"
         case workerName = "worker_name"
@@ -86,7 +87,6 @@ public struct TaskInfo: Codable, Hashable {
         case stateText = "state_text"
         case jobInstance = "job_instance"
         case started
-        case finished
         case exception
         case traceback
         case schedule
@@ -97,14 +97,15 @@ public struct TaskInfo: Codable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
-        try container.encodeIfPresent(displayName, forKey: .displayName)
+        try container.encode(displayName, forKey: .displayName)
         try container.encode(kwargs, forKey: .kwargs)
         try container.encodeIfPresent(subtask, forKey: .subtask)
         try container.encodeIfPresent(worker, forKey: .worker)
         try container.encodeIfPresent(user, forKey: .user)
         try container.encodeIfPresent(workstation, forKey: .workstation)
-        try container.encodeIfPresent(progress, forKey: .progress)
-        try container.encodeIfPresent(logPath, forKey: .logPath)
+        try container.encode(progress, forKey: .progress)
+        try container.encode(logPath, forKey: .logPath)
+        try container.encodeIfPresent(finished, forKey: .finished)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(taskName, forKey: .taskName)
         try container.encodeIfPresent(workerName, forKey: .workerName)
@@ -112,8 +113,7 @@ public struct TaskInfo: Codable, Hashable {
         try container.encodeIfPresent(state, forKey: .state)
         try container.encodeIfPresent(stateText, forKey: .stateText)
         try container.encodeIfPresent(jobInstance, forKey: .jobInstance)
-        try container.encodeIfPresent(started, forKey: .started)
-        try container.encodeIfPresent(finished, forKey: .finished)
+        try container.encode(started, forKey: .started)
         try container.encodeIfPresent(exception, forKey: .exception)
         try container.encodeIfPresent(traceback, forKey: .traceback)
         try container.encodeIfPresent(schedule, forKey: .schedule)

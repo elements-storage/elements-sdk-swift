@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct GeneratePasswordEndpointResponse: Codable, Hashable {
+public struct GeneratePasswordEndpointResponse: Codable, JSONEncodable, Hashable {
 
     public var password: String
 

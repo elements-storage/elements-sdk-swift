@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ImportJobResponse: Codable, Hashable {
+public struct ImportJobResponse: Codable, JSONEncodable, Hashable {
 
     public var jobs: [Job]
 

@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **name** | **String** |  | 
 **message** | **String** |  | 
 **level** | **String** |  | 
 **isOpen** | **Bool** |  | 
-**node** | [**StorageNodeMini**](StorageNodeMini.md) |  | [optional] 
-**openedAt** | **Date** |  | [optional] [readonly] 
+**node** | [**StorageNodeMini**](StorageNodeMini.md) |  | 
+**openedAt** | **Date** |  | [readonly] 
 **closedAt** | **Date** |  | [optional] 
-**duration** | **String** |  | [optional] [readonly] 
+**duration** | **String** |  | [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

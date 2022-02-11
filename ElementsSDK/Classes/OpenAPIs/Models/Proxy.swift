@@ -10,13 +10,13 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Proxy: Codable, Hashable {
+public struct Proxy: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var urls: [String: String]?
-    public var profile: ProxyProfileMini?
+    public var id: Int
+    public var urls: [String: String]
+    public var profile: ProxyProfileMini
     public var failedReason: String?
-    public var transforms: String?
+    public var transforms: String
     public var generated: Bool?
     public var failed: Bool?
     public var name: String?
@@ -24,7 +24,7 @@ public struct Proxy: Codable, Hashable {
     public var variantConfig: String?
     public var asset: Int
 
-    public init(id: Int? = nil, urls: [String: String]? = nil, profile: ProxyProfileMini? = nil, failedReason: String? = nil, transforms: String? = nil, generated: Bool? = nil, failed: Bool? = nil, name: String? = nil, variantId: String? = "default", variantConfig: String? = nil, asset: Int) {
+    public init(id: Int, urls: [String: String], profile: ProxyProfileMini, failedReason: String?, transforms: String, generated: Bool? = nil, failed: Bool? = nil, name: String? = nil, variantId: String? = "default", variantConfig: String? = nil, asset: Int) {
         self.id = id
         self.urls = urls
         self.profile = profile
@@ -56,11 +56,11 @@ public struct Proxy: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(urls, forKey: .urls)
-        try container.encodeIfPresent(profile, forKey: .profile)
-        try container.encodeIfPresent(failedReason, forKey: .failedReason)
-        try container.encodeIfPresent(transforms, forKey: .transforms)
+        try container.encode(id, forKey: .id)
+        try container.encode(urls, forKey: .urls)
+        try container.encode(profile, forKey: .profile)
+        try container.encode(failedReason, forKey: .failedReason)
+        try container.encode(transforms, forKey: .transforms)
         try container.encodeIfPresent(generated, forKey: .generated)
         try container.encodeIfPresent(failed, forKey: .failed)
         try container.encodeIfPresent(name, forKey: .name)

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct EmailPreview: Codable, Hashable {
+public struct EmailPreview: Codable, JSONEncodable, Hashable {
 
     public var styling: [String: String]?
 

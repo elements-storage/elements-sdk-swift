@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct FilesystemTraceEndpointResponse: Codable, Hashable {
+public struct FilesystemTraceEndpointResponse: Codable, JSONEncodable, Hashable {
 
     public var root: TraceNode
     public var diskDRead: Int

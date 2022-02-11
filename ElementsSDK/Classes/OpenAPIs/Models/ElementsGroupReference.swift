@@ -10,32 +10,32 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ElementsGroupReference: Codable, Hashable {
+public struct ElementsGroupReference: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var permissions: [String]?
     public var membersPreview: [MemberPreview]?
     public var effectivePermissions: [String]?
+    public var ancillaryPath: String?
+    public var ancillaryPathReadOnly: String?
     public var name: String?
     public var ldapDn: String?
     public var unixGroupname: String?
     public var gid: Int?
-    public var ancillaryPath: String?
-    public var ancillaryPathReadOnly: Bool?
     public var ldap: Int?
-    public var members: Set<Int>?
+    public var members: [Int]?
 
-    public init(id: Int? = nil, permissions: [String]? = nil, membersPreview: [MemberPreview]? = nil, effectivePermissions: [String]? = nil, name: String? = nil, ldapDn: String? = nil, unixGroupname: String? = nil, gid: Int? = nil, ancillaryPath: String? = nil, ancillaryPathReadOnly: Bool? = nil, ldap: Int? = nil, members: Set<Int>? = nil) {
+    public init(id: Int, permissions: [String]? = nil, membersPreview: [MemberPreview]? = nil, effectivePermissions: [String]? = nil, ancillaryPath: String? = nil, ancillaryPathReadOnly: String? = nil, name: String? = nil, ldapDn: String? = nil, unixGroupname: String? = nil, gid: Int? = nil, ldap: Int? = nil, members: [Int]? = nil) {
         self.id = id
         self.permissions = permissions
         self.membersPreview = membersPreview
         self.effectivePermissions = effectivePermissions
+        self.ancillaryPath = ancillaryPath
+        self.ancillaryPathReadOnly = ancillaryPathReadOnly
         self.name = name
         self.ldapDn = ldapDn
         self.unixGroupname = unixGroupname
         self.gid = gid
-        self.ancillaryPath = ancillaryPath
-        self.ancillaryPathReadOnly = ancillaryPathReadOnly
         self.ldap = ldap
         self.members = members
     }
@@ -45,12 +45,12 @@ public struct ElementsGroupReference: Codable, Hashable {
         case permissions
         case membersPreview = "members_preview"
         case effectivePermissions = "effective_permissions"
+        case ancillaryPath = "ancillary_path"
+        case ancillaryPathReadOnly = "ancillary_path_read_only"
         case name
         case ldapDn = "ldap_dn"
         case unixGroupname = "unix_groupname"
         case gid
-        case ancillaryPath = "ancillary_path"
-        case ancillaryPathReadOnly = "ancillary_path_read_only"
         case ldap
         case members
     }
@@ -59,16 +59,16 @@ public struct ElementsGroupReference: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(permissions, forKey: .permissions)
         try container.encodeIfPresent(membersPreview, forKey: .membersPreview)
         try container.encodeIfPresent(effectivePermissions, forKey: .effectivePermissions)
+        try container.encodeIfPresent(ancillaryPath, forKey: .ancillaryPath)
+        try container.encodeIfPresent(ancillaryPathReadOnly, forKey: .ancillaryPathReadOnly)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(ldapDn, forKey: .ldapDn)
         try container.encodeIfPresent(unixGroupname, forKey: .unixGroupname)
         try container.encodeIfPresent(gid, forKey: .gid)
-        try container.encodeIfPresent(ancillaryPath, forKey: .ancillaryPath)
-        try container.encodeIfPresent(ancillaryPathReadOnly, forKey: .ancillaryPathReadOnly)
         try container.encodeIfPresent(ldap, forKey: .ldap)
         try container.encodeIfPresent(members, forKey: .members)
     }

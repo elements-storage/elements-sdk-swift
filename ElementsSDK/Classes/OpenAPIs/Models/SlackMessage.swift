@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SlackMessage: Codable, Hashable {
+public struct SlackMessage: Codable, JSONEncodable, Hashable {
 
     public var recipient: String
     public var text: String

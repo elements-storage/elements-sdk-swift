@@ -10,10 +10,10 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MediaLibraryShareRequest: Codable, Hashable {
+public struct MediaLibraryShareRequest: Codable, JSONEncodable, Hashable {
 
-    public var bundles: Set<Int>?
-    public var directories: Set<Int>?
+    public var bundles: [Int]?
+    public var directories: [Int]?
     public var expires: Date
     public var viewLimit: Int?
     public var permissions: MediaRootPermissionAccessOptions
@@ -22,7 +22,7 @@ public struct MediaLibraryShareRequest: Codable, Hashable {
     public var linkType: String?
     public var password: String?
 
-    public init(bundles: Set<Int>? = nil, directories: Set<Int>? = nil, expires: Date, viewLimit: Int? = nil, permissions: MediaRootPermissionAccessOptions, user: Int? = nil, email: String? = nil, linkType: String? = nil, password: String? = nil) {
+    public init(bundles: [Int]? = nil, directories: [Int]? = nil, expires: Date, viewLimit: Int? = nil, permissions: MediaRootPermissionAccessOptions, user: Int? = nil, email: String? = nil, linkType: String? = nil, password: String? = nil) {
         self.bundles = bundles
         self.directories = directories
         self.expires = expires

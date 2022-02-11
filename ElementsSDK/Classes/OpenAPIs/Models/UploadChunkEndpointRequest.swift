@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct UploadChunkEndpointRequest: Codable, Hashable {
+public struct UploadChunkEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var uploadId: String?
     public var chunkNumber: Int?

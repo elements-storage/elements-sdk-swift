@@ -10,31 +10,35 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SAMLProviderMini: Codable, Hashable {
+public struct SAMLProviderMini: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var name: String?
-    public var loginUrl: String?
+    public var loginUrl: String
+    public var logoutUrl: String
 
-    public init(id: Int? = nil, name: String? = nil, loginUrl: String? = nil) {
+    public init(id: Int, name: String? = nil, loginUrl: String, logoutUrl: String) {
         self.id = id
         self.name = name
         self.loginUrl = loginUrl
+        self.logoutUrl = logoutUrl
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
         case loginUrl = "login_url"
+        case logoutUrl = "logout_url"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(loginUrl, forKey: .loginUrl)
+        try container.encode(loginUrl, forKey: .loginUrl)
+        try container.encode(logoutUrl, forKey: .logoutUrl)
     }
 }
 

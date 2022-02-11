@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ElementsUserDetail: Codable, Hashable {
+public struct ElementsUserDetail: Codable, JSONEncodable, Hashable {
 
     public enum Language: String, Codable, CaseIterable {
         case en = "en"
@@ -18,25 +18,24 @@ public struct ElementsUserDetail: Codable, Hashable {
         case de = "de"
         case ru = "ru"
     }
-    public var id: Int?
+    public var id: Int
+    public var ancillaryPath: String?
+    public var ancillaryPathReadOnly: String?
     public var allowChangingPassword: Bool?
     public var allowWanLogin: Bool?
     public var allowedFsPaths: [String]?
     public var allowedFsWritePaths: [String]?
     public var avatar: String?
-    public var clientSessions: [ClientSession]?
     public var defaultPage: String?
-    public var displayName: String?
-    public var effectivePermissions: [String]?
+    public var displayName: String
+    public var effectivePermissions: [String]
     public var email: String?
     public var expiry: Date?
-    public var ancillaryPathReadOnly: Bool?
-    public var ancillaryPath: String?
     public var fmBookmarks: [String]?
     public var fullName: String?
     public var gid: Int?
-    public var groupPermissions: [String]?
-    public var hasPassword: Bool?
+    public var groupPermissions: [String]
+    public var hasPassword: Bool
     public var home: Int?
     public var isExternal: Bool?
     public var isCloud: Bool?
@@ -44,34 +43,33 @@ public struct ElementsUserDetail: Codable, Hashable {
     public var isEnabled: Bool?
     public var language: Language?
     public var lastSeen: Date?
-    public var ldap: LDAPServerReference?
+    public var ldap: AnyOfLDAPServerReferenceAnyType?
     public var ldapDn: String?
     public var passwordChangeRequired: Bool?
     public var permissions: [String]
     public var shaperCeiling: Int?
     public var shaperRate: Int?
-    public var syncId: UUID?
+    public var syncId: UUID
     public var totpEnabled: Bool?
     public var uid: Int?
     public var unixUsername: String?
     public var username: String
-    public var groups: Set<Int>
+    public var groups: [Int]
 
-    public init(id: Int? = nil, allowChangingPassword: Bool? = nil, allowWanLogin: Bool? = nil, allowedFsPaths: [String]? = nil, allowedFsWritePaths: [String]? = nil, avatar: String? = nil, clientSessions: [ClientSession]? = nil, defaultPage: String? = nil, displayName: String? = nil, effectivePermissions: [String]? = nil, email: String? = nil, expiry: Date? = nil, ancillaryPathReadOnly: Bool? = nil, ancillaryPath: String? = nil, fmBookmarks: [String]? = nil, fullName: String? = nil, gid: Int? = nil, groupPermissions: [String]? = nil, hasPassword: Bool? = nil, home: Int? = nil, isExternal: Bool? = nil, isCloud: Bool? = nil, isCloudDefault: Bool? = nil, isEnabled: Bool? = nil, language: Language? = nil, lastSeen: Date? = nil, ldap: LDAPServerReference? = nil, ldapDn: String? = nil, passwordChangeRequired: Bool? = nil, permissions: [String], shaperCeiling: Int? = nil, shaperRate: Int? = nil, syncId: UUID? = nil, totpEnabled: Bool? = nil, uid: Int? = nil, unixUsername: String? = nil, username: String, groups: Set<Int>) {
+    public init(id: Int, ancillaryPath: String? = nil, ancillaryPathReadOnly: String? = nil, allowChangingPassword: Bool? = nil, allowWanLogin: Bool? = nil, allowedFsPaths: [String]?, allowedFsWritePaths: [String]?, avatar: String? = nil, defaultPage: String? = nil, displayName: String, effectivePermissions: [String], email: String? = nil, expiry: Date? = nil, fmBookmarks: [String]? = nil, fullName: String? = nil, gid: Int? = nil, groupPermissions: [String], hasPassword: Bool, home: Int? = nil, isExternal: Bool? = nil, isCloud: Bool? = nil, isCloudDefault: Bool? = nil, isEnabled: Bool? = nil, language: Language? = nil, lastSeen: Date? = nil, ldap: AnyOfLDAPServerReferenceAnyType? = nil, ldapDn: String? = nil, passwordChangeRequired: Bool? = nil, permissions: [String], shaperCeiling: Int?, shaperRate: Int?, syncId: UUID, totpEnabled: Bool? = nil, uid: Int? = nil, unixUsername: String? = nil, username: String, groups: [Int]) {
         self.id = id
+        self.ancillaryPath = ancillaryPath
+        self.ancillaryPathReadOnly = ancillaryPathReadOnly
         self.allowChangingPassword = allowChangingPassword
         self.allowWanLogin = allowWanLogin
         self.allowedFsPaths = allowedFsPaths
         self.allowedFsWritePaths = allowedFsWritePaths
         self.avatar = avatar
-        self.clientSessions = clientSessions
         self.defaultPage = defaultPage
         self.displayName = displayName
         self.effectivePermissions = effectivePermissions
         self.email = email
         self.expiry = expiry
-        self.ancillaryPathReadOnly = ancillaryPathReadOnly
-        self.ancillaryPath = ancillaryPath
         self.fmBookmarks = fmBookmarks
         self.fullName = fullName
         self.gid = gid
@@ -100,19 +98,18 @@ public struct ElementsUserDetail: Codable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case ancillaryPath = "ancillary_path"
+        case ancillaryPathReadOnly = "ancillary_path_read_only"
         case allowChangingPassword = "allow_changing_password"
         case allowWanLogin = "allow_wan_login"
         case allowedFsPaths = "allowed_fs_paths"
         case allowedFsWritePaths = "allowed_fs_write_paths"
         case avatar
-        case clientSessions = "client_sessions"
         case defaultPage = "default_page"
         case displayName = "display_name"
         case effectivePermissions = "effective_permissions"
         case email
         case expiry
-        case ancillaryPathReadOnly = "ancillary_path_read_only"
-        case ancillaryPath = "ancillary_path"
         case fmBookmarks = "fm_bookmarks"
         case fullName = "full_name"
         case gid
@@ -143,25 +140,24 @@ public struct ElementsUserDetail: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
+        try container.encodeIfPresent(ancillaryPath, forKey: .ancillaryPath)
+        try container.encodeIfPresent(ancillaryPathReadOnly, forKey: .ancillaryPathReadOnly)
         try container.encodeIfPresent(allowChangingPassword, forKey: .allowChangingPassword)
         try container.encodeIfPresent(allowWanLogin, forKey: .allowWanLogin)
-        try container.encodeIfPresent(allowedFsPaths, forKey: .allowedFsPaths)
-        try container.encodeIfPresent(allowedFsWritePaths, forKey: .allowedFsWritePaths)
+        try container.encode(allowedFsPaths, forKey: .allowedFsPaths)
+        try container.encode(allowedFsWritePaths, forKey: .allowedFsWritePaths)
         try container.encodeIfPresent(avatar, forKey: .avatar)
-        try container.encodeIfPresent(clientSessions, forKey: .clientSessions)
         try container.encodeIfPresent(defaultPage, forKey: .defaultPage)
-        try container.encodeIfPresent(displayName, forKey: .displayName)
-        try container.encodeIfPresent(effectivePermissions, forKey: .effectivePermissions)
+        try container.encode(displayName, forKey: .displayName)
+        try container.encode(effectivePermissions, forKey: .effectivePermissions)
         try container.encodeIfPresent(email, forKey: .email)
         try container.encodeIfPresent(expiry, forKey: .expiry)
-        try container.encodeIfPresent(ancillaryPathReadOnly, forKey: .ancillaryPathReadOnly)
-        try container.encodeIfPresent(ancillaryPath, forKey: .ancillaryPath)
         try container.encodeIfPresent(fmBookmarks, forKey: .fmBookmarks)
         try container.encodeIfPresent(fullName, forKey: .fullName)
         try container.encodeIfPresent(gid, forKey: .gid)
-        try container.encodeIfPresent(groupPermissions, forKey: .groupPermissions)
-        try container.encodeIfPresent(hasPassword, forKey: .hasPassword)
+        try container.encode(groupPermissions, forKey: .groupPermissions)
+        try container.encode(hasPassword, forKey: .hasPassword)
         try container.encodeIfPresent(home, forKey: .home)
         try container.encodeIfPresent(isExternal, forKey: .isExternal)
         try container.encodeIfPresent(isCloud, forKey: .isCloud)
@@ -173,9 +169,9 @@ public struct ElementsUserDetail: Codable, Hashable {
         try container.encodeIfPresent(ldapDn, forKey: .ldapDn)
         try container.encodeIfPresent(passwordChangeRequired, forKey: .passwordChangeRequired)
         try container.encode(permissions, forKey: .permissions)
-        try container.encodeIfPresent(shaperCeiling, forKey: .shaperCeiling)
-        try container.encodeIfPresent(shaperRate, forKey: .shaperRate)
-        try container.encodeIfPresent(syncId, forKey: .syncId)
+        try container.encode(shaperCeiling, forKey: .shaperCeiling)
+        try container.encode(shaperRate, forKey: .shaperRate)
+        try container.encode(syncId, forKey: .syncId)
         try container.encodeIfPresent(totpEnabled, forKey: .totpEnabled)
         try container.encodeIfPresent(uid, forKey: .uid)
         try container.encodeIfPresent(unixUsername, forKey: .unixUsername)

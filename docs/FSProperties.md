@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**needsSshConnection** | **Bool** |  | 
 **supportsDirectoryQuotas** | **Bool** |  | 
 **supportsSoftQuotas** | **Bool** |  | 
 **supportsUserQuotas** | **Bool** |  | 

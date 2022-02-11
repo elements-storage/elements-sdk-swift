@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct CreateTemplateFolderEndpointRequest: Codable, Hashable {
+public struct CreateTemplateFolderEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var group: Int?
     public var template: String

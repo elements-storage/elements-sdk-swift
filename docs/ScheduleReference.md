@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] 
+**id** | **Int** |  | 
 **variables** | **[String: String]** |  | [optional] [readonly] 
 **nextRun** | **Date** |  | [optional] [readonly] 
 **type** | **Int** |  | [optional] [readonly] 

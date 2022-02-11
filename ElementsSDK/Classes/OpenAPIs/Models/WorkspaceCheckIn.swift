@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct WorkspaceCheckIn: Codable, Hashable {
+public struct WorkspaceCheckIn: Codable, JSONEncodable, Hashable {
 
     public var mountpoint: String?
     public var _protocol: String?

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct WorkspaceEndpoint: Codable, Hashable {
+public struct WorkspaceEndpoint: Codable, JSONEncodable, Hashable {
 
     public var _protocol: String
     public var address: String

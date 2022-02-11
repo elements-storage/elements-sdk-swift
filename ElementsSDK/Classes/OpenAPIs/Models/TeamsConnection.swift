@@ -10,13 +10,13 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TeamsConnection: Codable, Hashable {
+public struct TeamsConnection: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var name: String
-    public var status: TeamsConnectionStatus?
+    public var status: TeamsConnectionStatus
 
-    public init(id: Int? = nil, name: String, status: TeamsConnectionStatus? = nil) {
+    public init(id: Int, name: String, status: TeamsConnectionStatus) {
         self.id = id
         self.name = name
         self.status = status
@@ -32,9 +32,9 @@ public struct TeamsConnection: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
-        try container.encodeIfPresent(status, forKey: .status)
+        try container.encode(status, forKey: .status)
     }
 }
 

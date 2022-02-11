@@ -4,18 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
-**customFields** | Set<CustomFieldReference> |  | [optional] 
+**id** | **Int** |  | 
+**customFields** | [CustomFieldReference] |  | [optional] 
 **workflow** | **[String: String]** |  | [optional] 
-**aiConfig** | **[String: String]** |  | [optional] 
-**veritoneConfig** | **[String: String]** |  | [optional] 
 **volume** | [**VolumeMiniReference**](VolumeMiniReference.md) |  | 
-**fullPath** | **String** |  | [optional] [readonly] 
+**fullPath** | **String** |  | [readonly] 
 **resolvedPermissions** | [MediaRootPermission] |  | [optional] [readonly] 
-**jobs** | Set<JobReference> |  | [optional] 
-**workflowJobs** | [Job] |  | [optional] [readonly] 
 **name** | **String** |  | 
-**path** | **String** |  | [optional] [readonly] 
+**path** | **String** |  | [optional] 
 **needsRescan** | **Bool** |  | [optional] 
 **viewMode** | **String** |  | [optional] 
 **viewStyle** | **String** |  | [optional] 
@@ -26,12 +22,15 @@ Name | Type | Description | Notes
 **showCustomFields** | **Bool** |  | [optional] 
 **showRatings** | **Bool** |  | [optional] 
 **showSubclips** | **Bool** |  | [optional] 
+**showSubtitles** | **Bool** |  | [optional] 
 **showMarkers** | **Bool** |  | [optional] 
 **showHistory** | **Bool** |  | [optional] 
 **showAiMetadata** | **Bool** |  | [optional] 
 **prefetchThumbnailStrips** | **Bool** |  | [optional] 
 **cover** | **String** |  | [optional] 
 **nameField** | **String** |  | [optional] 
+**veritoneConfig** | **String** |  | [optional] 
+**aiConfig** | **String** |  | [optional] 
 **shareComments** | **Bool** |  | [optional] 
 **shareLinkDuration** | **Int** |  | [optional] 
 **defaultProxyProfile** | **Int** |  | [optional] 
@@ -40,8 +39,9 @@ Name | Type | Description | Notes
 **veritoneProxyProfile** | **Int** |  | [optional] 
 **aiConnection** | **Int** |  | [optional] 
 **aiProxyProfile** | **Int** |  | [optional] 
-**proxyProfiles** | **Set<Int>** |  | [optional] 
-**tags** | **Set<Int>** |  | [optional] 
+**proxyProfiles** | **[Int]** |  | [optional] 
+**jobs** | **[Int]** |  | [optional] 
+**tags** | **[Int]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

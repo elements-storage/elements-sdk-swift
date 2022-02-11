@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
-**syncId** | **UUID** |  | [optional] [readonly] 
+**id** | **Int** |  | 
+**syncId** | **UUID** |  | [readonly] 
 **defaultProxy** | [**Proxy**](Proxy.md) |  | [optional] 
-**type** | **String** |  | [optional] [readonly] 
-**displayName** | **String** |  | [optional] [readonly] 
-**info** | **[String: String]** |  | [optional] [readonly] 
-**thumbnailGenerated** | **Bool** |  | [optional] [readonly] 
+**type** | **String** |  | [readonly] 
+**displayName** | **String** |  | [readonly] 
+**format** | [**FormatMetadata**](FormatMetadata.md) |  | 
+**info** | **[String: String]** |  | [readonly] 
+**thumbnailGenerated** | **Bool** |  | [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

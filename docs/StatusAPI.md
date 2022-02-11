@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 ### Required permissions    * User account permission: `system:status:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `system:status:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -163,7 +163,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `system:status:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -248,22 +248,22 @@ Void (empty response body)
 
 # **updateAlert**
 ```swift
-    open class func updateAlert( id: Int,  alert: Alert) -> Promise<Alert>
+    open class func updateAlert( id: Int,  alertUpdate: AlertUpdate) -> Promise<Alert>
 ```
 
 
 
 ### Required permissions    * User account permission: `system:status:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this alert.
-let alert = Alert(id: 123, name: "name_example", message: "message_example", level: "level_example", isOpen: false, node: StorageNodeMini(id: 123, name: "name_example", address: "address_example", type: 123), openedAt: Date(), closedAt: Date(), duration: "duration_example") // Alert | 
+let alertUpdate = AlertUpdate(name: "name_example", message: "message_example", level: "level_example", isOpen: false, closedAt: Date()) // AlertUpdate | 
 
-StatusAPI.updateAlert(id: id, alert: alert).then {
+StatusAPI.updateAlert(id: id, alertUpdate: alertUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -277,7 +277,7 @@ StatusAPI.updateAlert(id: id, alert: alert).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this alert. | 
- **alert** | [**Alert**](Alert.md) |  | 
+ **alertUpdate** | [**AlertUpdate**](AlertUpdate.md) |  | 
 
 ### Return type
 

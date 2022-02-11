@@ -4,25 +4,24 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
+**ancillaryPath** | **String** |  | [optional] [readonly] 
+**ancillaryPathReadOnly** | **String** |  | [optional] [readonly] 
 **allowChangingPassword** | **Bool** |  | [optional] 
 **allowWanLogin** | **Bool** |  | [optional] 
-**allowedFsPaths** | **[String]** |  | [optional] [readonly] 
-**allowedFsWritePaths** | **[String]** |  | [optional] [readonly] 
+**allowedFsPaths** | **[String]** |  | [readonly] 
+**allowedFsWritePaths** | **[String]** |  | [readonly] 
 **avatar** | **String** |  | [optional] 
-**clientSessions** | [ClientSession] |  | [optional] [readonly] 
 **defaultPage** | **String** |  | [optional] 
-**displayName** | **String** |  | [optional] [readonly] 
-**effectivePermissions** | **[String]** |  | [optional] [readonly] 
+**displayName** | **String** |  | [readonly] 
+**effectivePermissions** | **[String]** |  | [readonly] 
 **email** | **String** |  | [optional] 
 **expiry** | **Date** |  | [optional] 
-**ancillaryPathReadOnly** | **Bool** |  | [optional] 
-**ancillaryPath** | **String** |  | [optional] 
 **fmBookmarks** | **[String]** |  | [optional] 
 **fullName** | **String** |  | [optional] 
 **gid** | **Int** |  | [optional] 
-**groupPermissions** | **[String]** |  | [optional] [readonly] 
-**hasPassword** | **Bool** |  | [optional] [readonly] 
+**groupPermissions** | **[String]** |  | [readonly] 
+**hasPassword** | **Bool** |  | [readonly] 
 **home** | **Int** |  | [optional] 
 **isExternal** | **Bool** |  | [optional] 
 **isCloud** | **Bool** |  | [optional] 
@@ -30,18 +29,18 @@ Name | Type | Description | Notes
 **isEnabled** | **Bool** |  | [optional] 
 **language** | **String** |  | [optional] 
 **lastSeen** | **Date** |  | [optional] 
-**ldap** | [**LDAPServerReference**](LDAPServerReference.md) |  | [optional] 
+**ldap** | [**AnyOfLDAPServerReferenceAnyType**](AnyOfLDAPServerReferenceAnyType.md) |  | [optional] 
 **ldapDn** | **String** |  | [optional] 
 **passwordChangeRequired** | **Bool** |  | [optional] 
 **permissions** | **[String]** |  | 
-**shaperCeiling** | **Int** |  | [optional] 
-**shaperRate** | **Int** |  | [optional] 
-**syncId** | **UUID** |  | [optional] [readonly] 
+**shaperCeiling** | **Int** |  | 
+**shaperRate** | **Int** |  | 
+**syncId** | **UUID** |  | [readonly] 
 **totpEnabled** | **Bool** |  | [optional] 
 **uid** | **Int** |  | [optional] 
 **unixUsername** | **String** |  | [optional] 
 **username** | **String** |  | 
-**groups** | **Set<Int>** |  | 
+**groups** | **[Int]** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

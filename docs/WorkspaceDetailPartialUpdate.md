@@ -5,8 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **production** | [**ProductionReference**](ProductionReference.md) |  | [optional] 
-**volume** | [**VolumeReference**](VolumeReference.md) |  | [optional] 
-**sharingNfsPermissions** | **[String]** |  | [optional] 
+**volume** | [**AnyOfVolumeReferenceAnyType**](AnyOfVolumeReferenceAnyType.md) |  | [optional] 
+**sharingNfsPermissions** | [NFSPermission] |  | [optional] 
+**quotaSizeHard** | **Int** |  | [optional] 
+**quotaSizeSoft** | **Int** |  | [optional] 
 **name** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **longDescription** | **String** |  | [optional] 
@@ -25,8 +27,6 @@ Name | Type | Description | Notes
 **sharingReadOnly** | **Bool** |  | [optional] 
 **sharingAllowExecute** | **Bool** |  | [optional] 
 **enableQuota** | **Bool** |  | [optional] 
-**quotaSizeHard** | **Int** |  | [optional] 
-**quotaSizeSoft** | **Int** |  | [optional] 
 **affinity** | **String** |  | [optional] 
 **emulateAvid** | **Bool** |  | [optional] 
 **emulateCapture** | **Bool** |  | [optional] 

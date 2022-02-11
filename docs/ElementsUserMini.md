@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **avatar** | **String** |  | [optional] 
-**displayName** | **String** |  | [optional] [readonly] 
+**displayName** | **String** |  | [readonly] 
 **email** | **String** |  | [optional] 
 **fullName** | **String** |  | [optional] 
 **isExternal** | **Bool** |  | [optional] 

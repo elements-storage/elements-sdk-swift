@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
-**project** | [**Asset**](Asset.md) |  | [optional] 
+**id** | **Int** |  | 
+**project** | [**Asset**](Asset.md) |  | 
 **sequenceName** | **String** |  | 
 **asset** | **Int** |  | 
 

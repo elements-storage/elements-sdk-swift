@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct VantageWorkflow: Codable, Hashable {
+public struct VantageWorkflow: Codable, JSONEncodable, Hashable {
 
     public var id: String
     public var name: String

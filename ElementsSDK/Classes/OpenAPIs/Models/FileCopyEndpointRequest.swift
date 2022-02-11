@@ -10,18 +10,33 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct FileCopyEndpointRequest: Codable, Hashable {
+public struct FileCopyEndpointRequest: Codable, JSONEncodable, Hashable {
 
+    public enum Overwrite: String, Codable, CaseIterable {
+        case null = "null"
+        case warn = "warn"
+        case number = "number"
+        case timestamp = "timestamp"
+        case overwrite = "overwrite"
+    }
+    public enum Folders: String, Codable, CaseIterable {
+        case merge = "merge"
+        case rename = "rename"
+    }
     public var input: [String]
     public var destination: String
     public var hardlink: Bool?
     public var sync: Bool?
+    public var overwrite: Overwrite?
+    public var folders: Folders?
 
-    public init(input: [String], destination: String, hardlink: Bool? = nil, sync: Bool? = nil) {
+    public init(input: [String], destination: String, hardlink: Bool? = nil, sync: Bool? = nil, overwrite: Overwrite? = nil, folders: Folders? = nil) {
         self.input = input
         self.destination = destination
         self.hardlink = hardlink
         self.sync = sync
+        self.overwrite = overwrite
+        self.folders = folders
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -29,6 +44,8 @@ public struct FileCopyEndpointRequest: Codable, Hashable {
         case destination
         case hardlink
         case sync
+        case overwrite
+        case folders
     }
 
     // Encodable protocol methods
@@ -39,6 +56,8 @@ public struct FileCopyEndpointRequest: Codable, Hashable {
         try container.encode(destination, forKey: .destination)
         try container.encodeIfPresent(hardlink, forKey: .hardlink)
         try container.encodeIfPresent(sync, forKey: .sync)
+        try container.encodeIfPresent(overwrite, forKey: .overwrite)
+        try container.encodeIfPresent(folders, forKey: .folders)
     }
 }
 

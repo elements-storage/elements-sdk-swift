@@ -5,14 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
-**displayName** | **String** |  | [optional] [readonly] 
+**displayName** | **String** |  | [readonly] 
 **kwargs** | **[String: String]** |  | 
 **subtask** | [**Subtask**](Subtask.md) |  | [optional] 
 **worker** | [**StorageNodeMini**](StorageNodeMini.md) |  | [optional] 
 **user** | [**ElementsUserMini**](ElementsUserMini.md) |  | [optional] 
 **workstation** | [**Workstation**](Workstation.md) |  | [optional] 
-**progress** | [**TaskProgress**](TaskProgress.md) |  | [optional] 
-**logPath** | **String** |  | [optional] [readonly] 
+**progress** | [**TaskProgress**](TaskProgress.md) |  | 
+**logPath** | **String** |  | [readonly] 
+**finished** | **Date** |  | [optional] [readonly] 
 **name** | **String** |  | [optional] 
 **taskName** | **String** |  | [optional] 
 **workerName** | **String** |  | [optional] 
@@ -20,8 +21,7 @@ Name | Type | Description | Notes
 **state** | **Int** |  | [optional] 
 **stateText** | **String** |  | [optional] 
 **jobInstance** | **UUID** |  | [optional] 
-**started** | **Date** |  | [optional] [readonly] 
-**finished** | **Date** |  | [optional] [readonly] 
+**started** | **Date** |  | [readonly] 
 **exception** | **String** |  | [optional] 
 **traceback** | **String** |  | [optional] 
 **schedule** | **Int** |  | [optional] 

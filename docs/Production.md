@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
-**isSpecial** | **Bool** |  | [optional] [readonly] 
+**id** | **Int** |  | 
+**isSpecial** | **Bool** |  | [readonly] 
 **specialType** | **Int** |  | [optional] [readonly] 
-**totalSize** | **Int** |  | [optional] [readonly] 
+**totalSize** | **Int** |  | [readonly] 
 **name** | **String** |  | 
 **obscureName** | **Bool** |  | [optional] 
 **description** | **String** |  | [optional] 

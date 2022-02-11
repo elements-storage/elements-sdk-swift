@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct WorkspaceDetailPartialUpdate: Codable, Hashable {
+public struct WorkspaceDetailPartialUpdate: Codable, JSONEncodable, Hashable {
 
     public enum MacProtocol: String, Codable, CaseIterable {
         case smb = "smb"
@@ -55,8 +55,10 @@ public struct WorkspaceDetailPartialUpdate: Codable, Hashable {
         case nfs = "nfs"
     }
     public var production: ProductionReference?
-    public var volume: VolumeReference?
-    public var sharingNfsPermissions: [String]?
+    public var volume: AnyOfVolumeReferenceAnyType?
+    public var sharingNfsPermissions: [NFSPermission]?
+    public var quotaSizeHard: Int?
+    public var quotaSizeSoft: Int?
     public var name: String?
     public var description: String?
     public var longDescription: String?
@@ -75,8 +77,6 @@ public struct WorkspaceDetailPartialUpdate: Codable, Hashable {
     public var sharingReadOnly: Bool?
     public var sharingAllowExecute: Bool?
     public var enableQuota: Bool?
-    public var quotaSizeHard: Int?
-    public var quotaSizeSoft: Int?
     public var affinity: String?
     public var emulateAvid: Bool?
     public var emulateCapture: Bool?
@@ -95,10 +95,12 @@ public struct WorkspaceDetailPartialUpdate: Codable, Hashable {
     public var rwPermissionPriority: Bool?
     public var template: Int?
 
-    public init(production: ProductionReference? = nil, volume: VolumeReference? = nil, sharingNfsPermissions: [String]? = nil, name: String? = nil, description: String? = nil, longDescription: String? = nil, isTemplate: Bool? = nil, active: Bool? = nil, macProtocol: MacProtocol? = nil, winProtocol: WinProtocol? = nil, winDrive: WinDrive? = nil, linuxProtocol: LinuxProtocol? = nil, linuxMountpoint: String? = nil, shareName: String? = nil, shareNfs: Bool? = nil, shareAfp: Bool? = nil, sharingHidden: Bool? = nil, sharingRequireLogin: Bool? = nil, sharingReadOnly: Bool? = nil, sharingAllowExecute: Bool? = nil, enableQuota: Bool? = nil, quotaSizeHard: Int? = nil, quotaSizeSoft: Int? = nil, affinity: String? = nil, emulateAvid: Bool? = nil, emulateCapture: Bool? = nil, emulatePreopen: Bool? = nil, emulateNtfsStreams: Bool? = nil, emulateRecycleBin: Bool? = nil, emulateFruit: Bool? = nil, smbExtraConfig: String? = nil, afpExtraConfig: String? = nil, recycleBinExclude: String? = nil, isExternal: Bool? = nil, externalMacUrl: String? = nil, externalWinUrl: String? = nil, externalLinuxUrl: String? = nil, allowSymlinks: Bool? = nil, rwPermissionPriority: Bool? = nil, template: Int? = nil) {
+    public init(production: ProductionReference? = nil, volume: AnyOfVolumeReferenceAnyType? = nil, sharingNfsPermissions: [NFSPermission]? = nil, quotaSizeHard: Int? = nil, quotaSizeSoft: Int? = nil, name: String? = nil, description: String? = nil, longDescription: String? = nil, isTemplate: Bool? = nil, active: Bool? = nil, macProtocol: MacProtocol? = nil, winProtocol: WinProtocol? = nil, winDrive: WinDrive? = nil, linuxProtocol: LinuxProtocol? = nil, linuxMountpoint: String? = nil, shareName: String? = nil, shareNfs: Bool? = nil, shareAfp: Bool? = nil, sharingHidden: Bool? = nil, sharingRequireLogin: Bool? = nil, sharingReadOnly: Bool? = nil, sharingAllowExecute: Bool? = nil, enableQuota: Bool? = nil, affinity: String? = nil, emulateAvid: Bool? = nil, emulateCapture: Bool? = nil, emulatePreopen: Bool? = nil, emulateNtfsStreams: Bool? = nil, emulateRecycleBin: Bool? = nil, emulateFruit: Bool? = nil, smbExtraConfig: String? = nil, afpExtraConfig: String? = nil, recycleBinExclude: String? = nil, isExternal: Bool? = nil, externalMacUrl: String? = nil, externalWinUrl: String? = nil, externalLinuxUrl: String? = nil, allowSymlinks: Bool? = nil, rwPermissionPriority: Bool? = nil, template: Int? = nil) {
         self.production = production
         self.volume = volume
         self.sharingNfsPermissions = sharingNfsPermissions
+        self.quotaSizeHard = quotaSizeHard
+        self.quotaSizeSoft = quotaSizeSoft
         self.name = name
         self.description = description
         self.longDescription = longDescription
@@ -117,8 +119,6 @@ public struct WorkspaceDetailPartialUpdate: Codable, Hashable {
         self.sharingReadOnly = sharingReadOnly
         self.sharingAllowExecute = sharingAllowExecute
         self.enableQuota = enableQuota
-        self.quotaSizeHard = quotaSizeHard
-        self.quotaSizeSoft = quotaSizeSoft
         self.affinity = affinity
         self.emulateAvid = emulateAvid
         self.emulateCapture = emulateCapture
@@ -142,6 +142,8 @@ public struct WorkspaceDetailPartialUpdate: Codable, Hashable {
         case production
         case volume
         case sharingNfsPermissions = "sharing_nfs_permissions"
+        case quotaSizeHard = "quota_size_hard"
+        case quotaSizeSoft = "quota_size_soft"
         case name
         case description
         case longDescription = "long_description"
@@ -160,8 +162,6 @@ public struct WorkspaceDetailPartialUpdate: Codable, Hashable {
         case sharingReadOnly = "sharing_read_only"
         case sharingAllowExecute = "sharing_allow_execute"
         case enableQuota = "enable_quota"
-        case quotaSizeHard = "quota_size_hard"
-        case quotaSizeSoft = "quota_size_soft"
         case affinity
         case emulateAvid = "emulate_avid"
         case emulateCapture = "emulate_capture"
@@ -188,6 +188,8 @@ public struct WorkspaceDetailPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(production, forKey: .production)
         try container.encodeIfPresent(volume, forKey: .volume)
         try container.encodeIfPresent(sharingNfsPermissions, forKey: .sharingNfsPermissions)
+        try container.encodeIfPresent(quotaSizeHard, forKey: .quotaSizeHard)
+        try container.encodeIfPresent(quotaSizeSoft, forKey: .quotaSizeSoft)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(longDescription, forKey: .longDescription)
@@ -206,8 +208,6 @@ public struct WorkspaceDetailPartialUpdate: Codable, Hashable {
         try container.encodeIfPresent(sharingReadOnly, forKey: .sharingReadOnly)
         try container.encodeIfPresent(sharingAllowExecute, forKey: .sharingAllowExecute)
         try container.encodeIfPresent(enableQuota, forKey: .enableQuota)
-        try container.encodeIfPresent(quotaSizeHard, forKey: .quotaSizeHard)
-        try container.encodeIfPresent(quotaSizeSoft, forKey: .quotaSizeSoft)
         try container.encodeIfPresent(affinity, forKey: .affinity)
         try container.encodeIfPresent(emulateAvid, forKey: .emulateAvid)
         try container.encodeIfPresent(emulateCapture, forKey: .emulateCapture)

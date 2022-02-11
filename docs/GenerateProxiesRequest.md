@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bundles** | **Set<Int>** |  | [optional] 
-**directories** | **Set<Int>** |  | [optional] 
-**proxyProfiles** | **Set<Int>** |  | 
+**bundles** | **[Int]** |  | [optional] 
+**directories** | **[Int]** |  | [optional] 
+**proxyProfiles** | **[Int]** |  | 
 **enqueueAtFront** | **Bool** |  | [optional] 
 **force** | **Bool** |  | [optional] 
 

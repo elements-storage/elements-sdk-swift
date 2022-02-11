@@ -10,25 +10,25 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct DownloadArchive: Codable, Hashable {
+public struct DownloadArchive: Codable, JSONEncodable, Hashable {
 
     public enum ProgressUnit: Int, Codable, CaseIterable {
         case _0 = 0
         case _1 = 1
     }
-    public var id: UUID?
+    public var id: UUID
     public var taskInfo: TaskInfo
-    public var uncompressedSize: Int?
-    public var size: Int?
-    public var expires: String?
-    public var files: [String]?
+    public var uncompressedSize: Int
+    public var size: Int
+    public var expires: String
+    public var files: [String]
     public var name: String
     public var path: String
-    public var createdAt: Date?
+    public var createdAt: Date
     public var progressUnit: ProgressUnit?
     public var user: Int?
 
-    public init(id: UUID? = nil, taskInfo: TaskInfo, uncompressedSize: Int? = nil, size: Int? = nil, expires: String? = nil, files: [String]? = nil, name: String, path: String, createdAt: Date? = nil, progressUnit: ProgressUnit? = nil, user: Int? = nil) {
+    public init(id: UUID, taskInfo: TaskInfo, uncompressedSize: Int, size: Int, expires: String, files: [String], name: String, path: String, createdAt: Date, progressUnit: ProgressUnit? = nil, user: Int? = nil) {
         self.id = id
         self.taskInfo = taskInfo
         self.uncompressedSize = uncompressedSize
@@ -60,15 +60,15 @@ public struct DownloadArchive: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(taskInfo, forKey: .taskInfo)
-        try container.encodeIfPresent(uncompressedSize, forKey: .uncompressedSize)
-        try container.encodeIfPresent(size, forKey: .size)
-        try container.encodeIfPresent(expires, forKey: .expires)
-        try container.encodeIfPresent(files, forKey: .files)
+        try container.encode(uncompressedSize, forKey: .uncompressedSize)
+        try container.encode(size, forKey: .size)
+        try container.encode(expires, forKey: .expires)
+        try container.encode(files, forKey: .files)
         try container.encode(name, forKey: .name)
         try container.encode(path, forKey: .path)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
+        try container.encode(createdAt, forKey: .createdAt)
         try container.encodeIfPresent(progressUnit, forKey: .progressUnit)
         try container.encodeIfPresent(user, forKey: .user)
     }

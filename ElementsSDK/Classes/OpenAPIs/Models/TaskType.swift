@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TaskType: Codable, Hashable {
+public struct TaskType: Codable, JSONEncodable, Hashable {
 
     public var type: String
     public var displayName: String
@@ -18,18 +18,18 @@ public struct TaskType: Codable, Hashable {
     public var inputType: String?
     public var abortable: Bool
     public var argTemplate: [String: String]?
-    public var argTypes: [String: ArgumentType]?
+    public var argTypes: [String: ArgumentType]
     public var requiredArgs: [String]
     public var outputNames: [String: String]
-    public var outputTypes: [String: ArgumentType]?
+    public var outputTypes: [String: ArgumentType]
     public var parametersEditorComponent: String?
     public var superuserOnly: Bool
     public var iconClass: String?
-    public var isAvailable: Bool?
+    public var isAvailable: Bool
     public var allowInJobs: Bool
     public var newSinceVersion: String?
 
-    public init(type: String, displayName: String, displayGroup: String, inputType: String?, abortable: Bool, argTemplate: [String: String]?, argTypes: [String: ArgumentType]? = nil, requiredArgs: [String], outputNames: [String: String], outputTypes: [String: ArgumentType]? = nil, parametersEditorComponent: String?, superuserOnly: Bool, iconClass: String?, isAvailable: Bool? = nil, allowInJobs: Bool, newSinceVersion: String?) {
+    public init(type: String, displayName: String, displayGroup: String, inputType: String?, abortable: Bool, argTemplate: [String: String]?, argTypes: [String: ArgumentType], requiredArgs: [String], outputNames: [String: String], outputTypes: [String: ArgumentType], parametersEditorComponent: String?, superuserOnly: Bool, iconClass: String?, isAvailable: Bool, allowInJobs: Bool, newSinceVersion: String?) {
         self.type = type
         self.displayName = displayName
         self.displayGroup = displayGroup
@@ -77,14 +77,14 @@ public struct TaskType: Codable, Hashable {
         try container.encode(inputType, forKey: .inputType)
         try container.encode(abortable, forKey: .abortable)
         try container.encode(argTemplate, forKey: .argTemplate)
-        try container.encodeIfPresent(argTypes, forKey: .argTypes)
+        try container.encode(argTypes, forKey: .argTypes)
         try container.encode(requiredArgs, forKey: .requiredArgs)
         try container.encode(outputNames, forKey: .outputNames)
-        try container.encodeIfPresent(outputTypes, forKey: .outputTypes)
+        try container.encode(outputTypes, forKey: .outputTypes)
         try container.encode(parametersEditorComponent, forKey: .parametersEditorComponent)
         try container.encode(superuserOnly, forKey: .superuserOnly)
         try container.encode(iconClass, forKey: .iconClass)
-        try container.encodeIfPresent(isAvailable, forKey: .isAvailable)
+        try container.encode(isAvailable, forKey: .isAvailable)
         try container.encode(allowInJobs, forKey: .allowInJobs)
         try container.encode(newSinceVersion, forKey: .newSinceVersion)
     }

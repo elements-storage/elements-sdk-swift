@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**path** | **String** |  | [optional] [readonly] 
+**path** | **String** |  | [readonly] 
 **name** | **String** |  | 
-**size** | **Int** |  | [optional] [readonly] 
-**totalSize** | **Int** |  | [optional] [readonly] 
-**isDir** | **Bool** |  | [optional] [readonly] 
+**size** | **Int** |  | [readonly] 
+**modificationTime** | **Date** |  | [readonly] 
+**totalSize** | **Int** |  | [readonly] 
+**isDir** | **Bool** |  | [readonly] 
 **files** | [BasicFile] |  | [optional] 
 **parent** | **String** |  | 
-**modificationTime** | **Date** |  | [optional] [readonly] 
-**accessTime** | **Date** |  | [optional] [readonly] 
-**creationTime** | **Date** |  | [optional] [readonly] 
+**accessTime** | **Date** |  | [readonly] 
+**creationTime** | **Date** |  | [readonly] 
 **mode** | **String** |  | [optional] 
 **uid** | **Int** |  | [optional] 
 **gid** | **Int** |  | [optional] 

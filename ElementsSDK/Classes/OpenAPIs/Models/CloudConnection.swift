@@ -10,14 +10,14 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct CloudConnection: Codable, Hashable {
+public struct CloudConnection: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var name: String
     public var url: String
-    public var presignedLoginUrl: String?
+    public var presignedLoginUrl: String
 
-    public init(id: Int? = nil, name: String, url: String, presignedLoginUrl: String? = nil) {
+    public init(id: Int, name: String, url: String, presignedLoginUrl: String) {
         self.id = id
         self.name = name
         self.url = url
@@ -35,10 +35,10 @@ public struct CloudConnection: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(url, forKey: .url)
-        try container.encodeIfPresent(presignedLoginUrl, forKey: .presignedLoginUrl)
+        try container.encode(presignedLoginUrl, forKey: .presignedLoginUrl)
     }
 }
 

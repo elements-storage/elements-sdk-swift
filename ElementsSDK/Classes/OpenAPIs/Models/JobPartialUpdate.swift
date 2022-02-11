@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct JobPartialUpdate: Codable, Hashable {
+public struct JobPartialUpdate: Codable, JSONEncodable, Hashable {
 
     public enum SpecialType: Int, Codable, CaseIterable {
         case _2 = 2
@@ -22,12 +22,12 @@ public struct JobPartialUpdate: Codable, Hashable {
         case paths = "paths"
         case dirs = "dirs"
     }
-    public var subtasks: Set<SubtaskReference>?
-    public var schedules: Set<ScheduleReference>?
-    public var allowUsers: Set<ElementsUserReference>?
-    public var allowGroups: Set<ElementsGroupReference>?
+    public var subtasks: [SubtaskReference]?
+    public var schedules: [ScheduleReference]?
+    public var allowUsers: [ElementsUserReference]?
+    public var allowGroups: [ElementsGroupReference]?
     public var variableDefinitions: [[String: String]]?
-    public var mediaRoots: Set<Int>?
+    public var mediaRoots: [Int]?
     public var specialType: SpecialType?
     public var name: String?
     public var enabled: Bool?
@@ -40,7 +40,7 @@ public struct JobPartialUpdate: Codable, Hashable {
     public var securityContext: Int?
     public var partOfWorkflowFor: Int?
 
-    public init(subtasks: Set<SubtaskReference>? = nil, schedules: Set<ScheduleReference>? = nil, allowUsers: Set<ElementsUserReference>? = nil, allowGroups: Set<ElementsGroupReference>? = nil, variableDefinitions: [[String: String]]? = nil, mediaRoots: Set<Int>? = nil, specialType: SpecialType? = nil, name: String? = nil, enabled: Bool? = nil, allowOthersToStart: Bool? = nil, allowClientToStart: Bool? = nil, showAsButton: Bool? = nil, inputType: InputType? = nil, hook: String? = nil, webhookSecret: String? = nil, securityContext: Int? = nil, partOfWorkflowFor: Int? = nil) {
+    public init(subtasks: [SubtaskReference]? = nil, schedules: [ScheduleReference]? = nil, allowUsers: [ElementsUserReference]? = nil, allowGroups: [ElementsGroupReference]? = nil, variableDefinitions: [[String: String]]? = nil, mediaRoots: [Int]? = nil, specialType: SpecialType? = nil, name: String? = nil, enabled: Bool? = nil, allowOthersToStart: Bool? = nil, allowClientToStart: Bool? = nil, showAsButton: Bool? = nil, inputType: InputType? = nil, hook: String? = nil, webhookSecret: String? = nil, securityContext: Int? = nil, partOfWorkflowFor: Int? = nil) {
         self.subtasks = subtasks
         self.schedules = schedules
         self.allowUsers = allowUsers

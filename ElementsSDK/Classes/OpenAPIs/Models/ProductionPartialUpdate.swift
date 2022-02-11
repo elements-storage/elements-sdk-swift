@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ProductionPartialUpdate: Codable, Hashable {
+public struct ProductionPartialUpdate: Codable, JSONEncodable, Hashable {
 
     public var name: String?
     public var obscureName: Bool?

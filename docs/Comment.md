@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
-**assignee** | [**ElementsUserMiniReference**](ElementsUserMiniReference.md) |  | [optional] 
-**user** | [**ElementsUserMiniReference**](ElementsUserMiniReference.md) |  | [optional] 
+**id** | **Int** |  | 
+**assignee** | [**AnyOfElementsUserMiniReferenceAnyType**](AnyOfElementsUserMiniReferenceAnyType.md) |  | [optional] 
+**user** | [**AnyOfElementsUserMiniReferenceAnyType**](AnyOfElementsUserMiniReferenceAnyType.md) |  | [optional] 
 **drawing** | **[String: String]** |  | [optional] 
-**tags** | Set<TagReference> |  | [optional] 
+**tags** | [TagReference] |  | [optional] 
 **fullAsset** | [**Asset**](Asset.md) |  | [optional] 
-**syncId** | **UUID** |  | [optional] [readonly] 
-**date** | **Date** |  | [optional] [readonly] 
+**syncId** | **UUID** |  | [readonly] 
+**date** | **Date** |  | [readonly] 
 **text** | **String** |  | [optional] 
 **time** | **Double** |  | [optional] 
 **isCloud** | **Bool** |  | [optional] 

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TraceNode: Codable, Hashable {
+public struct TraceNode: Codable, JSONEncodable, Hashable {
 
     public var children: [AnyCodable]
     public var name: String

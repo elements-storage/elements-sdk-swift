@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] 
+**id** | **Int** |  | 
 **asset** | [**AssetMiniReference**](AssetMiniReference.md) |  | 
-**rendered** | [**AssetMiniReference**](AssetMiniReference.md) |  | [optional] 
+**rendered** | [**AnyOfAssetMiniReferenceAnyType**](AnyOfAssetMiniReferenceAnyType.md) |  | [optional] 
 **shared** | **Bool** |  | [optional] [readonly] 
 **date** | **Date** |  | [optional] [readonly] 
 **name** | **String** |  | [optional] [readonly] 

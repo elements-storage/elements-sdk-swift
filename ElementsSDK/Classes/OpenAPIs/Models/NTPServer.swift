@@ -10,13 +10,13 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct NTPServer: Codable, Hashable {
+public struct NTPServer: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var address: String
     public var options: String?
 
-    public init(id: Int? = nil, address: String, options: String? = nil) {
+    public init(id: Int, address: String, options: String? = nil) {
         self.id = id
         self.address = address
         self.options = options
@@ -32,7 +32,7 @@ public struct NTPServer: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(address, forKey: .address)
         try container.encodeIfPresent(options, forKey: .options)
     }

@@ -10,17 +10,17 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MediaRootMiniReference: Codable, Hashable {
+public struct MediaRootMiniReference: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var name: String?
     public var fullPath: String?
-    public var customFields: Set<CustomFieldReference>?
+    public var customFields: [CustomFieldReference]?
     public var volume: VolumeMiniReference
     public var path: String?
     public var prefetchThumbnailStrips: Bool?
 
-    public init(id: Int? = nil, name: String? = nil, fullPath: String? = nil, customFields: Set<CustomFieldReference>? = nil, volume: VolumeMiniReference, path: String? = nil, prefetchThumbnailStrips: Bool? = nil) {
+    public init(id: Int, name: String? = nil, fullPath: String? = nil, customFields: [CustomFieldReference]? = nil, volume: VolumeMiniReference, path: String? = nil, prefetchThumbnailStrips: Bool? = nil) {
         self.id = id
         self.name = name
         self.fullPath = fullPath
@@ -44,7 +44,7 @@ public struct MediaRootMiniReference: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(fullPath, forKey: .fullPath)
         try container.encodeIfPresent(customFields, forKey: .customFields)

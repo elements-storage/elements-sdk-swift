@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ScannerScanEndpointRequest: Codable, Hashable {
+public struct ScannerScanEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var path: String
     public var recursive: Bool?

@@ -10,15 +10,15 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct WorkspacePermission: Codable, Hashable {
+public struct WorkspacePermission: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var user: ElementsUserReference?
-    public var group: ElementsGroupReference?
+    public var id: Int
+    public var user: AnyOfElementsUserReferenceAnyType?
+    public var group: AnyOfElementsGroupReferenceAnyType?
     public var readOnly: Bool?
     public var workspace: Int
 
-    public init(id: Int? = nil, user: ElementsUserReference? = nil, group: ElementsGroupReference? = nil, readOnly: Bool? = nil, workspace: Int) {
+    public init(id: Int, user: AnyOfElementsUserReferenceAnyType? = nil, group: AnyOfElementsGroupReferenceAnyType? = nil, readOnly: Bool? = nil, workspace: Int) {
         self.id = id
         self.user = user
         self.group = group
@@ -38,7 +38,7 @@ public struct WorkspacePermission: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(user, forKey: .user)
         try container.encodeIfPresent(group, forKey: .group)
         try container.encodeIfPresent(readOnly, forKey: .readOnly)

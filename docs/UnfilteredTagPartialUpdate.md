@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**roots** | **Set<Int>** |  | [optional] 
+**roots** | **[Int]** |  | [optional] 
 **name** | **String** |  | [optional] 
 **shared** | **Bool** |  | [optional] 
 **color** | **String** |  | [optional] 

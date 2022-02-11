@@ -10,9 +10,9 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MediaFileReference: Codable, Hashable {
+public struct MediaFileReference: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var volume: VolumeMini?
     public var info: [String: String]?
     public var customFields: [String: String]?
@@ -42,9 +42,9 @@ public struct MediaFileReference: Codable, Hashable {
     public var modified: Date?
     public var parent: Int?
     public var bundle: Int?
-    public var bookmarkedBy: Set<Int>?
+    public var bookmarkedBy: [Int]?
 
-    public init(id: Int? = nil, volume: VolumeMini? = nil, info: [String: String]? = nil, customFields: [String: String]? = nil, resolvedPermission: MediaRootPermission? = nil, parentFile: [String: String]? = nil, root: MediaRootMini? = nil, effectiveCustomFields: [String: String]? = nil, modifiedBy: ElementsUserMini? = nil, fullPath: String? = nil, isShared: Bool? = nil, isExcluded: Bool? = nil, isHardlink: Bool? = nil, isBookmarked: Bool? = nil, childCount: Int? = nil, name: String? = nil, path: String? = nil, pathhash: String? = nil, ancestry: String? = nil, isDir: Bool? = nil, totalFiles: Int? = nil, size: Int? = nil, mtime: Int? = nil, present: Bool? = nil, needsRescan: Bool? = nil, isShowroom: Bool? = nil, bundleIndex: Int? = nil, modified: Date? = nil, parent: Int? = nil, bundle: Int? = nil, bookmarkedBy: Set<Int>? = nil) {
+    public init(id: Int, volume: VolumeMini? = nil, info: [String: String]? = nil, customFields: [String: String]? = nil, resolvedPermission: MediaRootPermission? = nil, parentFile: [String: String]? = nil, root: MediaRootMini? = nil, effectiveCustomFields: [String: String]? = nil, modifiedBy: ElementsUserMini? = nil, fullPath: String? = nil, isShared: Bool? = nil, isExcluded: Bool? = nil, isHardlink: Bool? = nil, isBookmarked: Bool? = nil, childCount: Int? = nil, name: String? = nil, path: String? = nil, pathhash: String? = nil, ancestry: String? = nil, isDir: Bool? = nil, totalFiles: Int? = nil, size: Int? = nil, mtime: Int? = nil, present: Bool? = nil, needsRescan: Bool? = nil, isShowroom: Bool? = nil, bundleIndex: Int? = nil, modified: Date? = nil, parent: Int? = nil, bundle: Int? = nil, bookmarkedBy: [Int]? = nil) {
         self.id = id
         self.volume = volume
         self.info = info
@@ -116,7 +116,7 @@ public struct MediaFileReference: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(volume, forKey: .volume)
         try container.encodeIfPresent(info, forKey: .info)
         try container.encodeIfPresent(customFields, forKey: .customFields)

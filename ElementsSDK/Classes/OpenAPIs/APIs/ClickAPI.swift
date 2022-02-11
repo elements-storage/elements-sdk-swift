@@ -19,9 +19,9 @@ open class ClickAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func abortClickUpload( uploadId: String, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func abortClickUpload( uploadId: String, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        abortClickUploadWithRequestBuilder(uploadId: uploadId).execute(apiResponseQueue) { result -> Void in
+        abortClickUploadWithRequestBuilder(uploadId: uploadId).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -46,7 +46,7 @@ open class ClickAPI {
         let uploadIdPreEscape = "\(APIHelper.mapValueToPathItem(uploadId))"
         let uploadIdPostEscape = uploadIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{upload_id}", with: uploadIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -57,9 +57,65 @@ open class ClickAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
+    }
+
+    /**
+
+     - parameter connectionId: (path)  
+     - parameter id: (path)  
+     - parameter addAssetsToClickGallery: (body)  
+     - parameter apiResponseQueue: The queue on which api response is dispatched.
+     - returns: Promise<ClickGallery>
+     */
+    open class func addAssetsToClickGallery( connectionId: String,  id: String,  addAssetsToClickGallery: AddAssetsToClickGallery, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ClickGallery> {
+        let deferred = Promise<ClickGallery>.pending()
+        addAssetsToClickGalleryWithRequestBuilder(connectionId: connectionId, id: id, addAssetsToClickGallery: addAssetsToClickGallery).execute(apiResponseQueue) { result in
+            switch result {
+            case let .success(response):
+                deferred.resolver.fulfill(response.body)
+            case let .failure(error):
+                deferred.resolver.reject(error)
+            }
+        }
+        return deferred.promise
+    }
+
+    /**
+     - POST /api/2/click/connections/{connection_id}/galleries/{id}/add-assets
+     - ### Required permissions    * User account permission: `cloud:access` 
+     - API Key:
+       - type: apiKey Authorization 
+       - name: Bearer
+     - parameter connectionId: (path)  
+     - parameter id: (path)  
+     - parameter addAssetsToClickGallery: (body)  
+     - returns: RequestBuilder<ClickGallery> 
+     */
+    open class func addAssetsToClickGalleryWithRequestBuilder(connectionId: String, id: String, addAssetsToClickGallery: AddAssetsToClickGallery) -> RequestBuilder<ClickGallery> {
+        var localVariablePath = "/api/2/click/connections/{connection_id}/galleries/{id}/add-assets"
+        let connectionIdPreEscape = "\(APIHelper.mapValueToPathItem(connectionId))"
+        let connectionIdPostEscape = connectionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{connection_id}", with: connectionIdPostEscape, options: .literal, range: nil)
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: addAssetsToClickGallery)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ClickGallery>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -69,9 +125,9 @@ open class ClickAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func continueClickUploadInBackground( uploadId: String,  clickBackgroundUploadEndpointRequest: ClickBackgroundUploadEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func continueClickUploadInBackground( uploadId: String,  clickBackgroundUploadEndpointRequest: ClickBackgroundUploadEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        continueClickUploadInBackgroundWithRequestBuilder(uploadId: uploadId, clickBackgroundUploadEndpointRequest: clickBackgroundUploadEndpointRequest).execute(apiResponseQueue) { result -> Void in
+        continueClickUploadInBackgroundWithRequestBuilder(uploadId: uploadId, clickBackgroundUploadEndpointRequest: clickBackgroundUploadEndpointRequest).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -97,7 +153,7 @@ open class ClickAPI {
         let uploadIdPreEscape = "\(APIHelper.mapValueToPathItem(uploadId))"
         let uploadIdPostEscape = uploadIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{upload_id}", with: uploadIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: clickBackgroundUploadEndpointRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -108,7 +164,7 @@ open class ClickAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -116,16 +172,16 @@ open class ClickAPI {
     /**
 
      - parameter connectionId: (path)  
-     - parameter clickGallery: (body)  
+     - parameter clickGalleryUpdate: (body)  
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ClickGallery>
      */
-    open class func createClickGallery( connectionId: String,  clickGallery: ClickGallery, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ClickGallery> {
+    open class func createClickGallery( connectionId: String,  clickGalleryUpdate: ClickGalleryUpdate, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ClickGallery> {
         let deferred = Promise<ClickGallery>.pending()
-        createClickGalleryWithRequestBuilder(connectionId: connectionId, clickGallery: clickGallery).execute(apiResponseQueue) { result -> Void in
+        createClickGalleryWithRequestBuilder(connectionId: connectionId, clickGalleryUpdate: clickGalleryUpdate).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -140,16 +196,16 @@ open class ClickAPI {
        - type: apiKey Authorization 
        - name: Bearer
      - parameter connectionId: (path)  
-     - parameter clickGallery: (body)  
+     - parameter clickGalleryUpdate: (body)  
      - returns: RequestBuilder<ClickGallery> 
      */
-    open class func createClickGalleryWithRequestBuilder(connectionId: String, clickGallery: ClickGallery) -> RequestBuilder<ClickGallery> {
+    open class func createClickGalleryWithRequestBuilder(connectionId: String, clickGalleryUpdate: ClickGalleryUpdate) -> RequestBuilder<ClickGallery> {
         var localVariablePath = "/api/2/click/connections/{connection_id}/galleries"
         let connectionIdPreEscape = "\(APIHelper.mapValueToPathItem(connectionId))"
         let connectionIdPostEscape = connectionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{connection_id}", with: connectionIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: clickGallery)
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: clickGalleryUpdate)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
@@ -159,7 +215,7 @@ open class ClickAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ClickGallery>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ClickGallery>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -171,12 +227,12 @@ open class ClickAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ClickGalleryLink>
      */
-    open class func createClickGalleryLink( connectionId: String,  clickGalleryLink: ClickGalleryLink, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ClickGalleryLink> {
+    open class func createClickGalleryLink( connectionId: String,  clickGalleryLink: ClickGalleryLink, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ClickGalleryLink> {
         let deferred = Promise<ClickGalleryLink>.pending()
-        createClickGalleryLinkWithRequestBuilder(connectionId: connectionId, clickGalleryLink: clickGalleryLink).execute(apiResponseQueue) { result -> Void in
+        createClickGalleryLinkWithRequestBuilder(connectionId: connectionId, clickGalleryLink: clickGalleryLink).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -199,7 +255,7 @@ open class ClickAPI {
         let connectionIdPreEscape = "\(APIHelper.mapValueToPathItem(connectionId))"
         let connectionIdPostEscape = connectionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{connection_id}", with: connectionIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: clickGalleryLink)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -210,7 +266,7 @@ open class ClickAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ClickGalleryLink>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ClickGalleryLink>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -222,9 +278,9 @@ open class ClickAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func deleteClickGalleryLink( connectionId: String,  id: String, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func deleteClickGalleryLink( connectionId: String,  id: String, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        deleteClickGalleryLinkWithRequestBuilder(connectionId: connectionId, id: id).execute(apiResponseQueue) { result -> Void in
+        deleteClickGalleryLinkWithRequestBuilder(connectionId: connectionId, id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -253,7 +309,7 @@ open class ClickAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -264,7 +320,7 @@ open class ClickAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -276,14 +332,14 @@ open class ClickAPI {
      - parameter limit: (query) Number of results to return per page. (optional)
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<InlineResponse200>
+     - returns: Promise<[ClickGallery]>
      */
-    open class func getAllClickGalleries( connectionId: String,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<InlineResponse200> {
-        let deferred = Promise<InlineResponse200>.pending()
-        getAllClickGalleriesWithRequestBuilder(connectionId: connectionId, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+    open class func getAllClickGalleries( connectionId: String,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<[ClickGallery]> {
+        let deferred = Promise<[ClickGallery]>.pending()
+        getAllClickGalleriesWithRequestBuilder(connectionId: connectionId, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -301,14 +357,14 @@ open class ClickAPI {
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
      - parameter limit: (query) Number of results to return per page. (optional)
      - parameter offset: (query) The initial index from which to return the results. (optional)
-     - returns: RequestBuilder<InlineResponse200> 
+     - returns: RequestBuilder<[ClickGallery]> 
      */
-    open class func getAllClickGalleriesWithRequestBuilder(connectionId: String, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<InlineResponse200> {
+    open class func getAllClickGalleriesWithRequestBuilder(connectionId: String, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<[ClickGallery]> {
         var localVariablePath = "/api/2/click/connections/{connection_id}/galleries"
         let connectionIdPreEscape = "\(APIHelper.mapValueToPathItem(connectionId))"
         let connectionIdPostEscape = connectionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{connection_id}", with: connectionIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -324,7 +380,7 @@ open class ClickAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<InlineResponse200>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ClickGallery]>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -336,14 +392,14 @@ open class ClickAPI {
      - parameter limit: (query) Number of results to return per page. (optional)
      - parameter offset: (query) The initial index from which to return the results. (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<InlineResponse2001>
+     - returns: Promise<InlineResponse200>
      */
-    open class func getAllClickGalleryLinks( connectionId: String,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<InlineResponse2001> {
-        let deferred = Promise<InlineResponse2001>.pending()
-        getAllClickGalleryLinksWithRequestBuilder(connectionId: connectionId, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result -> Void in
+    open class func getAllClickGalleryLinks( connectionId: String,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<InlineResponse200> {
+        let deferred = Promise<InlineResponse200>.pending()
+        getAllClickGalleryLinksWithRequestBuilder(connectionId: connectionId, ordering: ordering, limit: limit, offset: offset).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -361,14 +417,14 @@ open class ClickAPI {
      - parameter ordering: (query) Which field to use when ordering the results. (optional)
      - parameter limit: (query) Number of results to return per page. (optional)
      - parameter offset: (query) The initial index from which to return the results. (optional)
-     - returns: RequestBuilder<InlineResponse2001> 
+     - returns: RequestBuilder<InlineResponse200> 
      */
-    open class func getAllClickGalleryLinksWithRequestBuilder(connectionId: String, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<InlineResponse2001> {
+    open class func getAllClickGalleryLinksWithRequestBuilder(connectionId: String, ordering: String? = nil, limit: Int? = nil, offset: Int? = nil) -> RequestBuilder<InlineResponse200> {
         var localVariablePath = "/api/2/click/connections/{connection_id}/gallery-links"
         let connectionIdPreEscape = "\(APIHelper.mapValueToPathItem(connectionId))"
         let connectionIdPostEscape = connectionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{connection_id}", with: connectionIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -384,7 +440,7 @@ open class ClickAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<InlineResponse2001>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<InlineResponse200>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -396,12 +452,12 @@ open class ClickAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ClickGallery>
      */
-    open class func getClickGallery( connectionId: String,  id: String, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ClickGallery> {
+    open class func getClickGallery( connectionId: String,  id: String, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ClickGallery> {
         let deferred = Promise<ClickGallery>.pending()
-        getClickGalleryWithRequestBuilder(connectionId: connectionId, id: id).execute(apiResponseQueue) { result -> Void in
+        getClickGalleryWithRequestBuilder(connectionId: connectionId, id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -427,7 +483,7 @@ open class ClickAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -438,7 +494,7 @@ open class ClickAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ClickGallery>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ClickGallery>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -450,12 +506,12 @@ open class ClickAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<ClickGalleryLink>
      */
-    open class func getClickGalleryLink( connectionId: String,  id: String, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ClickGalleryLink> {
+    open class func getClickGalleryLink( connectionId: String,  id: String, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<ClickGalleryLink> {
         let deferred = Promise<ClickGalleryLink>.pending()
-        getClickGalleryLinkWithRequestBuilder(connectionId: connectionId, id: id).execute(apiResponseQueue) { result -> Void in
+        getClickGalleryLinkWithRequestBuilder(connectionId: connectionId, id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -481,7 +537,7 @@ open class ClickAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -492,65 +548,9 @@ open class ClickAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ClickGalleryLink>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ClickGalleryLink>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
-    }
-
-    /**
-
-     - parameter connectionId: (path)  
-     - parameter id: (path)  
-     - parameter clickGallery: (body)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<ClickGallery>
-     */
-    open class func patchClickGallery( connectionId: String,  id: String,  clickGallery: ClickGallery, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<ClickGallery> {
-        let deferred = Promise<ClickGallery>.pending()
-        patchClickGalleryWithRequestBuilder(connectionId: connectionId, id: id, clickGallery: clickGallery).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                deferred.resolver.fulfill(response.body!)
-            case let .failure(error):
-                deferred.resolver.reject(error)
-            }
-        }
-        return deferred.promise
-    }
-
-    /**
-     - PATCH /api/2/click/connections/{connection_id}/galleries/{id}
-     - ### Required permissions    * User account permission: `cloud:access` 
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
-     - parameter connectionId: (path)  
-     - parameter id: (path)  
-     - parameter clickGallery: (body)  
-     - returns: RequestBuilder<ClickGallery> 
-     */
-    open class func patchClickGalleryWithRequestBuilder(connectionId: String, id: String, clickGallery: ClickGallery) -> RequestBuilder<ClickGallery> {
-        var localVariablePath = "/api/2/click/connections/{connection_id}/galleries/{id}"
-        let connectionIdPreEscape = "\(APIHelper.mapValueToPathItem(connectionId))"
-        let connectionIdPostEscape = connectionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{connection_id}", with: connectionIdPostEscape, options: .literal, range: nil)
-        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
-        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: clickGallery)
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<ClickGallery>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 
     /**
@@ -560,9 +560,9 @@ open class ClickAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<Void>
      */
-    open class func sendClickGalleryLinkEmail( connectionId: String,  linkId: String, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<Void> {
+    open class func sendClickGalleryLinkEmail( connectionId: String,  linkId: String, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<Void> {
         let deferred = Promise<Void>.pending()
-        sendClickGalleryLinkEmailWithRequestBuilder(connectionId: connectionId, linkId: linkId).execute(apiResponseQueue) { result -> Void in
+        sendClickGalleryLinkEmailWithRequestBuilder(connectionId: connectionId, linkId: linkId).execute(apiResponseQueue) { result in
             switch result {
             case .success:
                 deferred.resolver.fulfill(())
@@ -591,7 +591,7 @@ open class ClickAPI {
         let linkIdPreEscape = "\(APIHelper.mapValueToPathItem(linkId))"
         let linkIdPostEscape = linkIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{link_id}", with: linkIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -602,7 +602,7 @@ open class ClickAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDK.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = ElementsSDKAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
@@ -613,12 +613,12 @@ open class ClickAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - returns: Promise<TaskInfo>
      */
-    open class func startClickUpload( clickStartUploadEndpointRequest: ClickStartUploadEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<TaskInfo> {
+    open class func startClickUpload( clickStartUploadEndpointRequest: ClickStartUploadEndpointRequest, apiResponseQueue: DispatchQueue = ElementsSDKAPI.apiResponseQueue) -> Promise<TaskInfo> {
         let deferred = Promise<TaskInfo>.pending()
-        startClickUploadWithRequestBuilder(clickStartUploadEndpointRequest: clickStartUploadEndpointRequest).execute(apiResponseQueue) { result -> Void in
+        startClickUploadWithRequestBuilder(clickStartUploadEndpointRequest: clickStartUploadEndpointRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
-                deferred.resolver.fulfill(response.body!)
+                deferred.resolver.fulfill(response.body)
             case let .failure(error):
                 deferred.resolver.reject(error)
             }
@@ -637,7 +637,7 @@ open class ClickAPI {
      */
     open class func startClickUploadWithRequestBuilder(clickStartUploadEndpointRequest: ClickStartUploadEndpointRequest) -> RequestBuilder<TaskInfo> {
         let localVariablePath = "/api/2/click/uploads"
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
+        let localVariableURLString = ElementsSDKAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: clickStartUploadEndpointRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -648,64 +648,8 @@ open class ClickAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TaskInfo>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TaskInfo>.Type = ElementsSDKAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
-    }
-
-    /**
-
-     - parameter connectionId: (path)  
-     - parameter id: (path)  
-     - parameter addAssetsToClickGallery: (body)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - returns: Promise<AddAssetsToClickGallery>
-     */
-    open class func updateClickGallery( connectionId: String,  id: String,  addAssetsToClickGallery: AddAssetsToClickGallery, apiResponseQueue: DispatchQueue = ElementsSDK.apiResponseQueue) -> Promise<AddAssetsToClickGallery> {
-        let deferred = Promise<AddAssetsToClickGallery>.pending()
-        updateClickGalleryWithRequestBuilder(connectionId: connectionId, id: id, addAssetsToClickGallery: addAssetsToClickGallery).execute(apiResponseQueue) { result -> Void in
-            switch result {
-            case let .success(response):
-                deferred.resolver.fulfill(response.body!)
-            case let .failure(error):
-                deferred.resolver.reject(error)
-            }
-        }
-        return deferred.promise
-    }
-
-    /**
-     - PUT /api/2/click/connections/{connection_id}/galleries/{id}
-     - ### Required permissions    * User account permission: `cloud:access` 
-     - API Key:
-       - type: apiKey Authorization 
-       - name: Bearer
-     - parameter connectionId: (path)  
-     - parameter id: (path)  
-     - parameter addAssetsToClickGallery: (body)  
-     - returns: RequestBuilder<AddAssetsToClickGallery> 
-     */
-    open class func updateClickGalleryWithRequestBuilder(connectionId: String, id: String, addAssetsToClickGallery: AddAssetsToClickGallery) -> RequestBuilder<AddAssetsToClickGallery> {
-        var localVariablePath = "/api/2/click/connections/{connection_id}/galleries/{id}"
-        let connectionIdPreEscape = "\(APIHelper.mapValueToPathItem(connectionId))"
-        let connectionIdPostEscape = connectionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{connection_id}", with: connectionIdPostEscape, options: .literal, range: nil)
-        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
-        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = ElementsSDK.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: addAssetsToClickGallery)
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<AddAssetsToClickGallery>.Type = ElementsSDK.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters)
     }
 }

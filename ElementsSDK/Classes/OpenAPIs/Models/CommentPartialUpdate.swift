@@ -10,12 +10,12 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct CommentPartialUpdate: Codable, Hashable {
+public struct CommentPartialUpdate: Codable, JSONEncodable, Hashable {
 
-    public var assignee: ElementsUserMiniReference?
-    public var user: ElementsUserMiniReference?
+    public var assignee: AnyOfElementsUserMiniReferenceAnyType?
+    public var user: AnyOfElementsUserMiniReferenceAnyType?
     public var drawing: [String: String]?
-    public var tags: Set<TagReference>?
+    public var tags: [TagReference]?
     public var text: String?
     public var time: Double?
     public var isCloud: Bool?
@@ -25,7 +25,7 @@ public struct CommentPartialUpdate: Codable, Hashable {
     public var root: Int?
     public var parent: Int?
 
-    public init(assignee: ElementsUserMiniReference? = nil, user: ElementsUserMiniReference? = nil, drawing: [String: String]? = nil, tags: Set<TagReference>? = nil, text: String? = nil, time: Double? = nil, isCloud: Bool? = nil, resolved: Bool? = nil, resolvedDate: Date? = nil, asset: Int? = nil, root: Int? = nil, parent: Int? = nil) {
+    public init(assignee: AnyOfElementsUserMiniReferenceAnyType? = nil, user: AnyOfElementsUserMiniReferenceAnyType? = nil, drawing: [String: String]? = nil, tags: [TagReference]? = nil, text: String? = nil, time: Double? = nil, isCloud: Bool? = nil, resolved: Bool? = nil, resolvedDate: Date? = nil, asset: Int? = nil, root: Int? = nil, parent: Int? = nil) {
         self.assignee = assignee
         self.user = user
         self.drawing = drawing

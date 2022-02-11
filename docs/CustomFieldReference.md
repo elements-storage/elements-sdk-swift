@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] 
-**labels** | **[String]** |  | [optional] [readonly] 
+**id** | **Int** |  | 
+**labels** | [[String: String]] |  | [optional] [readonly] 
 **options** | **[String]** |  | [optional] [readonly] 
 **name** | **String** |  | [optional] [readonly] 
 **order** | **Int** |  | [optional] [readonly] 

@@ -10,12 +10,12 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TapeGroupPartialUpdate: Codable, Hashable {
+public struct TapeGroupPartialUpdate: Codable, JSONEncodable, Hashable {
 
-    public var tapes: Set<TapeReference>?
+    public var tapes: [TapeReference]?
     public var name: String?
 
-    public init(tapes: Set<TapeReference>? = nil, name: String? = nil) {
+    public init(tapes: [TapeReference]? = nil, name: String? = nil) {
         self.tapes = tapes
         self.name = name
     }

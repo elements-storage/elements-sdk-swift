@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SolrReindexEndpointResponse: Codable, Hashable {
+public struct SolrReindexEndpointResponse: Codable, JSONEncodable, Hashable {
 
     public var tasks: [TaskInfo]
 

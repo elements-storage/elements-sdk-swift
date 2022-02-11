@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SnapshotPartialUpdate: Codable, Hashable {
+public struct SnapshotPartialUpdate: Codable, JSONEncodable, Hashable {
 
     public var workspace: Int?
     public var name: String?

@@ -10,19 +10,21 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct BasicFile: Codable, Hashable {
+public struct BasicFile: Codable, JSONEncodable, Hashable {
 
-    public var path: String?
+    public var path: String
     public var name: String
-    public var size: Int?
-    public var totalSize: Int?
-    public var isDir: Bool?
+    public var size: Int
+    public var modificationTime: Date
+    public var totalSize: Int
+    public var isDir: Bool
     public var files: [AnyCodable]?
 
-    public init(path: String? = nil, name: String, size: Int? = nil, totalSize: Int? = nil, isDir: Bool? = nil, files: [AnyCodable]? = nil) {
+    public init(path: String, name: String, size: Int, modificationTime: Date, totalSize: Int, isDir: Bool, files: [AnyCodable]? = nil) {
         self.path = path
         self.name = name
         self.size = size
+        self.modificationTime = modificationTime
         self.totalSize = totalSize
         self.isDir = isDir
         self.files = files
@@ -32,6 +34,7 @@ public struct BasicFile: Codable, Hashable {
         case path
         case name
         case size
+        case modificationTime = "modification_time"
         case totalSize = "total_size"
         case isDir = "is_dir"
         case files
@@ -41,11 +44,12 @@ public struct BasicFile: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(path, forKey: .path)
+        try container.encode(path, forKey: .path)
         try container.encode(name, forKey: .name)
-        try container.encodeIfPresent(size, forKey: .size)
-        try container.encodeIfPresent(totalSize, forKey: .totalSize)
-        try container.encodeIfPresent(isDir, forKey: .isDir)
+        try container.encode(size, forKey: .size)
+        try container.encode(modificationTime, forKey: .modificationTime)
+        try container.encode(totalSize, forKey: .totalSize)
+        try container.encode(isDir, forKey: .isDir)
         try container.encodeIfPresent(files, forKey: .files)
     }
 }

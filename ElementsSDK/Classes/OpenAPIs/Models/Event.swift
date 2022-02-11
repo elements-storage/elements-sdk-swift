@@ -10,16 +10,16 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Event: Codable, Hashable {
+public struct Event: Codable, JSONEncodable, Hashable {
 
     public var id: String
     public var name: String
     public var group: String
     public var iconClass: String
     public var licenseComponent: String
-    public var argTypes: [String: String]?
+    public var argTypes: [String: String]
 
-    public init(id: String, name: String, group: String, iconClass: String, licenseComponent: String, argTypes: [String: String]? = nil) {
+    public init(id: String, name: String, group: String, iconClass: String, licenseComponent: String, argTypes: [String: String]) {
         self.id = id
         self.name = name
         self.group = group
@@ -46,7 +46,7 @@ public struct Event: Codable, Hashable {
         try container.encode(group, forKey: .group)
         try container.encode(iconClass, forKey: .iconClass)
         try container.encode(licenseComponent, forKey: .licenseComponent)
-        try container.encodeIfPresent(argTypes, forKey: .argTypes)
+        try container.encode(argTypes, forKey: .argTypes)
     }
 }
 

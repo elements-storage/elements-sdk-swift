@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct PasswordResetEndpointRequest: Codable, Hashable {
+public struct PasswordResetEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var token: String
     public var password: String

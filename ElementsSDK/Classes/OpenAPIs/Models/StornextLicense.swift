@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct StornextLicense: Codable, Hashable {
+public struct StornextLicense: Codable, JSONEncodable, Hashable {
 
     public var license: String
 

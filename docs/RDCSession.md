@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **user** | [**ElementsUserMiniReference**](ElementsUserMiniReference.md) |  | 
 **clientSession** | **Int** |  | 
 **hostWorkstation** | **String** |  | 

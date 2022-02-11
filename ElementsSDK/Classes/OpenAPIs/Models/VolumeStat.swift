@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct VolumeStat: Codable, Hashable {
+public struct VolumeStat: Codable, JSONEncodable, Hashable {
 
     public var time: Int
     public var cTotal: Double

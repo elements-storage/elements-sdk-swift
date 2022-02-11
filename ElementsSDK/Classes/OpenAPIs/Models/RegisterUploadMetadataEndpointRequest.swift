@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct RegisterUploadMetadataEndpointRequest: Codable, Hashable {
+public struct RegisterUploadMetadataEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var items: [MetadataItem]
 

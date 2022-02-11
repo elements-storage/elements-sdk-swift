@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TapePartialUpdate: Codable, Hashable {
+public struct TapePartialUpdate: Codable, JSONEncodable, Hashable {
 
     public enum Lto: String, Codable, CaseIterable {
         case _5 = "5"

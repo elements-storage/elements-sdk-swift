@@ -10,15 +10,15 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct CustomFieldReference: Codable, Hashable {
+public struct CustomFieldReference: Codable, JSONEncodable, Hashable {
 
     public enum Validation: String, Codable, CaseIterable {
         case numberOfDigits = "number_of_digits"
         case regex = "regex"
         case range = "range"
     }
-    public var id: Int?
-    public var labels: [String]?
+    public var id: Int
+    public var labels: [[String: String]]?
     public var options: [String]?
     public var name: String?
     public var order: Int?
@@ -36,7 +36,7 @@ public struct CustomFieldReference: Codable, Hashable {
     public var multipleResponse: Bool?
     public var helpText: String?
 
-    public init(id: Int? = nil, labels: [String]? = nil, options: [String]? = nil, name: String? = nil, order: Int? = nil, type: String? = nil, useForUploads: Bool? = nil, requireToUpload: Bool? = nil, nonUserEditable: Bool? = nil, validation: Validation? = nil, regex: String? = nil, rangeMin: Int? = nil, rangeMax: Int? = nil, numberOfDigits: Int? = nil, metadataPrefill: String? = nil, highlightExpiration: Bool? = nil, multipleResponse: Bool? = nil, helpText: String? = nil) {
+    public init(id: Int, labels: [[String: String]]? = nil, options: [String]? = nil, name: String? = nil, order: Int? = nil, type: String? = nil, useForUploads: Bool? = nil, requireToUpload: Bool? = nil, nonUserEditable: Bool? = nil, validation: Validation? = nil, regex: String? = nil, rangeMin: Int? = nil, rangeMax: Int? = nil, numberOfDigits: Int? = nil, metadataPrefill: String? = nil, highlightExpiration: Bool? = nil, multipleResponse: Bool? = nil, helpText: String? = nil) {
         self.id = id
         self.labels = labels
         self.options = options
@@ -82,7 +82,7 @@ public struct CustomFieldReference: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(labels, forKey: .labels)
         try container.encodeIfPresent(options, forKey: .options)
         try container.encodeIfPresent(name, forKey: .name)

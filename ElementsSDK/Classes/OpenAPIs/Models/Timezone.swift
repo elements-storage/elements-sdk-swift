@@ -10,12 +10,12 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Timezone: Codable, Hashable {
+public struct Timezone: Codable, JSONEncodable, Hashable {
 
     public var value: String
-    public var name: String?
+    public var name: String
 
-    public init(value: String, name: String? = nil) {
+    public init(value: String, name: String) {
         self.value = value
         self.name = name
     }
@@ -30,7 +30,7 @@ public struct Timezone: Codable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(value, forKey: .value)
-        try container.encodeIfPresent(name, forKey: .name)
+        try container.encode(name, forKey: .name)
     }
 }
 

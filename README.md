@@ -30,27 +30,91 @@ StorageAPI.getAllWorkspaces(active: true, isExternal: false).then { workspaces i
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AIAPI* | [**abortAIDatasetModelCreation**](docs/AIAPI.md#abortaidatasetmodelcreation) | **POST** /api/2/ai/models/{id}/abort | 
+*AIAPI* | [**activateAIModel**](docs/AIAPI.md#activateaimodel) | **POST** /api/2/ai/models/{id}/activate | 
+*AIAPI* | [**createAIAnnotationTrack**](docs/AIAPI.md#createaiannotationtrack) | **POST** /api/2/ai/annotations/tracks/create | 
+*AIAPI* | [**createAICategory**](docs/AIAPI.md#createaicategory) | **POST** /api/2/ai/categories | 
+*AIAPI* | [**createAIDataset**](docs/AIAPI.md#createaidataset) | **POST** /api/2/ai/datasets | 
+*AIAPI* | [**createAIDatasetModel**](docs/AIAPI.md#createaidatasetmodel) | **POST** /api/2/ai/models/create | 
+*AIAPI* | [**createAIMetadata**](docs/AIAPI.md#createaimetadata) | **POST** /api/2/ai/metadata/create | 
+*AIAPI* | [**createAIModel**](docs/AIAPI.md#createaimodel) | **POST** /api/2/ai/models | 
+*AIAPI* | [**deleteAIAnnotation**](docs/AIAPI.md#deleteaiannotation) | **DELETE** /api/2/ai/annotations/{id} | 
+*AIAPI* | [**deleteAIAnnotationTrack**](docs/AIAPI.md#deleteaiannotationtrack) | **DELETE** /api/2/ai/annotations/tracks/{id} | 
+*AIAPI* | [**deleteAICategory**](docs/AIAPI.md#deleteaicategory) | **DELETE** /api/2/ai/categories/{id} | 
+*AIAPI* | [**deleteAIDataset**](docs/AIAPI.md#deleteaidataset) | **DELETE** /api/2/ai/datasets/{id} | 
+*AIAPI* | [**deleteAIModel**](docs/AIAPI.md#deleteaimodel) | **DELETE** /api/2/ai/models/{id} | 
+*AIAPI* | [**exportAIDataset**](docs/AIAPI.md#exportaidataset) | **POST** /api/2/ai/datasets/{id}/export | 
+*AIAPI* | [**exportAIModel**](docs/AIAPI.md#exportaimodel) | **POST** /api/2/ai/models/{id}/export | 
+*AIAPI* | [**getAIAnnotation**](docs/AIAPI.md#getaiannotation) | **GET** /api/2/ai/annotations/{id} | 
+*AIAPI* | [**getAIAnnotationImage**](docs/AIAPI.md#getaiannotationimage) | **GET** /api/2/ai/annotations/{id}/image | 
+*AIAPI* | [**getAICategory**](docs/AIAPI.md#getaicategory) | **GET** /api/2/ai/categories/{id} | 
+*AIAPI* | [**getAIConnection**](docs/AIAPI.md#getaiconnection) | **GET** /api/2/ai/connections/{id} | 
+*AIAPI* | [**getAIDataset**](docs/AIAPI.md#getaidataset) | **GET** /api/2/ai/datasets/{id} | 
+*AIAPI* | [**getAIImage**](docs/AIAPI.md#getaiimage) | **GET** /api/2/ai/images/{id} | 
+*AIAPI* | [**getAIImageContent**](docs/AIAPI.md#getaiimagecontent) | **GET** /api/2/ai/images/{id}/content | 
+*AIAPI* | [**getAIMetadata**](docs/AIAPI.md#getaimetadata) | **GET** /api/2/ai/metadata/{id} | 
+*AIAPI* | [**getAIModel**](docs/AIAPI.md#getaimodel) | **GET** /api/2/ai/models/{id} | 
+*AIAPI* | [**getAllAIAnnotationTracks**](docs/AIAPI.md#getallaiannotationtracks) | **GET** /api/2/ai/annotations/tracks | 
+*AIAPI* | [**getAllAIAnnotations**](docs/AIAPI.md#getallaiannotations) | **GET** /api/2/ai/annotations | 
+*AIAPI* | [**getAllAICategories**](docs/AIAPI.md#getallaicategories) | **GET** /api/2/ai/categories | 
+*AIAPI* | [**getAllAIConnections**](docs/AIAPI.md#getallaiconnections) | **GET** /api/2/ai/connections | 
+*AIAPI* | [**getAllAIDatasets**](docs/AIAPI.md#getallaidatasets) | **GET** /api/2/ai/datasets | 
+*AIAPI* | [**getAllAIImages**](docs/AIAPI.md#getallaiimages) | **GET** /api/2/ai/images | 
+*AIAPI* | [**getAllAIMetadata**](docs/AIAPI.md#getallaimetadata) | **GET** /api/2/ai/metadata | 
+*AIAPI* | [**getAllAIModels**](docs/AIAPI.md#getallaimodels) | **GET** /api/2/ai/models | 
+*AIAPI* | [**importAIDatasets**](docs/AIAPI.md#importaidatasets) | **POST** /api/2/ai/datasets/import | 
+*AIAPI* | [**importAIModels**](docs/AIAPI.md#importaimodels) | **POST** /api/2/ai/datasets/{id}/import-models | 
+*AIAPI* | [**patchAIAnnotation**](docs/AIAPI.md#patchaiannotation) | **PATCH** /api/2/ai/annotations/{id} | 
+*AIAPI* | [**patchAICategory**](docs/AIAPI.md#patchaicategory) | **PATCH** /api/2/ai/categories/{id} | 
+*AIAPI* | [**patchAIDataset**](docs/AIAPI.md#patchaidataset) | **PATCH** /api/2/ai/datasets/{id} | 
+*AIAPI* | [**patchAIModel**](docs/AIAPI.md#patchaimodel) | **PATCH** /api/2/ai/models/{id} | 
+*AIAPI* | [**runAIModelInference**](docs/AIAPI.md#runaimodelinference) | **POST** /api/2/ai/models/{id}/inference | 
+*AIAPI* | [**updateAIAnnotation**](docs/AIAPI.md#updateaiannotation) | **PUT** /api/2/ai/annotations/{id} | 
+*AIAPI* | [**updateAICategory**](docs/AIAPI.md#updateaicategory) | **PUT** /api/2/ai/categories/{id} | 
+*AIAPI* | [**updateAIDataset**](docs/AIAPI.md#updateaidataset) | **PUT** /api/2/ai/datasets/{id} | 
+*AIAPI* | [**updateAIModel**](docs/AIAPI.md#updateaimodel) | **PUT** /api/2/ai/models/{id} | 
+*AIAPI* | [**uploadAIImage**](docs/AIAPI.md#uploadaiimage) | **POST** /api/2/ai/images/upload | 
 *AWSAPI* | [**createAWSAccount**](docs/AWSAPI.md#createawsaccount) | **POST** /api/2/aws-accounts | 
 *AWSAPI* | [**deleteAWSAccount**](docs/AWSAPI.md#deleteawsaccount) | **DELETE** /api/2/aws-accounts/{id} | 
 *AWSAPI* | [**getAWSAccount**](docs/AWSAPI.md#getawsaccount) | **GET** /api/2/aws-accounts/{id} | 
-*AWSAPI* | [**getAWSAccountBuckets**](docs/AWSAPI.md#getawsaccountbuckets) | **GET** /api/2/aws-accounts/{id}/buckets | 
 *AWSAPI* | [**getAWSAccountSNSTopics**](docs/AWSAPI.md#getawsaccountsnstopics) | **GET** /api/2/aws-accounts/{id}/sns/topics | 
 *AWSAPI* | [**getAllAWSAccounts**](docs/AWSAPI.md#getallawsaccounts) | **GET** /api/2/aws-accounts | 
 *AWSAPI* | [**patchAWSAccount**](docs/AWSAPI.md#patchawsaccount) | **PATCH** /api/2/aws-accounts/{id} | 
 *AWSAPI* | [**testAWSAccountCredentials**](docs/AWSAPI.md#testawsaccountcredentials) | **POST** /api/2/aws-accounts/test-credentials | 
 *AWSAPI* | [**updateAWSAccount**](docs/AWSAPI.md#updateawsaccount) | **PUT** /api/2/aws-accounts/{id} | 
 *AuthAPI* | [**checkAuthTicket**](docs/AuthAPI.md#checkauthticket) | **POST** /api/2/auth/ticket/check | 
+*AuthAPI* | [**createAPIToken**](docs/AuthAPI.md#createapitoken) | **POST** /api/2/api-tokens | 
 *AuthAPI* | [**createAuthTicket**](docs/AuthAPI.md#createauthticket) | **POST** /api/2/auth/ticket | 
+*AuthAPI* | [**createSAMLProvider**](docs/AuthAPI.md#createsamlprovider) | **POST** /api/2/auth/saml | 
+*AuthAPI* | [**deleteAPIToken**](docs/AuthAPI.md#deleteapitoken) | **DELETE** /api/2/api-tokens/{id} | 
 *AuthAPI* | [**deleteAccessToken**](docs/AuthAPI.md#deleteaccesstoken) | **DELETE** /api/2/auth/access-tokens/{id} | 
+*AuthAPI* | [**deleteSAMLProvider**](docs/AuthAPI.md#deletesamlprovider) | **DELETE** /api/2/auth/saml/{id} | 
 *AuthAPI* | [**generatePassword**](docs/AuthAPI.md#generatepassword) | **POST** /api/2/auth/generate-password | 
+*AuthAPI* | [**getAPIToken**](docs/AuthAPI.md#getapitoken) | **GET** /api/2/api-tokens/{id} | 
 *AuthAPI* | [**getAccessToken**](docs/AuthAPI.md#getaccesstoken) | **GET** /api/2/auth/access-tokens/{id} | 
+*AuthAPI* | [**getAllAPITokens**](docs/AuthAPI.md#getallapitokens) | **GET** /api/2/api-tokens | 
 *AuthAPI* | [**getAllAccessTokens**](docs/AuthAPI.md#getallaccesstokens) | **GET** /api/2/auth/access-tokens | 
+*AuthAPI* | [**getAllSAMLProviders**](docs/AuthAPI.md#getallsamlproviders) | **GET** /api/2/auth/saml | 
+*AuthAPI* | [**getSAMLProvider**](docs/AuthAPI.md#getsamlprovider) | **GET** /api/2/auth/saml/{id} | 
+*AuthAPI* | [**getSAMLServiceProviderMetadata**](docs/AuthAPI.md#getsamlserviceprovidermetadata) | **GET** /api/2/auth/saml/{id}/metadata | 
 *AuthAPI* | [**login**](docs/AuthAPI.md#login) | **POST** /api/2/auth/login | 
 *AuthAPI* | [**logout**](docs/AuthAPI.md#logout) | **POST** /api/2/auth/logout | 
+*AuthAPI* | [**logoutPage**](docs/AuthAPI.md#logoutpage) | **GET** /api/2/auth/logout | 
+*AuthAPI* | [**parseSAMLIDPMetadata**](docs/AuthAPI.md#parsesamlidpmetadata) | **POST** /api/2/auth/saml/parse-idp-metadata | 
+*AuthAPI* | [**patchAPIToken**](docs/AuthAPI.md#patchapitoken) | **PATCH** /api/2/api-tokens/{id} | 
+*AuthAPI* | [**patchSAMLProvider**](docs/AuthAPI.md#patchsamlprovider) | **PATCH** /api/2/auth/saml/{id} | 
+*AuthAPI* | [**receiveSAMLAuthAssertion**](docs/AuthAPI.md#receivesamlauthassertion) | **POST** /api/2/auth/saml/{id}/assertion | 
+*AuthAPI* | [**refreshSAMLIDPMetadata**](docs/AuthAPI.md#refreshsamlidpmetadata) | **POST** /api/2/auth/saml/{id}/refresh-idp-metadata | 
 *AuthAPI* | [**resetPassword**](docs/AuthAPI.md#resetpassword) | **POST** /api/2/auth/reset-password | 
+*AuthAPI* | [**returnFromSAMLAuth**](docs/AuthAPI.md#returnfromsamlauth) | **GET** /api/2/auth/saml/{id}/sso/return | 
+*AuthAPI* | [**returnFromSAMLLogout**](docs/AuthAPI.md#returnfromsamllogout) | **GET** /api/2/auth/saml/{id}/sls/return | 
 *AuthAPI* | [**sendAccessTokenEmailNotification**](docs/AuthAPI.md#sendaccesstokenemailnotification) | **POST** /api/2/auth/access-tokens/{id}/email | 
 *AuthAPI* | [**startImpersonation**](docs/AuthAPI.md#startimpersonation) | **POST** /api/2/auth/impersonation | 
+*AuthAPI* | [**startSAMLAuth**](docs/AuthAPI.md#startsamlauth) | **GET** /api/2/auth/saml/{id}/sso | 
+*AuthAPI* | [**startSAMLLogout**](docs/AuthAPI.md#startsamllogout) | **GET** /api/2/auth/saml/{id}/sls | 
 *AuthAPI* | [**stopImpersonation**](docs/AuthAPI.md#stopimpersonation) | **POST** /api/2/auth/impersonation/stop | 
+*AuthAPI* | [**updateAPIToken**](docs/AuthAPI.md#updateapitoken) | **PUT** /api/2/api-tokens/{id} | 
+*AuthAPI* | [**updateSAMLProvider**](docs/AuthAPI.md#updatesamlprovider) | **PUT** /api/2/auth/saml/{id} | 
 *AutomationAPI* | [**abortTask**](docs/AutomationAPI.md#aborttask) | **POST** /api/2/tasks/{id}/abort | 
 *AutomationAPI* | [**createJob**](docs/AutomationAPI.md#createjob) | **POST** /api/2/jobs | 
 *AutomationAPI* | [**createSchedule**](docs/AutomationAPI.md#createschedule) | **POST** /api/2/schedules | 
@@ -94,6 +158,7 @@ Class | Method | HTTP request | Description
 *AutomationAPI* | [**updateSchedule**](docs/AutomationAPI.md#updateschedule) | **PUT** /api/2/schedules/{id} | 
 *AutomationAPI* | [**updateSubtask**](docs/AutomationAPI.md#updatesubtask) | **PUT** /api/2/subtasks/{id} | 
 *ClickAPI* | [**abortClickUpload**](docs/ClickAPI.md#abortclickupload) | **DELETE** /api/2/click/uploads/{upload_id} | 
+*ClickAPI* | [**addAssetsToClickGallery**](docs/ClickAPI.md#addassetstoclickgallery) | **POST** /api/2/click/connections/{connection_id}/galleries/{id}/add-assets | 
 *ClickAPI* | [**continueClickUploadInBackground**](docs/ClickAPI.md#continueclickuploadinbackground) | **POST** /api/2/click/uploads/{upload_id}/background | 
 *ClickAPI* | [**createClickGallery**](docs/ClickAPI.md#createclickgallery) | **POST** /api/2/click/connections/{connection_id}/galleries | 
 *ClickAPI* | [**createClickGalleryLink**](docs/ClickAPI.md#createclickgallerylink) | **POST** /api/2/click/connections/{connection_id}/gallery-links | 
@@ -102,10 +167,8 @@ Class | Method | HTTP request | Description
 *ClickAPI* | [**getAllClickGalleryLinks**](docs/ClickAPI.md#getallclickgallerylinks) | **GET** /api/2/click/connections/{connection_id}/gallery-links | 
 *ClickAPI* | [**getClickGallery**](docs/ClickAPI.md#getclickgallery) | **GET** /api/2/click/connections/{connection_id}/galleries/{id} | 
 *ClickAPI* | [**getClickGalleryLink**](docs/ClickAPI.md#getclickgallerylink) | **GET** /api/2/click/connections/{connection_id}/gallery-links/{id} | 
-*ClickAPI* | [**patchClickGallery**](docs/ClickAPI.md#patchclickgallery) | **PATCH** /api/2/click/connections/{connection_id}/galleries/{id} | 
 *ClickAPI* | [**sendClickGalleryLinkEmail**](docs/ClickAPI.md#sendclickgallerylinkemail) | **POST** /api/2/click/connections/{connection_id}/gallery-links/{link_id}/send | 
 *ClickAPI* | [**startClickUpload**](docs/ClickAPI.md#startclickupload) | **POST** /api/2/click/uploads | 
-*ClickAPI* | [**updateClickGallery**](docs/ClickAPI.md#updateclickgallery) | **PUT** /api/2/click/connections/{connection_id}/galleries/{id} | 
 *IntegrationsAPI* | [**deleteSlackConnection**](docs/IntegrationsAPI.md#deleteslackconnection) | **DELETE** /api/2/integrations/slack/{id} | 
 *IntegrationsAPI* | [**deleteTeamsConnection**](docs/IntegrationsAPI.md#deleteteamsconnection) | **DELETE** /api/2/integrations/teams/{id} | 
 *IntegrationsAPI* | [**getAllSlackConnections**](docs/IntegrationsAPI.md#getallslackconnections) | **GET** /api/2/integrations/slack | 
@@ -135,12 +198,16 @@ Class | Method | HTTP request | Description
 *MainAPI* | [**checkStorNextLicense**](docs/MainAPI.md#checkstornextlicense) | **POST** /api/2/stornext-license/check | 
 *MainAPI* | [**collectDiagnostics**](docs/MainAPI.md#collectdiagnostics) | **POST** /api/2/system/collect-diagnostics | 
 *MainAPI* | [**createArchive**](docs/MainAPI.md#createarchive) | **POST** /api/2/download-archive/create | 
+*MainAPI* | [**createCloudAccount**](docs/MainAPI.md#createcloudaccount) | **POST** /api/2/cloud/accounts | 
+*MainAPI* | [**createFilesystemPermission**](docs/MainAPI.md#createfilesystempermission) | **POST** /api/2/filesystem-permissions | 
 *MainAPI* | [**createGroup**](docs/MainAPI.md#creategroup) | **POST** /api/2/groups | 
 *MainAPI* | [**createHomeWorkspace**](docs/MainAPI.md#createhomeworkspace) | **POST** /api/2/users/{id}/home | 
 *MainAPI* | [**createNTPServer**](docs/MainAPI.md#createntpserver) | **POST** /api/2/system/time/servers | 
 *MainAPI* | [**createUser**](docs/MainAPI.md#createuser) | **POST** /api/2/users | 
 *MainAPI* | [**createWorkstation**](docs/MainAPI.md#createworkstation) | **POST** /api/2/workstations | 
+*MainAPI* | [**deleteCloudAccount**](docs/MainAPI.md#deletecloudaccount) | **DELETE** /api/2/cloud/accounts/{id} | 
 *MainAPI* | [**deleteDownloadArchive**](docs/MainAPI.md#deletedownloadarchive) | **DELETE** /api/2/download-archive/{id} | 
+*MainAPI* | [**deleteFilesystemPermission**](docs/MainAPI.md#deletefilesystempermission) | **DELETE** /api/2/filesystem-permissions/{id} | 
 *MainAPI* | [**deleteGroup**](docs/MainAPI.md#deletegroup) | **DELETE** /api/2/groups/{id} | 
 *MainAPI* | [**deleteHomeWorkspace**](docs/MainAPI.md#deletehomeworkspace) | **DELETE** /api/2/users/{id}/home | 
 *MainAPI* | [**deleteNTPServer**](docs/MainAPI.md#deletentpserver) | **DELETE** /api/2/system/time/servers/{id} | 
@@ -151,8 +218,10 @@ Class | Method | HTTP request | Description
 *MainAPI* | [**finishUpload**](docs/MainAPI.md#finishupload) | **POST** /api/2/uploads/finish | 
 *MainAPI* | [**fixLDAPGroupMemberships**](docs/MainAPI.md#fixldapgroupmemberships) | **POST** /api/2/ldap-servers/{id}/fix-memberships | 
 *MainAPI* | [**getAllClientSessions**](docs/MainAPI.md#getallclientsessions) | **GET** /api/2/client-sessions | 
+*MainAPI* | [**getAllCloudAccounts**](docs/MainAPI.md#getallcloudaccounts) | **GET** /api/2/cloud/accounts | 
 *MainAPI* | [**getAllDownloadArchives**](docs/MainAPI.md#getalldownloadarchives) | **GET** /api/2/download-archive | 
 *MainAPI* | [**getAllDownloads**](docs/MainAPI.md#getalldownloads) | **GET** /api/2/downloads | 
+*MainAPI* | [**getAllFilesystemPermissions**](docs/MainAPI.md#getallfilesystempermissions) | **GET** /api/2/filesystem-permissions | 
 *MainAPI* | [**getAllGroups**](docs/MainAPI.md#getallgroups) | **GET** /api/2/groups | 
 *MainAPI* | [**getAllLDAPServers**](docs/MainAPI.md#getallldapservers) | **GET** /api/2/ldap-servers | 
 *MainAPI* | [**getAllNTPServers**](docs/MainAPI.md#getallntpservers) | **GET** /api/2/system/time/servers | 
@@ -163,12 +232,15 @@ Class | Method | HTTP request | Description
 *MainAPI* | [**getClientDownloadFile**](docs/MainAPI.md#getclientdownloadfile) | **GET** /api/2/downloads/clients/{file} | 
 *MainAPI* | [**getClientDownloads**](docs/MainAPI.md#getclientdownloads) | **GET** /api/2/downloads/clients | 
 *MainAPI* | [**getClientSession**](docs/MainAPI.md#getclientsession) | **GET** /api/2/client-sessions/{id} | 
+*MainAPI* | [**getCloudAccount**](docs/MainAPI.md#getcloudaccount) | **GET** /api/2/cloud/accounts/{id} | 
+*MainAPI* | [**getCloudAccountStorageRoots**](docs/MainAPI.md#getcloudaccountstorageroots) | **GET** /api/2/cloud/accounts/{id}/storage-roots | 
 *MainAPI* | [**getCurrentWorkstation**](docs/MainAPI.md#getcurrentworkstation) | **GET** /api/2/workstations/current | 
 *MainAPI* | [**getDownload**](docs/MainAPI.md#getdownload) | **GET** /api/2/downloads/{id} | 
 *MainAPI* | [**getDownloadArchive**](docs/MainAPI.md#getdownloadarchive) | **GET** /api/2/download-archive/{id} | 
 *MainAPI* | [**getDownloadArchiveFile**](docs/MainAPI.md#getdownloadarchivefile) | **GET** /api/2/download-archive/{id}/download | 
 *MainAPI* | [**getDownloadFile**](docs/MainAPI.md#getdownloadfile) | **GET** /api/2/downloads/{id}/download | 
 *MainAPI* | [**getDownloadIcon**](docs/MainAPI.md#getdownloadicon) | **GET** /api/2/downloads/{id}/icon | 
+*MainAPI* | [**getFilesystemPermission**](docs/MainAPI.md#getfilesystempermission) | **GET** /api/2/filesystem-permissions/{id} | 
 *MainAPI* | [**getGroup**](docs/MainAPI.md#getgroup) | **GET** /api/2/groups/{id} | 
 *MainAPI* | [**getHomeWorkspace**](docs/MainAPI.md#gethomeworkspace) | **GET** /api/2/users/{id}/home | 
 *MainAPI* | [**getIPMIConfiguration**](docs/MainAPI.md#getipmiconfiguration) | **GET** /api/2/nodes/{id}/ipmi | 
@@ -192,8 +264,10 @@ Class | Method | HTTP request | Description
 *MainAPI* | [**getUser**](docs/MainAPI.md#getuser) | **GET** /api/2/users/{id} | 
 *MainAPI* | [**getWorkstation**](docs/MainAPI.md#getworkstation) | **GET** /api/2/workstations/{id} | 
 *MainAPI* | [**installStorNextLicense**](docs/MainAPI.md#installstornextlicense) | **POST** /api/2/stornext-license | 
+*MainAPI* | [**patchCloudAccount**](docs/MainAPI.md#patchcloudaccount) | **PATCH** /api/2/cloud/accounts/{id} | 
 *MainAPI* | [**patchCurrentWorkstation**](docs/MainAPI.md#patchcurrentworkstation) | **PATCH** /api/2/workstations/current | 
 *MainAPI* | [**patchDownloadArchive**](docs/MainAPI.md#patchdownloadarchive) | **PATCH** /api/2/download-archive/{id} | 
+*MainAPI* | [**patchFilesystemPermission**](docs/MainAPI.md#patchfilesystempermission) | **PATCH** /api/2/filesystem-permissions/{id} | 
 *MainAPI* | [**patchGroup**](docs/MainAPI.md#patchgroup) | **PATCH** /api/2/groups/{id} | 
 *MainAPI* | [**patchNTPServer**](docs/MainAPI.md#patchntpserver) | **PATCH** /api/2/system/time/servers/{id} | 
 *MainAPI* | [**patchProfile**](docs/MainAPI.md#patchprofile) | **PATCH** /api/2/users/me | 
@@ -205,6 +279,7 @@ Class | Method | HTTP request | Description
 *MainAPI* | [**registerUploadMetadata**](docs/MainAPI.md#registeruploadmetadata) | **POST** /api/2/uploads/metadata | 
 *MainAPI* | [**renderEmailTemplatePreview**](docs/MainAPI.md#renderemailtemplatepreview) | **POST** /api/2/system/smtp/preview | 
 *MainAPI* | [**resetUserPassword**](docs/MainAPI.md#resetuserpassword) | **POST** /api/2/users/{id}/password/reset | 
+*MainAPI* | [**restartWebUI**](docs/MainAPI.md#restartwebui) | **POST** /api/2/system/restart-webui | 
 *MainAPI* | [**runServiceOperation**](docs/MainAPI.md#runserviceoperation) | **POST** /api/2/nodes/{id}/services/{service}/{operation} | 
 *MainAPI* | [**setIPMIConfiguration**](docs/MainAPI.md#setipmiconfiguration) | **PUT** /api/2/nodes/{id}/ipmi | 
 *MainAPI* | [**setLocalTime**](docs/MainAPI.md#setlocaltime) | **POST** /api/2/system/time | 
@@ -218,10 +293,13 @@ Class | Method | HTTP request | Description
 *MainAPI* | [**syncLDAPUsers**](docs/MainAPI.md#syncldapusers) | **POST** /api/2/ldap-servers/{id}/sync-users | 
 *MainAPI* | [**syncTime**](docs/MainAPI.md#synctime) | **POST** /api/2/system/time/sync | 
 *MainAPI* | [**syncUserTOTP**](docs/MainAPI.md#syncusertotp) | **PUT** /api/2/users/{id}/totp | 
+*MainAPI* | [**testCloudAccountCredentials**](docs/MainAPI.md#testcloudaccountcredentials) | **POST** /api/2/cloud/accounts/test-credentials | 
 *MainAPI* | [**testSMTPConfiguration**](docs/MainAPI.md#testsmtpconfiguration) | **POST** /api/2/system/smtp/test | 
 *MainAPI* | [**updateCertificateConfiguration**](docs/MainAPI.md#updatecertificateconfiguration) | **PUT** /api/2/system/certificate | 
+*MainAPI* | [**updateCloudAccount**](docs/MainAPI.md#updatecloudaccount) | **PUT** /api/2/cloud/accounts/{id} | 
 *MainAPI* | [**updateCurrentWorkstation**](docs/MainAPI.md#updatecurrentworkstation) | **PUT** /api/2/workstations/current | 
 *MainAPI* | [**updateDownloadArchive**](docs/MainAPI.md#updatedownloadarchive) | **PUT** /api/2/download-archive/{id} | 
+*MainAPI* | [**updateFilesystemPermission**](docs/MainAPI.md#updatefilesystempermission) | **PUT** /api/2/filesystem-permissions/{id} | 
 *MainAPI* | [**updateGroup**](docs/MainAPI.md#updategroup) | **PUT** /api/2/groups/{id} | 
 *MainAPI* | [**updateNTPServer**](docs/MainAPI.md#updatentpserver) | **PUT** /api/2/system/time/servers/{id} | 
 *MainAPI* | [**updateParameters**](docs/MainAPI.md#updateparameters) | **PUT** /api/2/parameters | 
@@ -232,12 +310,15 @@ Class | Method | HTTP request | Description
 *MainAPI* | [**uploadChunk**](docs/MainAPI.md#uploadchunk) | **POST** /api/2/uploads/chunk | 
 *MediaLibraryAPI* | [**bookmarkMediaDirectory**](docs/MediaLibraryAPI.md#bookmarkmediadirectory) | **POST** /api/2/media/files/{id}/bookmark | 
 *MediaLibraryAPI* | [**clearSubclipClipboard**](docs/MediaLibraryAPI.md#clearsubclipclipboard) | **DELETE** /api/2/media/subclips/clipboard/clear | 
+*MediaLibraryAPI* | [**clearSubtitleClipboard**](docs/MediaLibraryAPI.md#clearsubtitleclipboard) | **DELETE** /api/2/media/subtitles/clipboard/clear | 
 *MediaLibraryAPI* | [**combineAssetsIntoSet**](docs/MediaLibraryAPI.md#combineassetsintoset) | **POST** /api/2/media/assets/combine | 
 *MediaLibraryAPI* | [**createAsset**](docs/MediaLibraryAPI.md#createasset) | **POST** /api/2/media/assets | 
 *MediaLibraryAPI* | [**createAssetRating**](docs/MediaLibraryAPI.md#createassetrating) | **POST** /api/2/media/ratings | 
+*MediaLibraryAPI* | [**createAssetSubtitleLink**](docs/MediaLibraryAPI.md#createassetsubtitlelink) | **POST** /api/2/media/assets/subtitle-links | 
 *MediaLibraryAPI* | [**createComment**](docs/MediaLibraryAPI.md#createcomment) | **POST** /api/2/media/comments | 
 *MediaLibraryAPI* | [**createCustomField**](docs/MediaLibraryAPI.md#createcustomfield) | **POST** /api/2/media/custom-fields | 
 *MediaLibraryAPI* | [**createEditorProject**](docs/MediaLibraryAPI.md#createeditorproject) | **POST** /api/2/media/editor | 
+*MediaLibraryAPI* | [**createEditorSubtitle**](docs/MediaLibraryAPI.md#createeditorsubtitle) | **POST** /api/2/media/subtitles | 
 *MediaLibraryAPI* | [**createExternalTranscoder**](docs/MediaLibraryAPI.md#createexternaltranscoder) | **POST** /api/2/media/external-transcoders | 
 *MediaLibraryAPI* | [**createMarker**](docs/MediaLibraryAPI.md#createmarker) | **POST** /api/2/media/markers | 
 *MediaLibraryAPI* | [**createMediaFileTemplate**](docs/MediaLibraryAPI.md#createmediafiletemplate) | **POST** /api/2/media/files/templates | 
@@ -245,10 +326,13 @@ Class | Method | HTTP request | Description
 *MediaLibraryAPI* | [**createMediaRootPermission**](docs/MediaLibraryAPI.md#createmediarootpermission) | **POST** /api/2/media/root-permissions | 
 *MediaLibraryAPI* | [**createMediaTag**](docs/MediaLibraryAPI.md#createmediatag) | **POST** /api/2/media/tags | 
 *MediaLibraryAPI* | [**createProxyProfile**](docs/MediaLibraryAPI.md#createproxyprofile) | **POST** /api/2/media/proxy-profiles | 
+*MediaLibraryAPI* | [**createSavedSearch**](docs/MediaLibraryAPI.md#createsavedsearch) | **POST** /api/2/media/saved-searches | 
 *MediaLibraryAPI* | [**createSubclip**](docs/MediaLibraryAPI.md#createsubclip) | **POST** /api/2/media/subclips | 
 *MediaLibraryAPI* | [**createSubclipClipboardEntry**](docs/MediaLibraryAPI.md#createsubclipclipboardentry) | **POST** /api/2/media/subclips/clipboard | 
+*MediaLibraryAPI* | [**createSubtitleClipboardEntry**](docs/MediaLibraryAPI.md#createsubtitleclipboardentry) | **POST** /api/2/media/subtitles/clipboard | 
 *MediaLibraryAPI* | [**deleteAsset**](docs/MediaLibraryAPI.md#deleteasset) | **DELETE** /api/2/media/assets/{id} | 
 *MediaLibraryAPI* | [**deleteAssetRating**](docs/MediaLibraryAPI.md#deleteassetrating) | **DELETE** /api/2/media/ratings/{id} | 
+*MediaLibraryAPI* | [**deleteAssetSubtitleLink**](docs/MediaLibraryAPI.md#deleteassetsubtitlelink) | **DELETE** /api/2/media/assets/subtitle-links/{id} | 
 *MediaLibraryAPI* | [**deleteComment**](docs/MediaLibraryAPI.md#deletecomment) | **DELETE** /api/2/media/comments/{id} | 
 *MediaLibraryAPI* | [**deleteCustomField**](docs/MediaLibraryAPI.md#deletecustomfield) | **DELETE** /api/2/media/custom-fields/{id} | 
 *MediaLibraryAPI* | [**deleteEasySharingTokenForBundle**](docs/MediaLibraryAPI.md#deleteeasysharingtokenforbundle) | **DELETE** /api/2/media/bundles/{id}/easy-sharing-token | 
@@ -263,8 +347,10 @@ Class | Method | HTTP request | Description
 *MediaLibraryAPI* | [**deleteMediaUpdate**](docs/MediaLibraryAPI.md#deletemediaupdate) | **DELETE** /api/2/media/updates/{id} | 
 *MediaLibraryAPI* | [**deleteProxy**](docs/MediaLibraryAPI.md#deleteproxy) | **DELETE** /api/2/media/proxies/{id} | 
 *MediaLibraryAPI* | [**deleteProxyProfile**](docs/MediaLibraryAPI.md#deleteproxyprofile) | **DELETE** /api/2/media/proxy-profiles/{id} | 
+*MediaLibraryAPI* | [**deleteSavedSearch**](docs/MediaLibraryAPI.md#deletesavedsearch) | **DELETE** /api/2/media/saved-searches/{id} | 
 *MediaLibraryAPI* | [**deleteSubclip**](docs/MediaLibraryAPI.md#deletesubclip) | **DELETE** /api/2/media/subclips/{id} | 
 *MediaLibraryAPI* | [**deleteSubclipClipboardEntry**](docs/MediaLibraryAPI.md#deletesubclipclipboardentry) | **DELETE** /api/2/media/subclips/clipboard/{id} | 
+*MediaLibraryAPI* | [**deleteSubtitleClipboardEntry**](docs/MediaLibraryAPI.md#deletesubtitleclipboardentry) | **DELETE** /api/2/media/subtitles/clipboard/{id} | 
 *MediaLibraryAPI* | [**discoverMedia**](docs/MediaLibraryAPI.md#discovermedia) | **POST** /api/2/scanner/discover | 
 *MediaLibraryAPI* | [**downloadAssetProxyFile**](docs/MediaLibraryAPI.md#downloadassetproxyfile) | **GET** /api/2/media/assets/{id}/proxy-files/{filename} | 
 *MediaLibraryAPI* | [**downloadMediaFile**](docs/MediaLibraryAPI.md#downloadmediafile) | **GET** /api/2/media/files/{id}/download | 
@@ -274,13 +360,16 @@ Class | Method | HTTP request | Description
 *MediaLibraryAPI* | [**editorExportXMLForProject**](docs/MediaLibraryAPI.md#editorexportxmlforproject) | **GET** /api/2/media/editor/{id}/xml-export | 
 *MediaLibraryAPI* | [**exportCommentsForAvid**](docs/MediaLibraryAPI.md#exportcommentsforavid) | **GET** /api/2/media/editor/asset/{asset_id}/{export_format}-export/avid-comments | 
 *MediaLibraryAPI* | [**exportEditorTimeline**](docs/MediaLibraryAPI.md#exporteditortimeline) | **POST** /api/2/media/editor/timeline-export | 
+*MediaLibraryAPI* | [**extractStream**](docs/MediaLibraryAPI.md#extractstream) | **POST** /api/2/media/assets/{id}/extract-stream | 
 *MediaLibraryAPI* | [**forgetDeletedMediaFiles**](docs/MediaLibraryAPI.md#forgetdeletedmediafiles) | **POST** /api/2/media/files/{id}/forget-deleted | 
 *MediaLibraryAPI* | [**generateProxies**](docs/MediaLibraryAPI.md#generateproxies) | **POST** /api/2/media/proxies | 
 *MediaLibraryAPI* | [**getAllAssetProjectLinks**](docs/MediaLibraryAPI.md#getallassetprojectlinks) | **GET** /api/2/media/assets/project-links | 
 *MediaLibraryAPI* | [**getAllAssetRatings**](docs/MediaLibraryAPI.md#getallassetratings) | **GET** /api/2/media/ratings | 
+*MediaLibraryAPI* | [**getAllAssetSubtitleLinks**](docs/MediaLibraryAPI.md#getallassetsubtitlelinks) | **GET** /api/2/media/assets/subtitle-links | 
 *MediaLibraryAPI* | [**getAllAssetTapeBackups**](docs/MediaLibraryAPI.md#getallassettapebackups) | **GET** /api/2/media/backups | 
 *MediaLibraryAPI* | [**getAllAssets**](docs/MediaLibraryAPI.md#getallassets) | **GET** /api/2/media/assets | 
 *MediaLibraryAPI* | [**getAllBundlesForMediaRoot**](docs/MediaLibraryAPI.md#getallbundlesformediaroot) | **GET** /api/2/media/bundles/flat/{root} | 
+*MediaLibraryAPI* | [**getAllBundlesInSubtree**](docs/MediaLibraryAPI.md#getallbundlesinsubtree) | **GET** /api/2/media/bundles/flat/subtree/{file} | 
 *MediaLibraryAPI* | [**getAllClickLinks**](docs/MediaLibraryAPI.md#getallclicklinks) | **GET** /api/2/media/assets/click-links | 
 *MediaLibraryAPI* | [**getAllComments**](docs/MediaLibraryAPI.md#getallcomments) | **GET** /api/2/media/comments | 
 *MediaLibraryAPI* | [**getAllCustomFields**](docs/MediaLibraryAPI.md#getallcustomfields) | **GET** /api/2/media/custom-fields | 
@@ -291,23 +380,28 @@ Class | Method | HTTP request | Description
 *MediaLibraryAPI* | [**getAllMediaFiles**](docs/MediaLibraryAPI.md#getallmediafiles) | **GET** /api/2/media/files | 
 *MediaLibraryAPI* | [**getAllMediaFilesForBundles**](docs/MediaLibraryAPI.md#getallmediafilesforbundles) | **POST** /api/2/media/files/for-bundles | 
 *MediaLibraryAPI* | [**getAllMediaFilesForMediaRoot**](docs/MediaLibraryAPI.md#getallmediafilesformediaroot) | **GET** /api/2/media/files/flat/{root} | 
+*MediaLibraryAPI* | [**getAllMediaFilesInSubtree**](docs/MediaLibraryAPI.md#getallmediafilesinsubtree) | **GET** /api/2/media/files/flat/subtree/{file} | 
 *MediaLibraryAPI* | [**getAllMediaRootPermissions**](docs/MediaLibraryAPI.md#getallmediarootpermissions) | **GET** /api/2/media/root-permissions | 
 *MediaLibraryAPI* | [**getAllMediaRoots**](docs/MediaLibraryAPI.md#getallmediaroots) | **GET** /api/2/media/roots | 
 *MediaLibraryAPI* | [**getAllMediaTags**](docs/MediaLibraryAPI.md#getallmediatags) | **GET** /api/2/media/tags | 
 *MediaLibraryAPI* | [**getAllMediaUpdates**](docs/MediaLibraryAPI.md#getallmediaupdates) | **GET** /api/2/media/updates | 
 *MediaLibraryAPI* | [**getAllProxyGenerators**](docs/MediaLibraryAPI.md#getallproxygenerators) | **GET** /api/2/media/proxy-generators | 
 *MediaLibraryAPI* | [**getAllProxyProfiles**](docs/MediaLibraryAPI.md#getallproxyprofiles) | **GET** /api/2/media/proxy-profiles | 
+*MediaLibraryAPI* | [**getAllSavedSearches**](docs/MediaLibraryAPI.md#getallsavedsearches) | **GET** /api/2/media/saved-searches | 
 *MediaLibraryAPI* | [**getAllSubclipClipboardEntries**](docs/MediaLibraryAPI.md#getallsubclipclipboardentries) | **GET** /api/2/media/subclips/clipboard | 
 *MediaLibraryAPI* | [**getAllSubclips**](docs/MediaLibraryAPI.md#getallsubclips) | **GET** /api/2/media/subclips | 
+*MediaLibraryAPI* | [**getAllSubtitleClipboardEntries**](docs/MediaLibraryAPI.md#getallsubtitleclipboardentries) | **GET** /api/2/media/subtitles/clipboard | 
 *MediaLibraryAPI* | [**getAllTranscoderProfiles**](docs/MediaLibraryAPI.md#getalltranscoderprofiles) | **GET** /api/2/transcoder-profiles | 
 *MediaLibraryAPI* | [**getAsset**](docs/MediaLibraryAPI.md#getasset) | **GET** /api/2/media/assets/{id} | 
 *MediaLibraryAPI* | [**getAssetRating**](docs/MediaLibraryAPI.md#getassetrating) | **GET** /api/2/media/ratings/{id} | 
+*MediaLibraryAPI* | [**getAssetSubtitleLink**](docs/MediaLibraryAPI.md#getassetsubtitlelink) | **GET** /api/2/media/assets/subtitle-links/{id} | 
 *MediaLibraryAPI* | [**getBookmarkedMediaFilesDirectories**](docs/MediaLibraryAPI.md#getbookmarkedmediafilesdirectories) | **GET** /api/2/media/files/bookmarks | 
 *MediaLibraryAPI* | [**getComment**](docs/MediaLibraryAPI.md#getcomment) | **GET** /api/2/media/comments/{id} | 
 *MediaLibraryAPI* | [**getCustomField**](docs/MediaLibraryAPI.md#getcustomfield) | **GET** /api/2/media/custom-fields/{id} | 
 *MediaLibraryAPI* | [**getEasySharingTokenForBundle**](docs/MediaLibraryAPI.md#geteasysharingtokenforbundle) | **GET** /api/2/media/bundles/{id}/easy-sharing-token | 
 *MediaLibraryAPI* | [**getEasySharingTokenForDirectory**](docs/MediaLibraryAPI.md#geteasysharingtokenfordirectory) | **GET** /api/2/media/files/{id}/easy-sharing-token | 
 *MediaLibraryAPI* | [**getEditorProject**](docs/MediaLibraryAPI.md#geteditorproject) | **GET** /api/2/media/editor/{id} | 
+*MediaLibraryAPI* | [**getEditorSubtitle**](docs/MediaLibraryAPI.md#geteditorsubtitle) | **GET** /api/2/media/subtitles/{id} | 
 *MediaLibraryAPI* | [**getExternalTranscoder**](docs/MediaLibraryAPI.md#getexternaltranscoder) | **GET** /api/2/media/external-transcoders/{id} | 
 *MediaLibraryAPI* | [**getFrame**](docs/MediaLibraryAPI.md#getframe) | **GET** /api/2/media/assets/{id}/frames/{frame} | 
 *MediaLibraryAPI* | [**getLatestMediaUpdate**](docs/MediaLibraryAPI.md#getlatestmediaupdate) | **GET** /api/2/media/updates/latest | 
@@ -328,17 +422,22 @@ Class | Method | HTTP request | Description
 *MediaLibraryAPI* | [**getProxyGenerator**](docs/MediaLibraryAPI.md#getproxygenerator) | **GET** /api/2/media/proxy-generators/{id} | 
 *MediaLibraryAPI* | [**getProxyProfile**](docs/MediaLibraryAPI.md#getproxyprofile) | **GET** /api/2/media/proxy-profiles/{id} | 
 *MediaLibraryAPI* | [**getProxyProfileProxyCount**](docs/MediaLibraryAPI.md#getproxyprofileproxycount) | **GET** /api/2/media/proxy-profiles/{id}/proxy-count | 
+*MediaLibraryAPI* | [**getSavedSearch**](docs/MediaLibraryAPI.md#getsavedsearch) | **GET** /api/2/media/saved-searches/{id} | 
 *MediaLibraryAPI* | [**getSubclip**](docs/MediaLibraryAPI.md#getsubclip) | **GET** /api/2/media/subclips/{id} | 
+*MediaLibraryAPI* | [**getSubtitles**](docs/MediaLibraryAPI.md#getsubtitles) | **GET** /api/2/media/assets/{id}/subtitle/{title} | 
 *MediaLibraryAPI* | [**getTranscoderProfile**](docs/MediaLibraryAPI.md#gettranscoderprofile) | **GET** /api/2/transcoder-profiles/{id} | 
 *MediaLibraryAPI* | [**getVantageWorkflows**](docs/MediaLibraryAPI.md#getvantageworkflows) | **GET** /api/2/media/external-transcoders/{id}/workflows | 
 *MediaLibraryAPI* | [**instantiateMediaFileTemplate**](docs/MediaLibraryAPI.md#instantiatemediafiletemplate) | **POST** /api/2/media/files/templates/{id}/instantiate | 
 *MediaLibraryAPI* | [**locateEditorProjectPaths**](docs/MediaLibraryAPI.md#locateeditorprojectpaths) | **GET** /api/2/media/editor/{id}/locate-paths | 
+*MediaLibraryAPI* | [**lookupMediaFiles**](docs/MediaLibraryAPI.md#lookupmediafiles) | **POST** /api/2/media/files/lookup | 
 *MediaLibraryAPI* | [**markMediaDirectoryAsShowroom**](docs/MediaLibraryAPI.md#markmediadirectoryasshowroom) | **POST** /api/2/media/files/{id}/showroom | 
 *MediaLibraryAPI* | [**patchAsset**](docs/MediaLibraryAPI.md#patchasset) | **PATCH** /api/2/media/assets/{id} | 
 *MediaLibraryAPI* | [**patchAssetRating**](docs/MediaLibraryAPI.md#patchassetrating) | **PATCH** /api/2/media/ratings/{id} | 
+*MediaLibraryAPI* | [**patchAssetSubtitleLink**](docs/MediaLibraryAPI.md#patchassetsubtitlelink) | **PATCH** /api/2/media/assets/subtitle-links/{id} | 
 *MediaLibraryAPI* | [**patchComment**](docs/MediaLibraryAPI.md#patchcomment) | **PATCH** /api/2/media/comments/{id} | 
 *MediaLibraryAPI* | [**patchCustomField**](docs/MediaLibraryAPI.md#patchcustomfield) | **PATCH** /api/2/media/custom-fields/{id} | 
 *MediaLibraryAPI* | [**patchEditorProject**](docs/MediaLibraryAPI.md#patcheditorproject) | **PATCH** /api/2/media/editor/{id} | 
+*MediaLibraryAPI* | [**patchEditorSubtitle**](docs/MediaLibraryAPI.md#patcheditorsubtitle) | **PATCH** /api/2/media/subtitles/{id} | 
 *MediaLibraryAPI* | [**patchExternalTranscoder**](docs/MediaLibraryAPI.md#patchexternaltranscoder) | **PATCH** /api/2/media/external-transcoders/{id} | 
 *MediaLibraryAPI* | [**patchMarker**](docs/MediaLibraryAPI.md#patchmarker) | **PATCH** /api/2/media/markers/{id} | 
 *MediaLibraryAPI* | [**patchMediaFile**](docs/MediaLibraryAPI.md#patchmediafile) | **PATCH** /api/2/media/files/{id} | 
@@ -347,6 +446,7 @@ Class | Method | HTTP request | Description
 *MediaLibraryAPI* | [**patchMediaRootPermission**](docs/MediaLibraryAPI.md#patchmediarootpermission) | **PATCH** /api/2/media/root-permissions/{id} | 
 *MediaLibraryAPI* | [**patchMediaTag**](docs/MediaLibraryAPI.md#patchmediatag) | **PATCH** /api/2/media/tags/{id} | 
 *MediaLibraryAPI* | [**patchProxyProfile**](docs/MediaLibraryAPI.md#patchproxyprofile) | **PATCH** /api/2/media/proxy-profiles/{id} | 
+*MediaLibraryAPI* | [**patchSavedSearch**](docs/MediaLibraryAPI.md#patchsavedsearch) | **PATCH** /api/2/media/saved-searches/{id} | 
 *MediaLibraryAPI* | [**patchSubclip**](docs/MediaLibraryAPI.md#patchsubclip) | **PATCH** /api/2/media/subclips/{id} | 
 *MediaLibraryAPI* | [**recursivelyTagMediaDirectory**](docs/MediaLibraryAPI.md#recursivelytagmediadirectory) | **POST** /api/2/media/files/{id}/tag | 
 *MediaLibraryAPI* | [**reindexMediaDirectory**](docs/MediaLibraryAPI.md#reindexmediadirectory) | **POST** /api/2/media/files/{id}/search-reindex | 
@@ -363,9 +463,11 @@ Class | Method | HTTP request | Description
 *MediaLibraryAPI* | [**unresolveComment**](docs/MediaLibraryAPI.md#unresolvecomment) | **POST** /api/2/media/comments/{id}/unresolve | 
 *MediaLibraryAPI* | [**updateAsset**](docs/MediaLibraryAPI.md#updateasset) | **PUT** /api/2/media/assets/{id} | 
 *MediaLibraryAPI* | [**updateAssetRating**](docs/MediaLibraryAPI.md#updateassetrating) | **PUT** /api/2/media/ratings/{id} | 
+*MediaLibraryAPI* | [**updateAssetSubtitleLink**](docs/MediaLibraryAPI.md#updateassetsubtitlelink) | **PUT** /api/2/media/assets/subtitle-links/{id} | 
 *MediaLibraryAPI* | [**updateComment**](docs/MediaLibraryAPI.md#updatecomment) | **PUT** /api/2/media/comments/{id} | 
 *MediaLibraryAPI* | [**updateCustomField**](docs/MediaLibraryAPI.md#updatecustomfield) | **PUT** /api/2/media/custom-fields/{id} | 
 *MediaLibraryAPI* | [**updateEditorProject**](docs/MediaLibraryAPI.md#updateeditorproject) | **PUT** /api/2/media/editor/{id} | 
+*MediaLibraryAPI* | [**updateEditorSubtitle**](docs/MediaLibraryAPI.md#updateeditorsubtitle) | **PUT** /api/2/media/subtitles/{id} | 
 *MediaLibraryAPI* | [**updateExternalTranscoder**](docs/MediaLibraryAPI.md#updateexternaltranscoder) | **PUT** /api/2/media/external-transcoders/{id} | 
 *MediaLibraryAPI* | [**updateMarker**](docs/MediaLibraryAPI.md#updatemarker) | **PUT** /api/2/media/markers/{id} | 
 *MediaLibraryAPI* | [**updateMediaFile**](docs/MediaLibraryAPI.md#updatemediafile) | **PUT** /api/2/media/files/{id} | 
@@ -374,7 +476,31 @@ Class | Method | HTTP request | Description
 *MediaLibraryAPI* | [**updateMediaRootPermission**](docs/MediaLibraryAPI.md#updatemediarootpermission) | **PUT** /api/2/media/root-permissions/{id} | 
 *MediaLibraryAPI* | [**updateMediaTag**](docs/MediaLibraryAPI.md#updatemediatag) | **PUT** /api/2/media/tags/{id} | 
 *MediaLibraryAPI* | [**updateProxyProfile**](docs/MediaLibraryAPI.md#updateproxyprofile) | **PUT** /api/2/media/proxy-profiles/{id} | 
+*MediaLibraryAPI* | [**updateSavedSearch**](docs/MediaLibraryAPI.md#updatesavedsearch) | **PUT** /api/2/media/saved-searches/{id} | 
 *MediaLibraryAPI* | [**updateSubclip**](docs/MediaLibraryAPI.md#updatesubclip) | **PUT** /api/2/media/subclips/{id} | 
+*PrivateAPI* | [**callGet**](docs/PrivateAPI.md#callget) | **GET** /api/2/private/bootstrap | 
+*PrivateAPI* | [**deleteStoredImage**](docs/PrivateAPI.md#deletestoredimage) | **DELETE** /api/2/image/{name} | 
+*PrivateAPI* | [**deleteVeritoneTDO**](docs/PrivateAPI.md#deleteveritonetdo) | **DELETE** /api/2/veritone/connections/{id}/tdo/{tdo_id} | 
+*PrivateAPI* | [**exportNonProxiedAssets**](docs/PrivateAPI.md#exportnonproxiedassets) | **GET** /api/2/private/export/non-proxied/{root_id} | 
+*PrivateAPI* | [**exportNonProxiedAssetsForPath**](docs/PrivateAPI.md#exportnonproxiedassetsforpath) | **GET** /api/2/private/export/non-proxied/{root_id}/{path} | 
+*PrivateAPI* | [**exportUpdates**](docs/PrivateAPI.md#exportupdates) | **GET** /api/2/private/export/updates/{root_id} | 
+*PrivateAPI* | [**getAllVeritoneConnections**](docs/PrivateAPI.md#getallveritoneconnections) | **GET** /api/2/veritone/connections | 
+*PrivateAPI* | [**getAllVeritoneMetadata**](docs/PrivateAPI.md#getallveritonemetadata) | **GET** /api/2/veritone/metadata | 
+*PrivateAPI* | [**getClientSideURL**](docs/PrivateAPI.md#getclientsideurl) | **POST** /api/2/private/client-side-url | 
+*PrivateAPI* | [**getHelpPage**](docs/PrivateAPI.md#gethelppage) | **GET** /api/2/help/{id} | 
+*PrivateAPI* | [**getLocale**](docs/PrivateAPI.md#getlocale) | **GET** /api/2/private/locale/{lang} | 
+*PrivateAPI* | [**getProxyFSSize**](docs/PrivateAPI.md#getproxyfssize) | **GET** /api/2/private/media/proxyfs-size | 
+*PrivateAPI* | [**getStoredImage**](docs/PrivateAPI.md#getstoredimage) | **GET** /api/2/image/{name} | 
+*PrivateAPI* | [**getVeritoneConnection**](docs/PrivateAPI.md#getveritoneconnection) | **GET** /api/2/veritone/connections/{id} | 
+*PrivateAPI* | [**getVeritoneEngines**](docs/PrivateAPI.md#getveritoneengines) | **GET** /api/2/veritone/connections/{id}/engines | 
+*PrivateAPI* | [**getVeritoneJobs**](docs/PrivateAPI.md#getveritonejobs) | **GET** /api/2/veritone/connections/{id}/jobs | 
+*PrivateAPI* | [**getVeritoneMetadata**](docs/PrivateAPI.md#getveritonemetadata) | **GET** /api/2/veritone/metadata/{id} | 
+*PrivateAPI* | [**installLicense**](docs/PrivateAPI.md#installlicense) | **POST** /api/2/license/install | 
+*PrivateAPI* | [**languageServerRequest**](docs/PrivateAPI.md#languageserverrequest) | **POST** /api/2/language-server/{language} | 
+*PrivateAPI* | [**locateFile**](docs/PrivateAPI.md#locatefile) | **POST** /api/2/private/locate | 
+*PrivateAPI* | [**locateProxies**](docs/PrivateAPI.md#locateproxies) | **POST** /api/2/panel/locate-proxies | 
+*PrivateAPI* | [**uploadStoredImage**](docs/PrivateAPI.md#uploadstoredimage) | **POST** /api/2/private/images/upload | 
+*PrivateAPI* | [**uploadToVeritone**](docs/PrivateAPI.md#uploadtoveritone) | **POST** /api/2/veritone/connections/{id}/upload | 
 *SatelliteAPI* | [**activateSatelliteHost**](docs/SatelliteAPI.md#activatesatellitehost) | **POST** /api/2/rdc/hosts/{id}/activate | 
 *SatelliteAPI* | [**announceSatelliteHost**](docs/SatelliteAPI.md#announcesatellitehost) | **POST** /api/2/rdc/hosts/announce | 
 *SatelliteAPI* | [**createSatelliteSession**](docs/SatelliteAPI.md#createsatellitesession) | **POST** /api/2/rdc/sessions | 
@@ -383,6 +509,10 @@ Class | Method | HTTP request | Description
 *SatelliteAPI* | [**getAllSatelliteSessions**](docs/SatelliteAPI.md#getallsatellitesessions) | **GET** /api/2/rdc/sessions | 
 *SatelliteAPI* | [**getSatelliteHost**](docs/SatelliteAPI.md#getsatellitehost) | **GET** /api/2/rdc/hosts/{id} | 
 *SatelliteAPI* | [**getSatelliteSession**](docs/SatelliteAPI.md#getsatellitesession) | **GET** /api/2/rdc/sessions/{id} | 
+*SharedstorageAPI* | [**getSharedStorageValue**](docs/SharedstorageAPI.md#getsharedstoragevalue) | **GET** /api/2/private/shared-storage/{name} | 
+*SharedstorageAPI* | [**getUserStorageValue**](docs/SharedstorageAPI.md#getuserstoragevalue) | **GET** /api/2/private/user-storage/{name} | 
+*SharedstorageAPI* | [**setSharedStorageValue**](docs/SharedstorageAPI.md#setsharedstoragevalue) | **POST** /api/2/private/shared-storage/{name} | 
+*SharedstorageAPI* | [**setUserStorageValue**](docs/SharedstorageAPI.md#setuserstoragevalue) | **POST** /api/2/private/user-storage/{name} | 
 *StatusAPI* | [**getAlert**](docs/StatusAPI.md#getalert) | **GET** /api/2/alerts/{id} | 
 *StatusAPI* | [**getAllAlerts**](docs/StatusAPI.md#getallalerts) | **GET** /api/2/alerts | 
 *StatusAPI* | [**getTelegrafStats**](docs/StatusAPI.md#gettelegrafstats) | **GET** /api/2/telegraf-stats | 
@@ -401,6 +531,7 @@ Class | Method | HTTP request | Description
 *StorageAPI* | [**createShare**](docs/StorageAPI.md#createshare) | **POST** /api/2/shares | 
 *StorageAPI* | [**createSnapshot**](docs/StorageAPI.md#createsnapshot) | **POST** /api/2/snapshots | 
 *StorageAPI* | [**createTemplateFolder**](docs/StorageAPI.md#createtemplatefolder) | **POST** /api/2/private/create-template-folder | 
+*StorageAPI* | [**createVolume**](docs/StorageAPI.md#createvolume) | **POST** /api/2/volumes | 
 *StorageAPI* | [**createWorkspace**](docs/StorageAPI.md#createworkspace) | **POST** /api/2/workspaces | 
 *StorageAPI* | [**createWorkspacePermission**](docs/StorageAPI.md#createworkspacepermission) | **POST** /api/2/workspace-permissions | 
 *StorageAPI* | [**deleteFile**](docs/StorageAPI.md#deletefile) | **DELETE** /api/2/files/{path} | 
@@ -497,12 +628,47 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [AWSAccount](docs/AWSAccount.md)
- - [AWSAccountPartialUpdate](docs/AWSAccountPartialUpdate.md)
+ - [AIAnnotation](docs/AIAnnotation.md)
+ - [AIAnnotationCreateRequest](docs/AIAnnotationCreateRequest.md)
+ - [AIAnnotationPartialUpdate](docs/AIAnnotationPartialUpdate.md)
+ - [AIAnnotationUpdate](docs/AIAnnotationUpdate.md)
+ - [AICategory](docs/AICategory.md)
+ - [AICategoryDetail](docs/AICategoryDetail.md)
+ - [AICategoryDetailPartialUpdate](docs/AICategoryDetailPartialUpdate.md)
+ - [AICategoryDetailUpdate](docs/AICategoryDetailUpdate.md)
+ - [AICategoryMiniReference](docs/AICategoryMiniReference.md)
+ - [AIConnection](docs/AIConnection.md)
+ - [AIDataset](docs/AIDataset.md)
+ - [AIDatasetDetailReference](docs/AIDatasetDetailReference.md)
+ - [AIDatasetExportRequest](docs/AIDatasetExportRequest.md)
+ - [AIDatasetExportResponse](docs/AIDatasetExportResponse.md)
+ - [AIDatasetReference](docs/AIDatasetReference.md)
+ - [AIDatasetWithPreview](docs/AIDatasetWithPreview.md)
+ - [AIDatasetWithPreviewPartialUpdate](docs/AIDatasetWithPreviewPartialUpdate.md)
+ - [AIDatasetWithPreviewUpdate](docs/AIDatasetWithPreviewUpdate.md)
+ - [AIImage](docs/AIImage.md)
+ - [AIImageReference](docs/AIImageReference.md)
+ - [AIMetadata](docs/AIMetadata.md)
+ - [AIModel](docs/AIModel.md)
+ - [AIModelExportRequest](docs/AIModelExportRequest.md)
+ - [AIModelExportResponse](docs/AIModelExportResponse.md)
+ - [AIModelInferenceRequest](docs/AIModelInferenceRequest.md)
+ - [AIModelInferenceResponse](docs/AIModelInferenceResponse.md)
+ - [AIModelPartialUpdate](docs/AIModelPartialUpdate.md)
+ - [AIModelProgress](docs/AIModelProgress.md)
+ - [AIModelTrainingRequest](docs/AIModelTrainingRequest.md)
+ - [AIModelUpdate](docs/AIModelUpdate.md)
+ - [AIProcessingRequest](docs/AIProcessingRequest.md)
+ - [APIToken](docs/APIToken.md)
+ - [APITokenPartialUpdate](docs/APITokenPartialUpdate.md)
+ - [APITokenUpdate](docs/APITokenUpdate.md)
+ - [APITokenWithSecret](docs/APITokenWithSecret.md)
+ - [APITokenWithSecretUpdate](docs/APITokenWithSecretUpdate.md)
  - [AddAssetsToClickGallery](docs/AddAssetsToClickGallery.md)
  - [Address](docs/Address.md)
  - [Alert](docs/Alert.md)
  - [AlertPartialUpdate](docs/AlertPartialUpdate.md)
+ - [AlertUpdate](docs/AlertUpdate.md)
  - [AllMediaFilesForBundlesRequest](docs/AllMediaFilesForBundlesRequest.md)
  - [ArchiveEndpointRequest](docs/ArchiveEndpointRequest.md)
  - [ArgumentType](docs/ArgumentType.md)
@@ -515,6 +681,11 @@ Class | Method | HTTP request | Description
  - [AssetProjectLink](docs/AssetProjectLink.md)
  - [AssetRating](docs/AssetRating.md)
  - [AssetRatingPartialUpdate](docs/AssetRatingPartialUpdate.md)
+ - [AssetRatingUpdate](docs/AssetRatingUpdate.md)
+ - [AssetSubtitleLink](docs/AssetSubtitleLink.md)
+ - [AssetSubtitleLinkPartialUpdate](docs/AssetSubtitleLinkPartialUpdate.md)
+ - [AssetSubtitleLinkUpdate](docs/AssetSubtitleLinkUpdate.md)
+ - [AssetUpdate](docs/AssetUpdate.md)
  - [AuthLoginEndpointRequest](docs/AuthLoginEndpointRequest.md)
  - [AuthLoginEndpointResponse](docs/AuthLoginEndpointResponse.md)
  - [Backend](docs/Backend.md)
@@ -522,21 +693,33 @@ Class | Method | HTTP request | Description
  - [BasicFile](docs/BasicFile.md)
  - [BeeGFSNode](docs/BeeGFSNode.md)
  - [BeeGFSTarget](docs/BeeGFSTarget.md)
+ - [BootstrapData](docs/BootstrapData.md)
  - [CPUStat](docs/CPUStat.md)
  - [Certificate](docs/Certificate.md)
+ - [CertificateUpdate](docs/CertificateUpdate.md)
  - [ChangeOwnPasswordRequest](docs/ChangeOwnPasswordRequest.md)
  - [ChangePasswordRequest](docs/ChangePasswordRequest.md)
  - [CheckConnectivityEndpointResponse](docs/CheckConnectivityEndpointResponse.md)
  - [ClickBackgroundUploadEndpointRequest](docs/ClickBackgroundUploadEndpointRequest.md)
  - [ClickGallery](docs/ClickGallery.md)
  - [ClickGalleryLink](docs/ClickGalleryLink.md)
+ - [ClickGalleryUpdate](docs/ClickGalleryUpdate.md)
  - [ClickLinkUser](docs/ClickLinkUser.md)
  - [ClickStartUploadEndpointRequest](docs/ClickStartUploadEndpointRequest.md)
  - [ClientSession](docs/ClientSession.md)
+ - [ClientSidePathEndpointRequest](docs/ClientSidePathEndpointRequest.md)
+ - [ClientSidePathEndpointResponse](docs/ClientSidePathEndpointResponse.md)
  - [ClientsEndpointResponse](docs/ClientsEndpointResponse.md)
+ - [CloudAccount](docs/CloudAccount.md)
+ - [CloudAccountMini](docs/CloudAccountMini.md)
+ - [CloudAccountMiniPartialUpdate](docs/CloudAccountMiniPartialUpdate.md)
+ - [CloudAccountMiniUpdate](docs/CloudAccountMiniUpdate.md)
+ - [CloudAccountPartialUpdate](docs/CloudAccountPartialUpdate.md)
+ - [CloudAccountUpdate](docs/CloudAccountUpdate.md)
  - [CloudConnection](docs/CloudConnection.md)
  - [Comment](docs/Comment.md)
  - [CommentPartialUpdate](docs/CommentPartialUpdate.md)
+ - [CommentUpdate](docs/CommentUpdate.md)
  - [CreateDownloadArchive](docs/CreateDownloadArchive.md)
  - [CreateHomeWorkspaceRequest](docs/CreateHomeWorkspaceRequest.md)
  - [CreatePathQuotaRequest](docs/CreatePathQuotaRequest.md)
@@ -544,23 +727,32 @@ Class | Method | HTTP request | Description
  - [CustomField](docs/CustomField.md)
  - [CustomFieldPartialUpdate](docs/CustomFieldPartialUpdate.md)
  - [CustomFieldReference](docs/CustomFieldReference.md)
+ - [CustomFieldUpdate](docs/CustomFieldUpdate.md)
  - [DeletedWorkspace](docs/DeletedWorkspace.md)
  - [Download](docs/Download.md)
  - [DownloadArchive](docs/DownloadArchive.md)
  - [DownloadArchivePartialUpdate](docs/DownloadArchivePartialUpdate.md)
+ - [DownloadArchiveUpdate](docs/DownloadArchiveUpdate.md)
  - [EditorProject](docs/EditorProject.md)
  - [EditorProjectPartialUpdate](docs/EditorProjectPartialUpdate.md)
+ - [EditorProjectUpdate](docs/EditorProjectUpdate.md)
+ - [EditorSubtitle](docs/EditorSubtitle.md)
+ - [EditorSubtitlePartialUpdate](docs/EditorSubtitlePartialUpdate.md)
+ - [EditorSubtitleUpdate](docs/EditorSubtitleUpdate.md)
  - [ElementsGroup](docs/ElementsGroup.md)
  - [ElementsGroupDetail](docs/ElementsGroupDetail.md)
  - [ElementsGroupDetailPartialUpdate](docs/ElementsGroupDetailPartialUpdate.md)
+ - [ElementsGroupDetailUpdate](docs/ElementsGroupDetailUpdate.md)
  - [ElementsGroupReference](docs/ElementsGroupReference.md)
  - [ElementsUser](docs/ElementsUser.md)
  - [ElementsUserDetail](docs/ElementsUserDetail.md)
  - [ElementsUserDetailPartialUpdate](docs/ElementsUserDetailPartialUpdate.md)
+ - [ElementsUserDetailUpdate](docs/ElementsUserDetailUpdate.md)
  - [ElementsUserMini](docs/ElementsUserMini.md)
  - [ElementsUserMiniReference](docs/ElementsUserMiniReference.md)
  - [ElementsUserProfile](docs/ElementsUserProfile.md)
  - [ElementsUserProfilePartialUpdate](docs/ElementsUserProfilePartialUpdate.md)
+ - [ElementsUserProfileUpdate](docs/ElementsUserProfileUpdate.md)
  - [ElementsUserReference](docs/ElementsUserReference.md)
  - [ElementsVersion](docs/ElementsVersion.md)
  - [EmailPreview](docs/EmailPreview.md)
@@ -568,6 +760,8 @@ Class | Method | HTTP request | Description
  - [Event](docs/Event.md)
  - [ExternalTranscoder](docs/ExternalTranscoder.md)
  - [ExternalTranscoderPartialUpdate](docs/ExternalTranscoderPartialUpdate.md)
+ - [ExternalTranscoderUpdate](docs/ExternalTranscoderUpdate.md)
+ - [ExtractRequest](docs/ExtractRequest.md)
  - [FSProperties](docs/FSProperties.md)
  - [FileCopyEndpointRequest](docs/FileCopyEndpointRequest.md)
  - [FileDeleteEndpointRequest](docs/FileDeleteEndpointRequest.md)
@@ -577,31 +771,39 @@ Class | Method | HTTP request | Description
  - [FileSizeDistributionItem](docs/FileSizeDistributionItem.md)
  - [FileSizeEndpointResponse](docs/FileSizeEndpointResponse.md)
  - [FileUnzipEndpointRequest](docs/FileUnzipEndpointRequest.md)
+ - [FileUpdate](docs/FileUpdate.md)
  - [FileZipEndpointRequest](docs/FileZipEndpointRequest.md)
  - [FilesystemFile](docs/FilesystemFile.md)
+ - [FilesystemPermission](docs/FilesystemPermission.md)
+ - [FilesystemPermissionPartialUpdate](docs/FilesystemPermissionPartialUpdate.md)
+ - [FilesystemPermissionUpdate](docs/FilesystemPermissionUpdate.md)
  - [FilesystemTraceEndpointRequest](docs/FilesystemTraceEndpointRequest.md)
  - [FilesystemTraceEndpointResponse](docs/FilesystemTraceEndpointResponse.md)
  - [FinishUploadEndpointRequest](docs/FinishUploadEndpointRequest.md)
+ - [FormatMetadata](docs/FormatMetadata.md)
  - [GeneratePasswordEndpointResponse](docs/GeneratePasswordEndpointResponse.md)
  - [GenerateProxiesRequest](docs/GenerateProxiesRequest.md)
  - [GetMultipleBundlesRequest](docs/GetMultipleBundlesRequest.md)
  - [GetMultipleFilesRequest](docs/GetMultipleFilesRequest.md)
  - [GlobalAlert](docs/GlobalAlert.md)
+ - [HelpEndpointResponse](docs/HelpEndpointResponse.md)
  - [IOStat](docs/IOStat.md)
  - [ImpersonationEndpointRequest](docs/ImpersonationEndpointRequest.md)
+ - [ImportAIDatasetRequest](docs/ImportAIDatasetRequest.md)
+ - [ImportAIDatasetResponse](docs/ImportAIDatasetResponse.md)
+ - [ImportAIModelRequest](docs/ImportAIModelRequest.md)
+ - [ImportAIModelResponse](docs/ImportAIModelResponse.md)
  - [ImportJobRequest](docs/ImportJobRequest.md)
  - [ImportJobResponse](docs/ImportJobResponse.md)
  - [InlineResponse200](docs/InlineResponse200.md)
- - [InlineResponse2001](docs/InlineResponse2001.md)
- - [InlineResponse2002](docs/InlineResponse2002.md)
- - [InlineResponse2003](docs/InlineResponse2003.md)
- - [InlineResponse2004](docs/InlineResponse2004.md)
+ - [InstallLicenseEndpointRequest](docs/InstallLicenseEndpointRequest.md)
  - [InstantiateFileTemplateRequest](docs/InstantiateFileTemplateRequest.md)
  - [Interface](docs/Interface.md)
  - [Ipmi](docs/Ipmi.md)
  - [Job](docs/Job.md)
  - [JobPartialUpdate](docs/JobPartialUpdate.md)
  - [JobReference](docs/JobReference.md)
+ - [JobUpdate](docs/JobUpdate.md)
  - [KapacitorAlert](docs/KapacitorAlert.md)
  - [LDAPServer](docs/LDAPServer.md)
  - [LDAPServerGroup](docs/LDAPServerGroup.md)
@@ -610,13 +812,17 @@ Class | Method | HTTP request | Description
  - [LDAPServerUser](docs/LDAPServerUser.md)
  - [LDAPServerUsers](docs/LDAPServerUsers.md)
  - [License](docs/License.md)
- - [ListBuckets](docs/ListBuckets.md)
  - [ListTopics](docs/ListTopics.md)
  - [LizardFSDisk](docs/LizardFSDisk.md)
  - [LizardFSNode](docs/LizardFSNode.md)
+ - [LocaleEndpointResponse](docs/LocaleEndpointResponse.md)
+ - [LocateEndpointRequest](docs/LocateEndpointRequest.md)
+ - [LocateProxiesEndpointRequest](docs/LocateProxiesEndpointRequest.md)
+ - [LocateProxiesEndpointResponse](docs/LocateProxiesEndpointResponse.md)
  - [LocateResult](docs/LocateResult.md)
  - [Marker](docs/Marker.md)
  - [MarkerPartialUpdate](docs/MarkerPartialUpdate.md)
+ - [MarkerUpdate](docs/MarkerUpdate.md)
  - [MediaFile](docs/MediaFile.md)
  - [MediaFileBundle](docs/MediaFileBundle.md)
  - [MediaFileBundleMini](docs/MediaFileBundleMini.md)
@@ -627,27 +833,38 @@ Class | Method | HTTP request | Description
  - [MediaFileReference](docs/MediaFileReference.md)
  - [MediaFileTemplate](docs/MediaFileTemplate.md)
  - [MediaFileTemplatePartialUpdate](docs/MediaFileTemplatePartialUpdate.md)
+ - [MediaFileTemplateUpdate](docs/MediaFileTemplateUpdate.md)
+ - [MediaFileUpdate](docs/MediaFileUpdate.md)
+ - [MediaFilesLookupRequest](docs/MediaFilesLookupRequest.md)
  - [MediaLibraryDeleteRequest](docs/MediaLibraryDeleteRequest.md)
  - [MediaLibraryShareRequest](docs/MediaLibraryShareRequest.md)
  - [MediaRoot](docs/MediaRoot.md)
+ - [MediaRootDetail](docs/MediaRootDetail.md)
+ - [MediaRootDetailPartialUpdate](docs/MediaRootDetailPartialUpdate.md)
+ - [MediaRootDetailUpdate](docs/MediaRootDetailUpdate.md)
  - [MediaRootMini](docs/MediaRootMini.md)
  - [MediaRootMiniReference](docs/MediaRootMiniReference.md)
- - [MediaRootPartialUpdate](docs/MediaRootPartialUpdate.md)
  - [MediaRootPermission](docs/MediaRootPermission.md)
  - [MediaRootPermissionAccessOptions](docs/MediaRootPermissionAccessOptions.md)
  - [MediaRootPermissionPartialUpdate](docs/MediaRootPermissionPartialUpdate.md)
+ - [MediaRootPermissionUpdate](docs/MediaRootPermissionUpdate.md)
  - [MediaUpdate](docs/MediaUpdate.md)
  - [MemberPreview](docs/MemberPreview.md)
  - [MetadataItem](docs/MetadataItem.md)
  - [MoveWorkspaceRequest](docs/MoveWorkspaceRequest.md)
  - [MultipleAssetsRequest](docs/MultipleAssetsRequest.md)
+ - [NFSPermission](docs/NFSPermission.md)
  - [NTPServer](docs/NTPServer.md)
  - [NTPServerPartialUpdate](docs/NTPServerPartialUpdate.md)
+ - [NTPServerUpdate](docs/NTPServerUpdate.md)
  - [NetStat](docs/NetStat.md)
  - [OneTimeAccessToken](docs/OneTimeAccessToken.md)
  - [OneTimeAccessTokenActivity](docs/OneTimeAccessTokenActivity.md)
  - [OneTimeAccessTokenSharedObject](docs/OneTimeAccessTokenSharedObject.md)
  - [Parameters](docs/Parameters.md)
+ - [ParametersUpdate](docs/ParametersUpdate.md)
+ - [ParseSAMLIDPMetadataRequest](docs/ParseSAMLIDPMetadataRequest.md)
+ - [ParsedSAMLIDPMetadata](docs/ParsedSAMLIDPMetadata.md)
  - [PasswordResetEndpointRequest](docs/PasswordResetEndpointRequest.md)
  - [Path](docs/Path.md)
  - [PathInput](docs/PathInput.md)
@@ -655,13 +872,16 @@ Class | Method | HTTP request | Description
  - [ProductionMiniReference](docs/ProductionMiniReference.md)
  - [ProductionPartialUpdate](docs/ProductionPartialUpdate.md)
  - [ProductionReference](docs/ProductionReference.md)
+ - [ProductionUpdate](docs/ProductionUpdate.md)
  - [Proxy](docs/Proxy.md)
  - [ProxyCount](docs/ProxyCount.md)
+ - [ProxyFSSizeEndpointResponse](docs/ProxyFSSizeEndpointResponse.md)
  - [ProxyGenerator](docs/ProxyGenerator.md)
  - [ProxyGeneratorProperties](docs/ProxyGeneratorProperties.md)
  - [ProxyProfile](docs/ProxyProfile.md)
  - [ProxyProfileMini](docs/ProxyProfileMini.md)
  - [ProxyProfilePartialUpdate](docs/ProxyProfilePartialUpdate.md)
+ - [ProxyProfileUpdate](docs/ProxyProfileUpdate.md)
  - [PythonEnvironment](docs/PythonEnvironment.md)
  - [Queue](docs/Queue.md)
  - [Quota](docs/Quota.md)
@@ -677,14 +897,22 @@ Class | Method | HTTP request | Description
  - [RenderEndpointRequest](docs/RenderEndpointRequest.md)
  - [RenderRequest](docs/RenderRequest.md)
  - [RestoreEndpointRequest](docs/RestoreEndpointRequest.md)
+ - [SAMLProvider](docs/SAMLProvider.md)
  - [SAMLProviderMini](docs/SAMLProviderMini.md)
+ - [SAMLProviderPartialUpdate](docs/SAMLProviderPartialUpdate.md)
+ - [SAMLProviderUpdate](docs/SAMLProviderUpdate.md)
  - [SMTPConfiguration](docs/SMTPConfiguration.md)
+ - [SMTPConfigurationUpdate](docs/SMTPConfigurationUpdate.md)
  - [SNFSStripeGroup](docs/SNFSStripeGroup.md)
+ - [SavedSearch](docs/SavedSearch.md)
+ - [SavedSearchPartialUpdate](docs/SavedSearchPartialUpdate.md)
+ - [SavedSearchUpdate](docs/SavedSearchUpdate.md)
  - [ScannerDiscoverEndpointRequest](docs/ScannerDiscoverEndpointRequest.md)
  - [ScannerScanEndpointRequest](docs/ScannerScanEndpointRequest.md)
  - [Schedule](docs/Schedule.md)
  - [SchedulePartialUpdate](docs/SchedulePartialUpdate.md)
  - [ScheduleReference](docs/ScheduleReference.md)
+ - [ScheduleUpdate](docs/ScheduleUpdate.md)
  - [SearchEndpointRequest](docs/SearchEndpointRequest.md)
  - [SearchEndpointResponse](docs/SearchEndpointResponse.md)
  - [SendLinkEmailRequest](docs/SendLinkEmailRequest.md)
@@ -694,15 +922,18 @@ Class | Method | HTTP request | Description
  - [Share](docs/Share.md)
  - [SharePartialUpdate](docs/SharePartialUpdate.md)
  - [ShareToHomeWorkspaceEndpointRequest](docs/ShareToHomeWorkspaceEndpointRequest.md)
+ - [ShareUpdate](docs/ShareUpdate.md)
  - [SlackChannel](docs/SlackChannel.md)
  - [SlackConnection](docs/SlackConnection.md)
  - [SlackConnectionPartialUpdate](docs/SlackConnectionPartialUpdate.md)
  - [SlackConnectionStatus](docs/SlackConnectionStatus.md)
+ - [SlackConnectionUpdate](docs/SlackConnectionUpdate.md)
  - [SlackEmoji](docs/SlackEmoji.md)
  - [SlackMessage](docs/SlackMessage.md)
  - [SlackUser](docs/SlackUser.md)
  - [Snapshot](docs/Snapshot.md)
  - [SnapshotPartialUpdate](docs/SnapshotPartialUpdate.md)
+ - [SnapshotUpdate](docs/SnapshotUpdate.md)
  - [SolrReindexEndpointResponse](docs/SolrReindexEndpointResponse.md)
  - [StartJobRequest](docs/StartJobRequest.md)
  - [StartTaskRequest](docs/StartTaskRequest.md)
@@ -714,15 +945,26 @@ Class | Method | HTTP request | Description
  - [StorageNode](docs/StorageNode.md)
  - [StorageNodeMini](docs/StorageNodeMini.md)
  - [StorageNodeStatus](docs/StorageNodeStatus.md)
+ - [StorageRequest](docs/StorageRequest.md)
+ - [StorageResponse](docs/StorageResponse.md)
+ - [StorageRoot](docs/StorageRoot.md)
  - [StornextLicense](docs/StornextLicense.md)
  - [StornextManagerAttributes](docs/StornextManagerAttributes.md)
  - [Subclip](docs/Subclip.md)
  - [SubclipClipboardEntry](docs/SubclipClipboardEntry.md)
+ - [SubclipClipboardEntryUpdate](docs/SubclipClipboardEntryUpdate.md)
  - [SubclipPartialUpdate](docs/SubclipPartialUpdate.md)
  - [SubclipReference](docs/SubclipReference.md)
+ - [SubclipUpdate](docs/SubclipUpdate.md)
+ - [Subscription](docs/Subscription.md)
  - [Subtask](docs/Subtask.md)
  - [SubtaskPartialUpdate](docs/SubtaskPartialUpdate.md)
  - [SubtaskReference](docs/SubtaskReference.md)
+ - [SubtaskUpdate](docs/SubtaskUpdate.md)
+ - [Subtitle](docs/Subtitle.md)
+ - [SubtitleClipboardEntry](docs/SubtitleClipboardEntry.md)
+ - [SubtitleClipboardEntryUpdate](docs/SubtitleClipboardEntryUpdate.md)
+ - [SubtitleEvent](docs/SubtitleEvent.md)
  - [SyncTOTP](docs/SyncTOTP.md)
  - [SyncTOTPRequest](docs/SyncTOTPRequest.md)
  - [SystemInfoEndpointResponse](docs/SystemInfoEndpointResponse.md)
@@ -732,6 +974,7 @@ Class | Method | HTTP request | Description
  - [TapeFile](docs/TapeFile.md)
  - [TapeGroup](docs/TapeGroup.md)
  - [TapeGroupPartialUpdate](docs/TapeGroupPartialUpdate.md)
+ - [TapeGroupUpdate](docs/TapeGroupUpdate.md)
  - [TapeJob](docs/TapeJob.md)
  - [TapeJobSource](docs/TapeJobSource.md)
  - [TapeLibraryEndpointResponse](docs/TapeLibraryEndpointResponse.md)
@@ -744,6 +987,7 @@ Class | Method | HTTP request | Description
  - [TapeLibraryUnloadEndpointRequest](docs/TapeLibraryUnloadEndpointRequest.md)
  - [TapePartialUpdate](docs/TapePartialUpdate.md)
  - [TapeReference](docs/TapeReference.md)
+ - [TapeUpdate](docs/TapeUpdate.md)
  - [TaskInfo](docs/TaskInfo.md)
  - [TaskLog](docs/TaskLog.md)
  - [TaskProgress](docs/TaskProgress.md)
@@ -752,10 +996,13 @@ Class | Method | HTTP request | Description
  - [TeamsConnection](docs/TeamsConnection.md)
  - [TeamsConnectionPartialUpdate](docs/TeamsConnectionPartialUpdate.md)
  - [TeamsConnectionStatus](docs/TeamsConnectionStatus.md)
+ - [TeamsConnectionUpdate](docs/TeamsConnectionUpdate.md)
  - [TeamsMessage](docs/TeamsMessage.md)
  - [TeamsRecipient](docs/TeamsRecipient.md)
  - [TestAWSCredentialsRequest](docs/TestAWSCredentialsRequest.md)
  - [TestAWSCredentialsResponse](docs/TestAWSCredentialsResponse.md)
+ - [TestCloudAccountCredentialsRequest](docs/TestCloudAccountCredentialsRequest.md)
+ - [TestCloudAccountCredentialsResponse](docs/TestCloudAccountCredentialsResponse.md)
  - [TestExternalTranscoderConnectionRequest](docs/TestExternalTranscoderConnectionRequest.md)
  - [TestExternalTranscoderConnectionResponse](docs/TestExternalTranscoderConnectionResponse.md)
  - [TestSMTP](docs/TestSMTP.md)
@@ -771,12 +1018,20 @@ Class | Method | HTTP request | Description
  - [TypeDocumentation](docs/TypeDocumentation.md)
  - [UnfilteredTag](docs/UnfilteredTag.md)
  - [UnfilteredTagPartialUpdate](docs/UnfilteredTagPartialUpdate.md)
+ - [UnfilteredTagUpdate](docs/UnfilteredTagUpdate.md)
  - [UpdateQuotaRequest](docs/UpdateQuotaRequest.md)
+ - [UploadAIImageRequest](docs/UploadAIImageRequest.md)
  - [UploadChunkEndpointRequest](docs/UploadChunkEndpointRequest.md)
+ - [UploadImageEndpointRequest](docs/UploadImageEndpointRequest.md)
  - [UserPreviewRequest](docs/UserPreviewRequest.md)
  - [UserPreviewResponse](docs/UserPreviewResponse.md)
  - [VantageWorkflow](docs/VantageWorkflow.md)
  - [VantageWorkflows](docs/VantageWorkflows.md)
+ - [VeritoneConnection](docs/VeritoneConnection.md)
+ - [VeritoneEngineList](docs/VeritoneEngineList.md)
+ - [VeritoneJobList](docs/VeritoneJobList.md)
+ - [VeritoneMetadata](docs/VeritoneMetadata.md)
+ - [VeritoneUploadRequest](docs/VeritoneUploadRequest.md)
  - [Volume](docs/Volume.md)
  - [VolumeBeeGFSStatus](docs/VolumeBeeGFSStatus.md)
  - [VolumeLizardFSStatus](docs/VolumeLizardFSStatus.md)
@@ -788,18 +1043,22 @@ Class | Method | HTTP request | Description
  - [VolumeStat](docs/VolumeStat.md)
  - [VolumeStats](docs/VolumeStats.md)
  - [VolumeStatus](docs/VolumeStatus.md)
+ - [VolumeUpdate](docs/VolumeUpdate.md)
  - [WorkflowTransitionRequest](docs/WorkflowTransitionRequest.md)
  - [WorkflowTransitionResponse](docs/WorkflowTransitionResponse.md)
  - [Workspace](docs/Workspace.md)
  - [WorkspaceCheckIn](docs/WorkspaceCheckIn.md)
  - [WorkspaceDetail](docs/WorkspaceDetail.md)
  - [WorkspaceDetailPartialUpdate](docs/WorkspaceDetailPartialUpdate.md)
+ - [WorkspaceDetailUpdate](docs/WorkspaceDetailUpdate.md)
  - [WorkspaceEndpoint](docs/WorkspaceEndpoint.md)
  - [WorkspaceMoveToRequest](docs/WorkspaceMoveToRequest.md)
  - [WorkspacePermission](docs/WorkspacePermission.md)
  - [WorkspacePermissionPartialUpdate](docs/WorkspacePermissionPartialUpdate.md)
+ - [WorkspacePermissionUpdate](docs/WorkspacePermissionUpdate.md)
  - [WorkspaceResolvedPermission](docs/WorkspaceResolvedPermission.md)
  - [Workstation](docs/Workstation.md)
  - [WorkstationMini](docs/WorkstationMini.md)
  - [WorkstationPartialUpdate](docs/WorkstationPartialUpdate.md)
+ - [WorkstationUpdate](docs/WorkstationUpdate.md)
 

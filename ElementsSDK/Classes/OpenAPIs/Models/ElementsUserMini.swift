@@ -10,18 +10,18 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ElementsUserMini: Codable, Hashable {
+public struct ElementsUserMini: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var avatar: String?
-    public var displayName: String?
+    public var displayName: String
     public var email: String?
     public var fullName: String?
     public var isExternal: Bool?
     public var isCloud: Bool?
     public var username: String
 
-    public init(id: Int? = nil, avatar: String? = nil, displayName: String? = nil, email: String? = nil, fullName: String? = nil, isExternal: Bool? = nil, isCloud: Bool? = nil, username: String) {
+    public init(id: Int, avatar: String? = nil, displayName: String, email: String? = nil, fullName: String? = nil, isExternal: Bool? = nil, isCloud: Bool? = nil, username: String) {
         self.id = id
         self.avatar = avatar
         self.displayName = displayName
@@ -47,9 +47,9 @@ public struct ElementsUserMini: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(avatar, forKey: .avatar)
-        try container.encodeIfPresent(displayName, forKey: .displayName)
+        try container.encode(displayName, forKey: .displayName)
         try container.encodeIfPresent(email, forKey: .email)
         try container.encodeIfPresent(fullName, forKey: .fullName)
         try container.encodeIfPresent(isExternal, forKey: .isExternal)

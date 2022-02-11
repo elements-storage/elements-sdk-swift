@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ProxyGeneratorProperties: Codable, Hashable {
+public struct ProxyGeneratorProperties: Codable, JSONEncodable, Hashable {
 
     public var supportsVideoBitrate: Bool?
     public var supportsVideoCrf: Bool?

@@ -10,14 +10,14 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct InlineResponse200: Codable, Hashable {
+public struct InlineResponse200: Codable, JSONEncodable, Hashable {
 
     public var count: Int
     public var next: String?
     public var previous: String?
-    public var results: [ClickGallery]
+    public var results: [ClickGalleryLink]
 
-    public init(count: Int, next: String? = nil, previous: String? = nil, results: [ClickGallery]) {
+    public init(count: Int, next: String? = nil, previous: String? = nil, results: [ClickGalleryLink]) {
         self.count = count
         self.next = next
         self.previous = previous

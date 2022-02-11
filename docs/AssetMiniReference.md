@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] 
+**id** | **Int** |  | 
 **syncId** | **UUID** |  | [optional] [readonly] 
 **defaultProxy** | [**Proxy**](Proxy.md) |  | [optional] 
 **type** | **String** |  | [optional] [readonly] 
 **displayName** | **String** |  | [optional] [readonly] 
+**format** | [**FormatMetadata**](FormatMetadata.md) |  | [optional] 
 **info** | **[String: String]** |  | [optional] [readonly] 
 **thumbnailGenerated** | **Bool** |  | [optional] [readonly] 
 

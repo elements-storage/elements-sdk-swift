@@ -9,13 +9,15 @@ Name | Type | Description | Notes
 **fullName** | **String** |  | [optional] 
 **language** | **String** |  | [optional] 
 **fmBookmarks** | **[String]** |  | [optional] 
-**id** | **Int** |  | [optional] [readonly] 
-**username** | **String** |  | [optional] [readonly] 
-**unixUsername** | **String** |  | [optional] [readonly] 
-**displayName** | **String** |  | [optional] [readonly] 
-**email** | **String** |  | [optional] [readonly] 
-**ldap** | [**LDAPServer**](LDAPServer.md) |  | [optional] 
-**effectivePermissions** | **[String]** |  | [optional] [readonly] 
+**id** | **Int** |  | 
+**username** | **String** |  | [readonly] 
+**unixUsername** | **String** |  | [readonly] 
+**displayName** | **String** |  | [readonly] 
+**email** | **String** |  | [readonly] 
+**ldap** | [**LDAPServer**](LDAPServer.md) |  | 
+**effectivePermissions** | **[String]** |  | [readonly] 
+**hasPassword** | **Bool** |  | [readonly] 
+**allowChangingPassword** | **Bool** |  | [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

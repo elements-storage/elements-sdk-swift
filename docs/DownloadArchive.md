@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **UUID** |  | [optional] 
+**id** | **UUID** |  | 
 **taskInfo** | [**TaskInfo**](TaskInfo.md) |  | 
-**uncompressedSize** | **Int** |  | [optional] [readonly] 
-**size** | **Int** |  | [optional] [readonly] 
-**expires** | **String** |  | [optional] [readonly] 
-**files** | **[String]** |  | [optional] [readonly] 
+**uncompressedSize** | **Int** |  | [readonly] 
+**size** | **Int** |  | [readonly] 
+**expires** | **String** |  | [readonly] 
+**files** | **[String]** |  | [readonly] 
 **name** | **String** |  | 
 **path** | **String** |  | 
-**createdAt** | **Date** |  | [optional] [readonly] 
+**createdAt** | **Date** |  | [readonly] 
 **progressUnit** | **Int** |  | [optional] 
 **user** | **Int** |  | [optional] 
 

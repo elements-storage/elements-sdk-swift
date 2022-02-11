@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SendLinkEmailRequest: Codable, Hashable {
+public struct SendLinkEmailRequest: Codable, JSONEncodable, Hashable {
 
     public var email: String?
     public var subject: String?

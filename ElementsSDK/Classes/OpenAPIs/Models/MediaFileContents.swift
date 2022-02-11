@@ -10,13 +10,13 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct MediaFileContents: Codable, Hashable {
+public struct MediaFileContents: Codable, JSONEncodable, Hashable {
 
-    public var directories: [MediaFile]?
-    public var bundles: [MediaFileBundle]?
+    public var directories: [MediaFile]
+    public var bundles: [MediaFileBundle]
     public var total: Int
 
-    public init(directories: [MediaFile]? = nil, bundles: [MediaFileBundle]? = nil, total: Int) {
+    public init(directories: [MediaFile], bundles: [MediaFileBundle], total: Int) {
         self.directories = directories
         self.bundles = bundles
         self.total = total
@@ -32,8 +32,8 @@ public struct MediaFileContents: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(directories, forKey: .directories)
-        try container.encodeIfPresent(bundles, forKey: .bundles)
+        try container.encode(directories, forKey: .directories)
+        try container.encode(bundles, forKey: .bundles)
         try container.encode(total, forKey: .total)
     }
 }

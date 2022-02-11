@@ -10,11 +10,11 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SubclipReference: Codable, Hashable {
+public struct SubclipReference: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var asset: AssetMiniReference
-    public var rendered: AssetMiniReference?
+    public var rendered: AnyOfAssetMiniReferenceAnyType?
     public var shared: Bool?
     public var date: Date?
     public var name: String?
@@ -23,7 +23,7 @@ public struct SubclipReference: Codable, Hashable {
     public var user: Int?
     public var root: MediaRootMiniReference
 
-    public init(id: Int? = nil, asset: AssetMiniReference, rendered: AssetMiniReference? = nil, shared: Bool? = nil, date: Date? = nil, name: String? = nil, tIn: Double? = nil, tOut: Double? = nil, user: Int? = nil, root: MediaRootMiniReference) {
+    public init(id: Int, asset: AssetMiniReference, rendered: AnyOfAssetMiniReferenceAnyType? = nil, shared: Bool? = nil, date: Date? = nil, name: String? = nil, tIn: Double? = nil, tOut: Double? = nil, user: Int? = nil, root: MediaRootMiniReference) {
         self.id = id
         self.asset = asset
         self.rendered = rendered
@@ -53,7 +53,7 @@ public struct SubclipReference: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(asset, forKey: .asset)
         try container.encodeIfPresent(rendered, forKey: .rendered)
         try container.encodeIfPresent(shared, forKey: .shared)

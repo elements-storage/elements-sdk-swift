@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **analytics** | **Bool** |  | [optional] 
 **brandingCss** | **String** |  | [optional] 
 **brandingLogo** | **String** |  | [optional] 
+**clientOfferFileSearch** | **Bool** |  | [optional] 
 **externalUrl** | **String** | http://host/ | [optional] 
 **fileManagerRecycleBin** | **Bool** | Recycle bins are usually either in Workspace/Share or Volume folder | [optional] 
 **httpsRedirect** | **String** |  | [optional] 

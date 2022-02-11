@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct GetMultipleFilesRequest: Codable, Hashable {
+public struct GetMultipleFilesRequest: Codable, JSONEncodable, Hashable {
 
     public var files: [Int]
 

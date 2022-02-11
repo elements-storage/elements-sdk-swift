@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct OneTimeAccessTokenSharedObject: Codable, Hashable {
+public struct OneTimeAccessTokenSharedObject: Codable, JSONEncodable, Hashable {
 
     public var id: Int
     public var name: String

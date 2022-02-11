@@ -10,18 +10,18 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Interface: Codable, Hashable {
+public struct Interface: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var device: String
-    public var addresses: [Address]?
+    public var addresses: [Address]
     public var speed: Int?
     public var mtu: Int?
     public var useForMounts: Bool?
     public var priority: Int?
     public var port: String?
 
-    public init(id: Int? = nil, device: String, addresses: [Address]? = nil, speed: Int? = nil, mtu: Int? = nil, useForMounts: Bool? = nil, priority: Int? = nil, port: String? = nil) {
+    public init(id: Int, device: String, addresses: [Address], speed: Int? = nil, mtu: Int? = nil, useForMounts: Bool? = nil, priority: Int? = nil, port: String? = nil) {
         self.id = id
         self.device = device
         self.addresses = addresses
@@ -47,9 +47,9 @@ public struct Interface: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(device, forKey: .device)
-        try container.encodeIfPresent(addresses, forKey: .addresses)
+        try container.encode(addresses, forKey: .addresses)
         try container.encodeIfPresent(speed, forKey: .speed)
         try container.encodeIfPresent(mtu, forKey: .mtu)
         try container.encodeIfPresent(useForMounts, forKey: .useForMounts)

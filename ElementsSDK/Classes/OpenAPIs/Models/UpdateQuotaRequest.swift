@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct UpdateQuotaRequest: Codable, Hashable {
+public struct UpdateQuotaRequest: Codable, JSONEncodable, Hashable {
 
     public var soft: Int?
     public var hard: Int?

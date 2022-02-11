@@ -10,12 +10,12 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Subtask: Codable, Hashable {
+public struct Subtask: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var kwargs: [String: String]
     public var graphLayout: [String: String]?
-    public var validationError: String?
+    public var validationError: String
     public var trigger: String?
     public var name: String?
     public var noopDontSave: Bool?
@@ -31,7 +31,7 @@ public struct Subtask: Codable, Hashable {
     public var parent: Int
     public var relativeTo: Int?
 
-    public init(id: Int? = nil, kwargs: [String: String], graphLayout: [String: String]? = nil, validationError: String? = nil, trigger: String? = nil, name: String? = nil, noopDontSave: Bool? = nil, noConcurrency: Bool? = nil, timeout: Int? = nil, logVariable: Bool? = nil, task: String? = nil, conditionVariable: String? = nil, conditionValue: String? = nil, sync: Bool? = nil, queue: String? = nil, enqueueAtFront: Bool? = nil, parent: Int, relativeTo: Int? = nil) {
+    public init(id: Int, kwargs: [String: String], graphLayout: [String: String]? = nil, validationError: String, trigger: String? = nil, name: String? = nil, noopDontSave: Bool? = nil, noConcurrency: Bool? = nil, timeout: Int? = nil, logVariable: Bool? = nil, task: String? = nil, conditionVariable: String? = nil, conditionValue: String? = nil, sync: Bool? = nil, queue: String? = nil, enqueueAtFront: Bool? = nil, parent: Int, relativeTo: Int? = nil) {
         self.id = id
         self.kwargs = kwargs
         self.graphLayout = graphLayout
@@ -77,10 +77,10 @@ public struct Subtask: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encode(kwargs, forKey: .kwargs)
         try container.encodeIfPresent(graphLayout, forKey: .graphLayout)
-        try container.encodeIfPresent(validationError, forKey: .validationError)
+        try container.encode(validationError, forKey: .validationError)
         try container.encodeIfPresent(trigger, forKey: .trigger)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(noopDontSave, forKey: .noopDontSave)

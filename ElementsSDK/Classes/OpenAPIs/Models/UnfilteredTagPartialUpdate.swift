@@ -10,14 +10,14 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct UnfilteredTagPartialUpdate: Codable, Hashable {
+public struct UnfilteredTagPartialUpdate: Codable, JSONEncodable, Hashable {
 
-    public var roots: Set<Int>?
+    public var roots: [Int]?
     public var name: String?
     public var shared: Bool?
     public var color: String?
 
-    public init(roots: Set<Int>? = nil, name: String? = nil, shared: Bool? = nil, color: String? = nil) {
+    public init(roots: [Int]? = nil, name: String? = nil, shared: Bool? = nil, color: String? = nil) {
         self.roots = roots
         self.name = name
         self.shared = shared

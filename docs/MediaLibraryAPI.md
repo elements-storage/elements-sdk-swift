@@ -6,12 +6,15 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**bookmarkMediaDirectory**](MediaLibraryAPI.md#bookmarkmediadirectory) | **POST** /api/2/media/files/{id}/bookmark | 
 [**clearSubclipClipboard**](MediaLibraryAPI.md#clearsubclipclipboard) | **DELETE** /api/2/media/subclips/clipboard/clear | 
+[**clearSubtitleClipboard**](MediaLibraryAPI.md#clearsubtitleclipboard) | **DELETE** /api/2/media/subtitles/clipboard/clear | 
 [**combineAssetsIntoSet**](MediaLibraryAPI.md#combineassetsintoset) | **POST** /api/2/media/assets/combine | 
 [**createAsset**](MediaLibraryAPI.md#createasset) | **POST** /api/2/media/assets | 
 [**createAssetRating**](MediaLibraryAPI.md#createassetrating) | **POST** /api/2/media/ratings | 
+[**createAssetSubtitleLink**](MediaLibraryAPI.md#createassetsubtitlelink) | **POST** /api/2/media/assets/subtitle-links | 
 [**createComment**](MediaLibraryAPI.md#createcomment) | **POST** /api/2/media/comments | 
 [**createCustomField**](MediaLibraryAPI.md#createcustomfield) | **POST** /api/2/media/custom-fields | 
 [**createEditorProject**](MediaLibraryAPI.md#createeditorproject) | **POST** /api/2/media/editor | 
+[**createEditorSubtitle**](MediaLibraryAPI.md#createeditorsubtitle) | **POST** /api/2/media/subtitles | 
 [**createExternalTranscoder**](MediaLibraryAPI.md#createexternaltranscoder) | **POST** /api/2/media/external-transcoders | 
 [**createMarker**](MediaLibraryAPI.md#createmarker) | **POST** /api/2/media/markers | 
 [**createMediaFileTemplate**](MediaLibraryAPI.md#createmediafiletemplate) | **POST** /api/2/media/files/templates | 
@@ -19,10 +22,13 @@ Method | HTTP request | Description
 [**createMediaRootPermission**](MediaLibraryAPI.md#createmediarootpermission) | **POST** /api/2/media/root-permissions | 
 [**createMediaTag**](MediaLibraryAPI.md#createmediatag) | **POST** /api/2/media/tags | 
 [**createProxyProfile**](MediaLibraryAPI.md#createproxyprofile) | **POST** /api/2/media/proxy-profiles | 
+[**createSavedSearch**](MediaLibraryAPI.md#createsavedsearch) | **POST** /api/2/media/saved-searches | 
 [**createSubclip**](MediaLibraryAPI.md#createsubclip) | **POST** /api/2/media/subclips | 
 [**createSubclipClipboardEntry**](MediaLibraryAPI.md#createsubclipclipboardentry) | **POST** /api/2/media/subclips/clipboard | 
+[**createSubtitleClipboardEntry**](MediaLibraryAPI.md#createsubtitleclipboardentry) | **POST** /api/2/media/subtitles/clipboard | 
 [**deleteAsset**](MediaLibraryAPI.md#deleteasset) | **DELETE** /api/2/media/assets/{id} | 
 [**deleteAssetRating**](MediaLibraryAPI.md#deleteassetrating) | **DELETE** /api/2/media/ratings/{id} | 
+[**deleteAssetSubtitleLink**](MediaLibraryAPI.md#deleteassetsubtitlelink) | **DELETE** /api/2/media/assets/subtitle-links/{id} | 
 [**deleteComment**](MediaLibraryAPI.md#deletecomment) | **DELETE** /api/2/media/comments/{id} | 
 [**deleteCustomField**](MediaLibraryAPI.md#deletecustomfield) | **DELETE** /api/2/media/custom-fields/{id} | 
 [**deleteEasySharingTokenForBundle**](MediaLibraryAPI.md#deleteeasysharingtokenforbundle) | **DELETE** /api/2/media/bundles/{id}/easy-sharing-token | 
@@ -37,8 +43,10 @@ Method | HTTP request | Description
 [**deleteMediaUpdate**](MediaLibraryAPI.md#deletemediaupdate) | **DELETE** /api/2/media/updates/{id} | 
 [**deleteProxy**](MediaLibraryAPI.md#deleteproxy) | **DELETE** /api/2/media/proxies/{id} | 
 [**deleteProxyProfile**](MediaLibraryAPI.md#deleteproxyprofile) | **DELETE** /api/2/media/proxy-profiles/{id} | 
+[**deleteSavedSearch**](MediaLibraryAPI.md#deletesavedsearch) | **DELETE** /api/2/media/saved-searches/{id} | 
 [**deleteSubclip**](MediaLibraryAPI.md#deletesubclip) | **DELETE** /api/2/media/subclips/{id} | 
 [**deleteSubclipClipboardEntry**](MediaLibraryAPI.md#deletesubclipclipboardentry) | **DELETE** /api/2/media/subclips/clipboard/{id} | 
+[**deleteSubtitleClipboardEntry**](MediaLibraryAPI.md#deletesubtitleclipboardentry) | **DELETE** /api/2/media/subtitles/clipboard/{id} | 
 [**discoverMedia**](MediaLibraryAPI.md#discovermedia) | **POST** /api/2/scanner/discover | 
 [**downloadAssetProxyFile**](MediaLibraryAPI.md#downloadassetproxyfile) | **GET** /api/2/media/assets/{id}/proxy-files/{filename} | 
 [**downloadMediaFile**](MediaLibraryAPI.md#downloadmediafile) | **GET** /api/2/media/files/{id}/download | 
@@ -48,13 +56,16 @@ Method | HTTP request | Description
 [**editorExportXMLForProject**](MediaLibraryAPI.md#editorexportxmlforproject) | **GET** /api/2/media/editor/{id}/xml-export | 
 [**exportCommentsForAvid**](MediaLibraryAPI.md#exportcommentsforavid) | **GET** /api/2/media/editor/asset/{asset_id}/{export_format}-export/avid-comments | 
 [**exportEditorTimeline**](MediaLibraryAPI.md#exporteditortimeline) | **POST** /api/2/media/editor/timeline-export | 
+[**extractStream**](MediaLibraryAPI.md#extractstream) | **POST** /api/2/media/assets/{id}/extract-stream | 
 [**forgetDeletedMediaFiles**](MediaLibraryAPI.md#forgetdeletedmediafiles) | **POST** /api/2/media/files/{id}/forget-deleted | 
 [**generateProxies**](MediaLibraryAPI.md#generateproxies) | **POST** /api/2/media/proxies | 
 [**getAllAssetProjectLinks**](MediaLibraryAPI.md#getallassetprojectlinks) | **GET** /api/2/media/assets/project-links | 
 [**getAllAssetRatings**](MediaLibraryAPI.md#getallassetratings) | **GET** /api/2/media/ratings | 
+[**getAllAssetSubtitleLinks**](MediaLibraryAPI.md#getallassetsubtitlelinks) | **GET** /api/2/media/assets/subtitle-links | 
 [**getAllAssetTapeBackups**](MediaLibraryAPI.md#getallassettapebackups) | **GET** /api/2/media/backups | 
 [**getAllAssets**](MediaLibraryAPI.md#getallassets) | **GET** /api/2/media/assets | 
 [**getAllBundlesForMediaRoot**](MediaLibraryAPI.md#getallbundlesformediaroot) | **GET** /api/2/media/bundles/flat/{root} | 
+[**getAllBundlesInSubtree**](MediaLibraryAPI.md#getallbundlesinsubtree) | **GET** /api/2/media/bundles/flat/subtree/{file} | 
 [**getAllClickLinks**](MediaLibraryAPI.md#getallclicklinks) | **GET** /api/2/media/assets/click-links | 
 [**getAllComments**](MediaLibraryAPI.md#getallcomments) | **GET** /api/2/media/comments | 
 [**getAllCustomFields**](MediaLibraryAPI.md#getallcustomfields) | **GET** /api/2/media/custom-fields | 
@@ -65,23 +76,28 @@ Method | HTTP request | Description
 [**getAllMediaFiles**](MediaLibraryAPI.md#getallmediafiles) | **GET** /api/2/media/files | 
 [**getAllMediaFilesForBundles**](MediaLibraryAPI.md#getallmediafilesforbundles) | **POST** /api/2/media/files/for-bundles | 
 [**getAllMediaFilesForMediaRoot**](MediaLibraryAPI.md#getallmediafilesformediaroot) | **GET** /api/2/media/files/flat/{root} | 
+[**getAllMediaFilesInSubtree**](MediaLibraryAPI.md#getallmediafilesinsubtree) | **GET** /api/2/media/files/flat/subtree/{file} | 
 [**getAllMediaRootPermissions**](MediaLibraryAPI.md#getallmediarootpermissions) | **GET** /api/2/media/root-permissions | 
 [**getAllMediaRoots**](MediaLibraryAPI.md#getallmediaroots) | **GET** /api/2/media/roots | 
 [**getAllMediaTags**](MediaLibraryAPI.md#getallmediatags) | **GET** /api/2/media/tags | 
 [**getAllMediaUpdates**](MediaLibraryAPI.md#getallmediaupdates) | **GET** /api/2/media/updates | 
 [**getAllProxyGenerators**](MediaLibraryAPI.md#getallproxygenerators) | **GET** /api/2/media/proxy-generators | 
 [**getAllProxyProfiles**](MediaLibraryAPI.md#getallproxyprofiles) | **GET** /api/2/media/proxy-profiles | 
+[**getAllSavedSearches**](MediaLibraryAPI.md#getallsavedsearches) | **GET** /api/2/media/saved-searches | 
 [**getAllSubclipClipboardEntries**](MediaLibraryAPI.md#getallsubclipclipboardentries) | **GET** /api/2/media/subclips/clipboard | 
 [**getAllSubclips**](MediaLibraryAPI.md#getallsubclips) | **GET** /api/2/media/subclips | 
+[**getAllSubtitleClipboardEntries**](MediaLibraryAPI.md#getallsubtitleclipboardentries) | **GET** /api/2/media/subtitles/clipboard | 
 [**getAllTranscoderProfiles**](MediaLibraryAPI.md#getalltranscoderprofiles) | **GET** /api/2/transcoder-profiles | 
 [**getAsset**](MediaLibraryAPI.md#getasset) | **GET** /api/2/media/assets/{id} | 
 [**getAssetRating**](MediaLibraryAPI.md#getassetrating) | **GET** /api/2/media/ratings/{id} | 
+[**getAssetSubtitleLink**](MediaLibraryAPI.md#getassetsubtitlelink) | **GET** /api/2/media/assets/subtitle-links/{id} | 
 [**getBookmarkedMediaFilesDirectories**](MediaLibraryAPI.md#getbookmarkedmediafilesdirectories) | **GET** /api/2/media/files/bookmarks | 
 [**getComment**](MediaLibraryAPI.md#getcomment) | **GET** /api/2/media/comments/{id} | 
 [**getCustomField**](MediaLibraryAPI.md#getcustomfield) | **GET** /api/2/media/custom-fields/{id} | 
 [**getEasySharingTokenForBundle**](MediaLibraryAPI.md#geteasysharingtokenforbundle) | **GET** /api/2/media/bundles/{id}/easy-sharing-token | 
 [**getEasySharingTokenForDirectory**](MediaLibraryAPI.md#geteasysharingtokenfordirectory) | **GET** /api/2/media/files/{id}/easy-sharing-token | 
 [**getEditorProject**](MediaLibraryAPI.md#geteditorproject) | **GET** /api/2/media/editor/{id} | 
+[**getEditorSubtitle**](MediaLibraryAPI.md#geteditorsubtitle) | **GET** /api/2/media/subtitles/{id} | 
 [**getExternalTranscoder**](MediaLibraryAPI.md#getexternaltranscoder) | **GET** /api/2/media/external-transcoders/{id} | 
 [**getFrame**](MediaLibraryAPI.md#getframe) | **GET** /api/2/media/assets/{id}/frames/{frame} | 
 [**getLatestMediaUpdate**](MediaLibraryAPI.md#getlatestmediaupdate) | **GET** /api/2/media/updates/latest | 
@@ -102,17 +118,22 @@ Method | HTTP request | Description
 [**getProxyGenerator**](MediaLibraryAPI.md#getproxygenerator) | **GET** /api/2/media/proxy-generators/{id} | 
 [**getProxyProfile**](MediaLibraryAPI.md#getproxyprofile) | **GET** /api/2/media/proxy-profiles/{id} | 
 [**getProxyProfileProxyCount**](MediaLibraryAPI.md#getproxyprofileproxycount) | **GET** /api/2/media/proxy-profiles/{id}/proxy-count | 
+[**getSavedSearch**](MediaLibraryAPI.md#getsavedsearch) | **GET** /api/2/media/saved-searches/{id} | 
 [**getSubclip**](MediaLibraryAPI.md#getsubclip) | **GET** /api/2/media/subclips/{id} | 
+[**getSubtitles**](MediaLibraryAPI.md#getsubtitles) | **GET** /api/2/media/assets/{id}/subtitle/{title} | 
 [**getTranscoderProfile**](MediaLibraryAPI.md#gettranscoderprofile) | **GET** /api/2/transcoder-profiles/{id} | 
 [**getVantageWorkflows**](MediaLibraryAPI.md#getvantageworkflows) | **GET** /api/2/media/external-transcoders/{id}/workflows | 
 [**instantiateMediaFileTemplate**](MediaLibraryAPI.md#instantiatemediafiletemplate) | **POST** /api/2/media/files/templates/{id}/instantiate | 
 [**locateEditorProjectPaths**](MediaLibraryAPI.md#locateeditorprojectpaths) | **GET** /api/2/media/editor/{id}/locate-paths | 
+[**lookupMediaFiles**](MediaLibraryAPI.md#lookupmediafiles) | **POST** /api/2/media/files/lookup | 
 [**markMediaDirectoryAsShowroom**](MediaLibraryAPI.md#markmediadirectoryasshowroom) | **POST** /api/2/media/files/{id}/showroom | 
 [**patchAsset**](MediaLibraryAPI.md#patchasset) | **PATCH** /api/2/media/assets/{id} | 
 [**patchAssetRating**](MediaLibraryAPI.md#patchassetrating) | **PATCH** /api/2/media/ratings/{id} | 
+[**patchAssetSubtitleLink**](MediaLibraryAPI.md#patchassetsubtitlelink) | **PATCH** /api/2/media/assets/subtitle-links/{id} | 
 [**patchComment**](MediaLibraryAPI.md#patchcomment) | **PATCH** /api/2/media/comments/{id} | 
 [**patchCustomField**](MediaLibraryAPI.md#patchcustomfield) | **PATCH** /api/2/media/custom-fields/{id} | 
 [**patchEditorProject**](MediaLibraryAPI.md#patcheditorproject) | **PATCH** /api/2/media/editor/{id} | 
+[**patchEditorSubtitle**](MediaLibraryAPI.md#patcheditorsubtitle) | **PATCH** /api/2/media/subtitles/{id} | 
 [**patchExternalTranscoder**](MediaLibraryAPI.md#patchexternaltranscoder) | **PATCH** /api/2/media/external-transcoders/{id} | 
 [**patchMarker**](MediaLibraryAPI.md#patchmarker) | **PATCH** /api/2/media/markers/{id} | 
 [**patchMediaFile**](MediaLibraryAPI.md#patchmediafile) | **PATCH** /api/2/media/files/{id} | 
@@ -121,6 +142,7 @@ Method | HTTP request | Description
 [**patchMediaRootPermission**](MediaLibraryAPI.md#patchmediarootpermission) | **PATCH** /api/2/media/root-permissions/{id} | 
 [**patchMediaTag**](MediaLibraryAPI.md#patchmediatag) | **PATCH** /api/2/media/tags/{id} | 
 [**patchProxyProfile**](MediaLibraryAPI.md#patchproxyprofile) | **PATCH** /api/2/media/proxy-profiles/{id} | 
+[**patchSavedSearch**](MediaLibraryAPI.md#patchsavedsearch) | **PATCH** /api/2/media/saved-searches/{id} | 
 [**patchSubclip**](MediaLibraryAPI.md#patchsubclip) | **PATCH** /api/2/media/subclips/{id} | 
 [**recursivelyTagMediaDirectory**](MediaLibraryAPI.md#recursivelytagmediadirectory) | **POST** /api/2/media/files/{id}/tag | 
 [**reindexMediaDirectory**](MediaLibraryAPI.md#reindexmediadirectory) | **POST** /api/2/media/files/{id}/search-reindex | 
@@ -137,9 +159,11 @@ Method | HTTP request | Description
 [**unresolveComment**](MediaLibraryAPI.md#unresolvecomment) | **POST** /api/2/media/comments/{id}/unresolve | 
 [**updateAsset**](MediaLibraryAPI.md#updateasset) | **PUT** /api/2/media/assets/{id} | 
 [**updateAssetRating**](MediaLibraryAPI.md#updateassetrating) | **PUT** /api/2/media/ratings/{id} | 
+[**updateAssetSubtitleLink**](MediaLibraryAPI.md#updateassetsubtitlelink) | **PUT** /api/2/media/assets/subtitle-links/{id} | 
 [**updateComment**](MediaLibraryAPI.md#updatecomment) | **PUT** /api/2/media/comments/{id} | 
 [**updateCustomField**](MediaLibraryAPI.md#updatecustomfield) | **PUT** /api/2/media/custom-fields/{id} | 
 [**updateEditorProject**](MediaLibraryAPI.md#updateeditorproject) | **PUT** /api/2/media/editor/{id} | 
+[**updateEditorSubtitle**](MediaLibraryAPI.md#updateeditorsubtitle) | **PUT** /api/2/media/subtitles/{id} | 
 [**updateExternalTranscoder**](MediaLibraryAPI.md#updateexternaltranscoder) | **PUT** /api/2/media/external-transcoders/{id} | 
 [**updateMarker**](MediaLibraryAPI.md#updatemarker) | **PUT** /api/2/media/markers/{id} | 
 [**updateMediaFile**](MediaLibraryAPI.md#updatemediafile) | **PUT** /api/2/media/files/{id} | 
@@ -148,6 +172,7 @@ Method | HTTP request | Description
 [**updateMediaRootPermission**](MediaLibraryAPI.md#updatemediarootpermission) | **PUT** /api/2/media/root-permissions/{id} | 
 [**updateMediaTag**](MediaLibraryAPI.md#updatemediatag) | **PUT** /api/2/media/tags/{id} | 
 [**updateProxyProfile**](MediaLibraryAPI.md#updateproxyprofile) | **PUT** /api/2/media/proxy-profiles/{id} | 
+[**updateSavedSearch**](MediaLibraryAPI.md#updatesavedsearch) | **PUT** /api/2/media/saved-searches/{id} | 
 [**updateSubclip**](MediaLibraryAPI.md#updatesubclip) | **PUT** /api/2/media/subclips/{id} | 
 
 
@@ -160,7 +185,7 @@ Method | HTTP request | Description
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -206,13 +231,55 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 
 MediaLibraryAPI.clearSubclipClipboard().then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **clearSubtitleClipboard**
+```swift
+    open class func clearSubtitleClipboard() -> Promise<Void>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+
+MediaLibraryAPI.clearSubtitleClipboard().then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -248,7 +315,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -287,21 +354,21 @@ Void (empty response body)
 
 # **createAsset**
 ```swift
-    open class func createAsset( asset: Asset) -> Promise<Asset>
+    open class func createAsset( assetUpdate: AssetUpdate) -> Promise<Asset>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let asset = Asset(id: 123, proxies: [Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123)], defaultProxy: nil, info: "TODO", proxyInfo: "TODO", customFields: "TODO", tags: [123], resolvedPermission: MediaRootPermission(id: 123, user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), fullPath: "fullPath_example", path: "path_example", allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123), backups: "backups_example", proxiesGenerated: false, proxiesFailed: false, modifiedBy: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), bundles: [MediaFileBundleMini(id: 123, asset: 123, name: "name_example", location: 123, mainfile: MediaFileMini(id: 123, name: "name_example", bundle: 123, fullPath: "fullPath_example", customFields: "TODO", isDir: false, isHardlink: false, mtime: 123, parent: 123, parentFile: "TODO", path: "path_example", present: false, size: 123, volume: VolumeMini(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example")))], syncId: 123, displayName: "displayName_example", hasFiles: false, hasBackups: false, hasCloudLinks: false, checksum: "checksum_example", type: "type_example", thumbnailGenerated: false, matchedScanner: "matchedScanner_example", rating: 123, workflowState: 123, isTemporary: false, created: Date(), modified: Date(), _set: 123) // Asset | 
+let assetUpdate = AssetUpdate(customFields: "TODO", tags: [123], _set: 123) // AssetUpdate | 
 
-MediaLibraryAPI.createAsset(asset: asset).then {
+MediaLibraryAPI.createAsset(assetUpdate: assetUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -314,7 +381,7 @@ MediaLibraryAPI.createAsset(asset: asset).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asset** | [**Asset**](Asset.md) |  | 
+ **assetUpdate** | [**AssetUpdate**](AssetUpdate.md) |  | 
 
 ### Return type
 
@@ -333,21 +400,22 @@ Name | Type | Description  | Notes
 
 # **createAssetRating**
 ```swift
-    open class func createAssetRating( assetRating: AssetRating) -> Promise<AssetRating>
+    open class func createAssetRating( assetRatingUpdate: AssetRatingUpdate,  root: Int? = nil) -> Promise<AssetRating>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let assetRating = AssetRating(id: 123, user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), rating: 123, date: Date(), asset: 123) // AssetRating | 
+let assetRatingUpdate = AssetRatingUpdate(user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), rating: 123, asset: 123) // AssetRatingUpdate | 
+let root = 987 // Int |  (optional)
 
-MediaLibraryAPI.createAssetRating(assetRating: assetRating).then {
+MediaLibraryAPI.createAssetRating(assetRatingUpdate: assetRatingUpdate, root: root).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -360,7 +428,8 @@ MediaLibraryAPI.createAssetRating(assetRating: assetRating).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **assetRating** | [**AssetRating**](AssetRating.md) |  | 
+ **assetRatingUpdate** | [**AssetRatingUpdate**](AssetRatingUpdate.md) |  | 
+ **root** | **Int** |  | [optional] 
 
 ### Return type
 
@@ -377,23 +446,23 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createComment**
+# **createAssetSubtitleLink**
 ```swift
-    open class func createComment( comment: Comment) -> Promise<Comment>
+    open class func createAssetSubtitleLink( assetSubtitleLinkUpdate: AssetSubtitleLinkUpdate) -> Promise<AssetSubtitleLink>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let comment = Comment(id: 123, assignee: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), user: nil, drawing: "TODO", tags: [TagReference(id: 123, roots: [123], name: "name_example", shared: false, color: "color_example")], fullAsset: Asset(id: 123, proxies: [Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123)], defaultProxy: nil, info: "TODO", proxyInfo: "TODO", customFields: "TODO", tags: [123], resolvedPermission: MediaRootPermission(id: 123, user: nil, group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), fullPath: "fullPath_example", path: "path_example", allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123), backups: "backups_example", proxiesGenerated: false, proxiesFailed: false, modifiedBy: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), bundles: [MediaFileBundleMini(id: 123, asset: 123, name: "name_example", location: 123, mainfile: MediaFileMini(id: 123, name: "name_example", bundle: 123, fullPath: "fullPath_example", customFields: "TODO", isDir: false, isHardlink: false, mtime: 123, parent: 123, parentFile: "TODO", path: "path_example", present: false, size: 123, volume: VolumeMini(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example")))], syncId: 123, displayName: "displayName_example", hasFiles: false, hasBackups: false, hasCloudLinks: false, checksum: "checksum_example", type: "type_example", thumbnailGenerated: false, matchedScanner: "matchedScanner_example", rating: 123, workflowState: 123, isTemporary: false, created: Date(), modified: Date(), _set: 123), syncId: 123, date: Date(), text: "text_example", time: 123, isCloud: false, resolved: false, resolvedDate: Date(), asset: 123, root: 123, parent: 123) // Comment | 
+let assetSubtitleLinkUpdate = AssetSubtitleLinkUpdate(subtitle: AssetMiniReference(id: 123, syncId: 123, defaultProxy: Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123), type: "type_example", displayName: "displayName_example", format: FormatMetadata(width: 123, height: 123, framerateFloat: 123, framerate: "framerate_example", duration: 123), info: "TODO", thumbnailGenerated: false), label: "label_example", key: "key_example", asset: 123) // AssetSubtitleLinkUpdate | 
 
-MediaLibraryAPI.createComment(comment: comment).then {
+MediaLibraryAPI.createAssetSubtitleLink(assetSubtitleLinkUpdate: assetSubtitleLinkUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -406,7 +475,57 @@ MediaLibraryAPI.createComment(comment: comment).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **comment** | [**Comment**](Comment.md) |  | 
+ **assetSubtitleLinkUpdate** | [**AssetSubtitleLinkUpdate**](AssetSubtitleLinkUpdate.md) |  | 
+
+### Return type
+
+[**AssetSubtitleLink**](AssetSubtitleLink.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createComment**
+```swift
+    open class func createComment( commentUpdate: CommentUpdate,  root: Int? = nil,  bundle: Int? = nil) -> Promise<Comment>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let commentUpdate = CommentUpdate(assignee: "TODO", user: "TODO", drawing: "TODO", tags: [TagReference(id: 123, roots: [123], name: "name_example", shared: false, color: "color_example")], text: "text_example", time: 123, isCloud: false, resolved: false, resolvedDate: Date(), asset: 123, root: 123, parent: 123) // CommentUpdate | 
+let root = 987 // Int |  (optional)
+let bundle = 987 // Int |  (optional)
+
+MediaLibraryAPI.createComment(commentUpdate: commentUpdate, root: root, bundle: bundle).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **commentUpdate** | [**CommentUpdate**](CommentUpdate.md) |  | 
+ **root** | **Int** |  | [optional] 
+ **bundle** | **Int** |  | [optional] 
 
 ### Return type
 
@@ -425,21 +544,21 @@ Name | Type | Description  | Notes
 
 # **createCustomField**
 ```swift
-    open class func createCustomField( customField: CustomField) -> Promise<CustomField>
+    open class func createCustomField( customFieldUpdate: CustomFieldUpdate) -> Promise<CustomField>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let customField = CustomField(id: 123, labels: ["labels_example"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example") // CustomField | 
+let customFieldUpdate = CustomFieldUpdate(labels: ["TODO"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example") // CustomFieldUpdate | 
 
-MediaLibraryAPI.createCustomField(customField: customField).then {
+MediaLibraryAPI.createCustomField(customFieldUpdate: customFieldUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -452,7 +571,7 @@ MediaLibraryAPI.createCustomField(customField: customField).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customField** | [**CustomField**](CustomField.md) |  | 
+ **customFieldUpdate** | [**CustomFieldUpdate**](CustomFieldUpdate.md) |  | 
 
 ### Return type
 
@@ -471,21 +590,21 @@ Name | Type | Description  | Notes
 
 # **createEditorProject**
 ```swift
-    open class func createEditorProject( editorProject: EditorProject) -> Promise<EditorProject>
+    open class func createEditorProject( editorProjectUpdate: EditorProjectUpdate) -> Promise<EditorProject>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let editorProject = EditorProject(file: 123, parent: 123, parentPath: "parentPath_example", existingFile: 123, format: "format_example", project: "TODO") // EditorProject | 
+let editorProjectUpdate = EditorProjectUpdate(file: 123, parent: 123, parentPath: "parentPath_example", existingFile: 123, format: "format_example", project: "TODO") // EditorProjectUpdate | 
 
-MediaLibraryAPI.createEditorProject(editorProject: editorProject).then {
+MediaLibraryAPI.createEditorProject(editorProjectUpdate: editorProjectUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -498,7 +617,7 @@ MediaLibraryAPI.createEditorProject(editorProject: editorProject).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **editorProject** | [**EditorProject**](EditorProject.md) |  | 
+ **editorProjectUpdate** | [**EditorProjectUpdate**](EditorProjectUpdate.md) |  | 
 
 ### Return type
 
@@ -515,23 +634,23 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createExternalTranscoder**
+# **createEditorSubtitle**
 ```swift
-    open class func createExternalTranscoder( externalTranscoder: ExternalTranscoder) -> Promise<ExternalTranscoder>
+    open class func createEditorSubtitle( editorSubtitleUpdate: EditorSubtitleUpdate) -> Promise<EditorSubtitle>
 ```
 
 
 
-### Required permissions    * User account permission: `media:access` (read) / `system:admin-access` (write) 
+### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let externalTranscoder = ExternalTranscoder(id: 123, pathMappings: ["pathMappings_example"], name: "name_example", type: "type_example", address: "address_example") // ExternalTranscoder | 
+let editorSubtitleUpdate = EditorSubtitleUpdate(file: 123, parent: 123, name: "name_example", format: "format_example", subtitle: Subtitle(info: "TODO", styles: "TODO", events: [SubtitleEvent(start: 123, end: 123, text: "text_example", marked: false, layer: 123, style: "style_example", name: "name_example", marginl: 123, marginr: 123, marginv: 123, effect: "effect_example", type: "type_example")])) // EditorSubtitleUpdate | 
 
-MediaLibraryAPI.createExternalTranscoder(externalTranscoder: externalTranscoder).then {
+MediaLibraryAPI.createEditorSubtitle(editorSubtitleUpdate: editorSubtitleUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -544,7 +663,53 @@ MediaLibraryAPI.createExternalTranscoder(externalTranscoder: externalTranscoder)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **externalTranscoder** | [**ExternalTranscoder**](ExternalTranscoder.md) |  | 
+ **editorSubtitleUpdate** | [**EditorSubtitleUpdate**](EditorSubtitleUpdate.md) |  | 
+
+### Return type
+
+[**EditorSubtitle**](EditorSubtitle.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createExternalTranscoder**
+```swift
+    open class func createExternalTranscoder( externalTranscoderUpdate: ExternalTranscoderUpdate) -> Promise<ExternalTranscoder>
+```
+
+
+
+### Required permissions    * User account permission: `media:access` (read) / `system:admin-access` (write) 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let externalTranscoderUpdate = ExternalTranscoderUpdate(pathMappings: ["TODO"], name: "name_example", type: "type_example", address: "address_example") // ExternalTranscoderUpdate | 
+
+MediaLibraryAPI.createExternalTranscoder(externalTranscoderUpdate: externalTranscoderUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **externalTranscoderUpdate** | [**ExternalTranscoderUpdate**](ExternalTranscoderUpdate.md) |  | 
 
 ### Return type
 
@@ -563,21 +728,21 @@ Name | Type | Description  | Notes
 
 # **createMarker**
 ```swift
-    open class func createMarker( marker: Marker) -> Promise<Marker>
+    open class func createMarker( markerUpdate: MarkerUpdate) -> Promise<Marker>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let marker = Marker(id: 123, veritoneMetadataParser: "veritoneMetadataParser_example", title: "title_example", text: "text_example", tIn: 123, tOut: 123, createdAt: Date(), modifiedAt: Date(), user: 123, asset: 123, comment: 123, veritoneMetadata: 123) // Marker | 
+let markerUpdate = MarkerUpdate(title: "title_example", text: "text_example", tIn: 123, tOut: 123, asset: 123) // MarkerUpdate | 
 
-MediaLibraryAPI.createMarker(marker: marker).then {
+MediaLibraryAPI.createMarker(markerUpdate: markerUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -590,7 +755,7 @@ MediaLibraryAPI.createMarker(marker: marker).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **marker** | [**Marker**](Marker.md) |  | 
+ **markerUpdate** | [**MarkerUpdate**](MarkerUpdate.md) |  | 
 
 ### Return type
 
@@ -609,21 +774,21 @@ Name | Type | Description  | Notes
 
 # **createMediaFileTemplate**
 ```swift
-    open class func createMediaFileTemplate( mediaFileTemplate: MediaFileTemplate) -> Promise<MediaFileTemplate>
+    open class func createMediaFileTemplate( mediaFileTemplateUpdate: MediaFileTemplateUpdate) -> Promise<MediaFileTemplate>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let mediaFileTemplate = MediaFileTemplate(id: 123, file: MediaFileReference(id: 123, volume: VolumeMini(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), info: "TODO", customFields: "TODO", resolvedPermission: MediaRootPermission(id: 123, user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), fullPath: "fullPath_example", path: "path_example", allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123), parentFile: "TODO", root: MediaRootMini(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["labels_example"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), path: "path_example", prefetchThumbnailStrips: false), effectiveCustomFields: "TODO", modifiedBy: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), fullPath: "fullPath_example", isShared: false, isExcluded: false, isHardlink: false, isBookmarked: false, childCount: 123, name: "name_example", path: "path_example", pathhash: "pathhash_example", ancestry: "ancestry_example", isDir: false, totalFiles: 123, size: 123, mtime: 123, present: false, needsRescan: false, isShowroom: false, bundleIndex: 123, modified: Date(), parent: 123, bundle: 123, bookmarkedBy: [123]), name: "name_example") // MediaFileTemplate | 
+let mediaFileTemplateUpdate = MediaFileTemplateUpdate(file: MediaFileReference(id: 123, volume: VolumeMini(id: 123, path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example", name: "name_example"), info: "TODO", customFields: "TODO", resolvedPermission: MediaRootPermission(id: 123, user: "TODO", group: "TODO", fullPath: "fullPath_example", path: "path_example", allowRead: false, allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showSubtitles: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123), parentFile: "TODO", root: MediaRootMini(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["TODO"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example", name: "name_example"), path: "path_example", prefetchThumbnailStrips: false), effectiveCustomFields: "TODO", modifiedBy: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), fullPath: "fullPath_example", isShared: false, isExcluded: false, isHardlink: false, isBookmarked: false, childCount: 123, name: "name_example", path: "path_example", pathhash: "pathhash_example", ancestry: "ancestry_example", isDir: false, totalFiles: 123, size: 123, mtime: 123, present: false, needsRescan: false, isShowroom: false, bundleIndex: 123, modified: Date(), parent: 123, bundle: 123, bookmarkedBy: [123]), name: "name_example") // MediaFileTemplateUpdate | 
 
-MediaLibraryAPI.createMediaFileTemplate(mediaFileTemplate: mediaFileTemplate).then {
+MediaLibraryAPI.createMediaFileTemplate(mediaFileTemplateUpdate: mediaFileTemplateUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -636,7 +801,7 @@ MediaLibraryAPI.createMediaFileTemplate(mediaFileTemplate: mediaFileTemplate).th
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mediaFileTemplate** | [**MediaFileTemplate**](MediaFileTemplate.md) |  | 
+ **mediaFileTemplateUpdate** | [**MediaFileTemplateUpdate**](MediaFileTemplateUpdate.md) |  | 
 
 ### Return type
 
@@ -655,21 +820,21 @@ Name | Type | Description  | Notes
 
 # **createMediaRoot**
 ```swift
-    open class func createMediaRoot( mediaRoot: MediaRoot) -> Promise<MediaRoot>
+    open class func createMediaRoot( mediaRootDetailUpdate: MediaRootDetailUpdate) -> Promise<MediaRootDetail>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let mediaRoot = MediaRoot(id: 123, customFields: [CustomFieldReference(id: 123, labels: ["labels_example"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], workflow: "TODO", aiConfig: "TODO", veritoneConfig: "TODO", volume: VolumeMiniReference(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), fullPath: "fullPath_example", resolvedPermissions: [MediaRootPermission(id: 123, user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), fullPath: "fullPath_example", path: "path_example", allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123)], jobs: [JobReference(id: 123, subtasks: [SubtaskReference(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123)], schedules: [ScheduleReference(id: 123, variables: "TODO", nextRun: Date(), type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123)], allowUsers: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], allowGroups: [nil], startable: false, variableDefinitions: ["TODO"], mediaRoots: [123], webhookUrl: "webhookUrl_example", specialType: 123, name: "name_example", enabled: false, allowOthersToStart: false, allowClientToStart: false, showAsButton: false, inputType: "inputType_example", hook: "hook_example", webhookSecret: "webhookSecret_example", securityContext: 123, partOfWorkflowFor: 123)], workflowJobs: [Job(id: 123, subtasks: [nil], schedules: [nil], allowUsers: [nil], allowGroups: [nil], startable: false, variableDefinitions: ["TODO"], mediaRoots: [123], webhookUrl: "webhookUrl_example", specialType: 123, name: "name_example", enabled: false, allowOthersToStart: false, allowClientToStart: false, showAsButton: false, inputType: "inputType_example", hook: "hook_example", webhookSecret: "webhookSecret_example", securityContext: 123, partOfWorkflowFor: 123)], name: "name_example", path: "path_example", needsRescan: false, viewMode: "viewMode_example", viewStyle: "viewStyle_example", viewDefaultTab: "viewDefaultTab_example", showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showMarkers: false, showHistory: false, showAiMetadata: false, prefetchThumbnailStrips: false, cover: "cover_example", nameField: "nameField_example", shareComments: false, shareLinkDuration: 123, defaultProxyProfile: 123, cloudProxyProfile: 123, veritoneConnection: 123, veritoneProxyProfile: 123, aiConnection: 123, aiProxyProfile: 123, proxyProfiles: [123], tags: [123]) // MediaRoot | 
+let mediaRootDetailUpdate = MediaRootDetailUpdate(customFields: [CustomFieldReference(id: 123, labels: ["TODO"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], workflow: "TODO", volume: VolumeMiniReference(id: 123, path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example", name: "name_example"), jobs: [JobReference(id: 123, subtasks: [SubtaskReference(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123)], schedules: [ScheduleReference(id: 123, variables: "TODO", nextRun: Date(), type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123)], allowUsers: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], allowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ldap: 123, members: [123])], startable: false, variableDefinitions: ["TODO"], mediaRoots: [123], webhookUrl: "webhookUrl_example", specialType: 123, name: "name_example", enabled: false, allowOthersToStart: false, allowClientToStart: false, showAsButton: false, inputType: "inputType_example", hook: "hook_example", webhookSecret: "webhookSecret_example", securityContext: 123, partOfWorkflowFor: 123)], aiConfig: "TODO", veritoneConfig: "TODO", name: "name_example", path: "path_example", needsRescan: false, viewMode: "viewMode_example", viewStyle: "viewStyle_example", viewDefaultTab: "viewDefaultTab_example", showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showSubtitles: false, showMarkers: false, showHistory: false, showAiMetadata: false, prefetchThumbnailStrips: false, cover: "cover_example", nameField: "nameField_example", shareComments: false, shareLinkDuration: 123, defaultProxyProfile: 123, cloudProxyProfile: 123, veritoneConnection: 123, veritoneProxyProfile: 123, aiConnection: 123, aiProxyProfile: 123, proxyProfiles: [123], tags: [123]) // MediaRootDetailUpdate | 
 
-MediaLibraryAPI.createMediaRoot(mediaRoot: mediaRoot).then {
+MediaLibraryAPI.createMediaRoot(mediaRootDetailUpdate: mediaRootDetailUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -682,11 +847,11 @@ MediaLibraryAPI.createMediaRoot(mediaRoot: mediaRoot).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mediaRoot** | [**MediaRoot**](MediaRoot.md) |  | 
+ **mediaRootDetailUpdate** | [**MediaRootDetailUpdate**](MediaRootDetailUpdate.md) |  | 
 
 ### Return type
 
-[**MediaRoot**](MediaRoot.md)
+[**MediaRootDetail**](MediaRootDetail.md)
 
 ### Authorization
 
@@ -701,21 +866,21 @@ Name | Type | Description  | Notes
 
 # **createMediaRootPermission**
 ```swift
-    open class func createMediaRootPermission( mediaRootPermission: MediaRootPermission) -> Promise<MediaRootPermission>
+    open class func createMediaRootPermission( mediaRootPermissionUpdate: MediaRootPermissionUpdate) -> Promise<MediaRootPermission>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let mediaRootPermission = MediaRootPermission(id: 123, user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), fullPath: "fullPath_example", path: "path_example", allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123) // MediaRootPermission | 
+let mediaRootPermissionUpdate = MediaRootPermissionUpdate(user: "TODO", group: "TODO", path: "path_example", allowRead: false, allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showSubtitles: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123) // MediaRootPermissionUpdate | 
 
-MediaLibraryAPI.createMediaRootPermission(mediaRootPermission: mediaRootPermission).then {
+MediaLibraryAPI.createMediaRootPermission(mediaRootPermissionUpdate: mediaRootPermissionUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -728,7 +893,7 @@ MediaLibraryAPI.createMediaRootPermission(mediaRootPermission: mediaRootPermissi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **mediaRootPermission** | [**MediaRootPermission**](MediaRootPermission.md) |  | 
+ **mediaRootPermissionUpdate** | [**MediaRootPermissionUpdate**](MediaRootPermissionUpdate.md) |  | 
 
 ### Return type
 
@@ -747,21 +912,21 @@ Name | Type | Description  | Notes
 
 # **createMediaTag**
 ```swift
-    open class func createMediaTag( unfilteredTag: UnfilteredTag) -> Promise<UnfilteredTag>
+    open class func createMediaTag( unfilteredTagUpdate: UnfilteredTagUpdate) -> Promise<UnfilteredTag>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let unfilteredTag = UnfilteredTag(id: 123, roots: [123], name: "name_example", shared: false, color: "color_example") // UnfilteredTag | 
+let unfilteredTagUpdate = UnfilteredTagUpdate(roots: [123], name: "name_example", shared: false, color: "color_example") // UnfilteredTagUpdate | 
 
-MediaLibraryAPI.createMediaTag(unfilteredTag: unfilteredTag).then {
+MediaLibraryAPI.createMediaTag(unfilteredTagUpdate: unfilteredTagUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -774,7 +939,7 @@ MediaLibraryAPI.createMediaTag(unfilteredTag: unfilteredTag).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **unfilteredTag** | [**UnfilteredTag**](UnfilteredTag.md) |  | 
+ **unfilteredTagUpdate** | [**UnfilteredTagUpdate**](UnfilteredTagUpdate.md) |  | 
 
 ### Return type
 
@@ -793,21 +958,21 @@ Name | Type | Description  | Notes
 
 # **createProxyProfile**
 ```swift
-    open class func createProxyProfile( proxyProfile: ProxyProfile) -> Promise<ProxyProfile>
+    open class func createProxyProfile( proxyProfileUpdate: ProxyProfileUpdate) -> Promise<ProxyProfile>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let proxyProfile = ProxyProfile(id: 123, name: "name_example", proxyGenerator: "proxyGenerator_example", resolution: "resolution_example", rateControl: 123, crf: 123, bitrate: 123, audioBitrate: 123, variantsLimit: 123, enableDenseFilmstrip: false, enableWatermark: false, watermarkImage: "watermarkImage_example", watermarkPosition: 123, watermarkOpacity: 123, watermarkSize: 123, enableTimecode: false, timecodePosition: 123, timecodeOpacity: 123, timecodeSize: 123, lut: "lut_example", hotfolderCopyTo: "hotfolderCopyTo_example", hotfolderReadFrom: "hotfolderReadFrom_example", hotfolderQueueTimeout: 123, hotfolderEncodeTimeout: 123, vantageWorkflowId: "vantageWorkflowId_example", externalTranscoderStagingPath: "externalTranscoderStagingPath_example", externalTranscoder: 123) // ProxyProfile | 
+let proxyProfileUpdate = ProxyProfileUpdate(name: "name_example", proxyGenerator: "proxyGenerator_example", resolution: "resolution_example", rateControl: "rateControl_example", crf: 123, bitrate: 123, audioBitrate: 123, variantsLimit: 123, enableDenseFilmstrip: false, enableWatermark: false, watermarkImage: "watermarkImage_example", watermarkPosition: "watermarkPosition_example", watermarkOpacity: 123, watermarkSize: 123, enableTimecode: false, timecodePosition: "timecodePosition_example", timecodeOpacity: 123, timecodeSize: 123, lut: "lut_example", hotfolderCopyTo: "hotfolderCopyTo_example", hotfolderReadFrom: "hotfolderReadFrom_example", hotfolderQueueTimeout: 123, hotfolderEncodeTimeout: 123, vantageWorkflowId: "vantageWorkflowId_example", externalTranscoderStagingPath: "externalTranscoderStagingPath_example", externalTranscoder: 123) // ProxyProfileUpdate | 
 
-MediaLibraryAPI.createProxyProfile(proxyProfile: proxyProfile).then {
+MediaLibraryAPI.createProxyProfile(proxyProfileUpdate: proxyProfileUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -820,7 +985,7 @@ MediaLibraryAPI.createProxyProfile(proxyProfile: proxyProfile).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proxyProfile** | [**ProxyProfile**](ProxyProfile.md) |  | 
+ **proxyProfileUpdate** | [**ProxyProfileUpdate**](ProxyProfileUpdate.md) |  | 
 
 ### Return type
 
@@ -837,23 +1002,23 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createSubclip**
+# **createSavedSearch**
 ```swift
-    open class func createSubclip( subclip: Subclip) -> Promise<Subclip>
+    open class func createSavedSearch( savedSearchUpdate: SavedSearchUpdate) -> Promise<SavedSearch>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let subclip = Subclip(id: 123, asset: AssetMiniReference(id: 123, syncId: 123, defaultProxy: Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123), type: "type_example", displayName: "displayName_example", info: "TODO", thumbnailGenerated: false), rendered: nil, shared: false, date: Date(), name: "name_example", tIn: 123, tOut: 123, user: 123, root: MediaRootMiniReference(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["labels_example"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), path: "path_example", prefetchThumbnailStrips: false)) // Subclip | 
+let savedSearchUpdate = SavedSearchUpdate(root: "TODO", query: ["query_example"], name: "name_example", shared: false) // SavedSearchUpdate | 
 
-MediaLibraryAPI.createSubclip(subclip: subclip).then {
+MediaLibraryAPI.createSavedSearch(savedSearchUpdate: savedSearchUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -866,7 +1031,53 @@ MediaLibraryAPI.createSubclip(subclip: subclip).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subclip** | [**Subclip**](Subclip.md) |  | 
+ **savedSearchUpdate** | [**SavedSearchUpdate**](SavedSearchUpdate.md) |  | 
+
+### Return type
+
+[**SavedSearch**](SavedSearch.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createSubclip**
+```swift
+    open class func createSubclip( subclipUpdate: SubclipUpdate) -> Promise<Subclip>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let subclipUpdate = SubclipUpdate(asset: AssetMiniReference(id: 123, syncId: 123, defaultProxy: Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123), type: "type_example", displayName: "displayName_example", format: FormatMetadata(width: 123, height: 123, framerateFloat: 123, framerate: "framerate_example", duration: 123), info: "TODO", thumbnailGenerated: false), rendered: "TODO", shared: false, name: "name_example", tIn: 123, tOut: 123, root: MediaRootMiniReference(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["TODO"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example", name: "name_example"), path: "path_example", prefetchThumbnailStrips: false)) // SubclipUpdate | 
+
+MediaLibraryAPI.createSubclip(subclipUpdate: subclipUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subclipUpdate** | [**SubclipUpdate**](SubclipUpdate.md) |  | 
 
 ### Return type
 
@@ -885,21 +1096,21 @@ Name | Type | Description  | Notes
 
 # **createSubclipClipboardEntry**
 ```swift
-    open class func createSubclipClipboardEntry( subclipClipboardEntry: SubclipClipboardEntry) -> Promise<SubclipClipboardEntry>
+    open class func createSubclipClipboardEntry( subclipClipboardEntryUpdate: SubclipClipboardEntryUpdate) -> Promise<SubclipClipboardEntry>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let subclipClipboardEntry = SubclipClipboardEntry(id: 123, cut: SubclipReference(id: 123, asset: AssetMiniReference(id: 123, syncId: 123, defaultProxy: Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123), type: "type_example", displayName: "displayName_example", info: "TODO", thumbnailGenerated: false), rendered: nil, shared: false, date: Date(), name: "name_example", tIn: 123, tOut: 123, user: 123, root: MediaRootMiniReference(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["labels_example"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), path: "path_example", prefetchThumbnailStrips: false)), bundle: MediaFileBundleMiniReference(id: 123, asset: 123, name: "name_example", location: 123, mainfile: MediaFileMini(id: 123, name: "name_example", bundle: 123, fullPath: "fullPath_example", customFields: "TODO", isDir: false, isHardlink: false, mtime: 123, parent: 123, parentFile: "TODO", path: "path_example", present: false, size: 123, volume: VolumeMini(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"))), date: Date()) // SubclipClipboardEntry | 
+let subclipClipboardEntryUpdate = SubclipClipboardEntryUpdate(cut: SubclipReference(id: 123, asset: AssetMiniReference(id: 123, syncId: 123, defaultProxy: Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123), type: "type_example", displayName: "displayName_example", format: FormatMetadata(width: 123, height: 123, framerateFloat: 123, framerate: "framerate_example", duration: 123), info: "TODO", thumbnailGenerated: false), rendered: "TODO", shared: false, date: Date(), name: "name_example", tIn: 123, tOut: 123, user: 123, root: MediaRootMiniReference(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["TODO"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example", name: "name_example"), path: "path_example", prefetchThumbnailStrips: false)), bundle: "TODO") // SubclipClipboardEntryUpdate | 
 
-MediaLibraryAPI.createSubclipClipboardEntry(subclipClipboardEntry: subclipClipboardEntry).then {
+MediaLibraryAPI.createSubclipClipboardEntry(subclipClipboardEntryUpdate: subclipClipboardEntryUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -912,11 +1123,57 @@ MediaLibraryAPI.createSubclipClipboardEntry(subclipClipboardEntry: subclipClipbo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subclipClipboardEntry** | [**SubclipClipboardEntry**](SubclipClipboardEntry.md) |  | 
+ **subclipClipboardEntryUpdate** | [**SubclipClipboardEntryUpdate**](SubclipClipboardEntryUpdate.md) |  | 
 
 ### Return type
 
 [**SubclipClipboardEntry**](SubclipClipboardEntry.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createSubtitleClipboardEntry**
+```swift
+    open class func createSubtitleClipboardEntry( subtitleClipboardEntryUpdate: SubtitleClipboardEntryUpdate) -> Promise<SubtitleClipboardEntry>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let subtitleClipboardEntryUpdate = SubtitleClipboardEntryUpdate(subtitle: AssetMiniReference(id: 123, syncId: 123, defaultProxy: Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123), type: "type_example", displayName: "displayName_example", format: FormatMetadata(width: 123, height: 123, framerateFloat: 123, framerate: "framerate_example", duration: 123), info: "TODO", thumbnailGenerated: false), bundle: "TODO") // SubtitleClipboardEntryUpdate | 
+
+MediaLibraryAPI.createSubtitleClipboardEntry(subtitleClipboardEntryUpdate: subtitleClipboardEntryUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subtitleClipboardEntryUpdate** | [**SubtitleClipboardEntryUpdate**](SubtitleClipboardEntryUpdate.md) |  | 
+
+### Return type
+
+[**SubtitleClipboardEntry**](SubtitleClipboardEntry.md)
 
 ### Authorization
 
@@ -938,7 +1195,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -977,21 +1234,22 @@ Void (empty response body)
 
 # **deleteAssetRating**
 ```swift
-    open class func deleteAssetRating( id: Int) -> Promise<Void>
+    open class func deleteAssetRating( id: Int,  root: Int? = nil) -> Promise<Void>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Rating.
+let root = 987 // Int |  (optional)
 
-MediaLibraryAPI.deleteAssetRating(id: id).then {
+MediaLibraryAPI.deleteAssetRating(id: id, root: root).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -1005,6 +1263,53 @@ MediaLibraryAPI.deleteAssetRating(id: id).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this Rating. | 
+ **root** | **Int** |  | [optional] 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteAssetSubtitleLink**
+```swift
+    open class func deleteAssetSubtitleLink( id: Int) -> Promise<Void>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this Asset subtitle file link.
+
+MediaLibraryAPI.deleteAssetSubtitleLink(id: id).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this Asset subtitle file link. | 
 
 ### Return type
 
@@ -1030,7 +1335,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1076,7 +1381,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1122,7 +1427,7 @@ Void (empty response body)
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1168,7 +1473,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1214,7 +1519,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1260,7 +1565,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1306,7 +1611,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1352,7 +1657,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1398,7 +1703,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1444,7 +1749,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1490,7 +1795,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1536,7 +1841,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:updates:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1582,7 +1887,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1628,7 +1933,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1665,6 +1970,52 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **deleteSavedSearch**
+```swift
+    open class func deleteSavedSearch( id: Int) -> Promise<Void>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this saved search.
+
+MediaLibraryAPI.deleteSavedSearch(id: id).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this saved search. | 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **deleteSubclip**
 ```swift
     open class func deleteSubclip( id: Int) -> Promise<Void>
@@ -1674,7 +2025,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1720,7 +2071,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1757,6 +2108,52 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **deleteSubtitleClipboardEntry**
+```swift
+    open class func deleteSubtitleClipboardEntry( id: Int) -> Promise<Void>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this subtitle clipboard entry.
+
+MediaLibraryAPI.deleteSubtitleClipboardEntry(id: id).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this subtitle clipboard entry. | 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **discoverMedia**
 ```swift
     open class func discoverMedia( scannerDiscoverEndpointRequest: ScannerDiscoverEndpointRequest) -> Promise<MediaFile>
@@ -1766,7 +2163,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1812,7 +2209,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1860,7 +2257,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1906,7 +2303,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1952,7 +2349,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2004,7 +2401,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2056,7 +2453,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2102,7 +2499,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2156,7 +2553,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2193,6 +2590,54 @@ Void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **extractStream**
+```swift
+    open class func extractStream( id: Int,  extractRequest: ExtractRequest) -> Promise<TaskInfo>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this Asset.
+let extractRequest = ExtractRequest(stream: 123, destination: "destination_example") // ExtractRequest | 
+
+MediaLibraryAPI.extractStream(id: id, extractRequest: extractRequest).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this Asset. | 
+ **extractRequest** | [**ExtractRequest**](ExtractRequest.md) |  | 
+
+### Return type
+
+[**TaskInfo**](TaskInfo.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **forgetDeletedMediaFiles**
 ```swift
     open class func forgetDeletedMediaFiles( id: Int) -> Promise<Void>
@@ -2202,7 +2647,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2248,7 +2693,7 @@ Void (empty response body)
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2287,20 +2732,20 @@ Name | Type | Description  | Notes
 
 # **getAllAssetProjectLinks**
 ```swift
-    open class func getAllAssetProjectLinks( asset: String? = nil,  project: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[AssetProjectLink]>
+    open class func getAllAssetProjectLinks( asset: Double? = nil,  project: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[AssetProjectLink]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let asset = "asset_example" // String | Filter the returned list by `asset`. (optional)
-let project = "project_example" // String | Filter the returned list by `project`. (optional)
+let asset = 987 // Double | Filter the returned list by `asset`. (optional)
+let project = 987 // Double | Filter the returned list by `project`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -2318,8 +2763,8 @@ MediaLibraryAPI.getAllAssetProjectLinks(asset: asset, project: project, ordering
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asset** | **String** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
- **project** | **String** | Filter the returned list by &#x60;project&#x60;. | [optional] 
+ **asset** | **Double** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
+ **project** | **Double** | Filter the returned list by &#x60;project&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -2341,20 +2786,20 @@ Name | Type | Description  | Notes
 
 # **getAllAssetRatings**
 ```swift
-    open class func getAllAssetRatings( user: String? = nil,  asset: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[AssetRating]>
+    open class func getAllAssetRatings( user: Double? = nil,  asset: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[AssetRating]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let user = "user_example" // String | Filter the returned list by `user`. (optional)
-let asset = "asset_example" // String | Filter the returned list by `asset`. (optional)
+let user = 987 // Double | Filter the returned list by `user`. (optional)
+let asset = 987 // Double | Filter the returned list by `asset`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -2372,8 +2817,8 @@ MediaLibraryAPI.getAllAssetRatings(user: user, asset: asset, ordering: ordering,
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user** | **String** | Filter the returned list by &#x60;user&#x60;. | [optional] 
- **asset** | **String** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
+ **user** | **Double** | Filter the returned list by &#x60;user&#x60;. | [optional] 
+ **asset** | **Double** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -2393,21 +2838,75 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getAllAssetTapeBackups**
+# **getAllAssetSubtitleLinks**
 ```swift
-    open class func getAllAssetTapeBackups( asset: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  includeAsset: Bool? = nil,  advancedSearch: String? = nil) -> Promise<[AssetBackup]>
+    open class func getAllAssetSubtitleLinks( asset: Double? = nil,  subtitle: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[AssetSubtitleLink]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let asset = "asset_example" // String | Filter the returned list by `asset`. (optional)
+let asset = 987 // Double | Filter the returned list by `asset`. (optional)
+let subtitle = 987 // Double | Filter the returned list by `subtitle`. (optional)
+let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
+let limit = 987 // Int | Number of results to return per page. (optional)
+let offset = 987 // Int | The initial index from which to return the results. (optional)
+
+MediaLibraryAPI.getAllAssetSubtitleLinks(asset: asset, subtitle: subtitle, ordering: ordering, limit: limit, offset: offset).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **asset** | **Double** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
+ **subtitle** | **Double** | Filter the returned list by &#x60;subtitle&#x60;. | [optional] 
+ **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **limit** | **Int** | Number of results to return per page. | [optional] 
+ **offset** | **Int** | The initial index from which to return the results. | [optional] 
+
+### Return type
+
+[**[AssetSubtitleLink]**](AssetSubtitleLink.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAllAssetTapeBackups**
+```swift
+    open class func getAllAssetTapeBackups( asset: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  includeAsset: Bool? = nil,  advancedSearch: String? = nil) -> Promise<[AssetBackup]>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let asset = 987 // Double | Filter the returned list by `asset`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -2427,7 +2926,7 @@ MediaLibraryAPI.getAllAssetTapeBackups(asset: asset, ordering: ordering, limit: 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asset** | **String** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
+ **asset** | **Double** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -2451,21 +2950,21 @@ Name | Type | Description  | Notes
 
 # **getAllAssets**
 ```swift
-    open class func getAllAssets( syncId: String? = nil,  displayName: String? = nil,  _set: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  includeProxies: Bool? = nil,  includeModifiedBy: Bool? = nil,  resolveAssetPermission: Bool? = nil,  forRoot: Int? = nil) -> Promise<[Asset]>
+    open class func getAllAssets( syncId: String? = nil,  displayName: String? = nil,  _set: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  includeProxies: Bool? = nil,  includeModifiedBy: Bool? = nil,  resolveAssetPermission: Bool? = nil,  forRoot: Int? = nil) -> Promise<[Asset]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let syncId = "syncId_example" // String | Filter the returned list by `sync_id`. (optional)
 let displayName = "displayName_example" // String | Filter the returned list by `display_name`. (optional)
-let _set = "_set_example" // String | Filter the returned list by `set`. (optional)
+let _set = 987 // Double | Filter the returned list by `set`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -2489,7 +2988,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **syncId** | **String** | Filter the returned list by &#x60;sync_id&#x60;. | [optional] 
  **displayName** | **String** | Filter the returned list by &#x60;display_name&#x60;. | [optional] 
- **_set** | **String** | Filter the returned list by &#x60;set&#x60;. | [optional] 
+ **_set** | **Double** | Filter the returned list by &#x60;set&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -2515,21 +3014,21 @@ Name | Type | Description  | Notes
 
 # **getAllBundlesForMediaRoot**
 ```swift
-    open class func getAllBundlesForMediaRoot( root: String,  asset: String? = nil,  location: String? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaFileBundle]>
+    open class func getAllBundlesForMediaRoot( root: String,  asset: Double? = nil,  location: Double? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaFileBundle]>
 ```
 
 
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let root = "root_example" // String | 
-let asset = "asset_example" // String | Filter the returned list by `asset`. (optional)
-let location = "location_example" // String | Filter the returned list by `location`. (optional)
+let asset = 987 // Double | Filter the returned list by `asset`. (optional)
+let location = 987 // Double | Filter the returned list by `location`. (optional)
 let sharedViaTokens = "sharedViaTokens_example" // String | Filter the returned list by `shared_via_tokens`. (optional)
 let sharedViaTokensToken = "sharedViaTokensToken_example" // String | Filter the returned list by `shared_via_tokens__token`. (optional)
 let name = "name_example" // String | Filter the returned list by `name`. (optional)
@@ -2551,8 +3050,70 @@ MediaLibraryAPI.getAllBundlesForMediaRoot(root: root, asset: asset, location: lo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **root** | **String** |  | 
- **asset** | **String** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
- **location** | **String** | Filter the returned list by &#x60;location&#x60;. | [optional] 
+ **asset** | **Double** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
+ **location** | **Double** | Filter the returned list by &#x60;location&#x60;. | [optional] 
+ **sharedViaTokens** | **String** | Filter the returned list by &#x60;shared_via_tokens&#x60;. | [optional] 
+ **sharedViaTokensToken** | **String** | Filter the returned list by &#x60;shared_via_tokens__token&#x60;. | [optional] 
+ **name** | **String** | Filter the returned list by &#x60;name&#x60;. | [optional] 
+ **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **limit** | **Int** | Number of results to return per page. | [optional] 
+ **offset** | **Int** | The initial index from which to return the results. | [optional] 
+
+### Return type
+
+[**[MediaFileBundle]**](MediaFileBundle.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAllBundlesInSubtree**
+```swift
+    open class func getAllBundlesInSubtree( file: String,  asset: Double? = nil,  location: Double? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaFileBundle]>
+```
+
+
+
+### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let file = "file_example" // String | 
+let asset = 987 // Double | Filter the returned list by `asset`. (optional)
+let location = 987 // Double | Filter the returned list by `location`. (optional)
+let sharedViaTokens = "sharedViaTokens_example" // String | Filter the returned list by `shared_via_tokens`. (optional)
+let sharedViaTokensToken = "sharedViaTokensToken_example" // String | Filter the returned list by `shared_via_tokens__token`. (optional)
+let name = "name_example" // String | Filter the returned list by `name`. (optional)
+let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
+let limit = 987 // Int | Number of results to return per page. (optional)
+let offset = 987 // Int | The initial index from which to return the results. (optional)
+
+MediaLibraryAPI.getAllBundlesInSubtree(file: file, asset: asset, location: location, sharedViaTokens: sharedViaTokens, sharedViaTokensToken: sharedViaTokensToken, name: name, ordering: ordering, limit: limit, offset: offset).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | **String** |  | 
+ **asset** | **Double** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
+ **location** | **Double** | Filter the returned list by &#x60;location&#x60;. | [optional] 
  **sharedViaTokens** | **String** | Filter the returned list by &#x60;shared_via_tokens&#x60;. | [optional] 
  **sharedViaTokensToken** | **String** | Filter the returned list by &#x60;shared_via_tokens__token&#x60;. | [optional] 
  **name** | **String** | Filter the returned list by &#x60;name&#x60;. | [optional] 
@@ -2577,20 +3138,20 @@ Name | Type | Description  | Notes
 
 # **getAllClickLinks**
 ```swift
-    open class func getAllClickLinks( asset: String? = nil,  connection: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[AssetCloudLink]>
+    open class func getAllClickLinks( asset: Double? = nil,  connection: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[AssetCloudLink]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let asset = "asset_example" // String | Filter the returned list by `asset`. (optional)
-let connection = "connection_example" // String | Filter the returned list by `connection`. (optional)
+let asset = 987 // Double | Filter the returned list by `asset`. (optional)
+let connection = 987 // Double | Filter the returned list by `connection`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -2608,8 +3169,8 @@ MediaLibraryAPI.getAllClickLinks(asset: asset, connection: connection, ordering:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asset** | **String** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
- **connection** | **String** | Filter the returned list by &#x60;connection&#x60;. | [optional] 
+ **asset** | **Double** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
+ **connection** | **Double** | Filter the returned list by &#x60;connection&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -2631,21 +3192,21 @@ Name | Type | Description  | Notes
 
 # **getAllComments**
 ```swift
-    open class func getAllComments( asset: String? = nil,  root: String? = nil,  user: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  forRoot: Int? = nil,  tasksForUser: Int? = nil,  includeFullAsset: Bool? = nil,  advancedSearch: String? = nil) -> Promise<[Comment]>
+    open class func getAllComments( asset: Double? = nil,  root: Double? = nil,  user: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  forRoot: Int? = nil,  tasksForUser: Int? = nil,  includeFullAsset: Bool? = nil,  advancedSearch: String? = nil) -> Promise<[Comment]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let asset = "asset_example" // String | Filter the returned list by `asset`. (optional)
-let root = "root_example" // String | Filter the returned list by `root`. (optional)
-let user = "user_example" // String | Filter the returned list by `user`. (optional)
+let asset = 987 // Double | Filter the returned list by `asset`. (optional)
+let root = 987 // Double | Filter the returned list by `root`. (optional)
+let user = 987 // Double | Filter the returned list by `user`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -2667,9 +3228,9 @@ MediaLibraryAPI.getAllComments(asset: asset, root: root, user: user, ordering: o
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asset** | **String** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
- **root** | **String** | Filter the returned list by &#x60;root&#x60;. | [optional] 
- **user** | **String** | Filter the returned list by &#x60;user&#x60;. | [optional] 
+ **asset** | **Double** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
+ **root** | **Double** | Filter the returned list by &#x60;root&#x60;. | [optional] 
+ **user** | **Double** | Filter the returned list by &#x60;user&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -2702,7 +3263,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2752,7 +3313,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2799,20 +3360,20 @@ Name | Type | Description  | Notes
 
 # **getAllMarkers**
 ```swift
-    open class func getAllMarkers( asset: String? = nil,  user: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Marker]>
+    open class func getAllMarkers( asset: Double? = nil,  user: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Marker]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let asset = "asset_example" // String | Filter the returned list by `asset`. (optional)
-let user = "user_example" // String | Filter the returned list by `user`. (optional)
+let asset = 987 // Double | Filter the returned list by `asset`. (optional)
+let user = 987 // Double | Filter the returned list by `user`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -2830,8 +3391,8 @@ MediaLibraryAPI.getAllMarkers(asset: asset, user: user, ordering: ordering, limi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asset** | **String** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
- **user** | **String** | Filter the returned list by &#x60;user&#x60;. | [optional] 
+ **asset** | **Double** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
+ **user** | **Double** | Filter the returned list by &#x60;user&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -2853,20 +3414,20 @@ Name | Type | Description  | Notes
 
 # **getAllMediaFileBundles**
 ```swift
-    open class func getAllMediaFileBundles( asset: String? = nil,  location: String? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  excludeDeleted: Bool? = nil,  excludeUnrecognized: Bool? = nil,  includeProxies: Bool? = nil,  includeParents: Bool? = nil,  advancedSearch: String? = nil) -> Promise<[MediaFileBundle]>
+    open class func getAllMediaFileBundles( asset: Double? = nil,  location: Double? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  excludeDeleted: Bool? = nil,  excludeUnrecognized: Bool? = nil,  includeProxies: Bool? = nil,  includeParents: Bool? = nil,  advancedSearch: String? = nil) -> Promise<[MediaFileBundle]>
 ```
 
 
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let asset = "asset_example" // String | Filter the returned list by `asset`. (optional)
-let location = "location_example" // String | Filter the returned list by `location`. (optional)
+let asset = 987 // Double | Filter the returned list by `asset`. (optional)
+let location = 987 // Double | Filter the returned list by `location`. (optional)
 let sharedViaTokens = "sharedViaTokens_example" // String | Filter the returned list by `shared_via_tokens`. (optional)
 let sharedViaTokensToken = "sharedViaTokensToken_example" // String | Filter the returned list by `shared_via_tokens__token`. (optional)
 let name = "name_example" // String | Filter the returned list by `name`. (optional)
@@ -2892,8 +3453,8 @@ MediaLibraryAPI.getAllMediaFileBundles(asset: asset, location: location, sharedV
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asset** | **String** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
- **location** | **String** | Filter the returned list by &#x60;location&#x60;. | [optional] 
+ **asset** | **Double** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
+ **location** | **Double** | Filter the returned list by &#x60;location&#x60;. | [optional] 
  **sharedViaTokens** | **String** | Filter the returned list by &#x60;shared_via_tokens&#x60;. | [optional] 
  **sharedViaTokensToken** | **String** | Filter the returned list by &#x60;shared_via_tokens__token&#x60;. | [optional] 
  **name** | **String** | Filter the returned list by &#x60;name&#x60;. | [optional] 
@@ -2930,7 +3491,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -2973,26 +3534,26 @@ Name | Type | Description  | Notes
 
 # **getAllMediaFiles**
 ```swift
-    open class func getAllMediaFiles( bundle: String? = nil,  bundleIn: String? = nil,  parent: String? = nil,  name: String? = nil,  isDir: String? = nil,  isShowroom: String? = nil,  present: String? = nil,  volume: String? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  resolveFilePermission: Bool? = nil,  includeModifiedBy: Bool? = nil,  includeEffectiveCustomFields: Bool? = nil,  includeRoot: Bool? = nil,  includeParents: Bool? = nil,  advancedSearch: String? = nil) -> Promise<[MediaFile]>
+    open class func getAllMediaFiles( bundle: Double? = nil,  bundleIn: String? = nil,  parent: Double? = nil,  name: String? = nil,  isDir: String? = nil,  isShowroom: String? = nil,  present: String? = nil,  volume: Double? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  resolveFilePermission: Bool? = nil,  includeModifiedBy: Bool? = nil,  includeEffectiveCustomFields: Bool? = nil,  includeRoot: Bool? = nil,  includeParents: Bool? = nil,  advancedSearch: String? = nil) -> Promise<[MediaFile]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let bundle = "bundle_example" // String | Filter the returned list by `bundle`. (optional)
+let bundle = 987 // Double | Filter the returned list by `bundle`. (optional)
 let bundleIn = "bundleIn_example" // String | Multiple values may be separated by commas. (optional)
-let parent = "parent_example" // String | Filter the returned list by `parent`. (optional)
+let parent = 987 // Double | Filter the returned list by `parent`. (optional)
 let name = "name_example" // String | Filter the returned list by `name`. (optional)
 let isDir = "isDir_example" // String | Filter the returned list by `is_dir`. (optional)
 let isShowroom = "isShowroom_example" // String | Filter the returned list by `is_showroom`. (optional)
 let present = "present_example" // String | Filter the returned list by `present`. (optional)
-let volume = "volume_example" // String | Filter the returned list by `volume`. (optional)
+let volume = 987 // Double | Filter the returned list by `volume`. (optional)
 let sharedViaTokens = "sharedViaTokens_example" // String | Filter the returned list by `shared_via_tokens`. (optional)
 let sharedViaTokensToken = "sharedViaTokensToken_example" // String | Filter the returned list by `shared_via_tokens__token`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
@@ -3018,14 +3579,14 @@ MediaLibraryAPI.getAllMediaFiles(bundle: bundle, bundleIn: bundleIn, parent: par
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bundle** | **String** | Filter the returned list by &#x60;bundle&#x60;. | [optional] 
+ **bundle** | **Double** | Filter the returned list by &#x60;bundle&#x60;. | [optional] 
  **bundleIn** | **String** | Multiple values may be separated by commas. | [optional] 
- **parent** | **String** | Filter the returned list by &#x60;parent&#x60;. | [optional] 
+ **parent** | **Double** | Filter the returned list by &#x60;parent&#x60;. | [optional] 
  **name** | **String** | Filter the returned list by &#x60;name&#x60;. | [optional] 
  **isDir** | **String** | Filter the returned list by &#x60;is_dir&#x60;. | [optional] 
  **isShowroom** | **String** | Filter the returned list by &#x60;is_showroom&#x60;. | [optional] 
  **present** | **String** | Filter the returned list by &#x60;present&#x60;. | [optional] 
- **volume** | **String** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
+ **volume** | **Double** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
  **sharedViaTokens** | **String** | Filter the returned list by &#x60;shared_via_tokens&#x60;. | [optional] 
  **sharedViaTokensToken** | **String** | Filter the returned list by &#x60;shared_via_tokens__token&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
@@ -3062,7 +3623,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3101,27 +3662,27 @@ Name | Type | Description  | Notes
 
 # **getAllMediaFilesForMediaRoot**
 ```swift
-    open class func getAllMediaFilesForMediaRoot( root: String,  bundle: String? = nil,  bundleIn: String? = nil,  parent: String? = nil,  name: String? = nil,  isDir: String? = nil,  isShowroom: String? = nil,  present: String? = nil,  volume: String? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaFile]>
+    open class func getAllMediaFilesForMediaRoot( root: String,  bundle: Double? = nil,  bundleIn: String? = nil,  parent: Double? = nil,  name: String? = nil,  isDir: String? = nil,  isShowroom: String? = nil,  present: String? = nil,  volume: Double? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaFile]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let root = "root_example" // String | 
-let bundle = "bundle_example" // String | Filter the returned list by `bundle`. (optional)
+let bundle = 987 // Double | Filter the returned list by `bundle`. (optional)
 let bundleIn = "bundleIn_example" // String | Multiple values may be separated by commas. (optional)
-let parent = "parent_example" // String | Filter the returned list by `parent`. (optional)
+let parent = 987 // Double | Filter the returned list by `parent`. (optional)
 let name = "name_example" // String | Filter the returned list by `name`. (optional)
 let isDir = "isDir_example" // String | Filter the returned list by `is_dir`. (optional)
 let isShowroom = "isShowroom_example" // String | Filter the returned list by `is_showroom`. (optional)
 let present = "present_example" // String | Filter the returned list by `present`. (optional)
-let volume = "volume_example" // String | Filter the returned list by `volume`. (optional)
+let volume = 987 // Double | Filter the returned list by `volume`. (optional)
 let sharedViaTokens = "sharedViaTokens_example" // String | Filter the returned list by `shared_via_tokens`. (optional)
 let sharedViaTokensToken = "sharedViaTokensToken_example" // String | Filter the returned list by `shared_via_tokens__token`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
@@ -3142,14 +3703,88 @@ MediaLibraryAPI.getAllMediaFilesForMediaRoot(root: root, bundle: bundle, bundleI
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **root** | **String** |  | 
- **bundle** | **String** | Filter the returned list by &#x60;bundle&#x60;. | [optional] 
+ **bundle** | **Double** | Filter the returned list by &#x60;bundle&#x60;. | [optional] 
  **bundleIn** | **String** | Multiple values may be separated by commas. | [optional] 
- **parent** | **String** | Filter the returned list by &#x60;parent&#x60;. | [optional] 
+ **parent** | **Double** | Filter the returned list by &#x60;parent&#x60;. | [optional] 
  **name** | **String** | Filter the returned list by &#x60;name&#x60;. | [optional] 
  **isDir** | **String** | Filter the returned list by &#x60;is_dir&#x60;. | [optional] 
  **isShowroom** | **String** | Filter the returned list by &#x60;is_showroom&#x60;. | [optional] 
  **present** | **String** | Filter the returned list by &#x60;present&#x60;. | [optional] 
- **volume** | **String** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
+ **volume** | **Double** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
+ **sharedViaTokens** | **String** | Filter the returned list by &#x60;shared_via_tokens&#x60;. | [optional] 
+ **sharedViaTokensToken** | **String** | Filter the returned list by &#x60;shared_via_tokens__token&#x60;. | [optional] 
+ **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **limit** | **Int** | Number of results to return per page. | [optional] 
+ **offset** | **Int** | The initial index from which to return the results. | [optional] 
+
+### Return type
+
+[**[MediaFile]**](MediaFile.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAllMediaFilesInSubtree**
+```swift
+    open class func getAllMediaFilesInSubtree( file: String,  bundle: Double? = nil,  bundleIn: String? = nil,  parent: Double? = nil,  path: String? = nil,  name: String? = nil,  isDir: String? = nil,  isShowroom: String? = nil,  present: String? = nil,  volume: Double? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaFile]>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let file = "file_example" // String | 
+let bundle = 987 // Double | Filter the returned list by `bundle`. (optional)
+let bundleIn = "bundleIn_example" // String | Multiple values may be separated by commas. (optional)
+let parent = 987 // Double | Filter the returned list by `parent`. (optional)
+let path = "path_example" // String | Filter the returned list by `path`. (optional)
+let name = "name_example" // String | Filter the returned list by `name`. (optional)
+let isDir = "isDir_example" // String | Filter the returned list by `is_dir`. (optional)
+let isShowroom = "isShowroom_example" // String | Filter the returned list by `is_showroom`. (optional)
+let present = "present_example" // String | Filter the returned list by `present`. (optional)
+let volume = 987 // Double | Filter the returned list by `volume`. (optional)
+let sharedViaTokens = "sharedViaTokens_example" // String | Filter the returned list by `shared_via_tokens`. (optional)
+let sharedViaTokensToken = "sharedViaTokensToken_example" // String | Filter the returned list by `shared_via_tokens__token`. (optional)
+let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
+let limit = 987 // Int | Number of results to return per page. (optional)
+let offset = 987 // Int | The initial index from which to return the results. (optional)
+
+MediaLibraryAPI.getAllMediaFilesInSubtree(file: file, bundle: bundle, bundleIn: bundleIn, parent: parent, path: path, name: name, isDir: isDir, isShowroom: isShowroom, present: present, volume: volume, sharedViaTokens: sharedViaTokens, sharedViaTokensToken: sharedViaTokensToken, ordering: ordering, limit: limit, offset: offset).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **file** | **String** |  | 
+ **bundle** | **Double** | Filter the returned list by &#x60;bundle&#x60;. | [optional] 
+ **bundleIn** | **String** | Multiple values may be separated by commas. | [optional] 
+ **parent** | **Double** | Filter the returned list by &#x60;parent&#x60;. | [optional] 
+ **path** | **String** | Filter the returned list by &#x60;path&#x60;. | [optional] 
+ **name** | **String** | Filter the returned list by &#x60;name&#x60;. | [optional] 
+ **isDir** | **String** | Filter the returned list by &#x60;is_dir&#x60;. | [optional] 
+ **isShowroom** | **String** | Filter the returned list by &#x60;is_showroom&#x60;. | [optional] 
+ **present** | **String** | Filter the returned list by &#x60;present&#x60;. | [optional] 
+ **volume** | **Double** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
  **sharedViaTokens** | **String** | Filter the returned list by &#x60;shared_via_tokens&#x60;. | [optional] 
  **sharedViaTokensToken** | **String** | Filter the returned list by &#x60;shared_via_tokens__token&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
@@ -3173,19 +3808,19 @@ Name | Type | Description  | Notes
 
 # **getAllMediaRootPermissions**
 ```swift
-    open class func getAllMediaRootPermissions( root: String? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaRootPermission]>
+    open class func getAllMediaRootPermissions( root: Double? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaRootPermission]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let root = "root_example" // String | Filter the returned list by `root`. (optional)
+let root = 987 // Double | Filter the returned list by `root`. (optional)
 let id = 987 // Double | Filter the returned list by `id`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
@@ -3204,7 +3839,7 @@ MediaLibraryAPI.getAllMediaRootPermissions(root: root, id: id, ordering: orderin
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **root** | **String** | Filter the returned list by &#x60;root&#x60;. | [optional] 
+ **root** | **Double** | Filter the returned list by &#x60;root&#x60;. | [optional] 
  **id** | **Double** | Filter the returned list by &#x60;id&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
@@ -3227,25 +3862,26 @@ Name | Type | Description  | Notes
 
 # **getAllMediaRoots**
 ```swift
-    open class func getAllMediaRoots( volume: String? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaRoot]>
+    open class func getAllMediaRoots( volume: Double? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil,  resolvePermissions: Bool? = nil) -> Promise<[MediaRoot]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let volume = "volume_example" // String | Filter the returned list by `volume`. (optional)
+let volume = 987 // Double | Filter the returned list by `volume`. (optional)
 let name = "name_example" // String | Filter the returned list by `name`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
+let resolvePermissions = true // Bool |  (optional)
 
-MediaLibraryAPI.getAllMediaRoots(volume: volume, name: name, ordering: ordering, limit: limit, offset: offset).then {
+MediaLibraryAPI.getAllMediaRoots(volume: volume, name: name, ordering: ordering, limit: limit, offset: offset, resolvePermissions: resolvePermissions).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -3258,11 +3894,12 @@ MediaLibraryAPI.getAllMediaRoots(volume: volume, name: name, ordering: ordering,
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **volume** | **String** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
+ **volume** | **Double** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
  **name** | **String** | Filter the returned list by &#x60;name&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
+ **resolvePermissions** | **Bool** |  | [optional] 
 
 ### Return type
 
@@ -3288,7 +3925,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3343,21 +3980,21 @@ Name | Type | Description  | Notes
 
 # **getAllMediaUpdates**
 ```swift
-    open class func getAllMediaUpdates( asset: String? = nil,  user: String? = nil,  root: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaUpdate]>
+    open class func getAllMediaUpdates( asset: Double? = nil,  user: Double? = nil,  root: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaUpdate]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:updates:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let asset = "asset_example" // String | Filter the returned list by `asset`. (optional)
-let user = "user_example" // String | Filter the returned list by `user`. (optional)
-let root = "root_example" // String | Filter the returned list by `root`. (optional)
+let asset = 987 // Double | Filter the returned list by `asset`. (optional)
+let user = 987 // Double | Filter the returned list by `user`. (optional)
+let root = 987 // Double | Filter the returned list by `root`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -3375,9 +4012,9 @@ MediaLibraryAPI.getAllMediaUpdates(asset: asset, user: user, root: root, orderin
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asset** | **String** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
- **user** | **String** | Filter the returned list by &#x60;user&#x60;. | [optional] 
- **root** | **String** | Filter the returned list by &#x60;root&#x60;. | [optional] 
+ **asset** | **Double** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
+ **user** | **Double** | Filter the returned list by &#x60;user&#x60;. | [optional] 
+ **root** | **Double** | Filter the returned list by &#x60;root&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -3406,7 +4043,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3456,7 +4093,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3501,21 +4138,79 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getAllSubclipClipboardEntries**
+# **getAllSavedSearches**
 ```swift
-    open class func getAllSubclipClipboardEntries( cut: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[SubclipClipboardEntry]>
+    open class func getAllSavedSearches( shared: String? = nil,  name: String? = nil,  root: Double? = nil,  user: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[SavedSearch]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let cut = "cut_example" // String | Filter the returned list by `cut`. (optional)
+let shared = "shared_example" // String | Filter the returned list by `shared`. (optional)
+let name = "name_example" // String | Filter the returned list by `name`. (optional)
+let root = 987 // Double | Filter the returned list by `root`. (optional)
+let user = 987 // Double | Filter the returned list by `user`. (optional)
+let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
+let limit = 987 // Int | Number of results to return per page. (optional)
+let offset = 987 // Int | The initial index from which to return the results. (optional)
+
+MediaLibraryAPI.getAllSavedSearches(shared: shared, name: name, root: root, user: user, ordering: ordering, limit: limit, offset: offset).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **shared** | **String** | Filter the returned list by &#x60;shared&#x60;. | [optional] 
+ **name** | **String** | Filter the returned list by &#x60;name&#x60;. | [optional] 
+ **root** | **Double** | Filter the returned list by &#x60;root&#x60;. | [optional] 
+ **user** | **Double** | Filter the returned list by &#x60;user&#x60;. | [optional] 
+ **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **limit** | **Int** | Number of results to return per page. | [optional] 
+ **offset** | **Int** | The initial index from which to return the results. | [optional] 
+
+### Return type
+
+[**[SavedSearch]**](SavedSearch.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAllSubclipClipboardEntries**
+```swift
+    open class func getAllSubclipClipboardEntries( cut: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[SubclipClipboardEntry]>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let cut = 987 // Double | Filter the returned list by `cut`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -3533,7 +4228,7 @@ MediaLibraryAPI.getAllSubclipClipboardEntries(cut: cut, ordering: ordering, limi
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cut** | **String** | Filter the returned list by &#x60;cut&#x60;. | [optional] 
+ **cut** | **Double** | Filter the returned list by &#x60;cut&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -3555,21 +4250,21 @@ Name | Type | Description  | Notes
 
 # **getAllSubclips**
 ```swift
-    open class func getAllSubclips( asset: String? = nil,  assetIn: String? = nil,  root: String? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Subclip]>
+    open class func getAllSubclips( asset: Double? = nil,  assetIn: String? = nil,  root: Double? = nil,  name: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Subclip]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let asset = "asset_example" // String | Filter the returned list by `asset`. (optional)
+let asset = 987 // Double | Filter the returned list by `asset`. (optional)
 let assetIn = "assetIn_example" // String | Multiple values may be separated by commas. (optional)
-let root = "root_example" // String | Filter the returned list by `root`. (optional)
+let root = 987 // Double | Filter the returned list by `root`. (optional)
 let name = "name_example" // String | Filter the returned list by `name`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
@@ -3588,9 +4283,9 @@ MediaLibraryAPI.getAllSubclips(asset: asset, assetIn: assetIn, root: root, name:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asset** | **String** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
+ **asset** | **Double** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
  **assetIn** | **String** | Multiple values may be separated by commas. | [optional] 
- **root** | **String** | Filter the returned list by &#x60;root&#x60;. | [optional] 
+ **root** | **Double** | Filter the returned list by &#x60;root&#x60;. | [optional] 
  **name** | **String** | Filter the returned list by &#x60;name&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
@@ -3599,6 +4294,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[Subclip]**](Subclip.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAllSubtitleClipboardEntries**
+```swift
+    open class func getAllSubtitleClipboardEntries( subtitle: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[SubtitleClipboardEntry]>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let subtitle = 987 // Double | Filter the returned list by `subtitle`. (optional)
+let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
+let limit = 987 // Int | Number of results to return per page. (optional)
+let offset = 987 // Int | The initial index from which to return the results. (optional)
+
+MediaLibraryAPI.getAllSubtitleClipboardEntries(subtitle: subtitle, ordering: ordering, limit: limit, offset: offset).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subtitle** | **Double** | Filter the returned list by &#x60;subtitle&#x60;. | [optional] 
+ **ordering** | **String** | Which field to use when ordering the results. | [optional] 
+ **limit** | **Int** | Number of results to return per page. | [optional] 
+ **offset** | **Int** | The initial index from which to return the results. | [optional] 
+
+### Return type
+
+[**[SubtitleClipboardEntry]**](SubtitleClipboardEntry.md)
 
 ### Authorization
 
@@ -3620,7 +4367,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3670,7 +4417,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3724,7 +4471,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3761,28 +4508,74 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getBookmarkedMediaFilesDirectories**
+# **getAssetSubtitleLink**
 ```swift
-    open class func getBookmarkedMediaFilesDirectories( bundle: String? = nil,  bundleIn: String? = nil,  parent: String? = nil,  name: String? = nil,  isDir: String? = nil,  isShowroom: String? = nil,  present: String? = nil,  volume: String? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaFile]>
+    open class func getAssetSubtitleLink( id: Int) -> Promise<AssetSubtitleLink>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let bundle = "bundle_example" // String | Filter the returned list by `bundle`. (optional)
+let id = 987 // Int | A unique integer value identifying this Asset subtitle file link.
+
+MediaLibraryAPI.getAssetSubtitleLink(id: id).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this Asset subtitle file link. | 
+
+### Return type
+
+[**AssetSubtitleLink**](AssetSubtitleLink.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getBookmarkedMediaFilesDirectories**
+```swift
+    open class func getBookmarkedMediaFilesDirectories( bundle: Double? = nil,  bundleIn: String? = nil,  parent: Double? = nil,  name: String? = nil,  isDir: String? = nil,  isShowroom: String? = nil,  present: String? = nil,  volume: Double? = nil,  sharedViaTokens: String? = nil,  sharedViaTokensToken: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaFile]>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let bundle = 987 // Double | Filter the returned list by `bundle`. (optional)
 let bundleIn = "bundleIn_example" // String | Multiple values may be separated by commas. (optional)
-let parent = "parent_example" // String | Filter the returned list by `parent`. (optional)
+let parent = 987 // Double | Filter the returned list by `parent`. (optional)
 let name = "name_example" // String | Filter the returned list by `name`. (optional)
 let isDir = "isDir_example" // String | Filter the returned list by `is_dir`. (optional)
 let isShowroom = "isShowroom_example" // String | Filter the returned list by `is_showroom`. (optional)
 let present = "present_example" // String | Filter the returned list by `present`. (optional)
-let volume = "volume_example" // String | Filter the returned list by `volume`. (optional)
+let volume = 987 // Double | Filter the returned list by `volume`. (optional)
 let sharedViaTokens = "sharedViaTokens_example" // String | Filter the returned list by `shared_via_tokens`. (optional)
 let sharedViaTokensToken = "sharedViaTokensToken_example" // String | Filter the returned list by `shared_via_tokens__token`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
@@ -3802,14 +4595,14 @@ MediaLibraryAPI.getBookmarkedMediaFilesDirectories(bundle: bundle, bundleIn: bun
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **bundle** | **String** | Filter the returned list by &#x60;bundle&#x60;. | [optional] 
+ **bundle** | **Double** | Filter the returned list by &#x60;bundle&#x60;. | [optional] 
  **bundleIn** | **String** | Multiple values may be separated by commas. | [optional] 
- **parent** | **String** | Filter the returned list by &#x60;parent&#x60;. | [optional] 
+ **parent** | **Double** | Filter the returned list by &#x60;parent&#x60;. | [optional] 
  **name** | **String** | Filter the returned list by &#x60;name&#x60;. | [optional] 
  **isDir** | **String** | Filter the returned list by &#x60;is_dir&#x60;. | [optional] 
  **isShowroom** | **String** | Filter the returned list by &#x60;is_showroom&#x60;. | [optional] 
  **present** | **String** | Filter the returned list by &#x60;present&#x60;. | [optional] 
- **volume** | **String** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
+ **volume** | **Double** | Filter the returned list by &#x60;volume&#x60;. | [optional] 
  **sharedViaTokens** | **String** | Filter the returned list by &#x60;shared_via_tokens&#x60;. | [optional] 
  **sharedViaTokensToken** | **String** | Filter the returned list by &#x60;shared_via_tokens__token&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
@@ -3840,7 +4633,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3894,7 +4687,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3940,7 +4733,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -3986,7 +4779,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4032,7 +4825,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4069,6 +4862,52 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getEditorSubtitle**
+```swift
+    open class func getEditorSubtitle( id: Int) -> Promise<EditorSubtitle>
+```
+
+
+
+### Required permissions    * User account permission: `media:access` 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this File.
+
+MediaLibraryAPI.getEditorSubtitle(id: id).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this File. | 
+
+### Return type
+
+[**EditorSubtitle**](EditorSubtitle.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getExternalTranscoder**
 ```swift
     open class func getExternalTranscoder( id: Int) -> Promise<ExternalTranscoder>
@@ -4078,7 +4917,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4117,14 +4956,14 @@ Name | Type | Description  | Notes
 
 # **getFrame**
 ```swift
-    open class func getFrame( frame: String,  id: Int) -> Promise<Void>
+    open class func getFrame( frame: String,  id: Int) -> Promise<URL>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4150,7 +4989,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-Void (empty response body)
+**URL**
 
 ### Authorization
 
@@ -4159,27 +4998,27 @@ Void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: image/png, image/jpeg
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLatestMediaUpdate**
 ```swift
-    open class func getLatestMediaUpdate( asset: String? = nil,  user: String? = nil,  root: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<MediaUpdate>
+    open class func getLatestMediaUpdate( asset: Double? = nil,  user: Double? = nil,  root: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<MediaUpdate>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:updates:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let asset = "asset_example" // String | Filter the returned list by `asset`. (optional)
-let user = "user_example" // String | Filter the returned list by `user`. (optional)
-let root = "root_example" // String | Filter the returned list by `root`. (optional)
+let asset = 987 // Double | Filter the returned list by `asset`. (optional)
+let user = 987 // Double | Filter the returned list by `user`. (optional)
+let root = 987 // Double | Filter the returned list by `root`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -4197,9 +5036,9 @@ MediaLibraryAPI.getLatestMediaUpdate(asset: asset, user: user, root: root, order
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asset** | **String** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
- **user** | **String** | Filter the returned list by &#x60;user&#x60;. | [optional] 
- **root** | **String** | Filter the returned list by &#x60;root&#x60;. | [optional] 
+ **asset** | **Double** | Filter the returned list by &#x60;asset&#x60;. | [optional] 
+ **user** | **Double** | Filter the returned list by &#x60;user&#x60;. | [optional] 
+ **root** | **Double** | Filter the returned list by &#x60;root&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -4228,7 +5067,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4274,7 +5113,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4332,7 +5171,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4392,7 +5231,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4446,7 +5285,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4485,21 +5324,22 @@ Name | Type | Description  | Notes
 
 # **getMediaRoot**
 ```swift
-    open class func getMediaRoot( id: Int) -> Promise<MediaRoot>
+    open class func getMediaRoot( id: Int,  resolvePermissions: Bool? = nil) -> Promise<MediaRootDetail>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this media root.
+let resolvePermissions = true // Bool |  (optional)
 
-MediaLibraryAPI.getMediaRoot(id: id).then {
+MediaLibraryAPI.getMediaRoot(id: id, resolvePermissions: resolvePermissions).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -4513,10 +5353,11 @@ MediaLibraryAPI.getMediaRoot(id: id).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this media root. | 
+ **resolvePermissions** | **Bool** |  | [optional] 
 
 ### Return type
 
-[**MediaRoot**](MediaRoot.md)
+[**MediaRootDetail**](MediaRootDetail.md)
 
 ### Authorization
 
@@ -4538,7 +5379,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4584,7 +5425,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4632,7 +5473,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4678,7 +5519,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4724,7 +5565,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4763,19 +5604,19 @@ Name | Type | Description  | Notes
 
 # **getMyMediaRootPermissions**
 ```swift
-    open class func getMyMediaRootPermissions( root: String? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaRootPermission]>
+    open class func getMyMediaRootPermissions( root: Double? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaRootPermission]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let root = "root_example" // String | Filter the returned list by `root`. (optional)
+let root = 987 // Double | Filter the returned list by `root`. (optional)
 let id = 987 // Double | Filter the returned list by `id`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
@@ -4794,7 +5635,7 @@ MediaLibraryAPI.getMyMediaRootPermissions(root: root, id: id, ordering: ordering
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **root** | **String** | Filter the returned list by &#x60;root&#x60;. | [optional] 
+ **root** | **Double** | Filter the returned list by &#x60;root&#x60;. | [optional] 
  **id** | **Double** | Filter the returned list by &#x60;id&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
@@ -4817,19 +5658,19 @@ Name | Type | Description  | Notes
 
 # **getMyResolvedMediaRootPermissions**
 ```swift
-    open class func getMyResolvedMediaRootPermissions( root: String? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaRootPermission]>
+    open class func getMyResolvedMediaRootPermissions( root: Double? = nil,  id: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[MediaRootPermission]>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let root = "root_example" // String | Filter the returned list by `root`. (optional)
+let root = 987 // Double | Filter the returned list by `root`. (optional)
 let id = 987 // Double | Filter the returned list by `id`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
@@ -4848,7 +5689,7 @@ MediaLibraryAPI.getMyResolvedMediaRootPermissions(root: root, id: id, ordering: 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **root** | **String** | Filter the returned list by &#x60;root&#x60;. | [optional] 
+ **root** | **Double** | Filter the returned list by &#x60;root&#x60;. | [optional] 
  **id** | **Double** | Filter the returned list by &#x60;id&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
@@ -4878,7 +5719,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4924,7 +5765,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -4970,7 +5811,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -5018,7 +5859,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -5055,6 +5896,52 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getSavedSearch**
+```swift
+    open class func getSavedSearch( id: Int) -> Promise<SavedSearch>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this saved search.
+
+MediaLibraryAPI.getSavedSearch(id: id).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this saved search. | 
+
+### Return type
+
+[**SavedSearch**](SavedSearch.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getSubclip**
 ```swift
     open class func getSubclip( id: Int) -> Promise<Subclip>
@@ -5064,7 +5951,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -5101,6 +5988,54 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getSubtitles**
+```swift
+    open class func getSubtitles( id: Int,  title: String) -> Promise<URL>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this Asset.
+let title = "title_example" // String | 
+
+MediaLibraryAPI.getSubtitles(id: id, title: title).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this Asset. | 
+ **title** | **String** |  | 
+
+### Return type
+
+**URL**
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/x-ssa, application/x-subrip, text/vtt, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getTranscoderProfile**
 ```swift
     open class func getTranscoderProfile( id: Int) -> Promise<TranscoderProfile>
@@ -5110,7 +6045,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `tasks:view` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -5156,7 +6091,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -5202,13 +6137,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Template.
-let instantiateFileTemplateRequest = InstantiateFileTemplateRequest(parent: 123, name: "name_example", customField: "TODO") // InstantiateFileTemplateRequest | 
+let instantiateFileTemplateRequest = InstantiateFileTemplateRequest(parent: 123, name: "name_example", customFields: "TODO") // InstantiateFileTemplateRequest | 
 
 MediaLibraryAPI.instantiateMediaFileTemplate(id: id, instantiateFileTemplateRequest: instantiateFileTemplateRequest).then {
          // when the promise is fulfilled
@@ -5250,7 +6185,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -5287,6 +6222,52 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **lookupMediaFiles**
+```swift
+    open class func lookupMediaFiles( mediaFilesLookupRequest: MediaFilesLookupRequest) -> Promise<[MediaFile]>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let mediaFilesLookupRequest = MediaFilesLookupRequest(query: "query_example") // MediaFilesLookupRequest | 
+
+MediaLibraryAPI.lookupMediaFiles(mediaFilesLookupRequest: mediaFilesLookupRequest).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mediaFilesLookupRequest** | [**MediaFilesLookupRequest**](MediaFilesLookupRequest.md) |  | 
+
+### Return type
+
+[**[MediaFile]**](MediaFile.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **markMediaDirectoryAsShowroom**
 ```swift
     open class func markMediaDirectoryAsShowroom( id: Int) -> Promise<Void>
@@ -5296,7 +6277,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -5335,22 +6316,23 @@ Void (empty response body)
 
 # **patchAsset**
 ```swift
-    open class func patchAsset( id: Int,  assetPartialUpdate: AssetPartialUpdate) -> Promise<Asset>
+    open class func patchAsset( id: Int,  assetPartialUpdate: AssetPartialUpdate,  root: Int? = nil) -> Promise<Asset>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Asset.
 let assetPartialUpdate = AssetPartialUpdate(customFields: "TODO", tags: [123], _set: 123) // AssetPartialUpdate | 
+let root = 987 // Int |  (optional)
 
-MediaLibraryAPI.patchAsset(id: id, assetPartialUpdate: assetPartialUpdate).then {
+MediaLibraryAPI.patchAsset(id: id, assetPartialUpdate: assetPartialUpdate, root: root).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -5365,6 +6347,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this Asset. | 
  **assetPartialUpdate** | [**AssetPartialUpdate**](AssetPartialUpdate.md) |  | 
+ **root** | **Int** |  | [optional] 
 
 ### Return type
 
@@ -5390,7 +6373,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -5429,6 +6412,54 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchAssetSubtitleLink**
+```swift
+    open class func patchAssetSubtitleLink( id: Int,  assetSubtitleLinkPartialUpdate: AssetSubtitleLinkPartialUpdate) -> Promise<AssetSubtitleLink>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this Asset subtitle file link.
+let assetSubtitleLinkPartialUpdate = AssetSubtitleLinkPartialUpdate(subtitle: AssetMiniReference(id: 123, syncId: 123, defaultProxy: Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123), type: "type_example", displayName: "displayName_example", format: FormatMetadata(width: 123, height: 123, framerateFloat: 123, framerate: "framerate_example", duration: 123), info: "TODO", thumbnailGenerated: false), label: "label_example", key: "key_example", asset: 123) // AssetSubtitleLinkPartialUpdate | 
+
+MediaLibraryAPI.patchAssetSubtitleLink(id: id, assetSubtitleLinkPartialUpdate: assetSubtitleLinkPartialUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this Asset subtitle file link. | 
+ **assetSubtitleLinkPartialUpdate** | [**AssetSubtitleLinkPartialUpdate**](AssetSubtitleLinkPartialUpdate.md) |  | 
+
+### Return type
+
+[**AssetSubtitleLink**](AssetSubtitleLink.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **patchComment**
 ```swift
     open class func patchComment( id: Int,  commentPartialUpdate: CommentPartialUpdate) -> Promise<Comment>
@@ -5438,13 +6469,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Comment.
-let commentPartialUpdate = CommentPartialUpdate(assignee: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), user: nil, drawing: "TODO", tags: [TagReference(id: 123, roots: [123], name: "name_example", shared: false, color: "color_example")], text: "text_example", time: 123, isCloud: false, resolved: false, resolvedDate: Date(), asset: 123, root: 123, parent: 123) // CommentPartialUpdate | 
+let commentPartialUpdate = CommentPartialUpdate(assignee: "TODO", user: "TODO", drawing: "TODO", tags: [TagReference(id: 123, roots: [123], name: "name_example", shared: false, color: "color_example")], text: "text_example", time: 123, isCloud: false, resolved: false, resolvedDate: Date(), asset: 123, root: 123, parent: 123) // CommentPartialUpdate | 
 
 MediaLibraryAPI.patchComment(id: id, commentPartialUpdate: commentPartialUpdate).then {
          // when the promise is fulfilled
@@ -5486,13 +6517,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Custom field.
-let customFieldPartialUpdate = CustomFieldPartialUpdate(options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example") // CustomFieldPartialUpdate | 
+let customFieldPartialUpdate = CustomFieldPartialUpdate(labels: ["TODO"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example") // CustomFieldPartialUpdate | 
 
 MediaLibraryAPI.patchCustomField(id: id, customFieldPartialUpdate: customFieldPartialUpdate).then {
          // when the promise is fulfilled
@@ -5534,7 +6565,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -5573,6 +6604,54 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchEditorSubtitle**
+```swift
+    open class func patchEditorSubtitle( id: Int,  editorSubtitlePartialUpdate: EditorSubtitlePartialUpdate) -> Promise<EditorSubtitle>
+```
+
+
+
+### Required permissions    * User account permission: `media:access` 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this File.
+let editorSubtitlePartialUpdate = EditorSubtitlePartialUpdate(file: 123, parent: 123, name: "name_example", format: "format_example", subtitle: Subtitle(info: "TODO", styles: "TODO", events: [SubtitleEvent(start: 123, end: 123, text: "text_example", marked: false, layer: 123, style: "style_example", name: "name_example", marginl: 123, marginr: 123, marginv: 123, effect: "effect_example", type: "type_example")])) // EditorSubtitlePartialUpdate | 
+
+MediaLibraryAPI.patchEditorSubtitle(id: id, editorSubtitlePartialUpdate: editorSubtitlePartialUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this File. | 
+ **editorSubtitlePartialUpdate** | [**EditorSubtitlePartialUpdate**](EditorSubtitlePartialUpdate.md) |  | 
+
+### Return type
+
+[**EditorSubtitle**](EditorSubtitle.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **patchExternalTranscoder**
 ```swift
     open class func patchExternalTranscoder( id: Int,  externalTranscoderPartialUpdate: ExternalTranscoderPartialUpdate) -> Promise<ExternalTranscoder>
@@ -5582,13 +6661,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this external transcoder.
-let externalTranscoderPartialUpdate = ExternalTranscoderPartialUpdate(name: "name_example", type: "type_example", address: "address_example") // ExternalTranscoderPartialUpdate | 
+let externalTranscoderPartialUpdate = ExternalTranscoderPartialUpdate(pathMappings: ["TODO"], name: "name_example", type: "type_example", address: "address_example") // ExternalTranscoderPartialUpdate | 
 
 MediaLibraryAPI.patchExternalTranscoder(id: id, externalTranscoderPartialUpdate: externalTranscoderPartialUpdate).then {
          // when the promise is fulfilled
@@ -5630,7 +6709,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -5671,22 +6750,23 @@ Name | Type | Description  | Notes
 
 # **patchMediaFile**
 ```swift
-    open class func patchMediaFile( id: Int,  mediaFilePartialUpdate: MediaFilePartialUpdate) -> Promise<MediaFile>
+    open class func patchMediaFile( id: Int,  mediaFilePartialUpdate: MediaFilePartialUpdate,  root: Int? = nil) -> Promise<MediaFile>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this File.
 let mediaFilePartialUpdate = MediaFilePartialUpdate(info: "TODO", customFields: "TODO", totalFiles: 123, needsRescan: false, bookmarkedBy: [123]) // MediaFilePartialUpdate | 
+let root = 987 // Int |  (optional)
 
-MediaLibraryAPI.patchMediaFile(id: id, mediaFilePartialUpdate: mediaFilePartialUpdate).then {
+MediaLibraryAPI.patchMediaFile(id: id, mediaFilePartialUpdate: mediaFilePartialUpdate, root: root).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -5701,6 +6781,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this File. | 
  **mediaFilePartialUpdate** | [**MediaFilePartialUpdate**](MediaFilePartialUpdate.md) |  | 
+ **root** | **Int** |  | [optional] 
 
 ### Return type
 
@@ -5726,13 +6807,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Template.
-let mediaFileTemplatePartialUpdate = MediaFileTemplatePartialUpdate(file: MediaFileReference(id: 123, volume: VolumeMini(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), info: "TODO", customFields: "TODO", resolvedPermission: MediaRootPermission(id: 123, user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), fullPath: "fullPath_example", path: "path_example", allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123), parentFile: "TODO", root: MediaRootMini(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["labels_example"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), path: "path_example", prefetchThumbnailStrips: false), effectiveCustomFields: "TODO", modifiedBy: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), fullPath: "fullPath_example", isShared: false, isExcluded: false, isHardlink: false, isBookmarked: false, childCount: 123, name: "name_example", path: "path_example", pathhash: "pathhash_example", ancestry: "ancestry_example", isDir: false, totalFiles: 123, size: 123, mtime: 123, present: false, needsRescan: false, isShowroom: false, bundleIndex: 123, modified: Date(), parent: 123, bundle: 123, bookmarkedBy: [123]), name: "name_example") // MediaFileTemplatePartialUpdate | 
+let mediaFileTemplatePartialUpdate = MediaFileTemplatePartialUpdate(file: MediaFileReference(id: 123, volume: VolumeMini(id: 123, path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example", name: "name_example"), info: "TODO", customFields: "TODO", resolvedPermission: MediaRootPermission(id: 123, user: "TODO", group: "TODO", fullPath: "fullPath_example", path: "path_example", allowRead: false, allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showSubtitles: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123), parentFile: "TODO", root: MediaRootMini(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["TODO"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example", name: "name_example"), path: "path_example", prefetchThumbnailStrips: false), effectiveCustomFields: "TODO", modifiedBy: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), fullPath: "fullPath_example", isShared: false, isExcluded: false, isHardlink: false, isBookmarked: false, childCount: 123, name: "name_example", path: "path_example", pathhash: "pathhash_example", ancestry: "ancestry_example", isDir: false, totalFiles: 123, size: 123, mtime: 123, present: false, needsRescan: false, isShowroom: false, bundleIndex: 123, modified: Date(), parent: 123, bundle: 123, bookmarkedBy: [123]), name: "name_example") // MediaFileTemplatePartialUpdate | 
 
 MediaLibraryAPI.patchMediaFileTemplate(id: id, mediaFileTemplatePartialUpdate: mediaFileTemplatePartialUpdate).then {
          // when the promise is fulfilled
@@ -5767,22 +6848,22 @@ Name | Type | Description  | Notes
 
 # **patchMediaRoot**
 ```swift
-    open class func patchMediaRoot( id: Int,  mediaRootPartialUpdate: MediaRootPartialUpdate) -> Promise<MediaRoot>
+    open class func patchMediaRoot( id: Int,  mediaRootDetailPartialUpdate: MediaRootDetailPartialUpdate) -> Promise<MediaRootDetail>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this media root.
-let mediaRootPartialUpdate = MediaRootPartialUpdate(customFields: [CustomFieldReference(id: 123, labels: ["labels_example"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], workflow: "TODO", aiConfig: "TODO", veritoneConfig: "TODO", volume: VolumeMiniReference(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), jobs: [JobReference(id: 123, subtasks: [SubtaskReference(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123)], schedules: [ScheduleReference(id: 123, variables: "TODO", nextRun: Date(), type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123)], allowUsers: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], allowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123])], startable: false, variableDefinitions: ["TODO"], mediaRoots: [123], webhookUrl: "webhookUrl_example", specialType: 123, name: "name_example", enabled: false, allowOthersToStart: false, allowClientToStart: false, showAsButton: false, inputType: "inputType_example", hook: "hook_example", webhookSecret: "webhookSecret_example", securityContext: 123, partOfWorkflowFor: 123)], name: "name_example", path: "path_example", needsRescan: false, viewMode: "viewMode_example", viewStyle: "viewStyle_example", viewDefaultTab: "viewDefaultTab_example", showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showMarkers: false, showHistory: false, showAiMetadata: false, prefetchThumbnailStrips: false, cover: "cover_example", nameField: "nameField_example", shareComments: false, shareLinkDuration: 123, defaultProxyProfile: 123, cloudProxyProfile: 123, veritoneConnection: 123, veritoneProxyProfile: 123, aiConnection: 123, aiProxyProfile: 123, proxyProfiles: [123], tags: [123]) // MediaRootPartialUpdate | 
+let mediaRootDetailPartialUpdate = MediaRootDetailPartialUpdate(customFields: [CustomFieldReference(id: 123, labels: ["TODO"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], workflow: "TODO", volume: VolumeMiniReference(id: 123, path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example", name: "name_example"), jobs: [JobReference(id: 123, subtasks: [SubtaskReference(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123)], schedules: [ScheduleReference(id: 123, variables: "TODO", nextRun: Date(), type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123)], allowUsers: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], allowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ldap: 123, members: [123])], startable: false, variableDefinitions: ["TODO"], mediaRoots: [123], webhookUrl: "webhookUrl_example", specialType: 123, name: "name_example", enabled: false, allowOthersToStart: false, allowClientToStart: false, showAsButton: false, inputType: "inputType_example", hook: "hook_example", webhookSecret: "webhookSecret_example", securityContext: 123, partOfWorkflowFor: 123)], aiConfig: "TODO", veritoneConfig: "TODO", name: "name_example", path: "path_example", needsRescan: false, viewMode: "viewMode_example", viewStyle: "viewStyle_example", viewDefaultTab: "viewDefaultTab_example", showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showSubtitles: false, showMarkers: false, showHistory: false, showAiMetadata: false, prefetchThumbnailStrips: false, cover: "cover_example", nameField: "nameField_example", shareComments: false, shareLinkDuration: 123, defaultProxyProfile: 123, cloudProxyProfile: 123, veritoneConnection: 123, veritoneProxyProfile: 123, aiConnection: 123, aiProxyProfile: 123, proxyProfiles: [123], tags: [123]) // MediaRootDetailPartialUpdate | 
 
-MediaLibraryAPI.patchMediaRoot(id: id, mediaRootPartialUpdate: mediaRootPartialUpdate).then {
+MediaLibraryAPI.patchMediaRoot(id: id, mediaRootDetailPartialUpdate: mediaRootDetailPartialUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -5796,11 +6877,11 @@ MediaLibraryAPI.patchMediaRoot(id: id, mediaRootPartialUpdate: mediaRootPartialU
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this media root. | 
- **mediaRootPartialUpdate** | [**MediaRootPartialUpdate**](MediaRootPartialUpdate.md) |  | 
+ **mediaRootDetailPartialUpdate** | [**MediaRootDetailPartialUpdate**](MediaRootDetailPartialUpdate.md) |  | 
 
 ### Return type
 
-[**MediaRoot**](MediaRoot.md)
+[**MediaRootDetail**](MediaRootDetail.md)
 
 ### Authorization
 
@@ -5822,13 +6903,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Media Root Permission.
-let mediaRootPermissionPartialUpdate = MediaRootPermissionPartialUpdate(user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), path: "path_example", allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123) // MediaRootPermissionPartialUpdate | 
+let mediaRootPermissionPartialUpdate = MediaRootPermissionPartialUpdate(user: "TODO", group: "TODO", path: "path_example", allowRead: false, allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showSubtitles: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123) // MediaRootPermissionPartialUpdate | 
 
 MediaLibraryAPI.patchMediaRootPermission(id: id, mediaRootPermissionPartialUpdate: mediaRootPermissionPartialUpdate).then {
          // when the promise is fulfilled
@@ -5870,7 +6951,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -5918,13 +6999,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this proxy profile.
-let proxyProfilePartialUpdate = ProxyProfilePartialUpdate(name: "name_example", proxyGenerator: "proxyGenerator_example", resolution: "resolution_example", rateControl: 123, crf: 123, bitrate: 123, audioBitrate: 123, variantsLimit: 123, enableDenseFilmstrip: false, enableWatermark: false, watermarkImage: "watermarkImage_example", watermarkPosition: 123, watermarkOpacity: 123, watermarkSize: 123, enableTimecode: false, timecodePosition: 123, timecodeOpacity: 123, timecodeSize: 123, lut: "lut_example", hotfolderCopyTo: "hotfolderCopyTo_example", hotfolderReadFrom: "hotfolderReadFrom_example", hotfolderQueueTimeout: 123, hotfolderEncodeTimeout: 123, vantageWorkflowId: "vantageWorkflowId_example", externalTranscoderStagingPath: "externalTranscoderStagingPath_example", externalTranscoder: 123) // ProxyProfilePartialUpdate | 
+let proxyProfilePartialUpdate = ProxyProfilePartialUpdate(name: "name_example", proxyGenerator: "proxyGenerator_example", resolution: "resolution_example", rateControl: "rateControl_example", crf: 123, bitrate: 123, audioBitrate: 123, variantsLimit: 123, enableDenseFilmstrip: false, enableWatermark: false, watermarkImage: "watermarkImage_example", watermarkPosition: "watermarkPosition_example", watermarkOpacity: 123, watermarkSize: 123, enableTimecode: false, timecodePosition: "timecodePosition_example", timecodeOpacity: 123, timecodeSize: 123, lut: "lut_example", hotfolderCopyTo: "hotfolderCopyTo_example", hotfolderReadFrom: "hotfolderReadFrom_example", hotfolderQueueTimeout: 123, hotfolderEncodeTimeout: 123, vantageWorkflowId: "vantageWorkflowId_example", externalTranscoderStagingPath: "externalTranscoderStagingPath_example", externalTranscoder: 123) // ProxyProfilePartialUpdate | 
 
 MediaLibraryAPI.patchProxyProfile(id: id, proxyProfilePartialUpdate: proxyProfilePartialUpdate).then {
          // when the promise is fulfilled
@@ -5957,6 +7038,54 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchSavedSearch**
+```swift
+    open class func patchSavedSearch( id: Int,  savedSearchPartialUpdate: SavedSearchPartialUpdate) -> Promise<SavedSearch>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this saved search.
+let savedSearchPartialUpdate = SavedSearchPartialUpdate(root: "TODO", query: ["query_example"], name: "name_example", shared: false) // SavedSearchPartialUpdate | 
+
+MediaLibraryAPI.patchSavedSearch(id: id, savedSearchPartialUpdate: savedSearchPartialUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this saved search. | 
+ **savedSearchPartialUpdate** | [**SavedSearchPartialUpdate**](SavedSearchPartialUpdate.md) |  | 
+
+### Return type
+
+[**SavedSearch**](SavedSearch.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **patchSubclip**
 ```swift
     open class func patchSubclip( id: Int,  subclipPartialUpdate: SubclipPartialUpdate) -> Promise<Subclip>
@@ -5966,13 +7095,13 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this subclip.
-let subclipPartialUpdate = SubclipPartialUpdate(asset: AssetMiniReference(id: 123, syncId: 123, defaultProxy: Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123), type: "type_example", displayName: "displayName_example", info: "TODO", thumbnailGenerated: false), rendered: nil, shared: false, name: "name_example", tIn: 123, tOut: 123, root: MediaRootMiniReference(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["labels_example"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), path: "path_example", prefetchThumbnailStrips: false)) // SubclipPartialUpdate | 
+let subclipPartialUpdate = SubclipPartialUpdate(asset: AssetMiniReference(id: 123, syncId: 123, defaultProxy: Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123), type: "type_example", displayName: "displayName_example", format: FormatMetadata(width: 123, height: 123, framerateFloat: 123, framerate: "framerate_example", duration: 123), info: "TODO", thumbnailGenerated: false), rendered: "TODO", shared: false, name: "name_example", tIn: 123, tOut: 123, root: MediaRootMiniReference(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["TODO"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example", name: "name_example"), path: "path_example", prefetchThumbnailStrips: false)) // SubclipPartialUpdate | 
 
 MediaLibraryAPI.patchSubclip(id: id, subclipPartialUpdate: subclipPartialUpdate).then {
          // when the promise is fulfilled
@@ -6014,7 +7143,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -6062,7 +7191,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -6108,7 +7237,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -6156,7 +7285,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -6202,7 +7331,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -6250,7 +7379,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -6296,7 +7425,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -6342,12 +7471,12 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let mediaLibraryShareRequest = MediaLibraryShareRequest(bundles: [123], directories: [123], expires: Date(), viewLimit: 123, permissions: MediaRootPermissionAccessOptions(showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showAiMetadata: false, showMarkers: false, showHistory: false, allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false), user: 123, email: "email_example", linkType: "linkType_example", password: "password_example") // MediaLibraryShareRequest | 
+let mediaLibraryShareRequest = MediaLibraryShareRequest(bundles: [123], directories: [123], expires: Date(), viewLimit: 123, permissions: MediaRootPermissionAccessOptions(showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showSubtitles: false, showAiMetadata: false, showMarkers: false, showHistory: false, allowRead: false, allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false), user: 123, email: "email_example", linkType: "linkType_example", password: "password_example") // MediaLibraryShareRequest | 
 
 MediaLibraryAPI.shareMediaLibraryObjects(mediaLibraryShareRequest: mediaLibraryShareRequest).then {
          // when the promise is fulfilled
@@ -6388,7 +7517,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -6434,7 +7563,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * <class 'rest_framework.permissions.AllowAny'> 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -6480,7 +7609,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -6526,7 +7655,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -6572,7 +7701,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -6611,22 +7740,23 @@ Name | Type | Description  | Notes
 
 # **updateAsset**
 ```swift
-    open class func updateAsset( id: Int,  asset: Asset) -> Promise<Asset>
+    open class func updateAsset( id: Int,  assetUpdate: AssetUpdate,  root: Int? = nil) -> Promise<Asset>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Asset.
-let asset = Asset(id: 123, proxies: [Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123)], defaultProxy: nil, info: "TODO", proxyInfo: "TODO", customFields: "TODO", tags: [123], resolvedPermission: MediaRootPermission(id: 123, user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), fullPath: "fullPath_example", path: "path_example", allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123), backups: "backups_example", proxiesGenerated: false, proxiesFailed: false, modifiedBy: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), bundles: [MediaFileBundleMini(id: 123, asset: 123, name: "name_example", location: 123, mainfile: MediaFileMini(id: 123, name: "name_example", bundle: 123, fullPath: "fullPath_example", customFields: "TODO", isDir: false, isHardlink: false, mtime: 123, parent: 123, parentFile: "TODO", path: "path_example", present: false, size: 123, volume: VolumeMini(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example")))], syncId: 123, displayName: "displayName_example", hasFiles: false, hasBackups: false, hasCloudLinks: false, checksum: "checksum_example", type: "type_example", thumbnailGenerated: false, matchedScanner: "matchedScanner_example", rating: 123, workflowState: 123, isTemporary: false, created: Date(), modified: Date(), _set: 123) // Asset | 
+let assetUpdate = AssetUpdate(customFields: "TODO", tags: [123], _set: 123) // AssetUpdate | 
+let root = 987 // Int |  (optional)
 
-MediaLibraryAPI.updateAsset(id: id, asset: asset).then {
+MediaLibraryAPI.updateAsset(id: id, assetUpdate: assetUpdate, root: root).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -6640,7 +7770,8 @@ MediaLibraryAPI.updateAsset(id: id, asset: asset).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this Asset. | 
- **asset** | [**Asset**](Asset.md) |  | 
+ **assetUpdate** | [**AssetUpdate**](AssetUpdate.md) |  | 
+ **root** | **Int** |  | [optional] 
 
 ### Return type
 
@@ -6659,22 +7790,22 @@ Name | Type | Description  | Notes
 
 # **updateAssetRating**
 ```swift
-    open class func updateAssetRating( id: Int,  assetRating: AssetRating) -> Promise<AssetRating>
+    open class func updateAssetRating( id: Int,  assetRatingUpdate: AssetRatingUpdate) -> Promise<AssetRating>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Rating.
-let assetRating = AssetRating(id: 123, user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), rating: 123, date: Date(), asset: 123) // AssetRating | 
+let assetRatingUpdate = AssetRatingUpdate(user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), rating: 123, asset: 123) // AssetRatingUpdate | 
 
-MediaLibraryAPI.updateAssetRating(id: id, assetRating: assetRating).then {
+MediaLibraryAPI.updateAssetRating(id: id, assetRatingUpdate: assetRatingUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -6688,7 +7819,7 @@ MediaLibraryAPI.updateAssetRating(id: id, assetRating: assetRating).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this Rating. | 
- **assetRating** | [**AssetRating**](AssetRating.md) |  | 
+ **assetRatingUpdate** | [**AssetRatingUpdate**](AssetRatingUpdate.md) |  | 
 
 ### Return type
 
@@ -6705,24 +7836,72 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateComment**
+# **updateAssetSubtitleLink**
 ```swift
-    open class func updateComment( id: Int,  comment: Comment) -> Promise<Comment>
+    open class func updateAssetSubtitleLink( id: Int,  assetSubtitleLinkUpdate: AssetSubtitleLinkUpdate) -> Promise<AssetSubtitleLink>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this Asset subtitle file link.
+let assetSubtitleLinkUpdate = AssetSubtitleLinkUpdate(subtitle: AssetMiniReference(id: 123, syncId: 123, defaultProxy: Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123), type: "type_example", displayName: "displayName_example", format: FormatMetadata(width: 123, height: 123, framerateFloat: 123, framerate: "framerate_example", duration: 123), info: "TODO", thumbnailGenerated: false), label: "label_example", key: "key_example", asset: 123) // AssetSubtitleLinkUpdate | 
+
+MediaLibraryAPI.updateAssetSubtitleLink(id: id, assetSubtitleLinkUpdate: assetSubtitleLinkUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this Asset subtitle file link. | 
+ **assetSubtitleLinkUpdate** | [**AssetSubtitleLinkUpdate**](AssetSubtitleLinkUpdate.md) |  | 
+
+### Return type
+
+[**AssetSubtitleLink**](AssetSubtitleLink.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateComment**
+```swift
+    open class func updateComment( id: Int,  commentUpdate: CommentUpdate) -> Promise<Comment>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Comment.
-let comment = Comment(id: 123, assignee: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), user: nil, drawing: "TODO", tags: [TagReference(id: 123, roots: [123], name: "name_example", shared: false, color: "color_example")], fullAsset: Asset(id: 123, proxies: [Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123)], defaultProxy: nil, info: "TODO", proxyInfo: "TODO", customFields: "TODO", tags: [123], resolvedPermission: MediaRootPermission(id: 123, user: nil, group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), fullPath: "fullPath_example", path: "path_example", allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123), backups: "backups_example", proxiesGenerated: false, proxiesFailed: false, modifiedBy: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), bundles: [MediaFileBundleMini(id: 123, asset: 123, name: "name_example", location: 123, mainfile: MediaFileMini(id: 123, name: "name_example", bundle: 123, fullPath: "fullPath_example", customFields: "TODO", isDir: false, isHardlink: false, mtime: 123, parent: 123, parentFile: "TODO", path: "path_example", present: false, size: 123, volume: VolumeMini(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example")))], syncId: 123, displayName: "displayName_example", hasFiles: false, hasBackups: false, hasCloudLinks: false, checksum: "checksum_example", type: "type_example", thumbnailGenerated: false, matchedScanner: "matchedScanner_example", rating: 123, workflowState: 123, isTemporary: false, created: Date(), modified: Date(), _set: 123), syncId: 123, date: Date(), text: "text_example", time: 123, isCloud: false, resolved: false, resolvedDate: Date(), asset: 123, root: 123, parent: 123) // Comment | 
+let commentUpdate = CommentUpdate(assignee: "TODO", user: "TODO", drawing: "TODO", tags: [TagReference(id: 123, roots: [123], name: "name_example", shared: false, color: "color_example")], text: "text_example", time: 123, isCloud: false, resolved: false, resolvedDate: Date(), asset: 123, root: 123, parent: 123) // CommentUpdate | 
 
-MediaLibraryAPI.updateComment(id: id, comment: comment).then {
+MediaLibraryAPI.updateComment(id: id, commentUpdate: commentUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -6736,7 +7915,7 @@ MediaLibraryAPI.updateComment(id: id, comment: comment).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this Comment. | 
- **comment** | [**Comment**](Comment.md) |  | 
+ **commentUpdate** | [**CommentUpdate**](CommentUpdate.md) |  | 
 
 ### Return type
 
@@ -6755,22 +7934,22 @@ Name | Type | Description  | Notes
 
 # **updateCustomField**
 ```swift
-    open class func updateCustomField( id: Int,  customField: CustomField) -> Promise<CustomField>
+    open class func updateCustomField( id: Int,  customFieldUpdate: CustomFieldUpdate) -> Promise<CustomField>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Custom field.
-let customField = CustomField(id: 123, labels: ["labels_example"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example") // CustomField | 
+let customFieldUpdate = CustomFieldUpdate(labels: ["TODO"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example") // CustomFieldUpdate | 
 
-MediaLibraryAPI.updateCustomField(id: id, customField: customField).then {
+MediaLibraryAPI.updateCustomField(id: id, customFieldUpdate: customFieldUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -6784,7 +7963,7 @@ MediaLibraryAPI.updateCustomField(id: id, customField: customField).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this Custom field. | 
- **customField** | [**CustomField**](CustomField.md) |  | 
+ **customFieldUpdate** | [**CustomFieldUpdate**](CustomFieldUpdate.md) |  | 
 
 ### Return type
 
@@ -6803,22 +7982,22 @@ Name | Type | Description  | Notes
 
 # **updateEditorProject**
 ```swift
-    open class func updateEditorProject( id: Int,  editorProject: EditorProject) -> Promise<EditorProject>
+    open class func updateEditorProject( id: Int,  editorProjectUpdate: EditorProjectUpdate) -> Promise<EditorProject>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this File.
-let editorProject = EditorProject(file: 123, parent: 123, parentPath: "parentPath_example", existingFile: 123, format: "format_example", project: "TODO") // EditorProject | 
+let editorProjectUpdate = EditorProjectUpdate(file: 123, parent: 123, parentPath: "parentPath_example", existingFile: 123, format: "format_example", project: "TODO") // EditorProjectUpdate | 
 
-MediaLibraryAPI.updateEditorProject(id: id, editorProject: editorProject).then {
+MediaLibraryAPI.updateEditorProject(id: id, editorProjectUpdate: editorProjectUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -6832,7 +8011,7 @@ MediaLibraryAPI.updateEditorProject(id: id, editorProject: editorProject).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this File. | 
- **editorProject** | [**EditorProject**](EditorProject.md) |  | 
+ **editorProjectUpdate** | [**EditorProjectUpdate**](EditorProjectUpdate.md) |  | 
 
 ### Return type
 
@@ -6849,24 +8028,72 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **updateEditorSubtitle**
+```swift
+    open class func updateEditorSubtitle( id: Int,  editorSubtitleUpdate: EditorSubtitleUpdate) -> Promise<EditorSubtitle>
+```
+
+
+
+### Required permissions    * User account permission: `media:access` 
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this File.
+let editorSubtitleUpdate = EditorSubtitleUpdate(file: 123, parent: 123, name: "name_example", format: "format_example", subtitle: Subtitle(info: "TODO", styles: "TODO", events: [SubtitleEvent(start: 123, end: 123, text: "text_example", marked: false, layer: 123, style: "style_example", name: "name_example", marginl: 123, marginr: 123, marginv: 123, effect: "effect_example", type: "type_example")])) // EditorSubtitleUpdate | 
+
+MediaLibraryAPI.updateEditorSubtitle(id: id, editorSubtitleUpdate: editorSubtitleUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this File. | 
+ **editorSubtitleUpdate** | [**EditorSubtitleUpdate**](EditorSubtitleUpdate.md) |  | 
+
+### Return type
+
+[**EditorSubtitle**](EditorSubtitle.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateExternalTranscoder**
 ```swift
-    open class func updateExternalTranscoder( id: Int,  externalTranscoder: ExternalTranscoder) -> Promise<ExternalTranscoder>
+    open class func updateExternalTranscoder( id: Int,  externalTranscoderUpdate: ExternalTranscoderUpdate) -> Promise<ExternalTranscoder>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `system:admin-access` (write) 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this external transcoder.
-let externalTranscoder = ExternalTranscoder(id: 123, pathMappings: ["pathMappings_example"], name: "name_example", type: "type_example", address: "address_example") // ExternalTranscoder | 
+let externalTranscoderUpdate = ExternalTranscoderUpdate(pathMappings: ["TODO"], name: "name_example", type: "type_example", address: "address_example") // ExternalTranscoderUpdate | 
 
-MediaLibraryAPI.updateExternalTranscoder(id: id, externalTranscoder: externalTranscoder).then {
+MediaLibraryAPI.updateExternalTranscoder(id: id, externalTranscoderUpdate: externalTranscoderUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -6880,7 +8107,7 @@ MediaLibraryAPI.updateExternalTranscoder(id: id, externalTranscoder: externalTra
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this external transcoder. | 
- **externalTranscoder** | [**ExternalTranscoder**](ExternalTranscoder.md) |  | 
+ **externalTranscoderUpdate** | [**ExternalTranscoderUpdate**](ExternalTranscoderUpdate.md) |  | 
 
 ### Return type
 
@@ -6899,22 +8126,22 @@ Name | Type | Description  | Notes
 
 # **updateMarker**
 ```swift
-    open class func updateMarker( id: Int,  marker: Marker) -> Promise<Marker>
+    open class func updateMarker( id: Int,  markerUpdate: MarkerUpdate) -> Promise<Marker>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this marker.
-let marker = Marker(id: 123, veritoneMetadataParser: "veritoneMetadataParser_example", title: "title_example", text: "text_example", tIn: 123, tOut: 123, createdAt: Date(), modifiedAt: Date(), user: 123, asset: 123, comment: 123, veritoneMetadata: 123) // Marker | 
+let markerUpdate = MarkerUpdate(title: "title_example", text: "text_example", tIn: 123, tOut: 123, asset: 123) // MarkerUpdate | 
 
-MediaLibraryAPI.updateMarker(id: id, marker: marker).then {
+MediaLibraryAPI.updateMarker(id: id, markerUpdate: markerUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -6928,7 +8155,7 @@ MediaLibraryAPI.updateMarker(id: id, marker: marker).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this marker. | 
- **marker** | [**Marker**](Marker.md) |  | 
+ **markerUpdate** | [**MarkerUpdate**](MarkerUpdate.md) |  | 
 
 ### Return type
 
@@ -6947,22 +8174,23 @@ Name | Type | Description  | Notes
 
 # **updateMediaFile**
 ```swift
-    open class func updateMediaFile( id: Int,  mediaFile: MediaFile) -> Promise<MediaFile>
+    open class func updateMediaFile( id: Int,  mediaFileUpdate: MediaFileUpdate,  root: Int? = nil) -> Promise<MediaFile>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this File.
-let mediaFile = MediaFile(id: 123, volume: VolumeMini(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), info: "TODO", customFields: "TODO", resolvedPermission: MediaRootPermission(id: 123, user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), fullPath: "fullPath_example", path: "path_example", allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123), parentFile: "TODO", root: MediaRootMini(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["labels_example"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), path: "path_example", prefetchThumbnailStrips: false), effectiveCustomFields: "TODO", modifiedBy: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), fullPath: "fullPath_example", isShared: false, isExcluded: false, isHardlink: false, isBookmarked: false, childCount: 123, name: "name_example", path: "path_example", pathhash: "pathhash_example", ancestry: "ancestry_example", isDir: false, totalFiles: 123, size: 123, mtime: 123, present: false, needsRescan: false, isShowroom: false, bundleIndex: 123, modified: Date(), parent: 123, bundle: 123, bookmarkedBy: [123]) // MediaFile | 
+let mediaFileUpdate = MediaFileUpdate(info: "TODO", customFields: "TODO", totalFiles: 123, needsRescan: false, bookmarkedBy: [123]) // MediaFileUpdate | 
+let root = 987 // Int |  (optional)
 
-MediaLibraryAPI.updateMediaFile(id: id, mediaFile: mediaFile).then {
+MediaLibraryAPI.updateMediaFile(id: id, mediaFileUpdate: mediaFileUpdate, root: root).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -6976,7 +8204,8 @@ MediaLibraryAPI.updateMediaFile(id: id, mediaFile: mediaFile).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this File. | 
- **mediaFile** | [**MediaFile**](MediaFile.md) |  | 
+ **mediaFileUpdate** | [**MediaFileUpdate**](MediaFileUpdate.md) |  | 
+ **root** | **Int** |  | [optional] 
 
 ### Return type
 
@@ -6995,22 +8224,22 @@ Name | Type | Description  | Notes
 
 # **updateMediaFileTemplate**
 ```swift
-    open class func updateMediaFileTemplate( id: Int,  mediaFileTemplate: MediaFileTemplate) -> Promise<MediaFileTemplate>
+    open class func updateMediaFileTemplate( id: Int,  mediaFileTemplateUpdate: MediaFileTemplateUpdate) -> Promise<MediaFileTemplate>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Template.
-let mediaFileTemplate = MediaFileTemplate(id: 123, file: MediaFileReference(id: 123, volume: VolumeMini(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), info: "TODO", customFields: "TODO", resolvedPermission: MediaRootPermission(id: 123, user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), fullPath: "fullPath_example", path: "path_example", allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123), parentFile: "TODO", root: MediaRootMini(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["labels_example"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), path: "path_example", prefetchThumbnailStrips: false), effectiveCustomFields: "TODO", modifiedBy: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), fullPath: "fullPath_example", isShared: false, isExcluded: false, isHardlink: false, isBookmarked: false, childCount: 123, name: "name_example", path: "path_example", pathhash: "pathhash_example", ancestry: "ancestry_example", isDir: false, totalFiles: 123, size: 123, mtime: 123, present: false, needsRescan: false, isShowroom: false, bundleIndex: 123, modified: Date(), parent: 123, bundle: 123, bookmarkedBy: [123]), name: "name_example") // MediaFileTemplate | 
+let mediaFileTemplateUpdate = MediaFileTemplateUpdate(file: MediaFileReference(id: 123, volume: VolumeMini(id: 123, path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example", name: "name_example"), info: "TODO", customFields: "TODO", resolvedPermission: MediaRootPermission(id: 123, user: "TODO", group: "TODO", fullPath: "fullPath_example", path: "path_example", allowRead: false, allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showSubtitles: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123), parentFile: "TODO", root: MediaRootMini(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["TODO"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example", name: "name_example"), path: "path_example", prefetchThumbnailStrips: false), effectiveCustomFields: "TODO", modifiedBy: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), fullPath: "fullPath_example", isShared: false, isExcluded: false, isHardlink: false, isBookmarked: false, childCount: 123, name: "name_example", path: "path_example", pathhash: "pathhash_example", ancestry: "ancestry_example", isDir: false, totalFiles: 123, size: 123, mtime: 123, present: false, needsRescan: false, isShowroom: false, bundleIndex: 123, modified: Date(), parent: 123, bundle: 123, bookmarkedBy: [123]), name: "name_example") // MediaFileTemplateUpdate | 
 
-MediaLibraryAPI.updateMediaFileTemplate(id: id, mediaFileTemplate: mediaFileTemplate).then {
+MediaLibraryAPI.updateMediaFileTemplate(id: id, mediaFileTemplateUpdate: mediaFileTemplateUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -7024,7 +8253,7 @@ MediaLibraryAPI.updateMediaFileTemplate(id: id, mediaFileTemplate: mediaFileTemp
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this Template. | 
- **mediaFileTemplate** | [**MediaFileTemplate**](MediaFileTemplate.md) |  | 
+ **mediaFileTemplateUpdate** | [**MediaFileTemplateUpdate**](MediaFileTemplateUpdate.md) |  | 
 
 ### Return type
 
@@ -7043,22 +8272,22 @@ Name | Type | Description  | Notes
 
 # **updateMediaRoot**
 ```swift
-    open class func updateMediaRoot( id: Int,  mediaRoot: MediaRoot) -> Promise<MediaRoot>
+    open class func updateMediaRoot( id: Int,  mediaRootDetailUpdate: MediaRootDetailUpdate) -> Promise<MediaRootDetail>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this media root.
-let mediaRoot = MediaRoot(id: 123, customFields: [CustomFieldReference(id: 123, labels: ["labels_example"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], workflow: "TODO", aiConfig: "TODO", veritoneConfig: "TODO", volume: VolumeMiniReference(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), fullPath: "fullPath_example", resolvedPermissions: [MediaRootPermission(id: 123, user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), fullPath: "fullPath_example", path: "path_example", allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123)], jobs: [JobReference(id: 123, subtasks: [SubtaskReference(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123)], schedules: [ScheduleReference(id: 123, variables: "TODO", nextRun: Date(), type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123)], allowUsers: [ElementsUserReference(id: 123, allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", clientSessions: [ClientSession(id: 123, user: ElementsUserMini(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), mountedWorkspaces: "mountedWorkspaces_example", started: Date(), lastUpdated: Date(), workstation: WorkstationMini(id: "id_example", displayName: "displayName_example", hostname: "hostname_example"))], defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), ancillaryPathReadOnly: false, ancillaryPath: "ancillaryPath_example", fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], allowGroups: [nil], startable: false, variableDefinitions: ["TODO"], mediaRoots: [123], webhookUrl: "webhookUrl_example", specialType: 123, name: "name_example", enabled: false, allowOthersToStart: false, allowClientToStart: false, showAsButton: false, inputType: "inputType_example", hook: "hook_example", webhookSecret: "webhookSecret_example", securityContext: 123, partOfWorkflowFor: 123)], workflowJobs: [Job(id: 123, subtasks: [nil], schedules: [nil], allowUsers: [nil], allowGroups: [nil], startable: false, variableDefinitions: ["TODO"], mediaRoots: [123], webhookUrl: "webhookUrl_example", specialType: 123, name: "name_example", enabled: false, allowOthersToStart: false, allowClientToStart: false, showAsButton: false, inputType: "inputType_example", hook: "hook_example", webhookSecret: "webhookSecret_example", securityContext: 123, partOfWorkflowFor: 123)], name: "name_example", path: "path_example", needsRescan: false, viewMode: "viewMode_example", viewStyle: "viewStyle_example", viewDefaultTab: "viewDefaultTab_example", showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showMarkers: false, showHistory: false, showAiMetadata: false, prefetchThumbnailStrips: false, cover: "cover_example", nameField: "nameField_example", shareComments: false, shareLinkDuration: 123, defaultProxyProfile: 123, cloudProxyProfile: 123, veritoneConnection: 123, veritoneProxyProfile: 123, aiConnection: 123, aiProxyProfile: 123, proxyProfiles: [123], tags: [123]) // MediaRoot | 
+let mediaRootDetailUpdate = MediaRootDetailUpdate(customFields: [CustomFieldReference(id: 123, labels: ["TODO"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], workflow: "TODO", volume: VolumeMiniReference(id: 123, path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example", name: "name_example"), jobs: [JobReference(id: 123, subtasks: [SubtaskReference(id: 123, kwargs: "TODO", graphLayout: "TODO", validationError: "validationError_example", trigger: "trigger_example", name: "name_example", noopDontSave: false, noConcurrency: false, timeout: 123, logVariable: false, task: "task_example", conditionVariable: "conditionVariable_example", conditionValue: "conditionValue_example", sync: false, queue: "queue_example", enqueueAtFront: false, parent: 123, relativeTo: 123)], schedules: [ScheduleReference(id: 123, variables: "TODO", nextRun: Date(), type: 123, enabled: false, lastRun: Date(), every: 123, period: "period_example", crontabDayOfMonth: "crontabDayOfMonth_example", crontabDayOfWeek: "crontabDayOfWeek_example", crontabHour: "crontabHour_example", crontabMinute: "crontabMinute_example", crontabMonthOfYear: "crontabMonthOfYear_example", job: 123)], allowUsers: [ElementsUserReference(id: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", allowChangingPassword: false, allowWanLogin: false, allowedFsPaths: ["allowedFsPaths_example"], allowedFsWritePaths: ["allowedFsWritePaths_example"], avatar: "avatar_example", defaultPage: "defaultPage_example", displayName: "displayName_example", effectivePermissions: ["effectivePermissions_example"], email: "email_example", expiry: Date(), fmBookmarks: ["fmBookmarks_example"], fullName: "fullName_example", gid: 123, groupPermissions: ["groupPermissions_example"], hasPassword: false, home: 123, isExternal: false, isCloud: false, isCloudDefault: false, isEnabled: false, language: "language_example", lastSeen: Date(), ldap: 123, ldapDn: "ldapDn_example", passwordChangeRequired: false, permissions: ["permissions_example"], shaperCeiling: 123, shaperRate: 123, syncId: 123, totpEnabled: false, uid: 123, unixUsername: "unixUsername_example", username: "username_example")], allowGroups: [ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: "ancillaryPathReadOnly_example", name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ldap: 123, members: [123])], startable: false, variableDefinitions: ["TODO"], mediaRoots: [123], webhookUrl: "webhookUrl_example", specialType: 123, name: "name_example", enabled: false, allowOthersToStart: false, allowClientToStart: false, showAsButton: false, inputType: "inputType_example", hook: "hook_example", webhookSecret: "webhookSecret_example", securityContext: 123, partOfWorkflowFor: 123)], aiConfig: "TODO", veritoneConfig: "TODO", name: "name_example", path: "path_example", needsRescan: false, viewMode: "viewMode_example", viewStyle: "viewStyle_example", viewDefaultTab: "viewDefaultTab_example", showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showSubtitles: false, showMarkers: false, showHistory: false, showAiMetadata: false, prefetchThumbnailStrips: false, cover: "cover_example", nameField: "nameField_example", shareComments: false, shareLinkDuration: 123, defaultProxyProfile: 123, cloudProxyProfile: 123, veritoneConnection: 123, veritoneProxyProfile: 123, aiConnection: 123, aiProxyProfile: 123, proxyProfiles: [123], tags: [123]) // MediaRootDetailUpdate | 
 
-MediaLibraryAPI.updateMediaRoot(id: id, mediaRoot: mediaRoot).then {
+MediaLibraryAPI.updateMediaRoot(id: id, mediaRootDetailUpdate: mediaRootDetailUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -7072,11 +8301,11 @@ MediaLibraryAPI.updateMediaRoot(id: id, mediaRoot: mediaRoot).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this media root. | 
- **mediaRoot** | [**MediaRoot**](MediaRoot.md) |  | 
+ **mediaRootDetailUpdate** | [**MediaRootDetailUpdate**](MediaRootDetailUpdate.md) |  | 
 
 ### Return type
 
-[**MediaRoot**](MediaRoot.md)
+[**MediaRootDetail**](MediaRootDetail.md)
 
 ### Authorization
 
@@ -7091,22 +8320,22 @@ Name | Type | Description  | Notes
 
 # **updateMediaRootPermission**
 ```swift
-    open class func updateMediaRootPermission( id: Int,  mediaRootPermission: MediaRootPermission) -> Promise<MediaRootPermission>
+    open class func updateMediaRootPermission( id: Int,  mediaRootPermissionUpdate: MediaRootPermissionUpdate) -> Promise<MediaRootPermission>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Media Root Permission.
-let mediaRootPermission = MediaRootPermission(id: 123, user: ElementsUserMiniReference(id: 123, avatar: "avatar_example", displayName: "displayName_example", email: "email_example", fullName: "fullName_example", isExternal: false, isCloud: false, username: "username_example"), group: ElementsGroupReference(id: 123, permissions: ["permissions_example"], membersPreview: [MemberPreview(id: 123, avatar: "avatar_example", email: "email_example")], effectivePermissions: ["effectivePermissions_example"], name: "name_example", ldapDn: "ldapDn_example", unixGroupname: "unixGroupname_example", gid: 123, ancillaryPath: "ancillaryPath_example", ancillaryPathReadOnly: false, ldap: 123, members: [123]), fullPath: "fullPath_example", path: "path_example", allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123) // MediaRootPermission | 
+let mediaRootPermissionUpdate = MediaRootPermissionUpdate(user: "TODO", group: "TODO", path: "path_example", allowRead: false, allowCreate: false, allowWriteFs: false, allowWriteDb: false, allowProxyDownload: false, allowOriginalDownload: false, allowUpload: false, allowSharing: false, allowDeleteFs: false, allowDeleteDb: false, showTags: false, showComments: false, showLocations: false, showCustomFields: false, showRatings: false, showSubclips: false, showSubtitles: false, showAiMetadata: false, showMarkers: false, showHistory: false, root: 123, isTemporaryForToken: 123) // MediaRootPermissionUpdate | 
 
-MediaLibraryAPI.updateMediaRootPermission(id: id, mediaRootPermission: mediaRootPermission).then {
+MediaLibraryAPI.updateMediaRootPermission(id: id, mediaRootPermissionUpdate: mediaRootPermissionUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -7120,7 +8349,7 @@ MediaLibraryAPI.updateMediaRootPermission(id: id, mediaRootPermission: mediaRoot
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this Media Root Permission. | 
- **mediaRootPermission** | [**MediaRootPermission**](MediaRootPermission.md) |  | 
+ **mediaRootPermissionUpdate** | [**MediaRootPermissionUpdate**](MediaRootPermissionUpdate.md) |  | 
 
 ### Return type
 
@@ -7139,22 +8368,22 @@ Name | Type | Description  | Notes
 
 # **updateMediaTag**
 ```swift
-    open class func updateMediaTag( id: Int,  unfilteredTag: UnfilteredTag) -> Promise<UnfilteredTag>
+    open class func updateMediaTag( id: Int,  unfilteredTagUpdate: UnfilteredTagUpdate) -> Promise<UnfilteredTag>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this Tag.
-let unfilteredTag = UnfilteredTag(id: 123, roots: [123], name: "name_example", shared: false, color: "color_example") // UnfilteredTag | 
+let unfilteredTagUpdate = UnfilteredTagUpdate(roots: [123], name: "name_example", shared: false, color: "color_example") // UnfilteredTagUpdate | 
 
-MediaLibraryAPI.updateMediaTag(id: id, unfilteredTag: unfilteredTag).then {
+MediaLibraryAPI.updateMediaTag(id: id, unfilteredTagUpdate: unfilteredTagUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -7168,7 +8397,7 @@ MediaLibraryAPI.updateMediaTag(id: id, unfilteredTag: unfilteredTag).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this Tag. | 
- **unfilteredTag** | [**UnfilteredTag**](UnfilteredTag.md) |  | 
+ **unfilteredTagUpdate** | [**UnfilteredTagUpdate**](UnfilteredTagUpdate.md) |  | 
 
 ### Return type
 
@@ -7187,22 +8416,22 @@ Name | Type | Description  | Notes
 
 # **updateProxyProfile**
 ```swift
-    open class func updateProxyProfile( id: Int,  proxyProfile: ProxyProfile) -> Promise<ProxyProfile>
+    open class func updateProxyProfile( id: Int,  proxyProfileUpdate: ProxyProfileUpdate) -> Promise<ProxyProfile>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access` (read) / `media:roots:manage` (write)   * License component: media 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this proxy profile.
-let proxyProfile = ProxyProfile(id: 123, name: "name_example", proxyGenerator: "proxyGenerator_example", resolution: "resolution_example", rateControl: 123, crf: 123, bitrate: 123, audioBitrate: 123, variantsLimit: 123, enableDenseFilmstrip: false, enableWatermark: false, watermarkImage: "watermarkImage_example", watermarkPosition: 123, watermarkOpacity: 123, watermarkSize: 123, enableTimecode: false, timecodePosition: 123, timecodeOpacity: 123, timecodeSize: 123, lut: "lut_example", hotfolderCopyTo: "hotfolderCopyTo_example", hotfolderReadFrom: "hotfolderReadFrom_example", hotfolderQueueTimeout: 123, hotfolderEncodeTimeout: 123, vantageWorkflowId: "vantageWorkflowId_example", externalTranscoderStagingPath: "externalTranscoderStagingPath_example", externalTranscoder: 123) // ProxyProfile | 
+let proxyProfileUpdate = ProxyProfileUpdate(name: "name_example", proxyGenerator: "proxyGenerator_example", resolution: "resolution_example", rateControl: "rateControl_example", crf: 123, bitrate: 123, audioBitrate: 123, variantsLimit: 123, enableDenseFilmstrip: false, enableWatermark: false, watermarkImage: "watermarkImage_example", watermarkPosition: "watermarkPosition_example", watermarkOpacity: 123, watermarkSize: 123, enableTimecode: false, timecodePosition: "timecodePosition_example", timecodeOpacity: 123, timecodeSize: 123, lut: "lut_example", hotfolderCopyTo: "hotfolderCopyTo_example", hotfolderReadFrom: "hotfolderReadFrom_example", hotfolderQueueTimeout: 123, hotfolderEncodeTimeout: 123, vantageWorkflowId: "vantageWorkflowId_example", externalTranscoderStagingPath: "externalTranscoderStagingPath_example", externalTranscoder: 123) // ProxyProfileUpdate | 
 
-MediaLibraryAPI.updateProxyProfile(id: id, proxyProfile: proxyProfile).then {
+MediaLibraryAPI.updateProxyProfile(id: id, proxyProfileUpdate: proxyProfileUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -7216,7 +8445,7 @@ MediaLibraryAPI.updateProxyProfile(id: id, proxyProfile: proxyProfile).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this proxy profile. | 
- **proxyProfile** | [**ProxyProfile**](ProxyProfile.md) |  | 
+ **proxyProfileUpdate** | [**ProxyProfileUpdate**](ProxyProfileUpdate.md) |  | 
 
 ### Return type
 
@@ -7233,24 +8462,72 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateSubclip**
+# **updateSavedSearch**
 ```swift
-    open class func updateSubclip( id: Int,  subclip: Subclip) -> Promise<Subclip>
+    open class func updateSavedSearch( id: Int,  savedSearchUpdate: SavedSearchUpdate) -> Promise<SavedSearch>
 ```
 
 
 
 ### Required permissions    * User account permission: `media:access`   * License component: media 
 
-### Example 
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import ElementsSDK
+
+let id = 987 // Int | A unique integer value identifying this saved search.
+let savedSearchUpdate = SavedSearchUpdate(root: "TODO", query: ["query_example"], name: "name_example", shared: false) // SavedSearchUpdate | 
+
+MediaLibraryAPI.updateSavedSearch(id: id, savedSearchUpdate: savedSearchUpdate).then {
+         // when the promise is fulfilled
+     }.always {
+         // regardless of whether the promise is fulfilled, or rejected
+     }.catch { errorType in
+         // when the promise is rejected
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **Int** | A unique integer value identifying this saved search. | 
+ **savedSearchUpdate** | [**SavedSearchUpdate**](SavedSearchUpdate.md) |  | 
+
+### Return type
+
+[**SavedSearch**](SavedSearch.md)
+
+### Authorization
+
+[Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateSubclip**
+```swift
+    open class func updateSubclip( id: Int,  subclipUpdate: SubclipUpdate) -> Promise<Subclip>
+```
+
+
+
+### Required permissions    * User account permission: `media:access`   * License component: media 
+
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this subclip.
-let subclip = Subclip(id: 123, asset: AssetMiniReference(id: 123, syncId: 123, defaultProxy: Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123), type: "type_example", displayName: "displayName_example", info: "TODO", thumbnailGenerated: false), rendered: nil, shared: false, date: Date(), name: "name_example", tIn: 123, tOut: 123, user: 123, root: MediaRootMiniReference(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["labels_example"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, name: "name_example", path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example"), path: "path_example", prefetchThumbnailStrips: false)) // Subclip | 
+let subclipUpdate = SubclipUpdate(asset: AssetMiniReference(id: 123, syncId: 123, defaultProxy: Proxy(id: 123, urls: "TODO", profile: ProxyProfileMini(id: 123, name: "name_example"), failedReason: "failedReason_example", transforms: "transforms_example", generated: false, failed: false, name: "name_example", variantId: "variantId_example", variantConfig: "variantConfig_example", asset: 123), type: "type_example", displayName: "displayName_example", format: FormatMetadata(width: 123, height: 123, framerateFloat: 123, framerate: "framerate_example", duration: 123), info: "TODO", thumbnailGenerated: false), rendered: "TODO", shared: false, name: "name_example", tIn: 123, tOut: 123, root: MediaRootMiniReference(id: 123, name: "name_example", fullPath: "fullPath_example", customFields: [CustomFieldReference(id: 123, labels: ["TODO"], options: ["options_example"], name: "name_example", order: 123, type: "type_example", useForUploads: false, requireToUpload: false, nonUserEditable: false, validation: "validation_example", regex: "regex_example", rangeMin: 123, rangeMax: 123, numberOfDigits: 123, metadataPrefill: "metadataPrefill_example", highlightExpiration: false, multipleResponse: false, helpText: "helpText_example")], volume: VolumeMiniReference(id: 123, path: "path_example", displayName: "displayName_example", visualTag: "visualTag_example", type: "type_example", name: "name_example"), path: "path_example", prefetchThumbnailStrips: false)) // SubclipUpdate | 
 
-MediaLibraryAPI.updateSubclip(id: id, subclip: subclip).then {
+MediaLibraryAPI.updateSubclip(id: id, subclipUpdate: subclipUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -7264,7 +8541,7 @@ MediaLibraryAPI.updateSubclip(id: id, subclip: subclip).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this subclip. | 
- **subclip** | [**Subclip**](Subclip.md) |  | 
+ **subclipUpdate** | [**SubclipUpdate**](SubclipUpdate.md) |  | 
 
 ### Return type
 

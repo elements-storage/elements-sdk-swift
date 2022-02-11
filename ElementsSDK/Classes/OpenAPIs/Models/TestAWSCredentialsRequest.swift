@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TestAWSCredentialsRequest: Codable, Hashable {
+public struct TestAWSCredentialsRequest: Codable, JSONEncodable, Hashable {
 
     public var accessKeyId: String
     public var secretAccessKey: String

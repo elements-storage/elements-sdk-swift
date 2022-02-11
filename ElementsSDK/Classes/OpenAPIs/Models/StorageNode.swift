@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct StorageNode: Codable, Hashable {
+public struct StorageNode: Codable, JSONEncodable, Hashable {
 
     public enum ModelType: Int, Codable, CaseIterable {
         case _1 = 1
@@ -22,20 +22,20 @@ public struct StorageNode: Codable, Hashable {
         case _2 = 2
         case _3 = 3
     }
-    public var id: Int?
+    public var id: Int
     public var name: String?
     /** For communication between nodes only */
     public var address: String?
     /** Enforces mounting from a specific address/hostname instead of the available interfaces */
     public var addressOverride: String?
-    public var backend: Backend?
+    public var backend: Backend
     public var type: ModelType?
     public var ipmi: Ipmi?
-    public var interfaces: [Interface]?
+    public var interfaces: [Interface]
     public var status: StorageNodeStatus?
-    public var isLogAggregator: Bool?
+    public var isLogAggregator: Bool
 
-    public init(id: Int? = nil, name: String? = nil, address: String? = nil, addressOverride: String? = nil, backend: Backend? = nil, type: ModelType? = nil, ipmi: Ipmi? = nil, interfaces: [Interface]? = nil, status: StorageNodeStatus? = nil, isLogAggregator: Bool? = nil) {
+    public init(id: Int, name: String? = nil, address: String? = nil, addressOverride: String? = nil, backend: Backend, type: ModelType? = nil, ipmi: Ipmi? = nil, interfaces: [Interface], status: StorageNodeStatus? = nil, isLogAggregator: Bool) {
         self.id = id
         self.name = name
         self.address = address
@@ -65,16 +65,16 @@ public struct StorageNode: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(address, forKey: .address)
         try container.encodeIfPresent(addressOverride, forKey: .addressOverride)
-        try container.encodeIfPresent(backend, forKey: .backend)
+        try container.encode(backend, forKey: .backend)
         try container.encodeIfPresent(type, forKey: .type)
         try container.encodeIfPresent(ipmi, forKey: .ipmi)
-        try container.encodeIfPresent(interfaces, forKey: .interfaces)
+        try container.encode(interfaces, forKey: .interfaces)
         try container.encodeIfPresent(status, forKey: .status)
-        try container.encodeIfPresent(isLogAggregator, forKey: .isLogAggregator)
+        try container.encode(isLogAggregator, forKey: .isLogAggregator)
     }
 }
 

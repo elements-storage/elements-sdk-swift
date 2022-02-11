@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct CPUStat: Codable, Hashable {
+public struct CPUStat: Codable, JSONEncodable, Hashable {
 
     public var time: Double
     public var cIdle: Double

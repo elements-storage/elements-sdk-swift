@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ChangeOwnPasswordRequest: Codable, Hashable {
+public struct ChangeOwnPasswordRequest: Codable, JSONEncodable, Hashable {
 
     public var currentPassword: String
     public var currentOtp: String?

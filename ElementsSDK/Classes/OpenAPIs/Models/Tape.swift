@@ -10,14 +10,14 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Tape: Codable, Hashable {
+public struct Tape: Codable, JSONEncodable, Hashable {
 
     public enum Lto: String, Codable, CaseIterable {
         case _5 = "5"
         case _6 = "6"
         case _7 = "7"
     }
-    public var id: Int?
+    public var id: Int
     public var rootEntry: Int?
     public var name: String
     public var uuid: String?
@@ -34,7 +34,7 @@ public struct Tape: Codable, Hashable {
     public var lto: Lto?
     public var group: Int?
 
-    public init(id: Int? = nil, rootEntry: Int? = nil, name: String, uuid: String? = nil, generation: Int? = nil, customA: String? = nil, customB: String? = nil, customC: String? = nil, customD: String? = nil, freeSpace: Int? = nil, loadCounter: Int? = nil, errorCounter: Int? = nil, errorReason: String? = nil, active: Bool? = nil, lto: Lto? = nil, group: Int? = nil) {
+    public init(id: Int, rootEntry: Int?, name: String, uuid: String? = nil, generation: Int? = nil, customA: String? = nil, customB: String? = nil, customC: String? = nil, customD: String? = nil, freeSpace: Int? = nil, loadCounter: Int? = nil, errorCounter: Int? = nil, errorReason: String? = nil, active: Bool? = nil, lto: Lto? = nil, group: Int? = nil) {
         self.id = id
         self.rootEntry = rootEntry
         self.name = name
@@ -76,8 +76,8 @@ public struct Tape: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(rootEntry, forKey: .rootEntry)
+        try container.encode(id, forKey: .id)
+        try container.encode(rootEntry, forKey: .rootEntry)
         try container.encode(name, forKey: .name)
         try container.encodeIfPresent(uuid, forKey: .uuid)
         try container.encodeIfPresent(generation, forKey: .generation)

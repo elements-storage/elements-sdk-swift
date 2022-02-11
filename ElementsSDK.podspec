@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/OpenAPITools/openapi-generator'
   s.summary = 'ElementsSDK Swift SDK'
   s.source_files = 'ElementsSDK/Classes/**/*.swift'
-  s.dependency 'PromiseKit/CorePromise', '~> 6.15.3'
   s.dependency 'AnyCodable-FlightSchool', '~> 0.6.1'
+  s.dependency 'PromiseKit/CorePromise', '~> 6.15.3'
 end

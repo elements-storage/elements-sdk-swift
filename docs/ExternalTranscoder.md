@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
-**pathMappings** | **[String]** |  | [optional] [readonly] 
+**id** | **Int** |  | 
+**pathMappings** | [[String: String]] |  | 
 **name** | **String** |  | 
 **type** | **String** |  | [optional] 
 **address** | **String** |  | 

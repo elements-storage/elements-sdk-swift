@@ -4,16 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **name** | **String** |  | [optional] 
 **address** | **String** | For communication between nodes only | [optional] 
 **addressOverride** | **String** | Enforces mounting from a specific address/hostname instead of the available interfaces | [optional] 
-**backend** | [**Backend**](Backend.md) |  | [optional] 
+**backend** | [**Backend**](Backend.md) |  | 
 **type** | **Int** |  | [optional] 
 **ipmi** | **Int** |  | [optional] 
-**interfaces** | [Interface] |  | [optional] [readonly] 
+**interfaces** | [Interface] |  | [readonly] 
 **status** | [**StorageNodeStatus**](StorageNodeStatus.md) |  | [optional] 
-**isLogAggregator** | **Bool** |  | [optional] [readonly] 
+**isLogAggregator** | **Bool** |  | [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

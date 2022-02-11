@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct LDAPServerGroups: Codable, Hashable {
+public struct LDAPServerGroups: Codable, JSONEncodable, Hashable {
 
     public var groups: [LDAPServerGroup]
 

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ElementsVersion: Codable, Hashable {
+public struct ElementsVersion: Codable, JSONEncodable, Hashable {
 
     public var release: String
     public var branch: String?

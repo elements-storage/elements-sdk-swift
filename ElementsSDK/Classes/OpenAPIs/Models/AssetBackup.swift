@@ -10,15 +10,15 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct AssetBackup: Codable, Hashable {
+public struct AssetBackup: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var tapeFile: TapeFile?
-    public var asset: Asset?
-    public var searchHighlight: String?
+    public var id: Int
+    public var tapeFile: TapeFile
+    public var asset: Asset
+    public var searchHighlight: String
     public var customFieldsSnapshot: String?
 
-    public init(id: Int? = nil, tapeFile: TapeFile? = nil, asset: Asset? = nil, searchHighlight: String? = nil, customFieldsSnapshot: String? = nil) {
+    public init(id: Int, tapeFile: TapeFile, asset: Asset, searchHighlight: String, customFieldsSnapshot: String? = nil) {
         self.id = id
         self.tapeFile = tapeFile
         self.asset = asset
@@ -38,10 +38,10 @@ public struct AssetBackup: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(tapeFile, forKey: .tapeFile)
-        try container.encodeIfPresent(asset, forKey: .asset)
-        try container.encodeIfPresent(searchHighlight, forKey: .searchHighlight)
+        try container.encode(id, forKey: .id)
+        try container.encode(tapeFile, forKey: .tapeFile)
+        try container.encode(asset, forKey: .asset)
+        try container.encode(searchHighlight, forKey: .searchHighlight)
         try container.encodeIfPresent(customFieldsSnapshot, forKey: .customFieldsSnapshot)
     }
 }

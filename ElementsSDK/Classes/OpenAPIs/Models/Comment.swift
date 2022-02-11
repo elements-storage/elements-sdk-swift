@@ -10,16 +10,16 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Comment: Codable, Hashable {
+public struct Comment: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
-    public var assignee: ElementsUserMiniReference?
-    public var user: ElementsUserMiniReference?
+    public var id: Int
+    public var assignee: AnyOfElementsUserMiniReferenceAnyType?
+    public var user: AnyOfElementsUserMiniReferenceAnyType?
     public var drawing: [String: String]?
-    public var tags: Set<TagReference>?
+    public var tags: [TagReference]?
     public var fullAsset: Asset?
-    public var syncId: UUID?
-    public var date: Date?
+    public var syncId: UUID
+    public var date: Date
     public var text: String?
     public var time: Double?
     public var isCloud: Bool?
@@ -29,7 +29,7 @@ public struct Comment: Codable, Hashable {
     public var root: Int?
     public var parent: Int?
 
-    public init(id: Int? = nil, assignee: ElementsUserMiniReference? = nil, user: ElementsUserMiniReference? = nil, drawing: [String: String]? = nil, tags: Set<TagReference>? = nil, fullAsset: Asset? = nil, syncId: UUID? = nil, date: Date? = nil, text: String? = nil, time: Double? = nil, isCloud: Bool? = nil, resolved: Bool? = nil, resolvedDate: Date? = nil, asset: Int, root: Int? = nil, parent: Int? = nil) {
+    public init(id: Int, assignee: AnyOfElementsUserMiniReferenceAnyType? = nil, user: AnyOfElementsUserMiniReferenceAnyType? = nil, drawing: [String: String]? = nil, tags: [TagReference]? = nil, fullAsset: Asset? = nil, syncId: UUID, date: Date, text: String? = nil, time: Double? = nil, isCloud: Bool? = nil, resolved: Bool? = nil, resolvedDate: Date? = nil, asset: Int, root: Int? = nil, parent: Int? = nil) {
         self.id = id
         self.assignee = assignee
         self.user = user
@@ -71,14 +71,14 @@ public struct Comment: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(assignee, forKey: .assignee)
         try container.encodeIfPresent(user, forKey: .user)
         try container.encodeIfPresent(drawing, forKey: .drawing)
         try container.encodeIfPresent(tags, forKey: .tags)
         try container.encodeIfPresent(fullAsset, forKey: .fullAsset)
-        try container.encodeIfPresent(syncId, forKey: .syncId)
-        try container.encodeIfPresent(date, forKey: .date)
+        try container.encode(syncId, forKey: .syncId)
+        try container.encode(date, forKey: .date)
         try container.encodeIfPresent(text, forKey: .text)
         try container.encodeIfPresent(time, forKey: .time)
         try container.encodeIfPresent(isCloud, forKey: .isCloud)

@@ -10,9 +10,9 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SubtaskReference: Codable, Hashable {
+public struct SubtaskReference: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var kwargs: [String: String]?
     public var graphLayout: [String: String]?
     public var validationError: String?
@@ -31,7 +31,7 @@ public struct SubtaskReference: Codable, Hashable {
     public var parent: Int?
     public var relativeTo: Int?
 
-    public init(id: Int? = nil, kwargs: [String: String]? = nil, graphLayout: [String: String]? = nil, validationError: String? = nil, trigger: String? = nil, name: String? = nil, noopDontSave: Bool? = nil, noConcurrency: Bool? = nil, timeout: Int? = nil, logVariable: Bool? = nil, task: String? = nil, conditionVariable: String? = nil, conditionValue: String? = nil, sync: Bool? = nil, queue: String? = nil, enqueueAtFront: Bool? = nil, parent: Int? = nil, relativeTo: Int? = nil) {
+    public init(id: Int, kwargs: [String: String]? = nil, graphLayout: [String: String]? = nil, validationError: String? = nil, trigger: String? = nil, name: String? = nil, noopDontSave: Bool? = nil, noConcurrency: Bool? = nil, timeout: Int? = nil, logVariable: Bool? = nil, task: String? = nil, conditionVariable: String? = nil, conditionValue: String? = nil, sync: Bool? = nil, queue: String? = nil, enqueueAtFront: Bool? = nil, parent: Int? = nil, relativeTo: Int? = nil) {
         self.id = id
         self.kwargs = kwargs
         self.graphLayout = graphLayout
@@ -77,7 +77,7 @@ public struct SubtaskReference: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(kwargs, forKey: .kwargs)
         try container.encodeIfPresent(graphLayout, forKey: .graphLayout)
         try container.encodeIfPresent(validationError, forKey: .validationError)

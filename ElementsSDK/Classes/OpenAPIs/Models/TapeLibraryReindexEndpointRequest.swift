@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TapeLibraryReindexEndpointRequest: Codable, Hashable {
+public struct TapeLibraryReindexEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var barcode: String
 

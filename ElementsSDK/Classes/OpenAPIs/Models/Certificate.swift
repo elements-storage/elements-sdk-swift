@@ -10,21 +10,21 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Certificate: Codable, Hashable {
+public struct Certificate: Codable, JSONEncodable, Hashable {
 
     public var certificate: String
     public var key: String?
-    public var name: String?
-    public var issuer: String?
-    public var domains: String?
-    public var fingerprint: String?
-    public var notValidBefore: String?
-    public var notValidAfter: String?
-    public var expired: String?
-    public var keyMatches: String?
-    public var domainMatches: String?
+    public var name: String
+    public var issuer: String
+    public var domains: String
+    public var fingerprint: String
+    public var notValidBefore: String
+    public var notValidAfter: String
+    public var expired: String
+    public var keyMatches: String
+    public var domainMatches: String
 
-    public init(certificate: String, key: String? = nil, name: String? = nil, issuer: String? = nil, domains: String? = nil, fingerprint: String? = nil, notValidBefore: String? = nil, notValidAfter: String? = nil, expired: String? = nil, keyMatches: String? = nil, domainMatches: String? = nil) {
+    public init(certificate: String, key: String? = nil, name: String, issuer: String, domains: String, fingerprint: String, notValidBefore: String, notValidAfter: String, expired: String, keyMatches: String, domainMatches: String) {
         self.certificate = certificate
         self.key = key
         self.name = name
@@ -58,15 +58,15 @@ public struct Certificate: Codable, Hashable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(certificate, forKey: .certificate)
         try container.encodeIfPresent(key, forKey: .key)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(issuer, forKey: .issuer)
-        try container.encodeIfPresent(domains, forKey: .domains)
-        try container.encodeIfPresent(fingerprint, forKey: .fingerprint)
-        try container.encodeIfPresent(notValidBefore, forKey: .notValidBefore)
-        try container.encodeIfPresent(notValidAfter, forKey: .notValidAfter)
-        try container.encodeIfPresent(expired, forKey: .expired)
-        try container.encodeIfPresent(keyMatches, forKey: .keyMatches)
-        try container.encodeIfPresent(domainMatches, forKey: .domainMatches)
+        try container.encode(name, forKey: .name)
+        try container.encode(issuer, forKey: .issuer)
+        try container.encode(domains, forKey: .domains)
+        try container.encode(fingerprint, forKey: .fingerprint)
+        try container.encode(notValidBefore, forKey: .notValidBefore)
+        try container.encode(notValidAfter, forKey: .notValidAfter)
+        try container.encode(expired, forKey: .expired)
+        try container.encode(keyMatches, forKey: .keyMatches)
+        try container.encode(domainMatches, forKey: .domainMatches)
     }
 }
 

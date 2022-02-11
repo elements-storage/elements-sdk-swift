@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ProxyGenerator: Codable, Hashable {
+public struct ProxyGenerator: Codable, JSONEncodable, Hashable {
 
     public var id: String
     public var name: String

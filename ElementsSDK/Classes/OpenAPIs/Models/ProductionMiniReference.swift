@@ -10,13 +10,13 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct ProductionMiniReference: Codable, Hashable {
+public struct ProductionMiniReference: Codable, JSONEncodable, Hashable {
 
-    public var id: Int?
+    public var id: Int
     public var name: String?
     public var specialType: Int?
 
-    public init(id: Int? = nil, name: String? = nil, specialType: Int? = nil) {
+    public init(id: Int, name: String? = nil, specialType: Int? = nil) {
         self.id = id
         self.name = name
         self.specialType = specialType
@@ -32,7 +32,7 @@ public struct ProductionMiniReference: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
+        try container.encode(id, forKey: .id)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(specialType, forKey: .specialType)
     }

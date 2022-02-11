@@ -49,7 +49,7 @@ Method | HTTP request | Description
 
 ### Required permissions    * User account permission: `ltfs:backup`   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -137,7 +137,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `ltfs:manage`   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -176,21 +176,21 @@ Void (empty response body)
 
 # **createTape**
 ```swift
-    open class func createTape( tape: Tape) -> Promise<Tape>
+    open class func createTape( tapeUpdate: TapeUpdate) -> Promise<Tape>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:tapegroups:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let tape = Tape(id: 123, rootEntry: 123, name: "name_example", uuid: "uuid_example", generation: 123, customA: "customA_example", customB: "customB_example", customC: "customC_example", customD: "customD_example", freeSpace: 123, loadCounter: 123, errorCounter: 123, errorReason: "errorReason_example", active: false, lto: "lto_example", group: 123) // Tape | 
+let tapeUpdate = TapeUpdate(name: "name_example", uuid: "uuid_example", generation: 123, customA: "customA_example", customB: "customB_example", customC: "customC_example", customD: "customD_example", freeSpace: 123, loadCounter: 123, errorCounter: 123, errorReason: "errorReason_example", active: false, lto: "lto_example", group: 123) // TapeUpdate | 
 
-TapeArchiveAPI.createTape(tape: tape).then {
+TapeArchiveAPI.createTape(tapeUpdate: tapeUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -203,7 +203,7 @@ TapeArchiveAPI.createTape(tape: tape).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tape** | [**Tape**](Tape.md) |  | 
+ **tapeUpdate** | [**TapeUpdate**](TapeUpdate.md) |  | 
 
 ### Return type
 
@@ -222,21 +222,21 @@ Name | Type | Description  | Notes
 
 # **createTapeGroup**
 ```swift
-    open class func createTapeGroup( tapeGroup: TapeGroup) -> Promise<TapeGroup>
+    open class func createTapeGroup( tapeGroupUpdate: TapeGroupUpdate) -> Promise<TapeGroup>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:tapegroups:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
-let tapeGroup = TapeGroup(id: 123, tapes: [TapeReference(id: 123, rootEntry: 123, name: "name_example", uuid: "uuid_example", generation: 123, customA: "customA_example", customB: "customB_example", customC: "customC_example", customD: "customD_example", freeSpace: 123, loadCounter: 123, errorCounter: 123, errorReason: "errorReason_example", active: false, lto: "lto_example", group: 123)], name: "name_example") // TapeGroup | 
+let tapeGroupUpdate = TapeGroupUpdate(tapes: [TapeReference(id: 123, rootEntry: 123, name: "name_example", uuid: "uuid_example", generation: 123, customA: "customA_example", customB: "customB_example", customC: "customC_example", customD: "customD_example", freeSpace: 123, loadCounter: 123, errorCounter: 123, errorReason: "errorReason_example", active: false, lto: "lto_example", group: 123)], name: "name_example") // TapeGroupUpdate | 
 
-TapeArchiveAPI.createTapeGroup(tapeGroup: tapeGroup).then {
+TapeArchiveAPI.createTapeGroup(tapeGroupUpdate: tapeGroupUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -249,7 +249,7 @@ TapeArchiveAPI.createTapeGroup(tapeGroup: tapeGroup).then {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tapeGroup** | [**TapeGroup**](TapeGroup.md) |  | 
+ **tapeGroupUpdate** | [**TapeGroupUpdate**](TapeGroupUpdate.md) |  | 
 
 ### Return type
 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:tapegroups:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -321,7 +321,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -367,7 +367,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:tapegroups:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -413,7 +413,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `ltfs:manage`   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -452,14 +452,14 @@ Void (empty response body)
 
 # **getAllArchivedFileEntries**
 ```swift
-    open class func getAllArchivedFileEntries( id: Double? = nil,  isDir: String? = nil,  name: String? = nil,  fullpath: String? = nil,  parent: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[TapeFile]>
+    open class func getAllArchivedFileEntries( id: Double? = nil,  isDir: String? = nil,  name: String? = nil,  fullpath: String? = nil,  parent: Double? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[TapeFile]>
 ```
 
 
 
 ### Required permissions    * User account permission: `ltfs:search` (read) / `ltfs:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -468,7 +468,7 @@ let id = 987 // Double | Filter the returned list by `id`. (optional)
 let isDir = "isDir_example" // String | Filter the returned list by `is_dir`. (optional)
 let name = "name_example" // String | Filter the returned list by `name`. (optional)
 let fullpath = "fullpath_example" // String | Filter the returned list by `fullpath`. (optional)
-let parent = "parent_example" // String | Filter the returned list by `parent`. (optional)
+let parent = 987 // Double | Filter the returned list by `parent`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
 let offset = 987 // Int | The initial index from which to return the results. (optional)
@@ -490,7 +490,7 @@ Name | Type | Description  | Notes
  **isDir** | **String** | Filter the returned list by &#x60;is_dir&#x60;. | [optional] 
  **name** | **String** | Filter the returned list by &#x60;name&#x60;. | [optional] 
  **fullpath** | **String** | Filter the returned list by &#x60;fullpath&#x60;. | [optional] 
- **parent** | **String** | Filter the returned list by &#x60;parent&#x60;. | [optional] 
+ **parent** | **Double** | Filter the returned list by &#x60;parent&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
  **offset** | **Int** | The initial index from which to return the results. | [optional] 
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -569,7 +569,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:tapegroups:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -616,21 +616,21 @@ Name | Type | Description  | Notes
 
 # **getAllTapes**
 ```swift
-    open class func getAllTapes( id: Double? = nil,  name: String? = nil,  group: String? = nil,  groupIsnull: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Tape]>
+    open class func getAllTapes( id: Double? = nil,  name: String? = nil,  group: Double? = nil,  groupIsnull: String? = nil,  ordering: String? = nil,  limit: Int? = nil,  offset: Int? = nil) -> Promise<[Tape]>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:tapegroups:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Double | Filter the returned list by `id`. (optional)
 let name = "name_example" // String | Filter the returned list by `name`. (optional)
-let group = "group_example" // String | Filter the returned list by `group`. (optional)
+let group = 987 // Double | Filter the returned list by `group`. (optional)
 let groupIsnull = "groupIsnull_example" // String | Filter the returned list by `group__isnull`. (optional)
 let ordering = "ordering_example" // String | Which field to use when ordering the results. (optional)
 let limit = 987 // Int | Number of results to return per page. (optional)
@@ -651,7 +651,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Double** | Filter the returned list by &#x60;id&#x60;. | [optional] 
  **name** | **String** | Filter the returned list by &#x60;name&#x60;. | [optional] 
- **group** | **String** | Filter the returned list by &#x60;group&#x60;. | [optional] 
+ **group** | **Double** | Filter the returned list by &#x60;group&#x60;. | [optional] 
  **groupIsnull** | **String** | Filter the returned list by &#x60;group__isnull&#x60;. | [optional] 
  **ordering** | **String** | Which field to use when ordering the results. | [optional] 
  **limit** | **Int** | Number of results to return per page. | [optional] 
@@ -681,7 +681,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `ltfs:search` (read) / `ltfs:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -727,7 +727,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:tapegroups:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -773,7 +773,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -819,7 +819,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -865,7 +865,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:tapegroups:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -911,7 +911,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `ltfs:manage`   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -953,7 +953,7 @@ This endpoint does not need any parameter.
 
 ### Required permissions    * User account permission: `ltfs:manage`   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -999,7 +999,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `ltfs:manage`   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1045,7 +1045,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:tapegroups:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1093,7 +1093,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:tapegroups:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1141,7 +1141,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1187,7 +1187,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `ltfs:manage`   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1229,7 +1229,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `ltfs:manage`   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1275,7 +1275,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1317,7 +1317,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1363,7 +1363,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `ltfs:restore`   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1409,7 +1409,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1455,7 +1455,7 @@ Void (empty response body)
 
 ### Required permissions    * User account permission: `ltfs:search`   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1501,7 +1501,7 @@ Name | Type | Description  | Notes
 
 ### Required permissions    * User account permission: `ltfs:manage`   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
@@ -1540,22 +1540,22 @@ Void (empty response body)
 
 # **updateTape**
 ```swift
-    open class func updateTape( id: Int,  tape: Tape) -> Promise<Tape>
+    open class func updateTape( id: Int,  tapeUpdate: TapeUpdate) -> Promise<Tape>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:tapegroups:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this tape.
-let tape = Tape(id: 123, rootEntry: 123, name: "name_example", uuid: "uuid_example", generation: 123, customA: "customA_example", customB: "customB_example", customC: "customC_example", customD: "customD_example", freeSpace: 123, loadCounter: 123, errorCounter: 123, errorReason: "errorReason_example", active: false, lto: "lto_example", group: 123) // Tape | 
+let tapeUpdate = TapeUpdate(name: "name_example", uuid: "uuid_example", generation: 123, customA: "customA_example", customB: "customB_example", customC: "customC_example", customD: "customD_example", freeSpace: 123, loadCounter: 123, errorCounter: 123, errorReason: "errorReason_example", active: false, lto: "lto_example", group: 123) // TapeUpdate | 
 
-TapeArchiveAPI.updateTape(id: id, tape: tape).then {
+TapeArchiveAPI.updateTape(id: id, tapeUpdate: tapeUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -1569,7 +1569,7 @@ TapeArchiveAPI.updateTape(id: id, tape: tape).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this tape. | 
- **tape** | [**Tape**](Tape.md) |  | 
+ **tapeUpdate** | [**TapeUpdate**](TapeUpdate.md) |  | 
 
 ### Return type
 
@@ -1588,22 +1588,22 @@ Name | Type | Description  | Notes
 
 # **updateTapeGroup**
 ```swift
-    open class func updateTapeGroup( id: Int,  tapeGroup: TapeGroup) -> Promise<TapeGroup>
+    open class func updateTapeGroup( id: Int,  tapeGroupUpdate: TapeGroupUpdate) -> Promise<TapeGroup>
 ```
 
 
 
 ### Required permissions    * User account permission: `None` (read) / `ltfs:tapegroups:manage` (write)   * License component: ltfs 
 
-### Example 
+### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import ElementsSDK
 
 let id = 987 // Int | A unique integer value identifying this tape group.
-let tapeGroup = TapeGroup(id: 123, tapes: [TapeReference(id: 123, rootEntry: 123, name: "name_example", uuid: "uuid_example", generation: 123, customA: "customA_example", customB: "customB_example", customC: "customC_example", customD: "customD_example", freeSpace: 123, loadCounter: 123, errorCounter: 123, errorReason: "errorReason_example", active: false, lto: "lto_example", group: 123)], name: "name_example") // TapeGroup | 
+let tapeGroupUpdate = TapeGroupUpdate(tapes: [TapeReference(id: 123, rootEntry: 123, name: "name_example", uuid: "uuid_example", generation: 123, customA: "customA_example", customB: "customB_example", customC: "customC_example", customD: "customD_example", freeSpace: 123, loadCounter: 123, errorCounter: 123, errorReason: "errorReason_example", active: false, lto: "lto_example", group: 123)], name: "name_example") // TapeGroupUpdate | 
 
-TapeArchiveAPI.updateTapeGroup(id: id, tapeGroup: tapeGroup).then {
+TapeArchiveAPI.updateTapeGroup(id: id, tapeGroupUpdate: tapeGroupUpdate).then {
          // when the promise is fulfilled
      }.always {
          // regardless of whether the promise is fulfilled, or rejected
@@ -1617,7 +1617,7 @@ TapeArchiveAPI.updateTapeGroup(id: id, tapeGroup: tapeGroup).then {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **Int** | A unique integer value identifying this tape group. | 
- **tapeGroup** | [**TapeGroup**](TapeGroup.md) |  | 
+ **tapeGroupUpdate** | [**TapeGroupUpdate**](TapeGroupUpdate.md) |  | 
 
 ### Return type
 

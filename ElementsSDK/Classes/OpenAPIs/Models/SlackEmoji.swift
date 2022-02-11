@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct SlackEmoji: Codable, Hashable {
+public struct SlackEmoji: Codable, JSONEncodable, Hashable {
 
     public var url: String
     public var name: String

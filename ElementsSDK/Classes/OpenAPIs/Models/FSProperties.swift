@@ -10,8 +10,9 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct FSProperties: Codable, Hashable {
+public struct FSProperties: Codable, JSONEncodable, Hashable {
 
+    public var needsSshConnection: Bool
     public var supportsDirectoryQuotas: Bool
     public var supportsSoftQuotas: Bool
     public var supportsUserQuotas: Bool
@@ -21,7 +22,8 @@ public struct FSProperties: Codable, Hashable {
     public var creatingDirectoryQuotaDestroysContent: Bool
     public var removingDirectoryQuotaDestroysContent: Bool
 
-    public init(supportsDirectoryQuotas: Bool, supportsSoftQuotas: Bool, supportsUserQuotas: Bool, supportsGroupQuotas: Bool, supportsXattrs: Bool, supportsSnapshots: Bool, creatingDirectoryQuotaDestroysContent: Bool, removingDirectoryQuotaDestroysContent: Bool) {
+    public init(needsSshConnection: Bool, supportsDirectoryQuotas: Bool, supportsSoftQuotas: Bool, supportsUserQuotas: Bool, supportsGroupQuotas: Bool, supportsXattrs: Bool, supportsSnapshots: Bool, creatingDirectoryQuotaDestroysContent: Bool, removingDirectoryQuotaDestroysContent: Bool) {
+        self.needsSshConnection = needsSshConnection
         self.supportsDirectoryQuotas = supportsDirectoryQuotas
         self.supportsSoftQuotas = supportsSoftQuotas
         self.supportsUserQuotas = supportsUserQuotas
@@ -33,6 +35,7 @@ public struct FSProperties: Codable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case needsSshConnection = "needs_ssh_connection"
         case supportsDirectoryQuotas = "supports_directory_quotas"
         case supportsSoftQuotas = "supports_soft_quotas"
         case supportsUserQuotas = "supports_user_quotas"
@@ -47,6 +50,7 @@ public struct FSProperties: Codable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(needsSshConnection, forKey: .needsSshConnection)
         try container.encode(supportsDirectoryQuotas, forKey: .supportsDirectoryQuotas)
         try container.encode(supportsSoftQuotas, forKey: .supportsSoftQuotas)
         try container.encode(supportsUserQuotas, forKey: .supportsUserQuotas)

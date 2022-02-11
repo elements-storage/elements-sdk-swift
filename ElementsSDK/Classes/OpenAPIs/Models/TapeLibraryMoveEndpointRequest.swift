@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct TapeLibraryMoveEndpointRequest: Codable, Hashable {
+public struct TapeLibraryMoveEndpointRequest: Codable, JSONEncodable, Hashable {
 
     public var barcode: String
     public var slot: Int

@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct Ipmi: Codable, Hashable {
+public struct Ipmi: Codable, JSONEncodable, Hashable {
 
     public var ip: String
     public var netmask: String

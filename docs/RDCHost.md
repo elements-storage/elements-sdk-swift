@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] [readonly] 
+**id** | **Int** |  | 
 **workstation** | [**Workstation**](Workstation.md) |  | 
-**occupied** | **Bool** |  | [optional] [readonly] 
-**lastUpdated** | **Date** |  | [optional] [readonly] 
+**occupied** | **Bool** |  | [readonly] 
+**lastUpdated** | **Date** |  | [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

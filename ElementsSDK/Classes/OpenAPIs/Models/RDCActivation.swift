@@ -10,7 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
-public struct RDCActivation: Codable, Hashable {
+public struct RDCActivation: Codable, JSONEncodable, Hashable {
 
     public var requestedBy: String
     public var clientWorkstation: Workstation

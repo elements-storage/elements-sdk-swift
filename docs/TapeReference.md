@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** |  | [optional] 
+**id** | **Int** |  | 
 **rootEntry** | **Int** |  | [optional] [readonly] 
 **name** | **String** |  | [optional] [readonly] 
 **uuid** | **String** |  | [optional] [readonly] 
